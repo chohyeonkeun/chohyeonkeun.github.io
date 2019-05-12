@@ -78,98 +78,17 @@
     </header>
     <div>
       
-        <h2 id="1-project-생성"><a href="#1-project-생성" class="headerlink" title="1. project 생성"></a>1. project 생성</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bookmark_project/$ django-admin startproject config .</span><br></pre></td></tr></table></figure>
-<p>원래 프로젝트 이름만 작성하면, 프로젝트 폴더 안에 프로젝트 폴더가 생기게 되는데<br>[프로젝트 이름] 뒤에 ‘.’을 작성하면 현재 디렉토리에 ‘config’라는 폴더를 바로 생성해준다.</p>
-<h2 id="2-app-생성"><a href="#2-app-생성" class="headerlink" title="2. app 생성"></a>2. app 생성</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bookmark_project/$ python3 manage.py bookmark</span><br></pre></td></tr></table></figure>
-<p>‘bookmark’ 이름으로 앱을 생성해준다.</p>
-<h2 id="3-project에-app-추가"><a href="#3-project에-app-추가" class="headerlink" title="3. project에 app 추가"></a>3. project에 app 추가</h2><p>config 프로젝트에 bookmark 앱을 추가한다는 의미로 생각하면 된다.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bookmark_project &gt; config &gt; settings.py</span><br><span class="line"></span><br><span class="line">INSTALLED_APPS = [</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">'bookmark'</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<h2 id="4-project의-url-경로-설정"><a href="#4-project의-url-경로-설정" class="headerlink" title="4. project의 url 경로 설정"></a>4. project의 url 경로 설정</h2><p>path를 사용하여 어떤 이름으로 url을 설정할지 결정해준다.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> include, path</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">''</span>, include(<span class="string">'bookmark.urls'</span>)),</span><br><span class="line">    path(<span class="string">'admin/'</span>, admin.site.urls),</span><br></pre></td></tr></table></figure></p>
-<h2 id="5-app의-model-정의"><a href="#5-app의-model-정의" class="headerlink" title="5. app의 model 정의"></a>5. app의 model 정의</h2><p>앱에서 사용할 모델을 정의해주고, DB에 어떤 필드(field)를 구현할지 작성한다.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bookmark</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    site_name = models.CharField(max_length=<span class="number">50</span>)    </span><br><span class="line">    url = models.URLField()                        </span><br><span class="line">    contents = models.TextField(blank=<span class="literal">True</span>)        </span><br><span class="line">    create = models.DateTimeField(auto_now_add=<span class="literal">True</span>)    <span class="comment"># auto_now_add : 처음 저장될 때의 시간을 자동으로 처리</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 관리자 페이지 목록에 표시될 내용 작성</span></span><br><span class="line">    <span class="comment"># DB 저장 불필요 -&gt; migration, migrate 불필요</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> <span class="string">"Site name : "</span> + self.site_name + <span class="string">" (URL : "</span> + self.url + <span class="string">")"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 메타 클래스는 옵션 클래스 --&gt; 상속을 받은 속성값의 변경이 필요할 때 사용*</span></span><br><span class="line">    <span class="comment"># DB 저장 필요 -&gt; migration, migrate 필요</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">	<span class="comment"># 정렬 : (필드이름) -&gt; 필드값 오름차순, (-필드이름) -&gt; 필드값 내림차순*</span></span><br><span class="line">	ordering = [<span class="string">'-id'</span>]</span><br></pre></td></tr></table></figure></p>
-<p>지금까지 프로젝트, 앱을 생성하고 model 정의까지 배웠다.<br>다음 포스트에서는 model에 작성한 내용을 바탕으로 view.py에 템플릿을 적용 및 작성해보는 것을 배울 것이다.</p>
-
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/04/2019-05-04-django-Base-Procedure/">Django. 기초 학습</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-04T11:34:10.000Z" itemprop="datePublished">
-    2019-05-04
-  </time>
-  
-  
-  / 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/categories/django/">django</a> }
-  </li>
-
-
-  </ul>
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="1-장고-프로젝트-진행할-디렉토리-생성"><a href="#1-장고-프로젝트-진행할-디렉토리-생성" class="headerlink" title="1. 장고 프로젝트 진행할 디렉토리 생성"></a>1. 장고 프로젝트 진행할 디렉토리 생성</h2><ul>
-<li>장고 프로젝트를 진행할 디렉토리를 생성해준다. (원하는 경로에 디렉토리 생성)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir django_project                         # django_project 디렉토리 생성</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="2-가상환경-설치-및-활성화"><a href="#2-가상환경-설치-및-활성화" class="headerlink" title="2. 가상환경 설치 및 활성화"></a>2. 가상환경 설치 및 활성화</h2><ul>
-<li>가상환경이 설치되어 있지 않다면 pip install을 사용하자.</li>
-<li>혹시 모르니, pip version 확인하여 최신버전으로 업그레이드를 해보자. </li>
-<li>필자의 경우 python –&gt; 2.7 version, python3 –&gt; 3.6 version 이라 </li>
-<li>추후 모든 명령어는 python3 으로 진행<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pip3 --version                               # pip3 version 확인</span><br><span class="line">pip3 install --upgrade pip                   # pip3 업그레이드</span><br><span class="line">pip3 install virtualenv                      # virtualenv 설치</span><br><span class="line">virtualenv --python=python3.6 venv           # virtualenv를 앞으로 &apos;venv&apos;라는 이름으로 부른다. </span><br><span class="line">source venv/bin/activate                     # virtualenv(venv) 활성화</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="3-django-설치-및-확인"><a href="#3-django-설치-및-확인" class="headerlink" title="3. django 설치 및 확인"></a>3. django 설치 및 확인</h2><ul>
-<li>먼저 장고를 설치하기 위해 pip install을 사용하자.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip3 install django==2.1                     # django 2.1 version 설치</span><br><span class="line">python3 -m django --version                  # django version 확인</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="4-django-project-생성"><a href="#4-django-project-생성" class="headerlink" title="4. django project 생성"></a>4. django project 생성</h2><ul>
-<li>django를 활용하여 수행할 프로젝트를 생성한다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">django-admin startproject config .           # &apos;config&apos; 프로젝트 생성</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="5-django-서버-동작하는지-확인"><a href="#5-django-서버-동작하는지-확인" class="headerlink" title="5. django 서버 동작하는지 확인"></a>5. django 서버 동작하는지 확인</h2><ul>
-<li>서버가 잘 동작하는지 확인해준다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 manage.py runserver (port번호)       # port default값 : 8000</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="6-django-project의-app-생성-및-관련-코드-작성"><a href="#6-django-project의-app-생성-및-관련-코드-작성" class="headerlink" title="6. django project의 app 생성 및 관련 코드 작성"></a>6. django project의 app 생성 및 관련 코드 작성</h2><ul>
-<li><p>django 프로젝트(config)에서 기능을 담은 앱(photo) 생성</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 manage.py startapp photo            # photo라는 app을 생성한다.</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>polls &gt; models.py : 데이터베이스에 저장될 field 정의 (데이터 유형에 적절한 field 정의)</p>
-</li>
-<li>polls &gt; views.py : 실제 화면에 구현되는 코드 작성 (클래스형 뷰, 함수형 뷰 등)</li>
-<li>polls &gt; urls.py : 기능별 사이트 url 정의 (path로 경로 설정)</li>
-<li>polls &gt; templates &gt; photo &gt; (CRUDL).html : 화면에서 보여질 내용들을 views.py가 template을 이용하여 html 코드로 구현 </li>
-</ul>
-<h2 id="7-app을-project에-포함"><a href="#7-app을-project에-포함" class="headerlink" title="7. app을 project에 포함"></a>7. app을 project에 포함</h2><ul>
-<li>앱 관련 코드 작성 이후, 해당 앱을 프로젝트에 포함시켜준다.<br>config &gt; settings.py &gt; ‘INSTALLED_APPS’ 설정에 ‘photo’라는 app 추가</li>
-</ul>
-<h2 id="8-모델-변경사항-migration으로-저장"><a href="#8-모델-변경사항-migration으로-저장" class="headerlink" title="8. 모델 변경사항 migration으로 저장"></a>8. 모델 변경사항 migration으로 저장</h2><ul>
-<li>모델을 변경시킨 사실과 이 변경사항을 migration으로 저장시키고 싶다는 것을 django에게 알림<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 manage.py makemigrations</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="9-데이터베이스에-모델과-관련된-테이블-생성"><a href="#9-데이터베이스에-모델과-관련된-테이블-생성" class="headerlink" title="9. 데이터베이스에 모델과 관련된 테이블 생성"></a>9. 데이터베이스에 모델과 관련된 테이블 생성</h2><ul>
-<li>이 과정을 통해 모델에서의 변경 사항들과 데이터베이스의 스키마 동기화가 이루어진다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 manage.py migrate</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="10-superuser-생성"><a href="#10-superuser-생성" class="headerlink" title="10. superuser 생성"></a>10. superuser 생성</h2><ul>
-<li>관리자(개발자) 페이지의 superuser를 생성한다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python3 manage.py createsuperuser            # 여기에선 Username = admin 으로 설정</span><br><span class="line">python3 manage.py changepassword admin       # superuser 비밀번호 변경</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+        <h2 id="1-project-생성"><a href="#1-project-생성" class="headerlink" title="1. project 생성"></a>1. project 생성</h2><p>원래 프로젝트 이름만 작성하면, 프로젝트 폴더 안에 프로젝트 폴더가 생기게 되는데<br>[프로젝트 이름] 뒤에 ‘.’을 작성하면 현재 디렉토리에 ‘config’라는 폴더를 바로 생성해준다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bookmark_project/$ django-admin startproject config .</span><br></pre></td></tr></table></figure>
+<h2 id="2-app-생성"><a href="#2-app-생성" class="headerlink" title="2. app 생성"></a>2. app 생성</h2><p>‘bookmark’ 이름으로 앱을 생성해준다.</p>
+<p><code>/bookmark_project/$ python3 manage.py bookmark</code></p>
+<h2 id="3-project에-app-추가"><a href="#3-project에-app-추가" class="headerlink" title="3. project에 app 추가"></a>3. project에 app 추가</h2><p>config 프로젝트에 bookmark 앱을 추가한다는 의미로 생각하면 된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bookmark_project &gt; config &gt; settings.py</span><br><span class="line"></span><br><span class="line">INSTALLED_APPS = [</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">'bookmark'</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="4-project의-url-경로-설정"><a href="#4-project의-url-경로-설정" class="headerlink" title="4. project의 url 경로 설정"></a>4. project의 url 경로 설정</h2><p>path를 사용하여 어떤 이름으로 url을 설정할지 결정해준다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> include, path</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">''</span>, include(<span class="string">'bookmark.urls'</span>)),</span><br><span class="line">    path(<span class="string">'admin/'</span>, admin.site.urls),</span><br></pre></td></tr></table></figure>
+<h2 id="5-app의-model-정의"><a href="#5-app의-model-정의" class="headerlink" title="5. app의 model 정의"></a>5. app의 model 정의</h2><p>앱에서 사용할 모델을 정의해주고, DB에 어떤 필드(field)를 구현할지 작성한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bookmark</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    site_name = models.CharField(max_length=<span class="number">50</span>)</span><br><span class="line">    url = models.URLField()</span><br><span class="line">    contents = models.TextField(blank=<span class="literal">True</span>)</span><br><span class="line">    create = models.DateTimeField(auto_now_add=<span class="literal">True</span>)    <span class="comment"># auto_now_add : 처음 저장될 때의 시간을 자동으로 처리</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 관리자 페이지 목록에 표시될 내용 작성</span></span><br><span class="line">    <span class="comment"># DB 저장 불필요 -&gt; migration, migrate 불필요</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> <span class="string">"Site name : "</span> + self.site_name + <span class="string">" (URL : "</span> + self.url + <span class="string">")"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 메타 클래스는 옵션 클래스 --&gt; 상속을 받은 속성값의 변경이 필요할 때 사용*</span></span><br><span class="line">    <span class="comment"># DB 저장 필요 -&gt; migration, migrate 필요</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">	<span class="comment"># 정렬 : (필드이름) -&gt; 필드값 오름차순, (-필드이름) -&gt; 필드값 내림차순*</span></span><br><span class="line">	ordering = [<span class="string">'-id'</span>]</span><br></pre></td></tr></table></figure>
+<p>이번 포스트에서는 프로젝트와 앱을 생성하고, model을 정의하는 방법을 배웠다.<br>다음 포스트에서는 models.py에 작성한 내용을 바탕으로 view.py에 템플릿 적용해보는 것을 배울 것이다.</p>
 
       
     </div>
