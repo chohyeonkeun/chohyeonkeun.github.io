@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Signal이란 무엇일까? | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>Signal이란 무엇일까?</h1>
+    </header>
+
+    <section>
+      <h2 id="Signal이란"><a href="#Signal이란" class="headerlink" title="Signal이란?"></a><code>Signal이란?</code></h2><ul>
+<li>특정 액션이 발생하면 그 후에 발생하는 이벤트 (django를 포함한 여러 프레임워크에 존재)</li>
+<li>저장하기 전/후, 삭제하기 전/후 등 특정 signal이 웹 어플리케이션에 전달</li>
+<li>예로, 회원가입 후 ‘축하합니다’ 메일 보낼 때 signal이 사용된다. </li>
+<li>Signal 종류<ul>
+<li>pre_save : 저장 전, 실행</li>
+<li>post_save : 저장 후, 실행</li>
+<li>pre_delete : 삭제 전, 실행</li>
+<li>post_save : 삭제 후, 실행</li>
+</ul>
+</li>
+</ul>
+<h2 id="post-delete-구현해보기"><a href="#post-delete-구현해보기" class="headerlink" title="post_delete 구현해보기"></a><code>post_delete 구현해보기</code></h2><ul>
+<li>이전에 학습했던 dstagram 프로젝트를 예시로 들어보자.<ul>
+<li>특정 포스트 삭제 후, s3에 저장된 데이터 삭제 <blockquote>
+<p>경로 : dstagram_project &gt; photo &gt; views.py</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db.models.signals <span class="keyword">import</span> post_delete</span><br><span class="line"><span class="keyword">from</span> django.dispatch <span class="keyword">import</span> receiver</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> boto3</span><br><span class="line"><span class="keyword">from</span> django.conf <span class="keyword">import</span> settings</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@receiver(post_delete, sender=Photo) </span></span><br><span class="line"><span class="comment"># 어떤 종류의 시그널이 발생했고, 어디서 보냈는지를 명시</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">post_delete</span><span class="params">(sender, instance, **kwargs)</span>:</span>  </span><br><span class="line"><span class="comment"># 메서드 이름은 자유이며, sender와 **kwargs를 매개변수로 받아온다.</span></span><br><span class="line"><span class="comment"># instance : 현재 저장된 바로 그 instance</span></span><br><span class="line"><span class="comment"># kwargs는 signal 종류마다 그 내용이 다르다.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># s3 연결한 다음에 object 사진 지울 것</span></span><br><span class="line">    session = boto3.Session(</span><br><span class="line">        aws_access_key_id = settings.AWS_ACCESS_KEY_ID,</span><br><span class="line">        aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY,</span><br><span class="line">        region_name = settings.AWS_REGION</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    s3 = session.resource(<span class="string">'s3'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># s3.Object는 s3에 업로드된 파일 객체를 얻어오는 클래스</span></span><br><span class="line">    <span class="comment"># arg1 = 버킷 이름</span></span><br><span class="line">    <span class="comment"># arg2 = 파일 경로 - Key (버킷 실제 경로는 media/ 에 있으므로 "media/" 추가)</span></span><br><span class="line">    image = s3.Object(settings.AWS_STORAGE_BUCKET_NAME, <span class="string">"media/"</span> + str(instance.image))</span><br><span class="line">    image.delete()</span><br></pre></td></tr></table></figure>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-05-11T14:50:49.000Z" itemprop="datePublished">
+              2019-05-11
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/django/">django</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+      <section>
+        <div id="disqus_thread"></div>
+        <script>
+          window.disqus_config = function () {
+            this.page.url = window.location.toString()
+            this.page.identifier = window.location.pathname
+          }
+          if (typeof DISQUS === 'undefined') {
+            (function() { // DON'T EDIT BELOW THIS LINE
+              var d = document, s = d.createElement('script');
+              s.src = 'https://hexoblog.disqus.com/embed.js';
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+            })();
+          } else {
+            DISQUS.reset({
+                reload: true,
+                config: window.disqus_config
+            })
+          }
+        </script>
+      </section>
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
