@@ -104,9 +104,7 @@
 <li>STATIC_URL = ‘/static/‘</li>
 <li>STATIC_ROOT = os.path.join(BASE_DIR, ‘staticsfiles’)</li>
 </ul>
-<h2 id="5-Procfile-텍스트-파일-생성-및-코드-작성"><a href="#5-Procfile-텍스트-파일-생성-및-코드-작성" class="headerlink" title="5. Procfile 텍스트 파일 생성 및 코드 작성"></a>5. Procfile 텍스트 파일 생성 및 코드 작성</h2><blockquote>
-<p>경로 : bookmark_project &gt; Procfile</p>
-</blockquote>
+<h2 id="5-Procfile-텍스트-파일-생성-및-코드-작성"><a href="#5-Procfile-텍스트-파일-생성-및-코드-작성" class="headerlink" title="5. Procfile 텍스트 파일 생성 및 코드 작성"></a>5. Procfile 텍스트 파일 생성 및 코드 작성</h2><p><code>**경로 : bookmark_project &gt; Procfile**</code></p>
 <ul>
 <li>파일 내 한줄 코드 작성<br><code>web: gunicorn config.wsgi</code></li>
 </ul>
@@ -246,6 +244,53 @@
     <header class="title">
       
         <h1>
+          <a href="/2019/05/05/190505-django-bookmark-project-1/">Django. 북마크 프로젝트 만들기_1</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-05T12:11:03.000Z" itemprop="datePublished">
+    2019-05-05
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/django/">django</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="1-project-생성-bookmark-project-디렉토리"><a href="#1-project-생성-bookmark-project-디렉토리" class="headerlink" title="1. project 생성 (bookmark_project 디렉토리)"></a>1. project 생성 (bookmark_project 디렉토리)</h2><p>원래 프로젝트 이름만 작성하면, 프로젝트 폴더 안에 프로젝트 폴더가 생기게 되는데<br>[프로젝트 이름] 뒤에 ‘.’을 작성하면 현재 디렉토리에 ‘config’라는 폴더를 바로 생성해준다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ django-admin startproject config .</span><br></pre></td></tr></table></figure>
+<h2 id="2-app-생성-bookmark-project-디렉토리"><a href="#2-app-생성-bookmark-project-디렉토리" class="headerlink" title="2. app 생성 (bookmark_project 디렉토리)"></a>2. app 생성 (bookmark_project 디렉토리)</h2><p>‘bookmark’ 이름으로 앱을 생성해준다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python3 manage.py bookmark</span><br></pre></td></tr></table></figure>
+<h2 id="3-project에-app-추가"><a href="#3-project에-app-추가" class="headerlink" title="3. project에 app 추가"></a>3. project에 app 추가</h2><p>config 프로젝트에 bookmark 앱을 추가한다는 의미로 생각하면 된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bookmark_project &gt; config &gt; settings.py</span><br><span class="line"></span><br><span class="line">INSTALLED_APPS = [</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">'bookmark'</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="4-project의-url-경로-설정"><a href="#4-project의-url-경로-설정" class="headerlink" title="4. project의 url 경로 설정"></a>4. project의 url 경로 설정</h2><p>path를 사용하여 어떤 이름으로 url을 설정할지 결정해준다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> include, path</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">''</span>, include(<span class="string">'bookmark.urls'</span>)),</span><br><span class="line">    path(<span class="string">'admin/'</span>, admin.site.urls),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="5-app의-model-정의"><a href="#5-app의-model-정의" class="headerlink" title="5. app의 model 정의"></a>5. app의 model 정의</h2><p>앱에서 사용할 모델을 정의해주고, DB에 어떤 필드(field)를 구현할지 작성한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bookmark</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    site_name = models.CharField(max_length=<span class="number">50</span>)</span><br><span class="line">    url = models.URLField()</span><br><span class="line">    contents = models.TextField(blank=<span class="literal">True</span>)</span><br><span class="line">    create = models.DateTimeField(auto_now_add=<span class="literal">True</span>)    <span class="comment"># auto_now_add : 처음 저장될 때의 시간을 자동으로 처리</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 관리자 페이지 목록에 표시될 내용 작성</span></span><br><span class="line">    <span class="comment"># DB 저장 불필요 -&gt; migration, migrate 불필요</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> <span class="string">"Site name : "</span> + self.site_name + <span class="string">" (URL : "</span> + self.url + <span class="string">")"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 메타 클래스는 옵션 클래스 --&gt; 상속을 받은 속성값의 변경이 필요할 때 사용*</span></span><br><span class="line">    <span class="comment"># DB 저장 필요 -&gt; migration, migrate 필요</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">	<span class="comment"># 정렬 : (필드이름) -&gt; 필드값 오름차순, (-필드이름) -&gt; 필드값 내림차순*</span></span><br><span class="line">	ordering = [<span class="string">'-id'</span>]</span><br></pre></td></tr></table></figure>
+<p>이번 포스트에서는 프로젝트와 앱을 생성하고, model을 정의하는 방법을 배웠다.<br>다음 포스트에서는 models.py에 작성한 내용을 바탕으로 view.py에 템플릿 적용해보는 것을 배울 것이다.</p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
           <a href="/2019/05/04/2019-05-04-django-Base-Procedure/">Django. 기초 학습</a>
         </h1>
       
@@ -276,22 +321,22 @@
 </ul>
 <h2 id="2-가상환경-설치-및-활성화-django-project-디렉토리"><a href="#2-가상환경-설치-및-활성화-django-project-디렉토리" class="headerlink" title="2. 가상환경 설치 및 활성화 (django_project 디렉토리)"></a>2. 가상환경 설치 및 활성화 (django_project 디렉토리)</h2><ul>
 <li>가상환경이 설치되어 있지 않다면 pip install을 사용하자.</li>
-<li>혹시 모르니, pip version 확인하여 최신버전으로 업그레이드를 해보자. <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ pip --version                               <span class="comment"># pip version 확인</span></span><br><span class="line">$ pip install --upgrade pip                   <span class="comment"># pip 업그레이드</span></span><br><span class="line">$ pip install virtualenv                      <span class="comment"># virtualenv 설치</span></span><br><span class="line">$ virtualenv --python=python3.6 venv           <span class="comment"># virtualenv를 앞으로 'venv'라는 이름으로 부른다. </span></span><br><span class="line">$ <span class="built_in">source</span> venv/bin/activate                     <span class="comment"># virtualenv(venv) 활성화</span></span><br></pre></td></tr></table></figure>
+<li>혹시 모르니, pip version 확인하여 최신버전으로 업그레이드를 해보자. <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ pip --version                               <span class="comment"># pip version 확인</span></span><br><span class="line">$ pip install --upgrade pip                   <span class="comment"># pip 업그레이드</span></span><br><span class="line">$ pip install virtualenv                      <span class="comment"># virtualenv 설치</span></span><br><span class="line">$ virtualenv --python=python3.6 venv          <span class="comment"># virtualenv를 'venv'라는 이름으로 설치하고, python3.6으로 python 버젼 설정 </span></span><br><span class="line">$ <span class="built_in">source</span> venv/bin/activate                    <span class="comment"># virtualenv(venv) 활성화</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="3-django-설치-및-확인"><a href="#3-django-설치-및-확인" class="headerlink" title="3. django 설치 및 확인"></a>3. django 설치 및 확인</h2><ul>
+<h2 id="3-django-설치-및-확인-django-project-디렉토리"><a href="#3-django-설치-및-확인-django-project-디렉토리" class="headerlink" title="3. django 설치 및 확인 (django_project 디렉토리)"></a>3. django 설치 및 확인 (django_project 디렉토리)</h2><ul>
 <li>먼저 장고를 설치하기 위해 pip install을 사용하자.<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pip install django==2.1                     <span class="comment"># django 2.1 version 설치</span></span><br><span class="line">$ python -m django --version                  <span class="comment"># django version 확인</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="4-django-project-생성"><a href="#4-django-project-생성" class="headerlink" title="4. django project 생성"></a>4. django project 생성</h2><ul>
+<h2 id="4-django-project-생성-django-project-디렉토리"><a href="#4-django-project-생성-django-project-디렉토리" class="headerlink" title="4. django project 생성 (django_project 디렉토리)"></a>4. django project 생성 (django_project 디렉토리)</h2><ul>
 <li>django를 활용하여 수행할 프로젝트를 생성한다.<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ django-admin startproject config .           <span class="comment"># 'config' 프로젝트 생성</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="5-django-서버-동작하는지-확인"><a href="#5-django-서버-동작하는지-확인" class="headerlink" title="5. django 서버 동작하는지 확인"></a>5. django 서버 동작하는지 확인</h2><ul>
+<h2 id="5-django-서버-동작하는지-확인-django-project-디렉토리"><a href="#5-django-서버-동작하는지-확인-django-project-디렉토리" class="headerlink" title="5. django 서버 동작하는지 확인 (django_project 디렉토리)"></a>5. django 서버 동작하는지 확인 (django_project 디렉토리)</h2><ul>
 <li>서버가 잘 동작하는지 확인해준다.<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py runserver (port번호)       <span class="comment"># port default값 : 8000</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="6-django-project의-app-생성-및-관련-코드-작성"><a href="#6-django-project의-app-생성-및-관련-코드-작성" class="headerlink" title="6. django project의 app 생성 및 관련 코드 작성"></a>6. django project의 app 생성 및 관련 코드 작성</h2><ul>
+<h2 id="6-django-project의-app-생성-및-관련-코드-작성-django-project-디렉토리"><a href="#6-django-project의-app-생성-및-관련-코드-작성-django-project-디렉토리" class="headerlink" title="6. django project의 app 생성 및 관련 코드 작성 (django_project 디렉토리)"></a>6. django project의 app 생성 및 관련 코드 작성 (django_project 디렉토리)</h2><ul>
 <li><p>django 프로젝트(config)에서 기능을 담은 앱(photo) 생성</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py startapp photo            <span class="comment"># photo라는 app을 생성한다.</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -308,11 +353,11 @@
 <li>모델을 변경시킨 사실과 이 변경사항을 migration으로 저장시키고 싶다는 것을 django에게 알림<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp; python manage.py makemigrations</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="9-데이터베이스에-모델과-관련된-테이블-생성"><a href="#9-데이터베이스에-모델과-관련된-테이블-생성" class="headerlink" title="9. 데이터베이스에 모델과 관련된 테이블 생성"></a>9. 데이터베이스에 모델과 관련된 테이블 생성</h2><ul>
+<h2 id="9-데이터베이스에-모델과-관련된-테이블-생성-django-project-디렉토리"><a href="#9-데이터베이스에-모델과-관련된-테이블-생성-django-project-디렉토리" class="headerlink" title="9. 데이터베이스에 모델과 관련된 테이블 생성 (django_project 디렉토리)"></a>9. 데이터베이스에 모델과 관련된 테이블 생성 (django_project 디렉토리)</h2><ul>
 <li>이 과정을 통해 모델에서의 변경 사항들과 데이터베이스의 스키마 동기화가 이루어진다.<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py migrate</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="10-superuser-생성"><a href="#10-superuser-생성" class="headerlink" title="10. superuser 생성"></a>10. superuser 생성</h2><ul>
+<h2 id="10-superuser-생성-django-project-디렉토리"><a href="#10-superuser-생성-django-project-디렉토리" class="headerlink" title="10. superuser 생성 (django_project 디렉토리)"></a>10. superuser 생성 (django_project 디렉토리)</h2><ul>
 <li>관리자(개발자) 페이지의 superuser를 생성한다.<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python manage.py createsuperuser            <span class="comment"># 여기에선 Username = admin 으로 설정</span></span><br><span class="line">python manage.py changepassword admin       <span class="comment"># superuser 비밀번호 변경</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
