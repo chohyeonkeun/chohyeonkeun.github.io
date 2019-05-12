@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <ul class="Index">
+  
+    <header class="PageTitle">
+        <h1>{ Ajax }</h1>
+    </header>
+  
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/10/190510-django-Ajax/">Ajax 기초 학습</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-10T12:30:57.000Z" itemprop="datePublished">
+    2019-05-10
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/django/">django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Ajax/">Ajax</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="1-Ajax-정의"><a href="#1-Ajax-정의" class="headerlink" title="1. Ajax 정의"></a><code>1. Ajax 정의</code></h2><p><code>Ajax(Asynchronous JavaScript and XML)</code></p>
+<ul>
+<li>JavaScript를 사용한 비동기 통신, 클라이언트와 서버 간에 XML 데이터를 주고받는 기술</li>
+<li>JavaScript 라이브러리</li>
+<li>빠르게 동작하는 동적인 웹 페이지를 만들기 위한 개발 기법 </li>
+</ul>
+<h3 id="장점"><a href="#장점" class="headerlink" title="장점"></a><code>장점</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. 웹 페이지 전체를 다시 로딩하지 않고도, 웹 페이지의 일부분만을 갱신(웹 페이지 속도 향상)</span><br><span class="line"></span><br><span class="line">2. 웹 페이지가 로드된 후에 서버로 데이터 요청</span><br><span class="line"></span><br><span class="line">3. 웹 페이지가 로드된 후에 서버로부터 데이터 전송</span><br><span class="line"></span><br><span class="line">4. 백그라운드 영역에서 서버로 데이터 전송</span><br><span class="line"></span><br><span class="line">5. 기존 웹에서는 불가능했던 다양한 UI 가능</span><br></pre></td></tr></table></figure>
+<h3 id="단점"><a href="#단점" class="headerlink" title="단점"></a><code>단점</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1. 클라이언트가 서버에 데이터를 요청하는 클라이언트 풀링 방식 사용</span><br><span class="line">   --&gt; 서버 푸시 방식의 서비스 제작 불가 </span><br><span class="line"></span><br><span class="line">2. binary 데이터를 보내거나 받을 수 없다.</span><br><span class="line"></span><br><span class="line">3. Ajax 스크립트가 포함된 서버가 아닌 다른 서버로 Ajax 요청을 보낼 수 없다.</span><br><span class="line"></span><br><span class="line">4. 클라이언트 PC로 Ajax 요청을 보낼 수 없다.</span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">## `2. Ajax project 생성`</span><br><span class="line">### Ajax 사용법에 대해 예제를 통해서 간단히 알아보자.</span><br><span class="line">1. 디렉토리 생성 (디렉토리명: ajax_project)</span><br><span class="line">    ```bash</span><br><span class="line">    $ mkdir ajax_project</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p>해당 디렉토리에서 가상환경 생성</p>
+<ul>
+<li>가상환경에서 python을 원하는 버젼으로 설정하여 생성한다. (여기서는 python3.6으로 설정)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ virtualenv --python=python3.6 venv</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>django 설치</p>
+<ul>
+<li>pip install을 사용하여 django를 설치한다. (여기서는 버젼 2.1로 설치)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install django==2.1</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="4">
+<li><p>프로젝트 생성 (프로젝트명: config)</p>
+<ul>
+<li>현재 디렉토리에 config 프로젝트 생성<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ django-admin startproject config .</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>프로젝트 뷰 생성 및 간략 작성</p>
+<blockquote>
+<p>경로: config &gt; views.py</p>
+</blockquote>
+<ul>
+<li>데이터를 입력받는 뷰와 데이터를 받아주는 뷰를 작성한다.<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터를 입력받는 뷰, 사용자의 입력을 받는 뷰</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터를 받아주는 뷰, 처리후 응답을 하는 뷰</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_data</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="6">
+<li><p>뷰를 연결할 url 생성</p>
+<blockquote>
+<p>경로: config &gt; urls.py</p>
+</blockquote>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> .views <span class="keyword">import</span> index, get_data</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>프로젝트 하위 폴더에 데이터 입력받는 템플릿 엔진 생성</p>
+<blockquote>
+<p>경로: config &gt; layout(생성) &gt; index.html(생성)</p>
+</blockquote>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>AJAX 연습<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    test</span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>링크 버튼<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">        &#123;% csrf_token %&#125;</span><br><span class="line">        Username : <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        Email : <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"email"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        Content : <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">"content"</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">id</span>=<span class="string">"send_form"</span> <span class="attr">value</span>=<span class="string">"Send"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://code.jquery.com/jquery-3.4.1.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        csrf_token = "&#123;&#123;csrf_token&#125;&#125;"</span></span><br><span class="line"><span class="undefined">        /*</span></span><br><span class="line"><span class="undefined">            HTML : 레이아웃, 컨텐츠</span></span><br><span class="line"><span class="undefined">            CSS : 꾸미기</span></span><br><span class="line"><span class="undefined">            JavaScript : 동작</span></span><br><span class="line"><span class="undefined">            1. 언제 : 페이지가 로드가 끝났을 떄? 사용자가 어떤 액션을 취했을 때냐?</span></span><br><span class="line"><span class="undefined">                event - 마우스 클릭 or 키보드 입력 or 스크롤</span></span><br><span class="line"><span class="undefined">            2. 무엇을 : 어떤 요소를? 브라우저 객체를?</span></span><br><span class="line"><span class="undefined">            3. 어떻게 : 삭제? 추가? 변경? 숨기기? 보이기?</span></span><br><span class="line"><span class="undefined">        */</span></span><br><span class="line"><span class="undefined">        $(function() &#123;</span></span><br><span class="line"><span class="undefined">            // 페이지 로드가 끝났을 때 추가하는 부분(대부분 이 안에 추가된다.)</span></span><br><span class="line"><span class="undefined">            $('a').click(function() &#123;</span></span><br><span class="line"><span class="undefined">                alert('a 태그를 클릭하셨습니다.');</span></span><br><span class="line"><span class="undefined">            &#125;);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            $('a').mouseover(function() &#123;</span></span><br><span class="line"><span class="undefined">                console.log('마우스 오버');</span></span><br><span class="line"><span class="undefined">            &#125;);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            $('#send_form').submit(function(e) &#123;</span></span><br><span class="line"><span class="undefined">                // 원래의 동작 금지(ex. 링크 클릭하면 주소 이동 금지)</span></span><br><span class="line"><span class="undefined">                e.preventDefault();      </span></span><br><span class="line"><span class="undefined">                data = $(this).serialize </span></span><br><span class="line"><span class="undefined">                // $(this) : 해당 이벤트 발생된 주체</span></span><br><span class="line"><span class="undefined">                // serialize : 데이트 전송 편하도록 직렬화</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">                // ajax로 데이터 전송</span></span><br><span class="line"><span class="undefined">                $.ajax(&#123;            </span></span><br><span class="line"><span class="undefined">                    url: "&#123;% url 'get_data' %&#125;", // ajax로 데이터 교환할 페이지 주소</span></span><br><span class="line"><span class="undefined">                    method: "POST",</span></span><br><span class="line"><span class="undefined">                    data: data</span></span><br><span class="line"><span class="undefined">                &#125;).done(function() &#123;</span></span><br><span class="line"><span class="undefined">                    alert(data.message);</span></span><br><span class="line"><span class="undefined">                &#125;);</span></span><br><span class="line"><span class="undefined">                return false;</span></span><br><span class="line"><span class="undefined">            &#125;);</span></span><br><span class="line"><span class="undefined">        &#125;);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        /*</span></span><br><span class="line"><span class="undefined">        데이터를 전송하는 페이지(HTML), 데이터를 전송받는 페이지(django view)</span></span><br><span class="line"><span class="undefined">        HTML - 회원가입, 좋아요 데이터 전송 </span></span><br><span class="line"><span class="undefined">        -&gt; 장고측 뷰가 데이터를 받아 모델 처리, 로직 처리</span></span><br><span class="line"><span class="undefined">        -&gt; 모델처리가 완료되면 메시지, 혹은 처리 결과 데이터를 다시 HTML로 전송</span></span><br><span class="line"><span class="undefined">        -&gt; HTML은 응답받은 데이터를 가지고 화면에 정보 출력</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        $.ajax(&#123;</span></span><br><span class="line"><span class="undefined">            url: "클라이언트가 요청 보낼 서버의 URL 주소",</span></span><br><span class="line"><span class="undefined">            method:"POST",          // HTTP 요청 방식(GET, POST)</span></span><br><span class="line"><span class="undefined">            type: "json",           // 서버에서 보내줄 데이터의 타입(default값으로 json으로 되어있다.)</span></span><br><span class="line"><span class="undefined">            data: &#123;name: "홍길동"&#125;   // HTTP 요청과 함께 서버로 보낼 데이터</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        &#125;).done(function(data) &#123;    // HTTP 요청 성공 시, 요청한 데이터가 done() 메소드로 전달</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        &#125;).fail(function(xhr, data) &#123;     // HTTP 요청 실패 시, 오류와 상태에 관한 정보가 fail() 메소드로 전달</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        &#125;).always(function(xhr, data) &#123;   // HTTP 요청의 성공여부와는 상관없이 언제나 always()메소드 실행</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        &#125;);</span></span><br><span class="line"><span class="undefined">        */</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>프로젝트 뷰 상세 작성</p>
+<blockquote>
+<p>경로: config &gt; views.py</p>
+</blockquote>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> JsonResponse</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터를 입력받는 뷰, 사용자의 입력을 받는 뷰</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'index.html'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터를 받아주는 뷰, 처리후 응답을 하는 뷰</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_data</span><span class="params">(request)</span>:</span></span><br><span class="line">    print(request.POST)</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    class A:</span></span><br><span class="line"><span class="string">        type = 'b'</span></span><br><span class="line"><span class="string">        weight = 180</span></span><br><span class="line"><span class="string">    a = A()</span></span><br><span class="line"><span class="string">    a를 Json으로 보내려면, JsonResponse를 이용해 텍스트형식으로 변환 </span></span><br><span class="line"><span class="string">    a -&gt; &#123;'type':'b', 'weight':180&#125;</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment"># 처리부</span></span><br><span class="line">    username = request.POST.get(<span class="string">'username'</span>)</span><br><span class="line">    email = request.POST.get(<span class="string">'email'</span>)</span><br><span class="line">    content = request.POST.get(<span class="string">'content'</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> JsonResponse(&#123;<span class="string">'message'</span>:<span class="string">"email sent to"</span>+email&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+</ul>
+
+
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
