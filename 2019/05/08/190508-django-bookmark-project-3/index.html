@@ -63,7 +63,7 @@
 <li>whitenoise : static 파일 서빙용 미들웨어</li>
 <li>psycopg2-binary : postgreSQL용 드라이버</li>
 </ul>
-<h2 id="3-requirements-txt-파일-생성"><a href="#3-requirements-txt-파일-생성" class="headerlink" title="3. requirements.txt 파일 생성"></a>3. requirements.txt 파일 생성</h2><p><code>pip3 freeze &gt; requirements.txt</code></p>
+<h2 id="3-requirements-txt-파일-생성"><a href="#3-requirements-txt-파일-생성" class="headerlink" title="3. requirements.txt 파일 생성"></a>3. requirements.txt 파일 생성</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp; pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure>
 <h2 id="4-모듈-설정"><a href="#4-모듈-설정" class="headerlink" title="4. 모듈 설정"></a>4. 모듈 설정</h2><blockquote>
 <p>경로 : bookmark_project &gt; config &gt; settings.py </p>
 </blockquote>
@@ -75,9 +75,11 @@
 <li>STATIC_URL = ‘/static/‘</li>
 <li>STATIC_ROOT = os.path.join(BASE_DIR, ‘staticsfiles’)</li>
 </ul>
-<h2 id="5-Procfile-텍스트-파일-생성-및-코드-작성"><a href="#5-Procfile-텍스트-파일-생성-및-코드-작성" class="headerlink" title="5. Procfile 텍스트 파일 생성 및 코드 작성"></a>5. Procfile 텍스트 파일 생성 및 코드 작성</h2><p><code>**경로 : bookmark_project &gt; Procfile**</code></p>
+<h2 id="5-Procfile-텍스트-파일-생성-및-코드-작성"><a href="#5-Procfile-텍스트-파일-생성-및-코드-작성" class="headerlink" title="5. Procfile 텍스트 파일 생성 및 코드 작성"></a>5. Procfile 텍스트 파일 생성 및 코드 작성</h2><blockquote>
+<p>경로 : bookmark_project &gt; Procfile</p>
+</blockquote>
 <ul>
-<li>파일 내 한줄 코드 작성<br><code>web: gunicorn config.wsgi</code></li>
+<li>wsgi로 gunicorn 설정<br><code>web: gunicorn config.wsgi</code></li>
 </ul>
 <h2 id="6-runtime-txt-파일-생성-및-코드-작성"><a href="#6-runtime-txt-파일-생성-및-코드-작성" class="headerlink" title="6. runtime.txt 파일 생성 및 코드 작성"></a>6. runtime.txt 파일 생성 및 코드 작성</h2><blockquote>
 <p>경로 : bookmark_project &gt; runtime.txt</p>
@@ -85,20 +87,20 @@
 <ul>
 <li>app을 어떤 파이썬 버젼으로 작동시킬지 runtime을 정해준다.<br><code>python-3.7.0</code></li>
 </ul>
-<h2 id="7-heroku-로그인"><a href="#7-heroku-로그인" class="headerlink" title="7. heroku 로그인"></a>7. heroku 로그인</h2><p>(bookmark_project 디렉토리 위치) <code>heroku login</code></p>
+<h2 id="7-heroku-로그인"><a href="#7-heroku-로그인" class="headerlink" title="7. heroku 로그인"></a>7. heroku 로그인</h2><p><code>heroku login</code> (bookmark_project 디렉토리 위치)</p>
 <h2 id="8-git-연동"><a href="#8-git-연동" class="headerlink" title="8. git 연동"></a>8. git 연동</h2><ul>
-<li>.gitignore 파일 생성 (bookmark_project &gt; .gitignore)</li>
+<li>.gitignore 파일 생성 (bookmark_project 디렉토리 위치)</li>
 <li><p>.gitignore 파일 내 코드 작성 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*.pyc</span><br><span class="line">*~</span><br><span class="line">/venv</span><br><span class="line">db.sqlite3</span><br><span class="line">.DS_Store</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>(bookmark_project 디렉토리 위치) <code>git init &gt; git add -A . &gt; git commit -m &#39;deploy using heroku&#39;</code> </p>
+<li><p><code>git init &gt; git add -A . &gt; git commit -m &#39;deploy using heroku&#39;</code> (bookmark_project 디렉토리 위치)</p>
 </li>
 </ul>
-<h2 id="9-heroku-app-생성"><a href="#9-heroku-app-생성" class="headerlink" title="9. heroku app 생성"></a>9. heroku app 생성</h2><p>(bookmark_project 디렉토리 위치) <code>heroku create chk-bookmark</code></p>
-<h2 id="10-heroku에-업로드"><a href="#10-heroku에-업로드" class="headerlink" title="10. heroku에 업로드"></a>10. heroku에 업로드</h2><p>(bookmark_project 디렉토리 위치) <code>git push heroku master</code></p>
-<h2 id="11-DB-초기화"><a href="#11-DB-초기화" class="headerlink" title="11. DB 초기화"></a>11. DB 초기화</h2><p>(bookmark_project 디렉토리 위치) <code>heroku run python3 manage.py migrate</code></p>
-<h2 id="12-관리자-비번-만들기"><a href="#12-관리자-비번-만들기" class="headerlink" title="12. 관리자 비번 만들기"></a>12. 관리자 비번 만들기</h2><p>(bookmark_project 디렉토리 위치) <code>heroku run python3 manage.py createsuperuser</code></p>
-<h2 id="13-heroku를-통한-사이트-확인"><a href="#13-heroku를-통한-사이트-확인" class="headerlink" title="13. heroku를 통한 사이트 확인"></a>13. heroku를 통한 사이트 확인</h2><p>(bookmark_project 디렉토리 위치) <code>heroku open</code></p>
+<h2 id="9-heroku-app-생성"><a href="#9-heroku-app-생성" class="headerlink" title="9. heroku app 생성"></a>9. heroku app 생성</h2><p><code>heroku create chk-bookmark</code> (bookmark_project 디렉토리 위치) </p>
+<h2 id="10-heroku에-업로드"><a href="#10-heroku에-업로드" class="headerlink" title="10. heroku에 업로드"></a>10. heroku에 업로드</h2><p><code>git push heroku master</code> (bookmark_project 디렉토리 위치) </p>
+<h2 id="11-DB-초기화"><a href="#11-DB-초기화" class="headerlink" title="11. DB 초기화"></a>11. DB 초기화</h2><p><code>heroku run python3 manage.py migrate</code> (bookmark_project 디렉토리 위치) </p>
+<h2 id="12-관리자-비번-만들기"><a href="#12-관리자-비번-만들기" class="headerlink" title="12. 관리자 비번 만들기"></a>12. 관리자 비번 만들기</h2><p><code>heroku run python3 manage.py createsuperuser</code> (bookmark_project 디렉토리 위치) </p>
+<h2 id="13-heroku를-통한-사이트-확인"><a href="#13-heroku를-통한-사이트-확인" class="headerlink" title="13. heroku를 통한 사이트 확인"></a>13. heroku를 통한 사이트 확인</h2><p><code>heroku open</code> (bookmark_project 디렉토리 위치) </p>
 
 
       
