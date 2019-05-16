@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>게시판 댓글 기능 적용 방법 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>게시판 댓글 기능 적용 방법</h1>
+    </header>
+
+    <section>
+      <h2 id="ex-게시판-프로젝트-board-project"><a href="#ex-게시판-프로젝트-board-project" class="headerlink" title="ex) 게시판 프로젝트(board_project)"></a>ex) 게시판 프로젝트(board_project)</h2><h2 id="1-특정-페이지에서-댓글-템플릿-연동"><a href="#1-특정-페이지에서-댓글-템플릿-연동" class="headerlink" title="1. 특정 페이지에서 댓글 템플릿 연동"></a>1. 특정 페이지에서 댓글 템플릿 연동</h2><ul>
+<li>댓글 목록의 template 따로 생성 (댓글 부분 페이지네이션 필요하기 때문)</li>
+<li>경로 : templates &gt; board &gt; comment_list.html  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-striped"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span> <span class="attr">colspan</span>=<span class="string">"3"</span> <span class="attr">class</span>=<span class="string">"align-left"</span>&gt;</span>댓글 목록<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">    &#123;% for comment in comments %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;comment.text&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;comment.author.username&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;comment.created&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br><br><a id="more"></a></p>
+<h2 id="2-게시판-상세-페이지에서-댓글-목록-삽입-부분-작성"><a href="#2-게시판-상세-페이지에서-댓글-목록-삽입-부분-작성" class="headerlink" title="2. 게시판 상세 페이지에서 댓글 목록 삽입 부분 작성"></a>2. 게시판 상세 페이지에서 댓글 목록 삽입 부분 작성</h2><ul>
+<li>경로 : templates &gt; board &gt; document_detail.html  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends 'base.html' %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line"></span><br><span class="line">&#123;&#123;object.title&#125;&#125;  &#123;&#123;object.text&#125;&#125;  &#123;&#123;object.image.url&#125;&#125;  &#123;&#123;object.author.username&#125;&#125; <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"&#123;% url 'board:comment_create' object.id %&#125;"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    &#123;% csrf_token %&#125;</span><br><span class="line">    &#123;&#123;comment_form.as_p&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Comment"</span> <span class="attr">class</span>=<span class="string">"btn btn-outline-primary"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 댓글 목록이 삽입될 부분 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"docs_comment_list_area"</span>&gt;</span></span><br><span class="line">    &#123;% include 'board/comment_list.html' %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="3-댓글-생성-수정-삭제-함수-구현"><a href="#3-댓글-생성-수정-삭제-함수-구현" class="headerlink" title="3. 댓글 생성/수정/삭제 함수 구현"></a>3. 댓글 생성/수정/삭제 함수 구현</h2><ul>
+<li><p>경로 : board_project &gt; board &gt; views.py</p>
+<ul>
+<li><p>댓글 생성(comment_create)</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">comment_create</span><span class="params">(request, document_id)</span>:</span></span><br><span class="line">    document = get_object_or_404(Document, pk=document_id)</span><br><span class="line">    comment_form = CommentForm(request.POST)</span><br><span class="line">    comment_form.instance.author_id = request.user.id</span><br><span class="line">    comment_form.instance.document_id = document_id</span><br><span class="line">    <span class="keyword">if</span> comment_form.is_valid():</span><br><span class="line">        comment = comment_form.save()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># return redirect(reverse('board:detail', args=[document_id]))    </span></span><br><span class="line">    <span class="keyword">return</span> redirect(document)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>댓글 수정(comment_update)</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">comment_update</span><span class="params">(request, comment_id)</span>:</span></span><br><span class="line">    comment = get_object_or_404(Comment, pk=comment_id)</span><br><span class="line">    document = get_object_or_404(Document, pk=comment.document.id)</span><br><span class="line">    <span class="keyword">if</span> request.user != comment.author:</span><br><span class="line">        messages.warning(request, <span class="string">"권한 없음"</span>)</span><br><span class="line">        <span class="keyword">return</span> redirect(document)</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">"POST"</span>:</span><br><span class="line">        form = CommentForm(request.POST, request.FILES, instance=comment)</span><br><span class="line">        <span class="keyword">if</span> form.is_valid():</span><br><span class="line">            form.save()</span><br><span class="line">            <span class="keyword">return</span> redirect(document)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        form = CommentForm(instance=comment)</span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">'board/comment/comment_update.html'</span>, &#123;<span class="string">'form'</span>:form&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>댓글 삭제(comment_delete)</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">comment_delete</span><span class="params">(request, comment_id)</span>:</span></span><br><span class="line">    comment = get_object_or_404(Comment, pk=comment_id)</span><br><span class="line">    document = get_object_or_404(Document, pk=comment.document.id)</span><br><span class="line">    <span class="keyword">if</span> request.user != comment.author <span class="keyword">and</span> <span class="keyword">not</span> request.user.is_staff <span class="keyword">and</span> request.user != document.author:</span><br><span class="line">        messages.warning(request, <span class="string">"권한 없음"</span>)</span><br><span class="line">        <span class="keyword">return</span> redirect(document)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">"POST"</span>:</span><br><span class="line">        comment.delete()</span><br><span class="line">        <span class="keyword">return</span> redirect(document)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">'board/comment/comment_delete.html'</span>, &#123;<span class="string">'object'</span>:comment&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-댓글-생성-수정-삭제-페이지-url-경로-설정"><a href="#4-댓글-생성-수정-삭제-페이지-url-경로-설정" class="headerlink" title="4. 댓글 생성/수정/삭제 페이지 url 경로 설정"></a>4. 댓글 생성/수정/삭제 페이지 url 경로 설정</h2><ul>
+<li>경로 : board_project &gt; board &gt; urls.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">path(<span class="string">'comment/create/&lt;int:document_id&gt;'</span>, comment_create, name=<span class="string">'comment_create'</span>),</span><br><span class="line">path(<span class="string">'comment/update/&lt;int:comment_id&gt;'</span>, comment_update, name=<span class="string">'comment_update'</span>),</span><br><span class="line">path(<span class="string">'comment/delete/&lt;int:comment_id&gt;'</span>, comment_delete, name=<span class="string">'comment_delete'</span>),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="5-댓글-수정-삭제-템플릿-파일-생성-및-작성"><a href="#5-댓글-수정-삭제-템플릿-파일-생성-및-작성" class="headerlink" title="5. 댓글 수정/삭제 템플릿 파일 생성 및 작성"></a>5. 댓글 수정/삭제 템플릿 파일 생성 및 작성</h2><ul>
+<li><p>경로 : templates &gt; board &gt; comment</p>
+<ul>
+<li><p>comment_delete.html 생성 (댓글 삭제 페이지)</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">        &#123;% extends 'base.html' %&#125;</span><br><span class="line">        &#123;% block content %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">                &#123;% csrf_token %&#125;</span><br><span class="line">                &#123;&#123;form.as_p&#125;&#125;</span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Update"</span> <span class="attr">class</span>=<span class="string">"btn btn-outline-warning"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">        &#123;% endblock %&#125;1) messages 클래스 호출</span><br><span class="line">    - from django.contrib import messages</span><br><span class="line">2) request한 유저와 comment 작성자 동일 인물 아닐 시, 메시지 경고</span><br><span class="line">    - if request.user != comment.author:</span><br><span class="line">        messages.warning(request, "권한 없음")</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>comment_update.h1) messages 클래스 호출</p>
+</li>
+<li>from django.contrib import messages<br>2) request한 유저와 comment 작성자 동일 인물 아닐 시, 메시지 경고</li>
+<li>if request.user != comment.author:<br>  messages.warning(request, “권한 없음”)이지))  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends 'base.html' %&#125;</span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"alert alert-danger"</span>&gt;</span>Do you want to delete &#123;&#123;object&#125;&#125;?<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            &#123;% csrf_token %&#125;</span><br><span class="line">            &#123;&#123;form.as_p&#125;&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Delete Confirm"</span> <span class="attr">class</span>=<span class="string">"btn btn-outline-danger"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-관리자-사이트에-댓글-조회-및-수정-기능-적용"><a href="#6-관리자-사이트에-댓글-조회-및-수정-기능-적용" class="headerlink" title="6. 관리자 사이트에 댓글 조회 및 수정 기능 적용"></a>6. 관리자 사이트에 댓글 조회 및 수정 기능 적용</h2><ul>
+<li>관리자페이지 커스터마이징</li>
+<li>경로 : board &gt; admin.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CommentInline</span><span class="params">(admin.TabularInline)</span>:</span></span><br><span class="line">    model = Comment</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DocumentOption</span><span class="params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">    list_display = [<span class="string">'id'</span>, <span class="string">'author'</span>, <span class="string">'title'</span>, <span class="string">'text'</span>, <span class="string">'slug'</span>, <span class="string">'created'</span>, <span class="string">'updated'</span>]</span><br><span class="line">    prepopulated_fields = &#123;<span class="string">'slug'</span>:(<span class="string">'title'</span>,)&#125;</span><br><span class="line">    inlines = [CommentInline]  <span class="comment"># 추가</span></span><br><span class="line">    </span><br><span class="line">admin.site.regiser(Document, DocumentOption)</span><br><span class="line">admin.site.register(Comment)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-05-16T14:18:55.000Z" itemprop="datePublished">
+              2019-05-16
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
