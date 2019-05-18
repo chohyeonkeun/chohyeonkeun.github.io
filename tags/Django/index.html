@@ -69,6 +69,52 @@
     <header class="title">
       
         <h1>
+          <a href="/2019/05/18/190518-django-comment-with-ajax/">Ajax 이용한 댓글 기능 구현</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-18T14:24:05.000Z" itemprop="datePublished">
+    2019-05-18
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="댓글-생성하기"><a href="#댓글-생성하기" class="headerlink" title="댓글 생성하기"></a>댓글 생성하기</h2><h2 id="1-상세-글-조회-페이지에-댓글-목록-추가"><a href="#1-상세-글-조회-페이지에-댓글-목록-추가" class="headerlink" title="1. 상세 글 조회 페이지에 댓글 목록 추가"></a>1. 상세 글 조회 페이지에 댓글 목록 추가</h2><ul>
+<li>원하는 위치에 댓글 목록 부분을 작성한다.</li>
+<li>경로 : board &gt; templates &gt; board &gt; document_detail.html  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"docs_comment_list_area"</span>&gt;</span></span><br><span class="line">    &#123;% include 'board/comment_list.html' %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br><br>
+        
+          <div class="more-link">
+            <a href="/2019/05/18/190518-django-comment-with-ajax/#more">Read On »</a>
+          </div>
+        
+      
+    </p></div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
           <a href="/2019/05/16/190516-django-comment-function/">게시판 댓글 기능 적용</a>
         </h1>
       
@@ -515,61 +561,6 @@
         
           <div class="more-link">
             <a href="/2019/05/08/190508-django-AWS-1/#more">Read On »</a>
-          </div>
-        
-      
-    </p></div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/08/190508-django-bookmark-project-3/">북마크 프로젝트_배포(heroku)</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-08T08:28:23.000Z" itemprop="datePublished">
-    2019-05-08
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="1-heroku-다운로드-및-설치"><a href="#1-heroku-다운로드-및-설치" class="headerlink" title="1. heroku 다운로드 및 설치"></a>1. heroku 다운로드 및 설치</h2><ul>
-<li>macOS : <code>brew tap heroku/brew &amp;&amp; brew install heroku</code></li>
-<li>Ubuntu 16+ : <code>sudo snap install -classic heroku</code></li>
-<li>Windows : <a href="https://devcenter.heroku.com/articles/heroku-cli#download-and-install" target="_blank" rel="noopener">https://devcenter.heroku.com/articles/heroku-cli#download-and-install</a> 에서 다운로드 및 설치</li>
-</ul>
-<h2 id="2-추가-모듈-설치"><a href="#2-추가-모듈-설치" class="headerlink" title="2. 추가 모듈 설치"></a>2. 추가 모듈 설치</h2><blockquote>
-<p>경로 : bookmark_project &gt; <code>pip3 install [모듈명]</code></p>
-</blockquote>
-<ul>
-<li>dj-database-url : 데이터베이스 관련 옵션을 변수로 쉽게 접근할 수 있게 해주는 유틸리티</li>
-<li>gunicorn : wsgi용 미들웨어 –&gt; 웹서버와 장고 사리의 다리 역할</li>
-<li>whitenoise : static 파일 서빙용 미들웨어</li>
-<li>psycopg2-binary : postgreSQL용 드라이버</li>
-</ul>
-<p><br><br>
-        
-          <div class="more-link">
-            <a href="/2019/05/08/190508-django-bookmark-project-3/#more">Read On »</a>
           </div>
         
       
