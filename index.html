@@ -65,6 +65,53 @@
     <header class="title">
       
         <h1>
+          <a href="/2019/05/19/190519-django-login-method/">로그인 기능 적용</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-19T13:34:21.000Z" itemprop="datePublished">
+    2019-05-19
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="방법1-login-required-클래스-사용"><a href="#방법1-login-required-클래스-사용" class="headerlink" title="방법1. login_required 클래스 사용"></a>방법1. login_required 클래스 사용</h2><ul>
+<li>login_required 클래스를 사용하여 로그인이 필요한 부분에 @login_required 데코레이터를 사용한다.<ul>
+<li>경로 : (앱 이름) &gt; views.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># login_required 클래스 호출</span></span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.decorators <span class="keyword">import</span> login_required</span><br><span class="line"><span class="comment"># login_required 데코레이터 사용</span></span><br><span class="line"><span class="meta">@login_required</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/05/19/190519-django-login-method/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
           <a href="/2019/05/18/190518-django-comment-with-ajax/">Ajax 이용한 댓글 기능 구현</a>
         </h1>
       
@@ -94,14 +141,58 @@
 <li>경로 : board &gt; templates &gt; board &gt; document_detail.html  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"docs_comment_list_area"</span>&gt;</span></span><br><span class="line">    &#123;% include 'board/comment_list.html' %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br><br>
         
           <div class="more-link">
             <a href="/2019/05/18/190518-django-comment-with-ajax/#more">Read On »</a>
           </div>
         
       
-    </p></div>
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/17/190517-django-image-upload-localsite/">개발환경에서 이미지 파일 업로드하는 방법</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-17T14:47:55.000Z" itemprop="datePublished">
+    2019-05-17
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="1-미디어-경로-설정"><a href="#1-미디어-경로-설정" class="headerlink" title="1. 미디어 경로 설정"></a>1. 미디어 경로 설정</h2><ul>
+<li>프로젝트 설정에서 media url 과 media root를 설정하고 urlpatterns에 그 경로를 지정한다.</li>
+<li>경로 : config(프로젝트 명) &gt; settings.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MEDIA_URL = <span class="string">'/media/'</span></span><br><span class="line"><span class="comment"># MEDIA_URL로 사이트 url 설정</span></span><br><span class="line">MEDIA_ROOT = os.path.join(BASE_DIR, <span class="string">'media'</span>)</span><br><span class="line"><span class="comment"># 장고에 media라는 폴더 이름 설정</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/05/17/190517-django-image-upload-localsite/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
 </article>
 
     </li>
@@ -141,14 +232,13 @@
 <li>경로 : templates &gt; board &gt; comment_list.html  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-striped"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span> <span class="attr">colspan</span>=<span class="string">"3"</span> <span class="attr">class</span>=<span class="string">"align-left"</span>&gt;</span>댓글 목록<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">    &#123;% for comment in comments %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;comment.text&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;comment.author.username&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;comment.created&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br><br>
         
           <div class="more-link">
             <a href="/2019/05/16/190516-django-comment-function/#more">Read On »</a>
           </div>
         
       
-    </p></div>
+    </div>
 </article>
 
     </li>
@@ -189,14 +279,13 @@
 <li>아이디, 이메일, 소셜 로그인 가능하도록 설정  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">AUTHENTICATION_BACKENDS = (</span><br><span class="line">        <span class="string">'django.contrib.auth.backends.ModelBackend'</span>,</span><br><span class="line">        <span class="string">'allauth.account.auth_backends.AuthenticationBackend'</span>, </span><br><span class="line">    )</span><br><span class="line">    <span class="comment"># 통합 User Model</span></span><br><span class="line">    <span class="comment"># 고객, 판매자, 관리자 계정 -&gt; User Model -&gt; Group</span></span><br><span class="line">    INSTALLED_APP = [</span><br><span class="line">        <span class="string">'django.contrib.sites'</span>,</span><br><span class="line">        <span class="comment"># 소셜 로그인을 관리하기 위해 기본으로 생기는 앱들</span></span><br><span class="line">        <span class="string">'allauth'</span>,  </span><br><span class="line">        <span class="string">'allauth.account'</span>,</span><br><span class="line">        <span class="string">'allauth.socialaccount'</span>,</span><br><span class="line">        <span class="string">'allauth.socialaccount.providers.naver'</span>,</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br><br>
         
           <div class="more-link">
             <a href="/2019/05/15/190515-django-SNS-LOGIN/#more">Read On »</a>
           </div>
         
       
-    </p></div>
+    </div>
 </article>
 
     </li>
@@ -288,14 +377,13 @@
 </ul>
 </li>
 </ul>
-<p><br><br>
         
           <div class="more-link">
             <a href="/2019/05/13/190513-django-pythonanywhere/#more">Read On »</a>
           </div>
         
       
-    </p></div>
+    </div>
 </article>
 
     </li>
@@ -445,118 +533,6 @@
         
           <div class="more-link">
             <a href="/2019/05/10/190510-django-Ajax/#more">Read On »</a>
-          </div>
-        
-      
-    </p></div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/09/190509-django-AWS-2/">AWS 도메인 연결 방법_2</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-09T11:25:17.000Z" itemprop="datePublished">
-    2019-05-09
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/AWS/">AWS</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="9-AWS-gt-네트워킹-및-콘텐츠-전송-gt-Route-53"><a href="#9-AWS-gt-네트워킹-및-콘텐츠-전송-gt-Route-53" class="headerlink" title="9. AWS &gt; 네트워킹 및 콘텐츠 전송 &gt; Route 53"></a>9. AWS &gt; 네트워킹 및 콘텐츠 전송 &gt; Route 53</h2><p>보유한 도메인의 네임서버를 설정해주는 작업을 수행할 것이다.</p>
-<ul>
-<li>DNS 관리 시작</li>
-<li>호스팅 영역 생성 &gt; 도메인 이름 입력 &gt; 생성</li>
-<li>해당 도메인 선택 &gt; TTL 설정(ex. 1분)</li>
-<li>NS 유형의 value 복사하여 도메인 웹호스팅 사이트(가비아)에 네임서버로 설정</li>
-</ul>
-<h2 id="10-HTTP로-연결-https는-개인키-공용키-구입-필요"><a href="#10-HTTP로-연결-https는-개인키-공용키-구입-필요" class="headerlink" title="10. HTTP로 연결 (https는 개인키, 공용키 구입 필요)"></a>10. HTTP로 연결 (https는 개인키, 공용키 구입 필요)</h2><blockquote>
-<p>경로 : dstagram_project &gt; config &gt; settings.py</p>
-</blockquote>
-<p><code>AWS_S3_SECURE_URLS = False</code></p>
-<p><br><br>
-        
-          <div class="more-link">
-            <a href="/2019/05/09/190509-django-AWS-2/#more">Read On »</a>
-          </div>
-        
-      
-    </p></div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/08/190508-django-AWS-1/">AWS 도메인 연결 방법_1</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-08T11:55:23.000Z" itemprop="datePublished">
-    2019-05-08
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/AWS/">AWS</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="1-AWS-gt-서비스-gt-스토리지-gt-S3-접속"><a href="#1-AWS-gt-서비스-gt-스토리지-gt-S3-접속" class="headerlink" title="1. AWS &gt; 서비스 &gt; 스토리지 &gt; S3 접속"></a>1. AWS &gt; 서비스 &gt; 스토리지 &gt; S3 접속</h2><ul>
-<li>버킷 생성<ul>
-<li>버킷 이름 설정 (ex. media.wpsschool.site)</li>
-<li>지역 &gt; ‘아시아 태평양(서울)’ 설정</li>
-<li>‘이 버킷의 퍼블릭 액세스 설정’ 4개 항목 체크 해제</li>
-<li>‘시스템 권한 관리’ 액세스 권한 부여</li>
-<li>버킷 만들기</li>
-<li>속성 &gt; 정적 웹 사이트 호스팅 &gt; ‘이 버킷을 사용하여 웹 사이트를 호스팅합니다.’ &gt; 인덱스 문서, 오류문서 작성 &gt; 저장</li>
-</ul>
-</li>
-</ul>
-<p><br><br>
-        
-          <div class="more-link">
-            <a href="/2019/05/08/190508-django-AWS-1/#more">Read On »</a>
           </div>
         
       
