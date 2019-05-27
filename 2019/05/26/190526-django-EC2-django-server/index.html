@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>EC2에 장고 서버 셋팅 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>EC2에 장고 서버 셋팅</h1>
+    </header>
+
+    <section>
+      <h2 id="EC2-장고-서버-셋팅-방법"><a href="#EC2-장고-서버-셋팅-방법" class="headerlink" title="EC2 장고 서버 셋팅 방법"></a>EC2 장고 서버 셋팅 방법</h2><ol>
+<li><p>EC2에 SSH로 접속</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -i ~/.ssh/[키 페어 파일 이름; django-wps] ubuntu@[도메인 주소]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>장고를 위한 계정 추가</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo useradd -g www-data -b /home -m -s /bin/bash django</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<a id="more"></a>
+<ol start="3">
+<li><p>소스 코드 업로드할 폴더 생성</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mkdir /var/www/django</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>소스코드 폴더의 소유자 변경</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown django:www-data /var/www/django</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>파일 업로드를 위해 ubuntu 계정을 www-data 그룹에 추가</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo usermod -a -G www-data ubuntu</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>소스 코드 폴더에 그룹 쓰기 권한 부여</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chmod g+w /var/www/django</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>파이썬 관련 패키지 설치</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install python3-dev python3-venv python3-pip</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>소스 코드 폴더 밑에 파이썬 가상 환경 생성</p>
+<ul>
+<li>경로 : cd /var/www/django<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pip install virtualenv</span><br><span class="line">$ sudo python3 -m virtualenv venv</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>관리자 모드로 변경</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo -s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>가상환경 활성화</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> venv/bin/activaate</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>가상환경에 장고 설치</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install django</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>장고 프로젝트 생성하고 서버 실행</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ django-admin startproject config .</span><br><span class="line">$ python manage.py runserver</span><br><span class="line"><span class="comment"># runserver에서 django 정상 동작하는지 확인</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>WSGI 모듈 중 하나인 uwsgi 설치</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install uwsgi</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>uwsgi 잘 동작하는지 확인</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ uwsgi --http :8000 --home /var/www/django/venv/ --<span class="built_in">chdir</span> /var/www/django/ --module config.wsgi</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>관련 폴더 생성 및 설정(run, logs 폴더 생성)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mkdir run logs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>폴더 소유권 변경</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown django:www-data run</span><br><span class="line">$ sudo chown django:www-data logs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ini 폴더 생성</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mkdir ini</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ini 폴더 안에 uwsgi.ini 파일 작성</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim ini/uwsgi.ini</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[uwsgi]</span><br><span class="line">uid = django</span><br><span class="line">base = /var/www/django</span><br><span class="line"></span><br><span class="line">home = %(base)/venv</span><br><span class="line">chdir = %(base)</span><br><span class="line">module = config.wsgi:application</span><br><span class="line">env = DJANGO_SETTINGS_MODULE=config.settings</span><br><span class="line"></span><br><span class="line">master = true</span><br><span class="line">processes = 5</span><br><span class="line"></span><br><span class="line">socket = %(base)/run/uwsgi.sock</span><br><span class="line">logto = %(base)/logs/uwsgi.log</span><br><span class="line">chown-socket = %(uid):www-data</span><br><span class="line">chmod-socket = 660</span><br><span class="line">vacuum = true</span><br><span class="line">~</span><br><span class="line">~</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>uwsgi.service 파일 생성</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/ststemd/system/uwsgi.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=uWSGI Emperor service</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">ExecStart=/var/www/django/venv/bin/uwsgi --emperor /var/www/django/ini</span><br><span class="line">User=django</span><br><span class="line">Group=www-data</span><br><span class="line">Restart=on-failure</span><br><span class="line">KillSignal=SIGQUIT</span><br><span class="line">Type=notify</span><br><span class="line">NotifyAccess=all</span><br><span class="line">StandardError=syslog</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line">~</span><br><span class="line">~</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>uwsgi.service 시작하고 시작프로그램으로 등록</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl start uwsgi</span><br><span class="line">$ sudo systemctl <span class="built_in">enable</span> uwsgi</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>기존 스테틱 웹 서버에서 장고 애플리케이션 구동하기 위해 사이트 설정 파일 변경</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/nginx/sites-available/staticweb</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">upstream django &#123;</span><br><span class="line">    server unix:/var/www/django/run/uwsgi/sock;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    charset utf-8;</span><br><span class="line">    access_log /var/www/django/logs/access.log;</span><br><span class="line">    error_log /var/www/django/logs/error.log;</span><br><span class="line">    server_name staticweb.actingprogrammer.io;</span><br><span class="line"></span><br><span class="line">    location = /favicon.ico &#123; access_log off; log_not_found off; &#125;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        include  /etc/nginx/uwsgi_params;</span><br><span class="line">        uwsgi_pass  django;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>웹 브라우저 접속하여 사이트 구동여부 확인</p>
+</li>
+</ol>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-05-26T12:31:40.000Z" itemprop="datePublished">
+              2019-05-26
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
