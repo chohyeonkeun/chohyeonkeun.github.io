@@ -97,9 +97,9 @@
     </header>
     <div>
       
-        <h2 id="EC2-장고-서버-셋팅-방법"><a href="#EC2-장고-서버-셋팅-방법" class="headerlink" title="EC2 장고 서버 셋팅 방법"></a>EC2 장고 서버 셋팅 방법</h2><ol>
+        <ol>
 <li><p>EC2에 SSH로 접속</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -i ~/.ssh/[키 페어 파일 이름; django-wps] ubuntu@[도메인 주소]</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -i ~/.ssh/[키 페어 파일 이름; django-wps.pem] ubuntu@[도메인 주소]</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>장고를 위한 계정 추가</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo useradd -g www-data -b /home -m -s /bin/bash django</span><br></pre></td></tr></table></figure>

@@ -72,19 +72,14 @@
 <h2 id="2-커스텀-유저-모델-만드는-3가지-방법"><a href="#2-커스텀-유저-모델-만드는-3가지-방법" class="headerlink" title="2. 커스텀 유저 모델 만드는 3가지 방법"></a>2. 커스텀 유저 모델 만드는 3가지 방법</h2><ol>
 <li>기존 유저 모델 확장하여 추가 정보만 입력</li>
 <li>AbstractBaseUser 사용하여 기본 기능 제외한 모든 기능과 필드를 새로 생성</li>
-<li><h2 id="AbstractUser-사용하여-추가-필드를-포함한-유저-모델-생성"><a href="#AbstractUser-사용하여-추가-필드를-포함한-유저-모델-생성" class="headerlink" title="AbstractUser 사용하여 추가 필드를 포함한 유저 모델 생성"></a>AbstractUser 사용하여 추가 필드를 포함한 유저 모델 생성</h2><blockquote>
-<h3 id="유저-모델-별-숙지사항"><a href="#유저-모델-별-숙지사항" class="headerlink" title="유저 모델 별 숙지사항"></a>유저 모델 별 숙지사항</h3><ul>
-<li>3가지 방법 중, 가장 편리한 방법은 AbstractUser를 사용하는 방법이다.<ul>
-<li>주의해야 할 사항 : 기존 유저 정보를 사용 할 수 없으므로 프로젝트 생성 직후, 커스텀 유저 모델과 관리자 계정 생성 필요 </li>
-</ul>
-</li>
-</ul>
-</blockquote>
-</li>
+<li>AbstractUser 사용하여 추가 필드를 포함한 유저 모델 생성</li>
 </ol>
-<ul>
-<li>기존 User 모델은 AbstractUser라는 모델을 상속받아 필수 필드들이 이미 구현되어 있는 상태</li>
-</ul>
+<hr>
+<blockquote>
+<h3 id="유저-모델-별-숙지사항"><a href="#유저-모델-별-숙지사항" class="headerlink" title="유저 모델 별 숙지사항"></a>유저 모델 별 숙지사항</h3><pre><code>- 3가지 방법 중, 가장 편리한 방법은 AbstractUser를 사용하는 방법이다.
+    - 주의해야 할 사항 : 기존 유저 정보를 사용 할 수 없으므로 프로젝트 생성 직후, 커스텀 유저 모델과 관리자 계정 생성 필요 
+- 기존 User 모델은 AbstractUser라는 모델을 상속받아 필수 필드들이 이미 구현되어 있는 상태
+</code></pre></blockquote>
 <ol>
 <li>AbstractUser 모델 상속<ul>
 <li>AbstractUser 모델은 AbstractBaseUser라는 모델을 상속받아 구현된다.</li>
