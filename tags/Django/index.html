@@ -69,6 +69,58 @@
     <header class="title">
       
         <h1>
+          <a href="/2019/05/26/190529-django/">EC2에 장고 서버 셋팅</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-26T12:31:40.000Z" itemprop="datePublished">
+    2019-05-26
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ol>
+<li><p>EC2에 SSH로 접속</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -i ~/.ssh/[키 페어 파일 이름; django-wps.pem] ubuntu@[도메인 주소]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>장고를 위한 계정 추가</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo useradd -g www-data -b /home -m -s /bin/bash django</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+        
+          <div class="more-link">
+            <a href="/2019/05/26/190529-django/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
           <a href="/2019/05/26/190526-django-EC2-django-server/">EC2에 장고 서버 셋팅</a>
         </h1>
       
@@ -108,6 +160,58 @@
         
           <div class="more-link">
             <a href="/2019/05/26/190526-django-EC2-django-server/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/26/190527-django/">EC2에 장고 서버 셋팅</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-26T12:31:40.000Z" itemprop="datePublished">
+    2019-05-26
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ol>
+<li><p>EC2에 SSH로 접속</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -i ~/.ssh/[키 페어 파일 이름; django-wps.pem] ubuntu@[도메인 주소]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>장고를 위한 계정 추가</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo useradd -g www-data -b /home -m -s /bin/bash django</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+        
+          <div class="more-link">
+            <a href="/2019/05/26/190527-django/#more">Read On »</a>
           </div>
         
       
@@ -424,100 +528,6 @@
         
           <div class="more-link">
             <a href="/2019/05/19/190519-django-login-method/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/18/190518-django-comment-with-ajax/">Ajax 이용한 댓글 기능 구현</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-18T14:24:05.000Z" itemprop="datePublished">
-    2019-05-18
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/Ajax/">Ajax</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="댓글-생성하기"><a href="#댓글-생성하기" class="headerlink" title="댓글 생성하기"></a>댓글 생성하기</h2><h2 id="1-상세-글-조회-페이지에-댓글-목록-추가"><a href="#1-상세-글-조회-페이지에-댓글-목록-추가" class="headerlink" title="1. 상세 글 조회 페이지에 댓글 목록 추가"></a>1. 상세 글 조회 페이지에 댓글 목록 추가</h2><ul>
-<li>원하는 위치에 댓글 목록 부분을 작성한다.</li>
-<li>경로 : board &gt; templates &gt; board &gt; document_detail.html  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"docs_comment_list_area"</span>&gt;</span></span><br><span class="line">    &#123;% include 'board/comment_list.html' %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/05/18/190518-django-comment-with-ajax/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/17/190517-django-image-upload-localsite/">개발환경에서 이미지 파일 업로드하는 방법</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-17T14:47:55.000Z" itemprop="datePublished">
-    2019-05-17
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="1-미디어-경로-설정"><a href="#1-미디어-경로-설정" class="headerlink" title="1. 미디어 경로 설정"></a>1. 미디어 경로 설정</h2><ul>
-<li>프로젝트 설정에서 media url 과 media root를 설정하고 urlpatterns에 그 경로를 지정한다.</li>
-<li>경로 : config(프로젝트 명) &gt; settings.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MEDIA_URL = <span class="string">'/media/'</span></span><br><span class="line"><span class="comment"># MEDIA_URL로 사이트 url 설정</span></span><br><span class="line">MEDIA_ROOT = os.path.join(BASE_DIR, <span class="string">'media'</span>)</span><br><span class="line"><span class="comment"># 장고에 media라는 폴더 이름 설정</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/05/17/190517-django-image-upload-localsite/#more">Read On »</a>
           </div>
         
       
