@@ -69,6 +69,224 @@
     <header class="title">
       
         <h1>
+          <a href="/2019/05/10/190510-django-Ajax/">Ajax 기초 학습</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-10T12:30:57.000Z" itemprop="datePublished">
+    2019-05-10
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Ajax/">Ajax</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="1-Ajax-정의"><a href="#1-Ajax-정의" class="headerlink" title="1. Ajax 정의"></a>1. Ajax 정의</h2><p><code>Ajax(Asynchronous JavaScript and XML)</code></p>
+<ul>
+<li>JavaScript를 사용한 비동기 통신, 클라이언트와 서버 간에 XML 데이터를 주고받는 기술</li>
+<li>JavaScript 라이브러리</li>
+<li>빠르게 동작하는 동적인 웹 페이지를 만들기 위한 개발 기법 </li>
+</ul>
+<p><br><br>
+        
+          <div class="more-link">
+            <a href="/2019/05/10/190510-django-Ajax/#more">Read On »</a>
+          </div>
+        
+      
+    </p></div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/09/190509-django-AWS-2/">AWS 도메인 연결 방법_2</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-09T11:25:17.000Z" itemprop="datePublished">
+    2019-05-09
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="9-AWS-gt-네트워킹-및-콘텐츠-전송-gt-Route-53"><a href="#9-AWS-gt-네트워킹-및-콘텐츠-전송-gt-Route-53" class="headerlink" title="9. AWS &gt; 네트워킹 및 콘텐츠 전송 &gt; Route 53"></a>9. AWS &gt; 네트워킹 및 콘텐츠 전송 &gt; Route 53</h2><p>보유한 도메인의 네임서버를 설정해주는 작업을 수행할 것이다.</p>
+<ul>
+<li>DNS 관리 시작</li>
+<li>호스팅 영역 생성 &gt; 도메인 이름 입력 &gt; 생성</li>
+<li>해당 도메인 선택 &gt; TTL 설정(ex. 1분)</li>
+<li>NS 유형의 value 복사하여 도메인 웹호스팅 사이트(가비아)에 네임서버로 설정</li>
+</ul>
+<h2 id="10-HTTP로-연결-https는-개인키-공용키-구입-필요"><a href="#10-HTTP로-연결-https는-개인키-공용키-구입-필요" class="headerlink" title="10. HTTP로 연결 (https는 개인키, 공용키 구입 필요)"></a>10. HTTP로 연결 (https는 개인키, 공용키 구입 필요)</h2><blockquote>
+<p>경로 : dstagram_project &gt; config &gt; settings.py</p>
+</blockquote>
+<p><code>AWS_S3_SECURE_URLS = False</code></p>
+<p><br><br>
+        
+          <div class="more-link">
+            <a href="/2019/05/09/190509-django-AWS-2/#more">Read On »</a>
+          </div>
+        
+      
+    </p></div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/08/190508-django-AWS-1/">AWS 도메인 연결 방법_1</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-08T11:55:23.000Z" itemprop="datePublished">
+    2019-05-08
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="1-AWS-gt-서비스-gt-스토리지-gt-S3-접속"><a href="#1-AWS-gt-서비스-gt-스토리지-gt-S3-접속" class="headerlink" title="1. AWS &gt; 서비스 &gt; 스토리지 &gt; S3 접속"></a>1. AWS &gt; 서비스 &gt; 스토리지 &gt; S3 접속</h2><ul>
+<li>버킷 생성<ul>
+<li>버킷 이름 설정 (ex. media.wpsschool.site)</li>
+<li>지역 &gt; ‘아시아 태평양(서울)’ 설정</li>
+<li>‘이 버킷의 퍼블릭 액세스 설정’ 4개 항목 체크 해제</li>
+<li>‘시스템 권한 관리’ 액세스 권한 부여</li>
+<li>버킷 만들기</li>
+<li>속성 &gt; 정적 웹 사이트 호스팅 &gt; ‘이 버킷을 사용하여 웹 사이트를 호스팅합니다.’ &gt; 인덱스 문서, 오류문서 작성 &gt; 저장</li>
+</ul>
+</li>
+</ul>
+<p><br><br>
+        
+          <div class="more-link">
+            <a href="/2019/05/08/190508-django-AWS-1/#more">Read On »</a>
+          </div>
+        
+      
+    </p></div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/07/190507-django-bookmark-project-3/">북마크 프로젝트_배포(heroku)</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-07T08:28:23.000Z" itemprop="datePublished">
+    2019-05-07
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="1-heroku-다운로드-및-설치"><a href="#1-heroku-다운로드-및-설치" class="headerlink" title="1. heroku 다운로드 및 설치"></a>1. heroku 다운로드 및 설치</h2><ul>
+<li>macOS : <code>brew tap heroku/brew &amp;&amp; brew install heroku</code></li>
+<li>Ubuntu 16+ : <code>sudo snap install -classic heroku</code></li>
+<li>Windows : <a href="https://devcenter.heroku.com/articles/heroku-cli#download-and-install" target="_blank" rel="noopener">https://devcenter.heroku.com/articles/heroku-cli#download-and-install</a> 에서 다운로드 및 설치</li>
+</ul>
+<h2 id="2-추가-모듈-설치"><a href="#2-추가-모듈-설치" class="headerlink" title="2. 추가 모듈 설치"></a>2. 추가 모듈 설치</h2><blockquote>
+<p>경로 : bookmark_project &gt; <code>pip3 install [모듈명]</code></p>
+</blockquote>
+<ul>
+<li>dj-database-url : 데이터베이스 관련 옵션을 변수로 쉽게 접근할 수 있게 해주는 유틸리티</li>
+<li>gunicorn : wsgi용 미들웨어 –&gt; 웹서버와 장고 사리의 다리 역할</li>
+<li>whitenoise : static 파일 서빙용 미들웨어</li>
+<li>psycopg2-binary : postgreSQL용 드라이버</li>
+</ul>
+<p><br><br>
+        
+          <div class="more-link">
+            <a href="/2019/05/07/190507-django-bookmark-project-3/#more">Read On »</a>
+          </div>
+        
+      
+    </p></div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
           <a href="/2019/05/06/190506-django-bookmark-project-2/">북마크 프로젝트_템플릿 생성</a>
         </h1>
       
@@ -207,6 +425,58 @@
         
       
     </p></div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/01/190529-django-static-serving/">Static 파일 서빙하기</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-01T14:33:48.000Z" itemprop="datePublished">
+    2019-05-01
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="Static-파일이란"><a href="#Static-파일이란" class="headerlink" title="Static 파일이란?"></a>Static 파일이란?</h2><ul>
+<li>Static 파일 : 서버에서 미리 준비해둔 파일</li>
+<li>‘{‘ + ‘%’ + ‘load static’ + ‘%’ + ‘}’ 을 이용해 static 태그를 불러와서 리소스 사용 가능(디버그 모드일 때만 정상 동작) </li>
+<li>whitenoise를 사용하면 라이브 서버에서도 스테틱 파일을 사용할 수 있다.(S3 이용 못할 시, 사용)</li>
+</ul>
+<h2 id="Static-파일-서빙-위한-절차"><a href="#Static-파일-서빙-위한-절차" class="headerlink" title="Static 파일 서빙 위한 절차"></a>Static 파일 서빙 위한 절차</h2><h3 id="1-whitenoise-설치"><a href="#1-whitenoise-설치" class="headerlink" title="1. whitenoise 설치"></a>1. whitenoise 설치</h3><pre><code>$ pip install whitenoise
+</code></pre><h3 id="2-설정파일-MIDDLEWARE에-whitenoise-추가"><a href="#2-설정파일-MIDDLEWARE에-whitenoise-추가" class="headerlink" title="2. 설정파일 MIDDLEWARE에 whitenoise 추가"></a>2. 설정파일 MIDDLEWARE에 whitenoise 추가</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MIDDLEWARE = [</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">'whitenoise.middleware.WhiteNoiseMiddleWare'</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="3-설정파일에-static-관련-설정-추가"><a href="#3-설정파일에-static-관련-설정-추가" class="headerlink" title="3. 설정파일에 static 관련 설정 추가"></a>3. 설정파일에 static 관련 설정 추가</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">STATIC_URL = <span class="string">'/static/'</span></span><br><span class="line">STATIC_ROOT = os.path.join(BASE_DIR, <span class="string">'static'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="4-디버그-모드-끄고-서버-접속-기본적으로-디버그-모드-비활성화-시-스테틱-미디어-파일-서빙-불가"><a href="#4-디버그-모드-끄고-서버-접속-기본적으로-디버그-모드-비활성화-시-스테틱-미디어-파일-서빙-불가" class="headerlink" title="4. 디버그 모드 끄고 서버 접속(기본적으로 디버그 모드 비활성화 시, 스테틱/미디어 파일 서빙 불가)"></a>4. 디버그 모드 끄고 서버 접속(기본적으로 디버그 모드 비활성화 시, 스테틱/미디어 파일 서빙 불가)</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DEBUG = <span class="literal">False</span></span><br><span class="line">ALLOWED_HOSTS = [<span class="string">'*'</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="5-기존-존재하는-스테틱-파일들을-STATIC-ROOT-폴더에-모아둔다"><a href="#5-기존-존재하는-스테틱-파일들을-STATIC-ROOT-폴더에-모아둔다" class="headerlink" title="5. 기존 존재하는 스테틱 파일들을 STATIC_ROOT 폴더에 모아둔다."></a>5. 기존 존재하는 스테틱 파일들을 STATIC_ROOT 폴더에 모아둔다.</h3><pre><code>$ python manage.py collectstatic
+
+- whitenoise는 STATIC_URL이 포함된 리소스를 STATIC_ROOT에서 찾아 전달하는 역할을 한다.
+- 기존 스테틱 파일들을 STATIC_ROOT 폴더에 모아두어야 하는데 이 명령어가 collectstatic 이다.
+</code></pre>
+      
+    </div>
 </article>
 
     </li>

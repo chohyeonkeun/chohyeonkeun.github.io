@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Nginx를 사용한 리소스 파일 서빙하기 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>Nginx를 사용한 리소스 파일 서빙하기</h1>
+    </header>
+
+    <section>
+      <h3 id="1-각-사이트를-위한-nginx의-설정-파일-편집하여-아래-내용-추가"><a href="#1-각-사이트를-위한-nginx의-설정-파일-편집하여-아래-내용-추가" class="headerlink" title="1. 각 사이트를 위한 nginx의 설정 파일 편집하여 아래 내용 추가"></a>1. 각 사이트를 위한 nginx의 설정 파일 편집하여 아래 내용 추가</h3><ul>
+<li><p>경로</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -i ~/.ssh/[키 페어 파일 이름] ubuntu@[퍼블릭 DNS 혹은 IP 주소]</span><br></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/nginx/sites-available/staticweb</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>내용 추가<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 최대 업로드 용량</span></span><br><span class="line">client_max_body_size <span class="number">75</span>M;  <span class="comment">// adjust to taste</span></span><br><span class="line"></span><br><span class="line">location /media &#123;</span><br><span class="line">    alias /<span class="keyword">var</span>/www/django/media;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location /<span class="keyword">static</span> &#123;</span><br><span class="line">    alias /<span class="keyword">var</span>/www/django/<span class="keyword">static</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-서버-설정-적용을-위해-Nginx-재시작"><a href="#2-서버-설정-적용을-위해-Nginx-재시작" class="headerlink" title="2. 서버 설정 적용을 위해 Nginx 재시작"></a>2. 서버 설정 적용을 위해 Nginx 재시작</h3><pre><code>$ sudo systemctl restart nginx
+</code></pre>
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-05-29T17:03:11.000Z" itemprop="datePublished">
+              2019-05-30
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Nginx/">Nginx</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

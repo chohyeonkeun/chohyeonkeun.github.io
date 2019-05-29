@@ -65,6 +65,102 @@
     <header class="title">
       
         <h1>
+          <a href="/2019/05/30/190530-django-nginx-resource-serving/">Nginx를 사용한 리소스 파일 서빙하기</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-29T17:03:11.000Z" itemprop="datePublished">
+    2019-05-30
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Nginx/">Nginx</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="1-각-사이트를-위한-nginx의-설정-파일-편집하여-아래-내용-추가"><a href="#1-각-사이트를-위한-nginx의-설정-파일-편집하여-아래-내용-추가" class="headerlink" title="1. 각 사이트를 위한 nginx의 설정 파일 편집하여 아래 내용 추가"></a>1. 각 사이트를 위한 nginx의 설정 파일 편집하여 아래 내용 추가</h3><ul>
+<li><p>경로</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -i ~/.ssh/[키 페어 파일 이름] ubuntu@[퍼블릭 DNS 혹은 IP 주소]</span><br></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/nginx/sites-available/staticweb</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/05/30/190530-django-nginx-resource-serving/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/29/190529-django-media-serving/">Media 파일 서빙하기</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-29T14:11:10.000Z" itemprop="datePublished">
+    2019-05-29
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="1-미디어-파일-관련-설정"><a href="#1-미디어-파일-관련-설정" class="headerlink" title="1. 미디어 파일 관련 설정"></a>1. 미디어 파일 관련 설정</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MEDIA_URL = <span class="string">'/media/'</span></span><br><span class="line">MEDIA_ROOT = os.path.join(BASE_DIR, <span class="string">'media'</span>)</span><br></pre></td></tr></table></figure>
+        
+          <div class="more-link">
+            <a href="/2019/05/29/190529-django-media-serving/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
           <a href="/2019/05/28/190528-github-cowork/">git을 이용한 협업</a>
         </h1>
       
@@ -97,6 +193,104 @@
         
           <div class="more-link">
             <a href="/2019/05/28/190528-github-cowork/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/27/190527-django-ckeditor/">CKEditor 이미지 파일 업로더 설정</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-27T14:22:31.000Z" itemprop="datePublished">
+    2019-05-27
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="1-django-ckeditor-설치"><a href="#1-django-ckeditor-설치" class="headerlink" title="1. django-ckeditor 설치"></a>1. django-ckeditor 설치</h3><pre><code>$ pip install django-ckeditor
+</code></pre><h3 id="2-INSTALLED-APPS-항목에-ckeditor와-ckeditor-uploader-추가"><a href="#2-INSTALLED-APPS-항목에-ckeditor와-ckeditor-uploader-추가" class="headerlink" title="2. INSTALLED_APPS 항목에 ckeditor와 ckeditor_uploader 추가"></a>2. INSTALLED_APPS 항목에 ckeditor와 ckeditor_uploader 추가</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">'ckeditor'</span>,</span><br><span class="line">    <span class="string">'ckeditor_uploader'</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="3-설정파일에-MEDIA-ROOT-지정-S3-사용할-경우-불필요"><a href="#3-설정파일에-MEDIA-ROOT-지정-S3-사용할-경우-불필요" class="headerlink" title="3. 설정파일에 MEDIA_ROOT 지정 (S3 사용할 경우 불필요)"></a>3. 설정파일에 MEDIA_ROOT 지정 (S3 사용할 경우 불필요)</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
+    MEDIA_ROOT = os.path.join(BASE_DIR, &apos;media&apos;)
+</code></pre><h3 id="4-만약-media-root-하위-폴더에-에디터용-전용-경로를-설정하고-싶다면"><a href="#4-만약-media-root-하위-폴더에-에디터용-전용-경로를-설정하고-싶다면" class="headerlink" title="4. 만약 media_root 하위 폴더에 에디터용 전용 경로를 설정하고 싶다면,"></a>4. 만약 media_root 하위 폴더에 에디터용 전용 경로를 설정하고 싶다면,</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
+    CKEDITOR_UPLOAD_PATH = &apos;wysiwyg/&apos;
+</code></pre><h3 id="5-에디터를-사용하는-유저별로-자신이-올린-파일들만-사용할-수-있게-하려면"><a href="#5-에디터를-사용하는-유저별로-자신이-올린-파일들만-사용할-수-있게-하려면" class="headerlink" title="5. 에디터를 사용하는 유저별로 자신이 올린 파일들만 사용할 수 있게 하려면,"></a>5. 에디터를 사용하는 유저별로 자신이 올린 파일들만 사용할 수 있게 하려면,</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
+    CKEDITOR_RESTRICT_BY_USER = True
+</code></pre><h3 id="6-에디터를-설정할-필드를-모델에-생성"><a href="#6-에디터를-설정할-필드를-모델에-생성" class="headerlink" title="6. 에디터를 설정할 필드를 모델에 생성"></a>6. 에디터를 설정할 필드를 모델에 생성</h3><pre><code>- 경로 : 앱 &gt; models.py
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ckeditor_uploader.fields <span class="keyword">import</span> RichTextUploadingField</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Post</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    content = RichTextUploadingField()</span><br></pre></td></tr></table></figure>
+<h3 id="7-모델에-변경-사항-생겼으므로-마이그레이션-진행"><a href="#7-모델에-변경-사항-생겼으므로-마이그레이션-진행" class="headerlink" title="7. 모델에 변경 사항 생겼으므로 마이그레이션 진행"></a>7. 모델에 변경 사항 생겼으므로 마이그레이션 진행</h3><pre><code>$ python manage.py makemigrations [앱이름]
+$ python manage.py migrate [앱이름]
+</code></pre><h3 id="8-업로딩-처리를-위한-필수-뷰-등록"><a href="#8-업로딩-처리를-위한-필수-뷰-등록" class="headerlink" title="8. 업로딩 처리를 위한 필수 뷰 등록"></a>8. 업로딩 처리를 위한 필수 뷰 등록</h3><pre><code>- 경로 : 앱 &gt; views.py
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    ...</span><br><span class="line">    path(<span class="string">'ckeditor/'</span>, include(<span class="string">'ckeditor_uploader.urls'</span>)),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/27/190527-django-wysiwig/">WYSIWIG 적용 방법</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-27T13:09:13.000Z" itemprop="datePublished">
+    2019-05-27
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="WYSIWIG란"><a href="#WYSIWIG란" class="headerlink" title="WYSIWIG란?"></a>WYSIWIG란?</h2><ul>
+<li>What You See Is What You Get의 약어</li>
+<li>웹 브라우저에서 사용할 수 있는 HTML 편집기</li>
+<li>일반적으로 웹에서 긴 내용의 텍스트를 입력받을 때는 textareat태그를 사용하나,</li>
+<li>블로그, 게시판 등에서는 주로 HTML을 사용한 편집기를 사용한다.</li>
+<li>ckeditor, tinymce 등 JS를 이용한 플러그인 사용</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/05/27/190527-django-wysiwig/#more">Read On »</a>
           </div>
         
       
@@ -336,184 +530,6 @@
         
           <div class="more-link">
             <a href="/2019/05/22/190522-django-EC2/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/21/190521-django-extensions/">django extensions 설치 방법</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-21T13:38:45.000Z" itemprop="datePublished">
-    2019-05-21
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="1-명령어를-이용해-모듈-설치"><a href="#1-명령어를-이용해-모듈-설치" class="headerlink" title="1. 명령어를 이용해 모듈 설치"></a>1. 명령어를 이용해 모듈 설치</h2><p><code>$ pip install django-extensions</code><br>
-        
-          <div class="more-link">
-            <a href="/2019/05/21/190521-django-extensions/#more">Read On »</a>
-          </div>
-        
-      
-    </p></div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/20/190520-django-debug-tool-bar/">django debug tool bar 설치 방법</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-20T14:11:24.000Z" itemprop="datePublished">
-    2019-05-20
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="1-debug-tool-bar-module-설치"><a href="#1-debug-tool-bar-module-설치" class="headerlink" title="1. debug tool bar module 설치"></a>1. debug tool bar module 설치</h2><p><code>pip install django-debug-toolbar</code><br>
-        
-          <div class="more-link">
-            <a href="/2019/05/20/190520-django-debug-tool-bar/#more">Read On »</a>
-          </div>
-        
-      
-    </p></div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/19/190519-django-login-method/">로그인 기능 적용</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-19T13:34:21.000Z" itemprop="datePublished">
-    2019-05-19
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="방법1-login-required-클래스-사용"><a href="#방법1-login-required-클래스-사용" class="headerlink" title="방법1. login_required 클래스 사용"></a>방법1. login_required 클래스 사용</h2><ul>
-<li>login_required 클래스를 사용하여 로그인이 필요한 부분에 @login_required 데코레이터를 사용한다.<ul>
-<li>경로 : (앱 이름) &gt; views.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># login_required 클래스 호출</span></span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.decorators <span class="keyword">import</span> login_required</span><br><span class="line"><span class="comment"># login_required 데코레이터 사용</span></span><br><span class="line"><span class="meta">@login_required</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/05/19/190519-django-login-method/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/18/190518-django-comment-with-ajax/">Ajax 이용한 댓글 기능 구현</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-18T14:24:05.000Z" itemprop="datePublished">
-    2019-05-18
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/Ajax/">Ajax</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="댓글-생성하기"><a href="#댓글-생성하기" class="headerlink" title="댓글 생성하기"></a>댓글 생성하기</h2><h2 id="1-상세-글-조회-페이지에-댓글-목록-추가"><a href="#1-상세-글-조회-페이지에-댓글-목록-추가" class="headerlink" title="1. 상세 글 조회 페이지에 댓글 목록 추가"></a>1. 상세 글 조회 페이지에 댓글 목록 추가</h2><ul>
-<li>원하는 위치에 댓글 목록 부분을 작성한다.</li>
-<li>경로 : board &gt; templates &gt; board &gt; document_detail.html  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"docs_comment_list_area"</span>&gt;</span></span><br><span class="line">    &#123;% include 'board/comment_list.html' %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/05/18/190518-django-comment-with-ajax/#more">Read On »</a>
           </div>
         
       
