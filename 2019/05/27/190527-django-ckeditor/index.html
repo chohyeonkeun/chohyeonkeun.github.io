@@ -65,7 +65,8 @@
 
     <section>
       <h3 id="1-django-ckeditor-설치"><a href="#1-django-ckeditor-설치" class="headerlink" title="1. django-ckeditor 설치"></a>1. django-ckeditor 설치</h3><pre><code>$ pip install django-ckeditor
-</code></pre><h3 id="2-INSTALLED-APPS-항목에-ckeditor와-ckeditor-uploader-추가"><a href="#2-INSTALLED-APPS-항목에-ckeditor와-ckeditor-uploader-추가" class="headerlink" title="2. INSTALLED_APPS 항목에 ckeditor와 ckeditor_uploader 추가"></a>2. INSTALLED_APPS 항목에 ckeditor와 ckeditor_uploader 추가</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
+</code></pre><a id="more"></a>
+<h3 id="2-INSTALLED-APPS-항목에-ckeditor와-ckeditor-uploader-추가"><a href="#2-INSTALLED-APPS-항목에-ckeditor와-ckeditor-uploader-추가" class="headerlink" title="2. INSTALLED_APPS 항목에 ckeditor와 ckeditor_uploader 추가"></a>2. INSTALLED_APPS 항목에 ckeditor와 ckeditor_uploader 추가</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">'ckeditor'</span>,</span><br><span class="line">    <span class="string">'ckeditor_uploader'</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <h3 id="3-설정파일에-MEDIA-ROOT-지정-S3-사용할-경우-불필요"><a href="#3-설정파일에-MEDIA-ROOT-지정-S3-사용할-경우-불필요" class="headerlink" title="3. 설정파일에 MEDIA_ROOT 지정 (S3 사용할 경우 불필요)"></a>3. 설정파일에 MEDIA_ROOT 지정 (S3 사용할 경우 불필요)</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
     MEDIA_ROOT = os.path.join(BASE_DIR, &apos;media&apos;)

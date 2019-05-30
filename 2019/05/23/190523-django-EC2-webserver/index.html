@@ -154,7 +154,10 @@
 </li>
 <li><p>도메인 이름 변경되었으므로, 사이트 설정파일 수정</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/nginx/sites-available/staticweb</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    ...</span><br><span class="line">    server_name [고정 IP 설정한 도메인 이름 입력]</span><br><span class="line">    ```참</span><br><span class="line"></span><br><span class="line">16. Nginx 재실행</span><br><span class="line">    ```bash</span><br><span class="line">    $ sudo systemctl restart nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">server_name [고정 IP 설정한 도메인 이름 입력]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Nginx 재실행</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl restart nginx</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>웹 브라우저에 도메인 주소 입력하여 정상 작동하는지 확인</p>
 <ul>
