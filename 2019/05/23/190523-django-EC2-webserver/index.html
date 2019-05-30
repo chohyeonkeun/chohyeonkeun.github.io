@@ -106,8 +106,8 @@
 <li><p>해당 설정파일을 Nginx에 활성화</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /etc/nginx/sites-available/staticweb /etc/nginx/sites-enabled/</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>staticweb 폴더 생성</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mkdir /var/www/staticweb</span><br></pre></td></tr></table></figure>
+<li><p>/var/www 경로로 이동하여 staticweb 폴더 생성</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /var/www</span><br><span class="line">$ sudo mkdir /var/www/staticweb</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>브라우저 화면에 표시될 내용 작성</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /var/www/staticweb/index.html</span><br></pre></td></tr></table></figure>
@@ -141,7 +141,7 @@
 <li>주소 연결 &gt; 인스턴스 선택 &gt; 연결 </li>
 <li>IP 목록에서 Name 입력</li>
 <li>IP 목록에 인스턴스 설정 확인</li>
-<li>EC2 인스턴스 정보에서 퍼블릭 DNS 대신 탄력적 IP 표시는지 확인</li>
+<li>EC2 인스턴스 정보에서 탄력적 IP 표시는지 확인</li>
 </ul>
 </li>
 <li><p>Route 53 이용하여 도메인 연결</p>
