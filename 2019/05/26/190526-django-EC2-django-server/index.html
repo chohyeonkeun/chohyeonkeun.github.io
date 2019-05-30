@@ -105,7 +105,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install django</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>장고 프로젝트 생성하고 서버 실행</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ django-admin startproject config .</span><br><span class="line">$ python manage.py runserver</span><br><span class="line"><span class="comment"># runserver에서 django 정상 동작하는지 확인</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ django-admin startproject config .</span><br><span class="line">$ python manage.py migrate</span><br><span class="line">$ python manage.py runserver</span><br><span class="line"><span class="comment"># runserver에서 django 정상 동작하는지 확인</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>WSGI 모듈 중 하나인 uwsgi 설치</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install uwsgi</span><br></pre></td></tr></table></figure>
