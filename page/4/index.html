@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <ul class="Index">
+  
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/06/190506-django-bookmark-project-2/">북마크 프로젝트_템플릿 생성</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-06T11:55:23.000Z" itemprop="datePublished">
+    2019-05-06
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="1-template-파일-생성하기"><a href="#1-template-파일-생성하기" class="headerlink" title="1. template 파일 생성하기"></a>1. template 파일 생성하기</h2><p>views.py에서 정의한 클래스형 뷰에 따라, 연동할 템플릿 파일들을 생성한다.<br>단, 템플릿 파일 이름은 앞서 작성한 template 이름의 접미사와 일치하도록 아래와 같이 생성해준다.</p>
+<blockquote>
+<p>경로 : bookmark_project &gt; bookmark &gt; templates &gt; bookmark</p>
+</blockquote>
+<ul>
+<li>bookmark_create.html</li>
+<li>bookmark_delete.html</li>
+<li>bookmark_detail.html</li>
+<li>bookmark_list.html</li>
+<li>bookmark_update.html</li>
+</ul>
+<p><br><br>
+        
+          <div class="more-link">
+            <a href="/2019/05/06/190506-django-bookmark-project-2/#more">Read On »</a>
+          </div>
+        
+      
+    </p></div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/05/190505-django-bookmark-project-1/">북마크 프로젝트_앱 생성</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-05T10:11:03.000Z" itemprop="datePublished">
+    2019-05-05
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="1-project-생성"><a href="#1-project-생성" class="headerlink" title="1. project 생성"></a>1. project 생성</h2><p>원래 프로젝트 이름만 작성하면, 프로젝트 폴더 안에 프로젝트 폴더가 생기게 되는데<br>[프로젝트 이름] 뒤에 ‘.’을 작성하면 현재 디렉토리에 ‘config’라는 폴더를 바로 생성해준다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ django-admin startproject config .        <span class="comment"># bookmark_project 디렉토리 위치에서 실행</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-app-생성"><a href="#2-app-생성" class="headerlink" title="2. app 생성"></a>2. app 생성</h2><p>‘bookmark’ 이름으로 앱을 생성해준다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python3 manage.py bookmark                <span class="comment"># bookmark_project 디렉토리 위치에서 실행</span></span><br></pre></td></tr></table></figure>
+<p><br><br>
+        
+          <div class="more-link">
+            <a href="/2019/05/05/190505-django-bookmark-project-1/#more">Read On »</a>
+          </div>
+        
+      
+    </p></div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/04/190504-django-Base-Procedure/">Django 튜터리얼 학습</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-04T09:34:10.000Z" itemprop="datePublished">
+    2019-05-04
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="1-장고-프로젝트-진행할-디렉토리-생성"><a href="#1-장고-프로젝트-진행할-디렉토리-생성" class="headerlink" title="1. 장고 프로젝트 진행할 디렉토리 생성"></a>1. 장고 프로젝트 진행할 디렉토리 생성</h2><ul>
+<li>장고 프로젝트를 진행할 디렉토리를 생성해준다. (원하는 경로에 디렉토리 생성)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir django_project                         <span class="comment"># django_project 디렉토리 생성</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="2-가상환경-설치-및-활성화"><a href="#2-가상환경-설치-및-활성화" class="headerlink" title="2. 가상환경 설치 및 활성화"></a>2. 가상환경 설치 및 활성화</h2><ul>
+<li>가상환경이 설치되어 있지 않다면 pip install을 사용하자. </li>
+<li>혹시 모르니, pip version 확인하여 최신버전으로 업그레이드를 해보자. (bookmark_project 디렉토리 위치에서 실행)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ pip --version                               <span class="comment"># pip version 확인</span></span><br><span class="line">$ pip install --upgrade pip                   <span class="comment"># pip 업그레이드</span></span><br><span class="line">$ pip install virtualenv                      <span class="comment"># virtualenv 설치</span></span><br><span class="line">$ virtualenv --python=python3.6 venv          <span class="comment"># virtualenv를 'venv'라는 이름으로 설치하고, python3.6으로 python 버젼 설정 </span></span><br><span class="line">$ <span class="built_in">source</span> venv/bin/activate                    <span class="comment"># virtualenv(venv) 활성화</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br><br>
+        
+          <div class="more-link">
+            <a href="/2019/05/04/190504-django-Base-Procedure/#more">Read On »</a>
+          </div>
+        
+      
+    </p></div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/01/190529-django-static-serving/">Static 파일 서빙하기</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-01T14:33:48.000Z" itemprop="datePublished">
+    2019-05-01
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="Static-파일이란"><a href="#Static-파일이란" class="headerlink" title="Static 파일이란?"></a>Static 파일이란?</h2><ul>
+<li>Static 파일 : 서버에서 미리 준비해둔 파일</li>
+<li>‘{‘ + ‘%’ + ‘load static’ + ‘%’ + ‘}’ 을 이용해 static 태그를 불러와서 리소스 사용 가능(디버그 모드일 때만 정상 동작) </li>
+<li>whitenoise를 사용하면 라이브 서버에서도 스테틱 파일을 사용할 수 있다.(S3 이용 못할 시, 사용)</li>
+</ul>
+<h2 id="Static-파일-서빙-위한-절차"><a href="#Static-파일-서빙-위한-절차" class="headerlink" title="Static 파일 서빙 위한 절차"></a>Static 파일 서빙 위한 절차</h2><h3 id="1-whitenoise-설치"><a href="#1-whitenoise-설치" class="headerlink" title="1. whitenoise 설치"></a>1. whitenoise 설치</h3><pre><code>$ pip install whitenoise
+</code></pre><h3 id="2-설정파일-MIDDLEWARE에-whitenoise-추가"><a href="#2-설정파일-MIDDLEWARE에-whitenoise-추가" class="headerlink" title="2. 설정파일 MIDDLEWARE에 whitenoise 추가"></a>2. 설정파일 MIDDLEWARE에 whitenoise 추가</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MIDDLEWARE = [</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">'whitenoise.middleware.WhiteNoiseMiddleWare'</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="3-설정파일에-static-관련-설정-추가"><a href="#3-설정파일에-static-관련-설정-추가" class="headerlink" title="3. 설정파일에 static 관련 설정 추가"></a>3. 설정파일에 static 관련 설정 추가</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">STATIC_URL = <span class="string">'/static/'</span></span><br><span class="line">STATIC_ROOT = os.path.join(BASE_DIR, <span class="string">'static'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="4-디버그-모드-끄고-서버-접속-기본적으로-디버그-모드-비활성화-시-스테틱-미디어-파일-서빙-불가"><a href="#4-디버그-모드-끄고-서버-접속-기본적으로-디버그-모드-비활성화-시-스테틱-미디어-파일-서빙-불가" class="headerlink" title="4. 디버그 모드 끄고 서버 접속(기본적으로 디버그 모드 비활성화 시, 스테틱/미디어 파일 서빙 불가)"></a>4. 디버그 모드 끄고 서버 접속(기본적으로 디버그 모드 비활성화 시, 스테틱/미디어 파일 서빙 불가)</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DEBUG = <span class="literal">False</span></span><br><span class="line">ALLOWED_HOSTS = [<span class="string">'*'</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="5-기존-존재하는-스테틱-파일들을-STATIC-ROOT-폴더에-모아둔다"><a href="#5-기존-존재하는-스테틱-파일들을-STATIC-ROOT-폴더에-모아둔다" class="headerlink" title="5. 기존 존재하는 스테틱 파일들을 STATIC_ROOT 폴더에 모아둔다."></a>5. 기존 존재하는 스테틱 파일들을 STATIC_ROOT 폴더에 모아둔다.</h3><pre><code>$ python manage.py collectstatic
+
+- whitenoise는 STATIC_URL이 포함된 리소스를 STATIC_ROOT에서 찾아 전달하는 역할을 한다.
+- 기존 스테틱 파일들을 STATIC_ROOT 폴더에 모아두어야 하는데 이 명령어가 collectstatic 이다.
+</code></pre>
+      
+    </div>
+</article>
+
+    </li>
+  
+</ul>
+
+  <section id="nav-wrapper">
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/3/">« prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    </nav>
+  </section>
+
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

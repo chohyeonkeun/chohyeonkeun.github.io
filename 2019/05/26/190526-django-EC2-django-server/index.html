@@ -90,16 +90,13 @@
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install python3-dev python3-venv python3-pip</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>소스 코드 폴더 밑에 파이썬 가상 환경 생성</p>
-<ul>
-<li>경로 : cd /var/www/django<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pip3 install virtualenv</span><br><span class="line">$ sudo python3 -m virtualenv /var/www/django/venv</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pip3 install virtualenv</span><br><span class="line">$ sudo python3 -m virtualenv /var/www/django/venv</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>관리자 모드로 변경</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo -s</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>가상환경 활성화</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> venv/bin/activate</span><br></pre></td></tr></table></figure>
+<li><p>소스 코드 폴더에서 가상환경 활성화</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /var/www/django</span><br><span class="line">$ <span class="built_in">source</span> venv/bin/activate</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>가상환경에 장고 설치</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install django</span><br></pre></td></tr></table></figure>
@@ -107,8 +104,9 @@
 <li><p>장고 프로젝트 생성 및 settings.py 설정</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ django-admin startproject config .</span><br><span class="line">$ <span class="built_in">cd</span> config</span><br><span class="line">$ vi settings.py</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">ALLOWED_HOST = [&apos;*&apos;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>migrate 및 runserver 서버 실행</p>
+<li><p>migrate 및 runserver 서버 실행하여 django 연결되었는지 확인</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py migrate</span><br><span class="line">$ python manage.py runserver 0:8000</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>WSGI 모듈 중 하나인 uwsgi 설치</p>
@@ -139,10 +137,13 @@
 </li>
 <li><p>기존 스테틱 웹 서버에서 장고 애플리케이션 구동하기 위해 사이트 설정 파일 변경</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/nginx/sites-available/staticweb</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">upstream django &#123;</span><br><span class="line">    server unix:/var/www/django/run/uwsgi.sock;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    charset utf-8;</span><br><span class="line">    access_log /var/www/django/logs/access.log;</span><br><span class="line">    error_log /var/www/django/logs/error.log;</span><br><span class="line">    server_name staticweb.actingprogrammer.io;</span><br><span class="line"></span><br><span class="line">    location = /favicon.ico &#123; access_log off; log_not_found off; &#125;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        include  /etc/nginx/uwsgi_params;</span><br><span class="line">        uwsgi_pass  django;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">upstream django &#123;</span><br><span class="line">    server unix:/var/www/django/run/uwsgi.sock;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    charset utf-8;</span><br><span class="line">    access_log /var/www/django/logs/access.log;</span><br><span class="line">    error_log /var/www/django/logs/error.log;</span><br><span class="line">    server_name [도메인 주소];</span><br><span class="line"></span><br><span class="line">    location = /favicon.ico &#123; access_log off; log_not_found off; &#125;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        include  /etc/nginx/uwsgi_params;</span><br><span class="line">        uwsgi_pass  django;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>장고 소스코드가 있는 폴더의 소유자와 권한 변경</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown -R django:www-data /var/www/django</span><br><span class="line">$ sudo chmod -R g+w /var/www/django</span><br><span class="line"><span class="comment"># -R : Recursive 옵션; 하위폴더까지 계속 반복해서 적용</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>소스코드 파일 수정되었으므로, nginx 재실행</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl restart nginx</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>웹 브라우저 접속하여 사이트 구동여부 확인</p>
 </li>

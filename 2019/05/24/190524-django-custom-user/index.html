@@ -100,11 +100,11 @@
 </li>
 </ol>
 <h2 id="3-AbstractUser을-이용한-커스텀-모델-생성-방법"><a href="#3-AbstractUser을-이용한-커스텀-모델-생성-방법" class="headerlink" title="3. AbstractUser을 이용한 커스텀 모델 생성 방법"></a>3. AbstractUser을 이용한 커스텀 모델 생성 방법</h2><ol>
-<li><p>장고 프로젝트에 account 앱 생성<br> <code>$ python manage.py startapp account</code></p>
+<li><p>장고 프로젝트에 accounts 앱 생성<br> <code>$ python manage.py startapp accounts</code></p>
 </li>
-<li><p>INSTALLED_APPS 에 account 앱 추가</p>
+<li><p>INSTALLED_APPS 에 accounts 앱 추가</p>
 <ul>
-<li>경로 : config &gt; settings.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    ...</span><br><span class="line">    account,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<li>경로 : config &gt; settings.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    ...</span><br><span class="line">    accounts,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -116,7 +116,7 @@
 </li>
 <li><p>커스텀 모델 settings.py에 설정</p>
 <ul>
-<li>경로 : config &gt; settings.py<br>  <code>AUTH_USER_MODEL = &#39;account.User&#39;</code></li>
+<li>경로 : config &gt; settings.py<br>  <code>AUTH_USER_MODEL = &#39;accounts.User&#39;</code></li>
 </ul>
 </li>
 <li><p>새로 만든 유저 모델 DB 생성 위한 명령 실행 및 관리자 계정 생성 이후, 서버 실행</p>
@@ -142,7 +142,7 @@
 </li>
 <li><p>CustomUserAdmin을 옵션클래스로 UserAdmin 대신 추가</p>
 <ul>
-<li>경로 : account &gt; admin.py<br>  <code>admin.site.register(User, CustomUserAdmin)</code></li>
+<li>경로 : accounts &gt; admin.py<br>  <code>admin.site.register(User, CustomUserAdmin)</code></li>
 </ul>
 </li>
 </ol>
