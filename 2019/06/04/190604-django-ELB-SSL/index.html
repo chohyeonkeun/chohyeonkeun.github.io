@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>로드밸런서에 SSL 인증서 적용 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>로드밸런서에 SSL 인증서 적용</h1>
+    </header>
+
+    <section>
+      <h3 id="1-인증서-적용할-로드밸런서-선택-및-하단-리스너-탭의-리스너-추가-버튼-클릭"><a href="#1-인증서-적용할-로드밸런서-선택-및-하단-리스너-탭의-리스너-추가-버튼-클릭" class="headerlink" title="1. 인증서 적용할 로드밸런서 선택 및 하단 리스너 탭의 [리스너 추가] 버튼 클릭"></a>1. 인증서 적용할 로드밸런서 선택 및 하단 리스너 탭의 [리스너 추가] 버튼 클릭</h3><ul>
+<li>프로토콜과 포트 HTTPS:443 으로 설정</li>
+<li>기본작업은 [다음으로 전달] 선택하고 리스너 그룹 선택</li>
+<li>여기서는 보안 정책 [2016-08] 선택</li>
+<li>기본 SSL 인증서는 기존 ACM에서 발급받아둔 인증서 선택 및 [저장] 버튼 클릭</li>
+</ul>
+<a id="more"></a>
+<h3 id="2-추가-리스너를-성공적으로-생성함-메시지-확인"><a href="#2-추가-리스너를-성공적으로-생성함-메시지-확인" class="headerlink" title="2. 추가 리스너를 성공적으로 생성함 메시지 확인"></a>2. 추가 리스너를 성공적으로 생성함 메시지 확인</h3><h3 id="3-로드밸런서-하단-리스너-탭에서-http-80-선택-및-편집-버튼-클릭"><a href="#3-로드밸런서-하단-리스너-탭에서-http-80-선택-및-편집-버튼-클릭" class="headerlink" title="3. 로드밸런서 하단 리스너 탭에서 http 80 선택 및 [편집] 버튼 클릭"></a>3. 로드밸런서 하단 리스너 탭에서 http 80 선택 및 [편집] 버튼 클릭</h3><h3 id="4-기본-작업-삭제-및-‘다음으로-리디렉션’-선택-및-작업-추가-버튼-클릭"><a href="#4-기본-작업-삭제-및-‘다음으로-리디렉션’-선택-및-작업-추가-버튼-클릭" class="headerlink" title="4. 기본 작업 삭제 및 ‘다음으로 리디렉션’ 선택 및 [작업 추가] 버튼 클릭"></a>4. 기본 작업 삭제 및 ‘다음으로 리디렉션’ 선택 및 [작업 추가] 버튼 클릭</h3><h3 id="5-HTTPS-우측-443-입력-및-확인"><a href="#5-HTTPS-우측-443-입력-및-확인" class="headerlink" title="5. HTTPS 우측 443 입력 및 확인"></a>5. HTTPS 우측 443 입력 및 확인</h3><h3 id="6-웹-브라우저에-도메인주소-입력-시-자동-https-로-이동"><a href="#6-웹-브라우저에-도메인주소-입력-시-자동-https-로-이동" class="headerlink" title="6. 웹 브라우저에 도메인주소 입력 시, 자동 https:// 로 이동"></a>6. 웹 브라우저에 도메인주소 입력 시, 자동 https:// 로 이동</h3>
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-06-04T08:00:21.000Z" itemprop="datePublished">
+              2019-06-04
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
