@@ -75,16 +75,16 @@
 <a id="more"></a>
 <ol start="3">
 <li><p>소스 코드 업로드할 폴더 생성</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mkdir /var/www/django</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mkdir -p /var/www/django</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>소스코드 폴더의 소유자 변경</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown django:www-data /var/www/django</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown -R django:www-data /var/www/django</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>파일 업로드를 위해 ubuntu 계정을 www-data 그룹에 추가</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo usermod -a -G www-data ubuntu</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>소스 코드 폴더에 그룹 쓰기 권한 부여</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chmod g+w /var/www/django</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chmod -R g+w /var/www/django</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>파이썬 관련 패키지 설치</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install python3-dev python3-venv python3-pip</span><br></pre></td></tr></table></figure>

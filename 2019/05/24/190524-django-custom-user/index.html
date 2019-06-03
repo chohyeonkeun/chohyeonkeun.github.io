@@ -100,7 +100,7 @@
 </li>
 </ol>
 <h2 id="3-AbstractUser을-이용한-커스텀-모델-생성-방법"><a href="#3-AbstractUser을-이용한-커스텀-모델-생성-방법" class="headerlink" title="3. AbstractUser을 이용한 커스텀 모델 생성 방법"></a>3. AbstractUser을 이용한 커스텀 모델 생성 방법</h2><ol>
-<li><p>장고 프로젝트에 accounts 앱 생성<br> <code>$ python manage.py startapp accounts</code></p>
+<li><p>장고 프로젝트에 accounts 앱 생성<br> `$ python manage.py startapp accounts</p>
 </li>
 <li><p>INSTALLED_APPS 에 accounts 앱 추가</p>
 <ul>
@@ -110,7 +110,7 @@
 </li>
 <li><p>AbstractUser 상속받아 새로운 User 모델 작성</p>
 <ul>
-<li>경로 : account &gt; models.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> AbstractUser</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(AbstractUser)</span>:</span> <span class="comment"># 클래스 이름 다른 것으로 작성해도 무방하다.</span></span><br><span class="line">    message = models.TextField(blank=<span class="literal">True</span>)</span><br><span class="line">    profile = models.ImageField(upload_to=<span class="string">'user_images/profile/%Y/%m/%d'</span>, blank=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<li>경로 : accounts &gt; models.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> AbstractUser</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(AbstractUser)</span>:</span> <span class="comment"># 클래스 이름 다른 것으로 작성해도 무방하다.</span></span><br><span class="line">    message = models.TextField(blank=<span class="literal">True</span>)</span><br><span class="line">    profile = models.ImageField(upload_to=<span class="string">'user_images/profile/%Y/%m/%d'</span>, blank=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -120,7 +120,7 @@
 </ul>
 </li>
 <li><p>새로 만든 유저 모델 DB 생성 위한 명령 실행 및 관리자 계정 생성 이후, 서버 실행</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ pip install pillow  <span class="comment"># 이미지 필드 있으므로, Pillow 모듈 설치</span></span><br><span class="line">$ python manage.py makemigrations account</span><br><span class="line">$ python manage.py migrate</span><br><span class="line">$ python manage.py createsuperuser</span><br><span class="line">$ python manage.py runserver</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ pip install pillow  <span class="comment"># 이미지 필드 있으므로, Pillow 모듈 설치</span></span><br><span class="line">$ python manage.py makemigrations accounts</span><br><span class="line">$ python manage.py migrate</span><br><span class="line">$ python manage.py createsuperuser</span><br><span class="line">$ python manage.py runserver</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>유저 모델 확장하여 새로 만들었으므로, admin.py 등록</p>
 <ul>
@@ -136,7 +136,7 @@
 </li>
 <li><p>생성한 추가 필드를 관리자페이지에 나타나게 하기 위해 옵션 클래스 새로 만들어 등록</p>
 <ul>
-<li>경로 : account &gt; admin.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CustomUserAdmin</span><span class="params">(UserAdmin)</span>:</span></span><br><span class="line">    <span class="comment"># fieldsets : 관리자 리스트 화면에서 출력될 폼 설정 부분</span></span><br><span class="line">    UserAdmin.fieldsets[<span class="number">1</span>][<span class="number">1</span>][<span class="string">'fields'</span>]+=(<span class="string">'profile'</span>,<span class="string">'message'</span>)</span><br><span class="line">    <span class="comment"># add_fieldsets : User 객체 추가 화면에 출력될 입력 폼 설정 부분</span></span><br><span class="line">    UserAdmin.add_fieldsets += (</span><br><span class="line">        ((<span class="string">'Additional Info'</span>),&#123;<span class="string">'fields'</span>:(<span class="string">'profile'</span>,<span class="string">'message'</span>)&#125;),</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<li>경로 : accounts &gt; admin.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CustomUserAdmin</span><span class="params">(UserAdmin)</span>:</span></span><br><span class="line">    <span class="comment"># fieldsets : 관리자 리스트 화면에서 출력될 폼 설정 부분</span></span><br><span class="line">    UserAdmin.fieldsets[<span class="number">1</span>][<span class="number">1</span>][<span class="string">'fields'</span>]+=(<span class="string">'profile'</span>,<span class="string">'message'</span>)</span><br><span class="line">    <span class="comment"># add_fieldsets : User 객체 추가 화면에 출력될 입력 폼 설정 부분</span></span><br><span class="line">    UserAdmin.add_fieldsets += (</span><br><span class="line">        ((<span class="string">'Additional Info'</span>),&#123;<span class="string">'fields'</span>:(<span class="string">'profile'</span>,<span class="string">'message'</span>)&#125;),</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>

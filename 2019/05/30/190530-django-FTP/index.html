@@ -93,7 +93,15 @@
 <li>기본 리모트 디렉터리 : /var/www/django</li>
 <li>연결</li>
 </ul>
-<h3 id="9-원하는-파일-전송"><a href="#9-원하는-파일-전송" class="headerlink" title="9. 원하는 파일 전송"></a>9. 원하는 파일 전송</h3>
+<h3 id="9-원하는-파일-전송"><a href="#9-원하는-파일-전송" class="headerlink" title="9. 원하는 파일 전송"></a>9. 원하는 파일 전송</h3><ul>
+<li>파일 업로드가 되지 않는다면, 터미널에서 아래와 같은 명령 실행<ul>
+<li>ssh -i ~/.ssh/[키 파일명] ubuntu@[도메인 주소]</li>
+<li>sudo useradd -a -G www-data ubuntu</li>
+<li>sudo chmod -R g+w /var/www/django</li>
+</ul>
+</li>
+</ul>
+
 
       
 

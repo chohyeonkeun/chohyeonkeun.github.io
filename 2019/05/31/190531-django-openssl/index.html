@@ -71,7 +71,7 @@
 <a id="more"></a>
 <h3 id="2-키-파일-생성"><a href="#2-키-파일-생성" class="headerlink" title="2. 키 파일 생성"></a>2. 키 파일 생성</h3><pre><code>$ openssl genrsa 1024 &gt; django.key
 </code></pre><h3 id="3-cert-파일-생성"><a href="#3-cert-파일-생성" class="headerlink" title="3. cert 파일 생성"></a>3. cert 파일 생성</h3><pre><code>$ openssl req -new -x509 -nodes -sha256 -days 365 -key django.key &gt; django.cert
-</code></pre><h3 id="4-해당-파일을-프로젝트-폴더로-복사하여-붙여넣기"><a href="#4-해당-파일을-프로젝트-폴더로-복사하여-붙여넣기" class="headerlink" title="4. 해당 파일을 프로젝트 폴더로 복사하여 붙여넣기"></a>4. 해당 파일을 프로젝트 폴더로 복사하여 붙여넣기</h3><h3 id="5-django-sslserver-설치"><a href="#5-django-sslserver-설치" class="headerlink" title="5. django-sslserver 설치"></a>5. django-sslserver 설치</h3><pre><code>$ pip install django-server
+</code></pre><h3 id="4-해당-파일을-프로젝트-폴더에-붙여넣기"><a href="#4-해당-파일을-프로젝트-폴더에-붙여넣기" class="headerlink" title="4. 해당 파일을 프로젝트 폴더에 붙여넣기"></a>4. 해당 파일을 프로젝트 폴더에 붙여넣기</h3><h3 id="5-django-sslserver-설치"><a href="#5-django-sslserver-설치" class="headerlink" title="5. django-sslserver 설치"></a>5. django-sslserver 설치</h3><pre><code>$ pip install django-sslserver
 </code></pre><h3 id="6-settings-py에-INSTALLED-APPS-추가"><a href="#6-settings-py에-INSTALLED-APPS-추가" class="headerlink" title="6. settings.py에 INSTALLED_APPS 추가"></a>6. settings.py에 INSTALLED_APPS 추가</h3><pre><code>INSTALLED_APPS = [
     ...
     &apos;sslserver&apos;,
