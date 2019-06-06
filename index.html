@@ -65,6 +65,100 @@
     <header class="title">
       
         <h1>
+          <a href="/2019/06/06/190606-django-EC2-django-deploy/">EC2에 장고 배포하기</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-06-06T08:00:21.000Z" itemprop="datePublished">
+    2019-06-06
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ul>
+<li>EC2는 아마존 인프라에서 사용되는 범용 서버 컴퓨팅 서비스이다.</li>
+<li>EC2를 이용하면 다양한 서버를 운영할 수 있지만,</li>
+<li>장고 애플리케이션을 구동하기 위해서는 웹 서버가 필요하므로 EC2로 장고 웹 서버를 설정하고 배포하는 방법을 아래와 같은 순서로 진행하겠다.</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/06/06/190606-django-EC2-django-deploy/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/06/05/190605-django-email-server/">이메일 서버 셋팅</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-06-05T08:00:21.000Z" itemprop="datePublished">
+    2019-06-05
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ul>
+<li>웹 서비스를 이용하면 회원  가입 시 메일을 보내는 등의 일을 해야할 때가 있다.</li>
+<li>장고에서는 메일 서버를 셋팅하기만 하면 쉽게 메일을 보낼 수 있다.</li>
+<li>이번에는 아래와 같은 순서로 gmail을 이용하여 메일을 보내보겠다.</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/06/05/190605-django-email-server/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
           <a href="/2019/06/04/190604-django-ELB-SSL/">로드밸런서에 SSL 인증서 적용</a>
         </h1>
       
@@ -436,100 +530,6 @@
         
           <div class="more-link">
             <a href="/2019/05/30/190530-django-nginx-resource-serving/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/29/190529-django-static-serving/">Static 파일 서빙하기</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-29T14:59:48.000Z" itemprop="datePublished">
-    2019-05-29
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="Static-파일이란"><a href="#Static-파일이란" class="headerlink" title="Static 파일이란?"></a>Static 파일이란?</h2><ul>
-<li>Static 파일 : 서버에서 미리 준비해둔 파일</li>
-<li>‘{‘ + ‘%’ + ‘load static’ + ‘%’ + ‘}’ 을 이용해 static 태그를 불러와서 리소스 사용 가능(디버그 모드일 때만 정상 동작) </li>
-<li>whitenoise를 사용하면 라이브 서버에서도 스테틱 파일을 사용할 수 있다.(S3 이용 못할 시, 사용)</li>
-</ul>
-<h2 id="Static-파일-서빙-위한-절차"><a href="#Static-파일-서빙-위한-절차" class="headerlink" title="Static 파일 서빙 위한 절차"></a>Static 파일 서빙 위한 절차</h2><h3 id="1-whitenoise-설치"><a href="#1-whitenoise-설치" class="headerlink" title="1. whitenoise 설치"></a>1. whitenoise 설치</h3><pre><code>$ pip install whitenoise
-</code></pre><h3 id="2-설정파일-MIDDLEWARE에-whitenoise-추가"><a href="#2-설정파일-MIDDLEWARE에-whitenoise-추가" class="headerlink" title="2. 설정파일 MIDDLEWARE에 whitenoise 추가"></a>2. 설정파일 MIDDLEWARE에 whitenoise 추가</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MIDDLEWARE = [</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">'whitenoise.middleware.WhiteNoiseMiddleware'</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h3 id="3-설정파일에-static-관련-설정-추가"><a href="#3-설정파일에-static-관련-설정-추가" class="headerlink" title="3. 설정파일에 static 관련 설정 추가"></a>3. 설정파일에 static 관련 설정 추가</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">STATIC_URL = <span class="string">'/static/'</span></span><br><span class="line">STATIC_ROOT = os.path.join(BASE_DIR, <span class="string">'static'</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="4-디버그-모드-끄고-서버-접속-기본적으로-디버그-모드-비활성화-시-스테틱-미디어-파일-서빙-불가"><a href="#4-디버그-모드-끄고-서버-접속-기본적으로-디버그-모드-비활성화-시-스테틱-미디어-파일-서빙-불가" class="headerlink" title="4. 디버그 모드 끄고 서버 접속(기본적으로 디버그 모드 비활성화 시, 스테틱/미디어 파일 서빙 불가)"></a>4. 디버그 모드 끄고 서버 접속(기본적으로 디버그 모드 비활성화 시, 스테틱/미디어 파일 서빙 불가)</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DEBUG = <span class="literal">False</span></span><br><span class="line">ALLOWED_HOSTS = [<span class="string">'*'</span>]</span><br></pre></td></tr></table></figure>
-<h3 id="5-기존-존재하는-스테틱-파일들을-STATIC-ROOT-폴더에-모아둔다"><a href="#5-기존-존재하는-스테틱-파일들을-STATIC-ROOT-폴더에-모아둔다" class="headerlink" title="5. 기존 존재하는 스테틱 파일들을 STATIC_ROOT 폴더에 모아둔다."></a>5. 기존 존재하는 스테틱 파일들을 STATIC_ROOT 폴더에 모아둔다.</h3><pre><code>$ python manage.py collectstatic
-
-- whitenoise는 STATIC_URL이 포함된 리소스를 STATIC_ROOT에서 찾아 전달하는 역할을 한다.
-- 기존 스테틱 파일들을 STATIC_ROOT 폴더에 모아두어야 하는데 이 명령어가 collectstatic 이다.
-</code></pre>
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/29/190529-django-media-serving/">Media 파일 서빙하기</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-29T14:11:10.000Z" itemprop="datePublished">
-    2019-05-29
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h3 id="1-미디어-파일-관련-설정"><a href="#1-미디어-파일-관련-설정" class="headerlink" title="1. 미디어 파일 관련 설정"></a>1. 미디어 파일 관련 설정</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MEDIA_URL = <span class="string">'/media/'</span></span><br><span class="line">MEDIA_ROOT = os.path.join(BASE_DIR, <span class="string">'media'</span>)</span><br></pre></td></tr></table></figure>
-        
-          <div class="more-link">
-            <a href="/2019/05/29/190529-django-media-serving/#more">Read On »</a>
           </div>
         
       
