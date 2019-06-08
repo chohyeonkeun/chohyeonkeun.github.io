@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>django extensions 설치 방법 | 조누스의 걸음마 개발 로그</title>
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/05/21/190521-django-extensions/">
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>django extensions 설치 방법</h1>
+    </header>
+
+    <section>
+      <h2 id="1-명령어를-이용해-모듈-설치"><a href="#1-명령어를-이용해-모듈-설치" class="headerlink" title="1. 명령어를 이용해 모듈 설치"></a>1. 명령어를 이용해 모듈 설치</h2><p><code>$ pip install django-extensions</code><br><a id="more"></a></p>
+<h2 id="2-settings-py에-INSTALLED-APPS와-GRAPH-MODELS-추가"><a href="#2-settings-py에-INSTALLED-APPS와-GRAPH-MODELS-추가" class="headerlink" title="2. settings.py에 INSTALLED_APPS와 GRAPH_MODELS 추가"></a>2. settings.py에 INSTALLED_APPS와 GRAPH_MODELS 추가</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">        ...</span><br><span class="line">        <span class="string">'django_extensions'</span>,</span><br><span class="line">]</span><br><span class="line">GRAPH_MODELS = &#123;</span><br><span class="line">    <span class="string">'all_applications'</span> : <span class="literal">True</span>,</span><br><span class="line">    <span class="string">'group_models'</span> : <span class="literal">True</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-그래프-출력-기능을-사용하기-위해서-추가-모듈-설치"><a href="#3-그래프-출력-기능을-사용하기-위해서-추가-모듈-설치" class="headerlink" title="3. 그래프 출력 기능을 사용하기 위해서 추가 모듈 설치"></a>3. 그래프 출력 기능을 사용하기 위해서 추가 모듈 설치</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* Mac</span><br><span class="line">$ xcode-select --install</span><br><span class="line">$ brew install graphviz</span><br><span class="line">$ pip install --install-option=<span class="string">"--include-path=/usr/local/include/"</span> --install-option=<span class="string">"--library-path=/usr/local/lib/"</span> pygraphviz</span><br><span class="line"></span><br><span class="line">* Ubuntu</span><br><span class="line">$ pip install pygraphviz</span><br><span class="line">$ sudo apt-get install python-dev graphviz libgraphviz-dev pkg-config</span><br></pre></td></tr></table></figure>
+<h2 id="4-설치-후-그래프-생성-명령-입력"><a href="#4-설치-후-그래프-생성-명령-입력" class="headerlink" title="4. 설치 후 그래프 생성 명령 입력"></a>4. 설치 후 그래프 생성 명령 입력</h2><ul>
+<li><p>전체 모델에 대한 그래프 출력<br>  <code>$ python manage.py graph_models -a -g -o model_graph.png</code></p>
+</li>
+<li><p>특정 앱에 대한 그래프 출력<br>  <code>$ python manage.py graph_models board -o models.png</code></p>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-05-21T13:38:45.000Z" itemprop="datePublished">
+              2019-05-21
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

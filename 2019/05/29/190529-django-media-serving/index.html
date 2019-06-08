@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Media 파일 서빙하기 | 조누스의 걸음마 개발 로그</title>
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/05/29/190529-django-media-serving/">
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>Media 파일 서빙하기</h1>
+    </header>
+
+    <section>
+      <h3 id="1-미디어-파일-관련-설정"><a href="#1-미디어-파일-관련-설정" class="headerlink" title="1. 미디어 파일 관련 설정"></a>1. 미디어 파일 관련 설정</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MEDIA_URL = <span class="string">'/media/'</span></span><br><span class="line">MEDIA_ROOT = os.path.join(BASE_DIR, <span class="string">'media'</span>)</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="2-디버그-모드일-경우-urlpatterns-에-MEDIA-URL-MEDIA-ROOT-패턴-추가"><a href="#2-디버그-모드일-경우-urlpatterns-에-MEDIA-URL-MEDIA-ROOT-패턴-추가" class="headerlink" title="2. 디버그 모드일 경우, urlpatterns 에 MEDIA_URL, MEDIA_ROOT 패턴 추가"></a>2. 디버그 모드일 경우, urlpatterns 에 MEDIA_URL, MEDIA_ROOT 패턴 추가</h3><pre><code>- 경로 : 프로젝트 &gt; urls.py
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.conf <span class="keyword">import</span> settings</span><br><span class="line"><span class="keyword">from</span> django.conf.urls.static <span class="keyword">import</span> static</span><br><span class="line"></span><br><span class="line">urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)</span><br></pre></td></tr></table></figure>
+<h3 id="3-라이브-상태일-때-serve-뷰-사용하여-연결"><a href="#3-라이브-상태일-때-serve-뷰-사용하여-연결" class="headerlink" title="3. 라이브 상태일 때, serve 뷰 사용하여 연결"></a>3. 라이브 상태일 때, serve 뷰 사용하여 연결</h3><pre><code>- 경로 : 프로젝트 &gt; urls.py
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.views.static <span class="keyword">import</span> serve</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> re_path</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    ...</span><br><span class="line">    re_path(<span class="string">r'^media/(?P&lt;path&gt;.*)$'</span>, serve, &#123;<span class="string">'document_root'</span>:settings.MEDIA_ROOT&#125;),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="4-설정파일에서-DEBUG를-False로-변경"><a href="#4-설정파일에서-DEBUG를-False로-변경" class="headerlink" title="4. 설정파일에서 DEBUG를 False로 변경"></a>4. 설정파일에서 DEBUG를 False로 변경</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DEBUG = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">ALLOWED_HOSTS = [<span class="string">'*'</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="5-이미지-제대로-출력되는지-확인"><a href="#5-이미지-제대로-출력되는지-확인" class="headerlink" title="5. 이미지 제대로 출력되는지 확인"></a>5. 이미지 제대로 출력되는지 확인</h3><hr>
+<p>이 방법은 S3을 사용하지 않고 이미지 파일을 서빙하는 방법이다. 더 나은 방식은 Nginx 등 웹 서버에서 셋팅해주는 방식이다.</p>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-05-29T14:11:10.000Z" itemprop="datePublished">
+              2019-05-29
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

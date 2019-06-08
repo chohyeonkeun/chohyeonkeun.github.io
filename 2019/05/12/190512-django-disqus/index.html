@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>disqus 연동한 댓글 기능 적용 | 조누스의 걸음마 개발 로그</title>
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/05/12/190512-django-disqus/">
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>disqus 연동한 댓글 기능 적용</h1>
+    </header>
+
+    <section>
+      <h2 id="1-disqus-com-접속"><a href="#1-disqus-com-접속" class="headerlink" title="1. disqus.com 접속"></a>1. disqus.com 접속</h2><ul>
+<li>회원가입 및 로그인</li>
+<li>‘I want to install isqus in my site’ 클릭</li>
+<li>Basic &gt; ‘subscribe now’ 클릭</li>
+<li>플랫폼 선택(보이지 않는다면, ‘I don’t see~’ 클릭)</li>
+<li>최하단 ‘Configure’ 클릭</li>
+<li>변경할 것이 특별히 없다면 최하단 ‘Complete Setup’ 클릭</li>
+</ul>
+<p><br><br><a id="more"></a></p>
+<h2 id="2-django-프로젝트에-disqus-연동"><a href="#2-django-프로젝트에-disqus-연동" class="headerlink" title="2. django 프로젝트에 disqus 연동"></a>2. django 프로젝트에 disqus 연동</h2><ul>
+<li><code>$ pip install django-disqus</code></li>
+<li><p>프로젝트 settings.py 수정</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">'disqus'</span>, <span class="comment"># 데이터베이스 저장 불필요</span></span><br><span class="line">    <span class="string">'django.contrib.sites'</span> <span class="comment"># 데이터베이스 저장 필요 --&gt; migrate 필요</span></span><br><span class="line">]</span><br><span class="line">DISQUS_WEBSITE_SHORTNAME = <span class="string">'설정한 사이트 이름'</span></span><br><span class="line">SITE_ID = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DB 변경사항 저장 </p>
+<ul>
+<li><code>$ python manage.py migrate</code></li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h2 id="3-원하는-위치에-disqus-적용"><a href="#3-원하는-위치에-disqus-적용" class="headerlink" title="3. 원하는 위치에 disqus 적용"></a>3. 원하는 위치에 disqus 적용</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load disqus_tags %&#125;  <span class="comment">&lt;!-- disqus 태그 기능 사용 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% disqus_show_comments %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-05-12T13:15:06.000Z" itemprop="datePublished">
+              2019-05-12
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/disqus/">disqus</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

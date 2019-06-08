@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Email 로그인 기능 추가 | 조누스의 걸음마 개발 로그</title>
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/05/25/190525-django-email-login/">
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>Email 로그인 기능 추가</h1>
+    </header>
+
+    <section>
+      <ul>
+<li>장고는 기본적으로 username으로 로그인하는 기능 제공</li>
+<li>username, email 둘 중 하나로 로그인 하도록 커스터마이징 필요</li>
+<li>커스텀 모델 백엔드를 추가하여 email, username 로그인 기능 추가 가능</li>
+<li>로그인 기능 제어하는 것은 AUTHENTICATION_BACKENDS에 설정된 모델 백엔드를 통해 이루어진다.</li>
+</ul>
+<a id="more"></a>
+<h2 id="Email-로그인-기능-추가-방법"><a href="#Email-로그인-기능-추가-방법" class="headerlink" title="Email 로그인 기능 추가 방법"></a>Email 로그인 기능 추가 방법</h2><ol>
+<li><p>account 앱에 backends.py 파일 추가하고 코드 입력</p>
+<ul>
+<li>경로 : account &gt; backends.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.auth.backends <span class="keyword">import</span> ModelBackend</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth <span class="keyword">import</span> get_user_model</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CustomUserBackend</span><span class="params">(ModelBackend)</span>:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">authenticate</span><span class="params">(self, request, username=None, password=None, **kwargs)</span>:</span></span><br><span class="line">    user = super().authenticate(request, username, password, **kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> user:</span><br><span class="line">        <span class="keyword">return</span> user</span><br><span class="line"></span><br><span class="line">    <span class="comment"># id 로그인 실패 상황</span></span><br><span class="line">    <span class="comment"># e-mail 로그인 시도</span></span><br><span class="line">    UserModel = get_user_model()</span><br><span class="line">    <span class="comment"># 원래 id 로그인 처리를 할 때 username이 넘어왔을 경우</span></span><br><span class="line">    email = username</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> username <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        email = kwargs.get(UserModel.EMAIL_FIELD, kwargs.get(<span class="string">'email'</span>))</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        user = UserModel._default_manager.get(email=email)</span><br><span class="line">    <span class="keyword">except</span> UserModel.DoesNotExist:</span><br><span class="line">        UserModel().set_password(password)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> user.check_password(password) <span class="keyword">and</span> self.user_can_authenticate(user):</span><br><span class="line">            <span class="keyword">return</span> user</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>새로 만든 백엔드 클래스를 기본 인증 백엔드 클래스로 추가</p>
+<ul>
+<li>경로 : config &gt; settings.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AUTHENTICATION_BACKENDS = [</span><br><span class="line">    <span class="string">'account.backends.CustomUserBackend'</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="Additional"><a href="#Additional" class="headerlink" title="Additional"></a>Additional</h2><ul>
+<li><p>유저 모델을 코드에서 참고하는 3가지 방법</p>
+<ol>
+<li>from django.contrib.auth.models import User</li>
+<li>from django.contrib.auth import get_user_model</li>
+<li>form django.conf import settings // settings.AUTH_USER_MODEL<ul>
+<li>1번이 가장 간단하고 보편적인 방법이나 커스텀 유저모델에 대응 못한다는 단점이 있다.</li>
+<li>2, 3번을 많이 사용하나, 문제 없는 코드를 위해 3번을 주로 사용한다.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>백엔드에서는 아래와 같은 메서드를 사용하여 권한 체크</p>
+<ul>
+<li>has_perm : 사용자가 활성화 상태이고 권한이 있는지 체크</li>
+<li>has_module_pers : 특정 앱의 사용권한이 있는지 체크</li>
+<li>get_all_permissions : 해당 사용자가 가진 모든 권한 목록 반환</li>
+<li>get_group_permissions : 해당 사용자가 속한 그룹의 권한 목록 반환</li>
+<li>get_user_permissions : 해당 사용자가 가진 권한 목록 반환</li>
+</ul>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-05-25T14:01:33.000Z" itemprop="datePublished">
+              2019-05-25
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

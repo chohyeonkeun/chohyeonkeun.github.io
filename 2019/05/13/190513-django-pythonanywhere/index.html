@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pythonanywhere 이용한 배포 | 조누스의 걸음마 개발 로그</title>
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/05/13/190513-django-pythonanywhere/">
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>Pythonanywhere 이용한 배포</h1>
+    </header>
+
+    <section>
+      <h2 id="1-Github-업로드"><a href="#1-Github-업로드" class="headerlink" title="1. Github 업로드"></a>1. Github 업로드</h2><ul>
+<li>Github - new repository 생성</li>
+<li>해당 repo 주소 복사</li>
+<li>경로 : 프로젝트 디렉토리 위치<ul>
+<li>git init</li>
+<li>git add -A .   <em>(git add 하기 전에 .gitignore 폴더 생성하여 git에 올리지 않을 항목 입력)</em></li>
+<li>git commit -m ‘message’</li>
+<li>git remote add origin ‘repo 주소’ <em>(해당 repo주소를 ‘origin’으로 설정)</em></li>
+<li>git push -u origin master</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="2-Pythonanywhere-가입-및-배포"><a href="#2-Pythonanywhere-가입-및-배포" class="headerlink" title="2. Pythonanywhere 가입 및 배포"></a>2. Pythonanywhere 가입 및 배포</h2><ul>
+<li>파이썬 애니웨어 &gt; sign-up &amp; login</li>
+<li>파이썬 애니웨어 &gt; ‘bash’<ul>
+<li>git clone ‘repo 주소’</li>
+<li>cd ‘프로젝트 디렉토리’</li>
+<li>virtualenv –python=python3.6 venv</li>
+<li>source venv/bin/activate</li>
+<li>pip install django</li>
+</ul>
+</li>
+<li><p>Pycharm &gt; 프로젝트 &gt; settings.py</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DEBUG = <span class="literal">False</span></span><br><span class="line">ALLOWED_HOST = [<span class="string">'.pythonanywhere.com'</span>,<span class="string">'localhost'</span>,<span class="string">'127.0.0.1'</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>파이썬 애니웨어 &gt; ‘web’</p>
+<ul>
+<li><p>‘code’ &gt; ‘WSGI Configuration file’<br></p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">path = <span class="string">'/home/(아이디)/(repository 명)'</span></span><br><span class="line"><span class="keyword">if</span> path <span class="keyword">not</span> <span class="keyword">in</span> sys.path:</span><br><span class="line">    sys.path.append(path)</span><br><span class="line"><span class="keyword">from</span> django.core.wsgi <span class="keyword">import</span> get_wsgi_application</span><br><span class="line"><span class="keyword">from</span> django.contrib.staticfiles.handlers <span class="keyword">import</span> StaticFilesHandler</span><br><span class="line">os.environ.setdefault(<span class="string">'DJANGO_SETTINGS_MODULE'</span>, <span class="string">'config.settings'</span>)</span><br><span class="line">application = StaticFilesHandler(get_wsgi_application())</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>‘Virtualenv’ 경로 지정 <em>(‘bash’에서 ‘pwd’ 입력하여 나온 경로 붙여넣기)</em></p>
+</li>
+</ul>
+</li>
+<li>파이썬 애니웨어 &gt; ‘bash’<ul>
+<li>python manage.py migrate</li>
+</ul>
+</li>
+<li>파이썬 애니웨어 &gt; ‘web’<ul>
+<li>‘Reload (아이디).pythonanaywhere.com’ 클릭</li>
+<li>‘(아이디).pythonanywhere.com’ 접속<br><br></li>
+</ul>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-05-13T14:39:11.000Z" itemprop="datePublished">
+              2019-05-13
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Pythonanywhere/">Pythonanywhere</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

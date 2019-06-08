@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>WYSIWIG 적용 방법 | 조누스의 걸음마 개발 로그</title>
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/05/27/190527-django-wysiwig/">
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>WYSIWIG 적용 방법</h1>
+    </header>
+
+    <section>
+      <h2 id="WYSIWIG란"><a href="#WYSIWIG란" class="headerlink" title="WYSIWIG란?"></a>WYSIWIG란?</h2><ul>
+<li>What You See Is What You Get의 약어</li>
+<li>웹 브라우저에서 사용할 수 있는 HTML 편집기</li>
+<li>일반적으로 웹에서 긴 내용의 텍스트를 입력받을 때는 textareat태그를 사용하나,</li>
+<li>블로그, 게시판 등에서는 주로 HTML을 사용한 편집기를 사용한다.</li>
+<li>ckeditor, tinymce 등 JS를 이용한 플러그인 사용</li>
+</ul>
+<a id="more"></a>
+<h2 id="WYSIWIG-적용-순서"><a href="#WYSIWIG-적용-순서" class="headerlink" title="WYSIWIG 적용 순서"></a>WYSIWIG 적용 순서</h2><h3 id="1-django-ckeditor-모듈-다운받아-설치"><a href="#1-django-ckeditor-모듈-다운받아-설치" class="headerlink" title="1. django-ckeditor 모듈 다운받아 설치"></a>1. django-ckeditor 모듈 다운받아 설치</h3><pre><code>$ pip install django-ckeditor
+</code></pre><h3 id="2-INSTALLED-APPS에-ckeditor-추가"><a href="#2-INSTALLED-APPS에-ckeditor-추가" class="headerlink" title="2. INSTALLED_APPS에 ckeditor 추가"></a>2. INSTALLED_APPS에 ckeditor 추가</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INTALLED_APPS = [</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">'ckeditor'</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="3-모델에-RichTextField-추가"><a href="#3-모델에-RichTextField-추가" class="headerlink" title="3. 모델에 RichTextField 추가"></a>3. 모델에 RichTextField 추가</h3><pre><code>- 경로 : 앱 &gt; models.py
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db imort models</span><br><span class="line"><span class="keyword">from</span> ckeditor.fields <span class="keyword">import</span> RichTextField</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Post</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    content = RichTextField()</span><br></pre></td></tr></table></figure>
+<h3 id="4-모델-변경사항-있으므로-마이그레이션-진행"><a href="#4-모델-변경사항-있으므로-마이그레이션-진행" class="headerlink" title="4. 모델 변경사항 있으므로, 마이그레이션 진행"></a>4. 모델 변경사항 있으므로, 마이그레이션 진행</h3><pre><code>$ python manage.py makemigrations [앱이름]
+$ python manage.py migrate [앱이름]
+</code></pre><h3 id="5-관리자페이지에서-해당-필드가-에디터-형태로-나타나는지-확인"><a href="#5-관리자페이지에서-해당-필드가-에디터-형태로-나타나는지-확인" class="headerlink" title="5. 관리자페이지에서 해당 필드가 에디터 형태로 나타나는지 확인"></a>5. 관리자페이지에서 해당 필드가 에디터 형태로 나타나는지 확인</h3><h3 id="6-프론트-페이지에서도-에디터를-나타나게-하도록-적절한-뷰-만들고-폼-출력"><a href="#6-프론트-페이지에서도-에디터를-나타나게-하도록-적절한-뷰-만들고-폼-출력" class="headerlink" title="6. 프론트 페이지에서도 에디터를 나타나게 하도록 적절한 뷰 만들고 폼 출력"></a>6. 프론트 페이지에서도 에디터를 나타나게 하도록 적절한 뷰 만들고 폼 출력</h3><pre><code>- 경로 : 앱 &gt; templates &gt; 앱 &gt; html 파일
+- 폼 출력할 때 필수로 {{form.media}} 사용
+- 관리자 개발도구에서 폼 안쪽 추가된 스크립트 확인 가능
+</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    &#123;% csrf_token %&#125;</span><br><span class="line">    &#123;&#123;form.media&#125;&#125;</span><br><span class="line">    &#123;&#123;form.as_p&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Write"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="7-선택-추후-S3-연동하기-위한-설정-필요"><a href="#7-선택-추후-S3-연동하기-위한-설정-필요" class="headerlink" title="7. (선택) 추후 S3 연동하기 위한 설정 필요"></a>7. (선택) 추후 S3 연동하기 위한 설정 필요</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
+    AWS_QUERYSTRING_AUTH = False
+</code></pre>
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-05-27T13:09:13.000Z" itemprop="datePublished">
+              2019-05-27
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
