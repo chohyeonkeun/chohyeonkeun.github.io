@@ -142,7 +142,7 @@
 <ul>
 <li>{m,n}의 의미는 반복 횟수가 m부터 n까지인 것을 매치한다는 의미<ul>
 <li>m 또는 n 생략 가능<ul>
-<li>{3,} –&gt; 반복 회숫 3번 이상인 경우</li>
+<li>{3,} –&gt; 반복 횟수 3번 이상인 경우</li>
 <li>{,3} –&gt; 반복 횟수 3번 이하인 경우</li>
 <li>{3} –&gt; 반복 횟수 3번인 경우</li>
 </ul>
@@ -231,12 +231,12 @@
 <ul>
 <li><p>“\section”이라는 문자열을 찾기 위한 정규식을 만들고 싶은 경우</p>
 <ul>
-<li><p>\section에서 \s 문자가 whitespace로 해석되므로, \section 으로 변경하여 사용하여 이스케이프 처리를 한다.</p>
+<li><p>\section에서 \s 문자가 whitespace로 해석되므로, <code>\\section</code> 으로 변경하여 사용하여 이스케이프 처리를 한다.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p = re.compile(<span class="string">'\\section'</span>)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>하지만, 실제 파이썬 정규식 엔진에는 파이썬 문자열 리터럴 규칙에 의하여 \이 \로 변경되어 \section 전달된다.</p>
+<li><p>하지만, 실제 파이썬 정규식 엔진에는 파이썬 문자열 리터럴 규칙에 의하여 <code>\\</code>이 <code>\</code>로 변경되어 <code>\section</code>이 전달된다.</p>
 </li>
-<li><p>따라서, 파이썬은 \\ 백슬래쉬 4개를 사용해야 한다.</p>
+<li><p>따라서, 파이썬은 <code>\\\\</code> 백슬래쉬 4개를 사용해야 한다.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p = re.compile(<span class="string">'\\\\section'</span>)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>상기와 같은 문제를 해결하기 위해 파이썬 정규식에는 Raw string이 생겨났다.</p>

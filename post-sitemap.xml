@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/02/190602-python-regular-expression/</loc>
+        <lastmod>2019-06-08T07:51:26.313Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/05/29/190529-django-static-serving/</loc>
         <lastmod>2019-06-08T07:36:34.063Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -122,14 +130,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/05/20/190520-django-debug-tool-bar/</loc>
         <lastmod>2019-06-03T02:54:23.812Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/02/190602-python-regular-expression/</loc>
-        <lastmod>2019-06-02T16:52:14.079Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
