@@ -76,6 +76,7 @@
 <li>‘{‘ + ‘%’ + ‘load static’ + ‘%’ + ‘}’ 을 이용해 static 태그를 불러와서 리소스 사용 가능(디버그 모드일 때만 정상 동작) </li>
 <li>whitenoise를 사용하면 라이브 서버에서도 스테틱 파일을 사용할 수 있다.(S3 이용 못할 시, 사용)</li>
 </ul>
+<a id="more"></a>
 <h2 id="Static-파일-서빙-위한-절차"><a href="#Static-파일-서빙-위한-절차" class="headerlink" title="Static 파일 서빙 위한 절차"></a>Static 파일 서빙 위한 절차</h2><h3 id="1-whitenoise-설치"><a href="#1-whitenoise-설치" class="headerlink" title="1. whitenoise 설치"></a>1. whitenoise 설치</h3><pre><code>$ pip install whitenoise
 </code></pre><h3 id="2-설정파일-MIDDLEWARE에-whitenoise-추가"><a href="#2-설정파일-MIDDLEWARE에-whitenoise-추가" class="headerlink" title="2. 설정파일 MIDDLEWARE에 whitenoise 추가"></a>2. 설정파일 MIDDLEWARE에 whitenoise 추가</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MIDDLEWARE = [</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">'whitenoise.middleware.WhiteNoiseMiddleware'</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
