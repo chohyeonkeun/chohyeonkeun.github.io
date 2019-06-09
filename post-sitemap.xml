@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/09/190609-django-tag-function/</loc>
+        <lastmod>2019-06-09T17:36:09.125Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/05/03/190503-django-page-function/</loc>
         <lastmod>2019-06-09T16:37:23.005Z</lastmod>
         <changefreq>weekly</changefreq>

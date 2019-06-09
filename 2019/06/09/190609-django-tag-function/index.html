@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>Tag 기능 적용 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/06/09/190609-django-tag-function/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>Tag 기능 적용</h1>
+    </header>
+
+    <section>
+      <h2 id="1-django-tagging-모듈-설치"><a href="#1-django-tagging-모듈-설치" class="headerlink" title="1. django-tagging 모듈 설치"></a>1. django-tagging 모듈 설치</h2><p><code>$ pip install django-tagging</code><br><a id="more"></a></p>
+<h2 id="2-모델에-TagField-설정"><a href="#2-모델에-TagField-설정" class="headerlink" title="2. 모델에 TagField 설정"></a>2. 모델에 TagField 설정</h2><ul>
+<li>경로 : 앱 &gt; models.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"><span class="keyword">from</span> tagging.fields <span class="keyword">import</span> TagField</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Post</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    tag = TagField(blank=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="3-INSTALLED-APPS에-‘tagging’-추가"><a href="#3-INSTALLED-APPS에-‘tagging’-추가" class="headerlink" title="3. INSTALLED_APPS에 ‘tagging’ 추가"></a>3. INSTALLED_APPS에 ‘tagging’ 추가</h2><ul>
+<li>경로 : config(프로젝트 명) &gt; settings.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    ...,</span><br><span class="line">    <span class="string">'taggings'</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="4-뷰-코드-작성"><a href="#4-뷰-코드-작성" class="headerlink" title="4. 뷰 코드 작성"></a>4. 뷰 코드 작성</h2><ul>
+<li>경로 : post(앱 이름) &gt; views.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PostDetail</span><span class="params">(DetailView)</span>:</span></span><br><span class="line">    model = Post</span><br><span class="line">    template_name = <span class="string">'post/post_detail.html'</span></span><br><span class="line"><span class="comment"># 해당 태그가 속해있는 객체 리스트로 이동하는 뷰 코드</span></span><br><span class="line"><span class="keyword">from</span> tagging.views <span class="keyword">import</span> TaggedObjectList</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PostTaggedObjectList</span><span class="params">(TaggedObjectList)</span>:</span></span><br><span class="line">    model = Post</span><br><span class="line">    allow_empty = <span class="literal">True</span></span><br><span class="line">    template_name = <span class="string">'post/post_list.html'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 모든 태그 리스트 조회할 수 있는 페이지로 이동하는 뷰 코드</span></span><br><span class="line"><span class="keyword">from</span> django.views.generic <span class="keyword">import</span> TemplateView</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TagList</span><span class="params">(TemplateView)</span>:</span></span><br><span class="line">    template_name = <span class="string">'post/tag_list.html'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="5-템플릿-코드-작성"><a href="#5-템플릿-코드-작성" class="headerlink" title="5. 템플릿 코드 작성"></a>5. 템플릿 코드 작성</h2><ul>
+<li><p>경로 : post &gt; templates &gt; post &gt; tag_list.html</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends 'base.html' %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block title %&#125;Tag List&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% load tagging_tags%&#125;</span><br><span class="line"></span><br><span class="line">&#123;% tag_cloud_for_model post.Post as post_tags with steps=9 min_count=1 distribution=log %&#125;</span><br><span class="line">    &#123;% for tag in post_tags %&#125;</span><br><span class="line">        <span class="comment">&lt;!-- 같은 태그 많을 수록 태그 명 사이즈 증대되게 하는 코드 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;% url 'post:post_taggedlist' tag.name %&#125;"</span> <span class="attr">style</span>=<span class="string">"font-size:&#123;&#123;tag.font_size&#125;&#125;em;"</span>&gt;</span>&#123;&#123;tag&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>경로 : post &gt; templates &gt; post &gt; post_detail.html</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends 'base.html' %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block title %&#125;</span><br><span class="line">&#123;&#123;object.title|truncatechars:15&#125;&#125;</span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row mt-3"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-8"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"alert alert-info"</span>&gt;</span>&#123;&#123;object.title&#125;&#125; - &#123;&#123;object.created&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        &#123;&#123;object.text|safe&#125;&#125;</span><br><span class="line">        <span class="comment">&lt;!-- 커스텀 Tag값을 호출하기 위해 해당 모듈 호출 --&gt;</span></span><br><span class="line">        &#123;% load tagging_tags %&#125;</span><br><span class="line">        <span class="comment">&lt;!-- object 객체에 포함된 tag들을 추출하여 그 객체를 tags로 변경 --&gt;</span></span><br><span class="line">        &#123;% tags_for_object object as tags %&#125;</span><br><span class="line">        &#123;% if tags %&#125;</span><br><span class="line">            Tags :</span><br><span class="line">            &#123;% for tag in tags %&#125;</span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;% url 'post:post_taggedlist' tag.name %&#125;"</span>&gt;</span>#&#123;&#123;tag.name&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">            &#123;% endfor %&#125;</span><br><span class="line">        &#123;% endif %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-06-09T08:00:21.000Z" itemprop="datePublished">
+              2019-06-09
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Tag/">Tag</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
