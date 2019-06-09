@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/03/190503-django-page-function/</loc>
+        <lastmod>2019-06-09T08:54:28.913Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/06/07/190607-django-multi-database/</loc>
         <lastmod>2019-06-08T17:04:38.254Z</lastmod>
         <changefreq>weekly</changefreq>
