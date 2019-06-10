@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>Comment 기능 적용 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/06/10/190610-django-comment-function/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>Comment 기능 적용</h1>
+    </header>
+
+    <section>
+      <h2 id="Comment-기능-구현"><a href="#Comment-기능-구현" class="headerlink" title="Comment 기능 구현"></a>Comment 기능 구현</h2><h3 id="Comment-기능-적용-방법-중-현재까지-공부한-방법으로는-크게-2가지로-나뉠-수-있다"><a href="#Comment-기능-적용-방법-중-현재까지-공부한-방법으로는-크게-2가지로-나뉠-수-있다" class="headerlink" title="Comment 기능 적용 방법 중, 현재까지 공부한 방법으로는 크게 2가지로 나뉠 수 있다."></a>Comment 기능 적용 방법 중, 현재까지 공부한 방법으로는 크게 2가지로 나뉠 수 있다.</h3><ul>
+<li>특정 앱에 comment 모델 생성하여 구현하는 방법</li>
+<li>comment 앱 추가 생성하여 구현하는 방법</li>
+<li>여기서는 블로그 프로젝트를 예로 들어, comment 앱을 추가 생성하여 댓글 기능 구현 방법을 정리해보았다.</li>
+</ul>
+<a id="more"></a>
+<hr>
+<h2 id="comment-앱-추가-생성하여-구현하는-방법-블로그-프로젝트"><a href="#comment-앱-추가-생성하여-구현하는-방법-블로그-프로젝트" class="headerlink" title="comment 앱 추가 생성하여 구현하는 방법(블로그 프로젝트)"></a>comment 앱 추가 생성하여 구현하는 방법(블로그 프로젝트)</h2><h3 id="1-comment-앱-생성"><a href="#1-comment-앱-생성" class="headerlink" title="1. comment 앱 생성"></a>1. comment 앱 생성</h3><ul>
+<li><code>$ python manage.py startapp comment</code></li>
+</ul>
+<h3 id="2-comment-앱-모델-구현"><a href="#2-comment-앱-모델-구현" class="headerlink" title="2. comment 앱 모델 구현"></a>2. comment 앱 모델 구현</h3><ul>
+<li>경로 : comment &gt; models.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth <span class="keyword">import</span> get_user_model</span><br><span class="line"><span class="comment"># Create your models here.</span></span><br><span class="line"><span class="keyword">from</span> django.contrib.contenttypes.fields <span class="keyword">import</span> GenericForeignKey</span><br><span class="line"><span class="keyword">from</span> django.contrib.contenttypes.models <span class="keyword">import</span> ContentType</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Comment</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name=<span class="string">'my_comments'</span>)</span><br><span class="line"></span><br><span class="line">    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)</span><br><span class="line">    object_id = models.PositiveIntegerField()</span><br><span class="line">    content_object = GenericForeignKey(<span class="string">'content_type'</span>, <span class="string">'object_id'</span>)</span><br><span class="line"></span><br><span class="line">    text = models.CharField(max_length=<span class="number">400</span>)</span><br><span class="line">    created = models.DateTimeField(auto_now_add=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        ordering = [<span class="string">'-created'</span>]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-comment-모델-폼-구현"><a href="#3-comment-모델-폼-구현" class="headerlink" title="3. comment 모델 폼 구현"></a>3. comment 모델 폼 구현</h3><ul>
+<li>경로 : comment &gt; forms.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> forms</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Comment</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CommentForm</span><span class="params">(forms.ModelForm)</span>:</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        model = Comment</span><br><span class="line">        fields = [<span class="string">'text'</span>,<span class="string">'content_type'</span>,<span class="string">'object_id'</span>]</span><br><span class="line">        widgets = &#123;</span><br><span class="line">            <span class="string">'content_type'</span>: forms.HiddenInput(),</span><br><span class="line">            <span class="string">'object_id'</span>:forms.HiddenInput(),</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="4-comment-모델을-관리자페이지에-등록"><a href="#4-comment-모델을-관리자페이지에-등록" class="headerlink" title="4. comment 모델을 관리자페이지에 등록"></a>4. comment 모델을 관리자페이지에 등록</h3><ul>
+<li>경로 : comment &gt; admin.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"></span><br><span class="line"><span class="comment"># Register your models here.</span></span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Comment</span><br><span class="line"></span><br><span class="line">admin.site.register(Comment)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="5-blog-포스트-상세페이지-view-구현"><a href="#5-blog-포스트-상세페이지-view-구현" class="headerlink" title="5. blog 포스트 상세페이지 view 구현"></a>5. blog 포스트 상세페이지 view 구현</h3><ul>
+<li>경로 : blog &gt; views.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PostDetail</span><span class="params">(DetailView)</span>:</span></span><br><span class="line">    model = Post</span><br><span class="line">    template_name = <span class="string">'post/post_detail.html'</span></span><br><span class="line">    <span class="comment"># 댓글 입력창</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_context_data</span><span class="params">(self, **kwargs)</span>:</span></span><br><span class="line">        context_data = super().get_context_data(**kwargs)</span><br><span class="line">        content_type = ContentType.objects.get_for_model(self.model)</span><br><span class="line">        context_data[<span class="string">'form'</span>] = CommentForm(initial=&#123;<span class="string">'content_type'</span>:content_type, <span class="string">'object_id'</span>:self.object.id&#125;)</span><br><span class="line">        <span class="keyword">return</span> context_data</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="6-blog-포스트-상세페이지-html-구현"><a href="#6-blog-포스트-상세페이지-html-구현" class="headerlink" title="6. blog 포스트 상세페이지 html 구현"></a>6. blog 포스트 상세페이지 html 구현</h3><ul>
+<li>경로 : blog &gt; templates &gt; blog &gt; post_detail.html  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends 'base.html' %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- comment 앱 &gt; templatetags &gt; comment.py 호출 --&gt;</span></span><br><span class="line">    &#123;% load comment %&#125;</span><br><span class="line">    &#123;% show_comment content_type=object object_id=object.id %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="7-게시물의-comment-목록-반환해주는-페이지-생성"><a href="#7-게시물의-comment-목록-반환해주는-페이지-생성" class="headerlink" title="7. 게시물의 comment 목록 반환해주는 페이지 생성"></a>7. 게시물의 comment 목록 반환해주는 페이지 생성</h3><ul>
+<li>경로 : comment &gt; templatetags &gt; comment.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.template.loader <span class="keyword">import</span> render_to_string</span><br><span class="line"><span class="keyword">from</span> django.contrib.contenttypes.models <span class="keyword">import</span> ContentType</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.template <span class="keyword">import</span> Library</span><br><span class="line">register = Library()</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> comment.forms <span class="keyword">import</span> CommentForm</span><br><span class="line"><span class="keyword">from</span> comment.models <span class="keyword">import</span> Comment</span><br><span class="line"></span><br><span class="line"><span class="meta">@register.simple_tag(takes_context=True)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_comment</span><span class="params">(context, content_type, object_id)</span>:</span></span><br><span class="line">    <span class="comment"># 폼 만들기</span></span><br><span class="line">    content_type = ContentType.objects.get_for_model(content_type)</span><br><span class="line">    form = CommentForm(initial=&#123;<span class="string">'content_type'</span>:content_type, <span class="string">'object_id'</span>:object_id&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 해당 하는 댓글 목록 뽑기</span></span><br><span class="line">    comments = Comment.objects.filter(content_type=content_type, object_id=object_id).all()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 템플릿 렌더링</span></span><br><span class="line">    <span class="keyword">return</span> render_to_string(<span class="string">'comment/show_comment.html'</span>,&#123;<span class="string">'form'</span>:form, <span class="string">'object_list'</span>:comments&#125;, request=context[<span class="string">'request'</span>])</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="8-comment-레이아웃-페이지-생성"><a href="#8-comment-레이아웃-페이지-생성" class="headerlink" title="8. comment 레이아웃 페이지 생성"></a>8. comment 레이아웃 페이지 생성</h3><ul>
+<li>경로 : comment &gt; templates &gt; comment &gt; show_comment.html  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"&#123;% url 'add_comment' %&#125;"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    &#123;% csrf_token %&#125;</span><br><span class="line">    &#123;&#123;form.as_p&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">value</span>=<span class="string">"Write"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-striped"</span>&gt;</span></span><br><span class="line">&#123;% for object in object_list %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;object.text&#125;&#125; &#123;% if object.author == user %&#125;<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;% url 'delete_comment' object.id %&#125;"</span>&gt;</span>[삭제]<span class="tag">&lt;/<span class="name">a</span>&gt;</span>&#123;% endif %&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;object.author.username&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;object.created&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">&#123;% endfor %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="9-comment-추가-삭제-페이지로-이동하도록-url-설정"><a href="#9-comment-추가-삭제-페이지로-이동하도록-url-설정" class="headerlink" title="9. comment 추가/삭제 페이지로 이동하도록 url 설정"></a>9. comment 추가/삭제 페이지로 이동하도록 url 설정</h3><ul>
+<li>경로 : comment &gt; urls.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> .views <span class="keyword">import</span> *</span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'add_comment/'</span>, add_comment, name=<span class="string">'add_comment'</span>),</span><br><span class="line">    path(<span class="string">'delete_comment/&lt;int:pk&gt;/'</span>, delete_comment, name=<span class="string">'delete_comment'</span>),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="10-comment-추가-삭제-뷰-코드-구현"><a href="#10-comment-추가-삭제-뷰-코드-구현" class="headerlink" title="10. comment 추가/삭제 뷰 코드 구현"></a>10. comment 추가/삭제 뷰 코드 구현</h3><ul>
+<li>경로 : comment &gt; views.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> .forms <span class="keyword">import</span> CommentForm</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Comment</span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> redirect</span><br><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> messages</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_comment</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> request.user.is_anonymous:</span><br><span class="line">        comment_form = CommentForm(request.POST)</span><br><span class="line">        comment_form.instance.author_id = request.user.id</span><br><span class="line">        <span class="keyword">if</span> comment_form.is_valid():</span><br><span class="line">            comment_form.save()</span><br><span class="line">            messages.add_message(request, messages.SUCCESS, <span class="string">"댓글을 작성하였습니다."</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            messages.add_message(request, messages.WARNING, <span class="string">"Comment Invalid"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        messages.add_message(request, messages.WARNING, <span class="string">"댓글은 로그인 사용자만 남길 수 있습니다."</span>)</span><br><span class="line"></span><br><span class="line">    referer = request.META[<span class="string">'HTTP_REFERER'</span>]</span><br><span class="line">    <span class="keyword">return</span> redirect(referer)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete_comment</span><span class="params">(request, pk)</span>:</span></span><br><span class="line">    comment = Comment.objects.filter(pk=pk)</span><br><span class="line">    <span class="keyword">if</span> comment.exists() <span class="keyword">and</span> comment[<span class="number">0</span>].author == request.user :</span><br><span class="line">        comment.delete()</span><br><span class="line">        messages.add_message(request, messages.SUCCESS, <span class="string">"댓글을 삭제하였습니다."</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        messages.add_message(request, messages.WARNING, <span class="string">"댓글을 삭제할 수 없습니다."</span>)</span><br><span class="line"></span><br><span class="line">    referer = request.META[<span class="string">'HTTP_REFERER'</span>]</span><br><span class="line">    <span class="keyword">return</span> redirect(referer)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-06-10T08:00:21.000Z" itemprop="datePublished">
+              2019-06-10
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Comment/">Comment</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
