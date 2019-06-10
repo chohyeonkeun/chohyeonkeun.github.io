@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/13/190513-django-pythonanywhere/</loc>
+        <lastmod>2019-06-10T02:13:27.888Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/06/09/190609-django-tag-function/</loc>
         <lastmod>2019-06-09T17:36:09.125Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -250,14 +258,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/05/14/190514-django-pagenation/</loc>
         <lastmod>2019-05-20T16:23:56.618Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/13/190513-django-pythonanywhere/</loc>
-        <lastmod>2019-05-20T16:22:49.287Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
