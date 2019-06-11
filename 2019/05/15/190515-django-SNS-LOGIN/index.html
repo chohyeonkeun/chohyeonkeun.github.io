@@ -10,7 +10,7 @@
   <meta property="og:title" content="조누스의 걸음마 개발로그">
   <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
   <meta property="og:url" content="https://chohyeonkeun.github.io">
-  <title>SNS 로그인 기능 적용 | 조누스의 걸음마 개발 로그</title>
+  <title>SNS 네이버 로그인 기능 학습 | 조누스의 걸음마 개발 로그</title>
   
   
   
@@ -67,7 +67,7 @@
             <div>
   <article class="ContentView">
     <header class="PageTitle">
-        <h1>SNS 로그인 기능 적용</h1>
+        <h1>SNS 네이버 로그인 기능 학습</h1>
     </header>
 
     <section>
@@ -75,28 +75,45 @@
 <li><code>pip install django-allauth</code></li>
 </ul>
 <h2 id="2-settings-py-수정"><a href="#2-settings-py-수정" class="headerlink" title="2. settings.py 수정"></a>2. settings.py 수정</h2><ul>
-<li>아이디, 이메일, 소셜 로그인 가능하도록 설정  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">AUTHENTICATION_BACKENDS = (</span><br><span class="line">        <span class="string">'django.contrib.auth.backends.ModelBackend'</span>,</span><br><span class="line">        <span class="string">'allauth.account.auth_backends.AuthenticationBackend'</span>, </span><br><span class="line">    )</span><br><span class="line">    <span class="comment"># 통합 User Model</span></span><br><span class="line">    <span class="comment"># 고객, 판매자, 관리자 계정 -&gt; User Model -&gt; Group</span></span><br><span class="line">    INSTALLED_APP = [</span><br><span class="line">        <span class="string">'django.contrib.sites'</span>,</span><br><span class="line">        <span class="comment"># 소셜 로그인을 관리하기 위해 기본으로 생기는 앱들</span></span><br><span class="line">        <span class="string">'allauth'</span>,  </span><br><span class="line">        <span class="string">'allauth.account'</span>,</span><br><span class="line">        <span class="string">'allauth.socialaccount'</span>,</span><br><span class="line">        <span class="string">'allauth.socialaccount.providers.naver'</span>,</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
+<li>아이디, 이메일, 소셜 로그인 가능하도록 설정  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">AUTHENTICATION_BACKENDS = (</span><br><span class="line">    <span class="string">'django.contrib.auth.backends.ModelBackend'</span>,</span><br><span class="line">    <span class="string">'allauth.account.auth_backends.AuthenticationBackend'</span>, </span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">INSTALLED_APP = [</span><br><span class="line">    <span class="string">'django.contrib.sites'</span>,</span><br><span class="line">    <span class="comment"># 소셜 로그인을 관리하기 위해 기본으로 생기는 앱들</span></span><br><span class="line">    <span class="string">'allauth'</span>,</span><br><span class="line">    <span class="string">'allauth.account'</span>,</span><br><span class="line">    <span class="string">'allauth.socialaccount'</span>,</span><br><span class="line">    <span class="string">'allauth.socialaccount.providers.naver'</span>,</span><br><span class="line"></span><br><span class="line">SITE_ID = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 로그인 후에 이동할 경로 추가</span></span><br><span class="line">LOGIN_REDIRECT_URL = <span class="string">'/'</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <a id="more"></a>
 <h2 id="3-url-경로-지정"><a href="#3-url-경로-지정" class="headerlink" title="3. url 경로 지정"></a>3. url 경로 지정</h2><ul>
-<li>경로 : config &gt; urls.py <br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'accounts/'</span>, include(<span class="string">'allauth.urls'</span>)),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<li>경로 : config &gt; urls.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'accounts/'</span>, include(<span class="string">'allauth.urls'</span>)),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="4-네이버-애플리케이션-등록"><a href="#4-네이버-애플리케이션-등록" class="headerlink" title="4. 네이버 애플리케이션 등록"></a>4. 네이버 애플리케이션 등록</h2><ul>
+<h2 id="4-migrate-실행"><a href="#4-migrate-실행" class="headerlink" title="4. migrate 실행"></a>4. migrate 실행</h2><p><code>$ python manage.py migrate</code></p>
+<h2 id="5-네이버-애플리케이션-등록"><a href="#5-네이버-애플리케이션-등록" class="headerlink" title="5. 네이버 애플리케이션 등록"></a>5. 네이버 애플리케이션 등록</h2><ul>
 <li>경로 : django allauth 사이트 &gt; Providers &gt; Naver &gt; <a href="https://developers.naver.com/appinfo" target="_blank" rel="noopener">https://developers.naver.com/appinfo</a><ul>
 <li>애플리케이션 등록</li>
+<li>애플리케이션 이름 작성</li>
+<li>사용 API는 ‘네이버 아이디로 로그인’ 선택</li>
+<li>필수 항목에 회원이름과 이메일만 체크 (나머지는 추가 항목으로 넣을 수 있다.)</li>
+<li>환경은 PC 웹 선택하고 아래와 같이 URL 입력</li>
 <li>서비스 URL : <a href="http://127.0.0.1" target="_blank" rel="noopener">http://127.0.0.1</a> 입력</li>
-<li><a href="http://127.0.0.1:8000/accounts/naver/login/callback" target="_blank" rel="noopener">http://127.0.0.1:8000/accounts/naver/login/callback</a> </li>
+<li>Callback URL : <a href="http://127.0.0.1:8000/accounts/naver/login/callback" target="_blank" rel="noopener">http://127.0.0.1:8000/accounts/naver/login/callback</a> </li>
+<li>django-allauth 문서 홈페이지에서 providers 탭의 네이버 항목에 있다.</li>
 </ul>
 </li>
 </ul>
-<h2 id="5-관리자-사이트-접속"><a href="#5-관리자-사이트-접속" class="headerlink" title="5. 관리자 사이트 접속"></a>5. 관리자 사이트 접속</h2><ul>
-<li>소셜 어플리케이션 추가</li>
-<li>클라이언트 아이디 &amp; 비밀 키 생성</li>
+<h2 id="6-서버-실행하여-관리자-사이트-접속"><a href="#6-서버-실행하여-관리자-사이트-접속" class="headerlink" title="6. 서버 실행하여 관리자 사이트 접속"></a>6. 서버 실행하여 관리자 사이트 접속</h2><ul>
+<li>Social application 추가<ul>
+<li>제공자 : Naver</li>
+<li>이름 : 네이버 로그인</li>
+<li>클라이언트 아이디 : 네이버 API 등록 시 발급되는 Client ID</li>
+<li>비밀 키 : 네이버 API 등록 시 발급되는 Client Secret</li>
+<li>sites : example.com 선택</li>
 </ul>
-<h2 id="6-뷰-페이지에서-소셜-회원가입-함수-작성"><a href="#6-뷰-페이지에서-소셜-회원가입-함수-작성" class="headerlink" title="6. 뷰 페이지에서 소셜 회원가입 함수 작성"></a>6. 뷰 페이지에서 소셜 회원가입 함수 작성</h2><ul>
-<li>경로 : bard &gt; views.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> allauth.account.signals <span class="keyword">import</span> user_signed_up</span><br><span class="line"><span class="keyword">from</span> allauth.socialaccount.models <span class="keyword">import</span> SocialAccount</span><br><span class="line"><span class="comment"># 시그널이 발생했을 때 실행될 함수</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">naver_signup</span><span class="params">(request, user, **kwargs)</span>:</span></span><br><span class="line">        social_user = SocialAccount.objects.filter(user=user)</span><br><span class="line">    <span class="keyword">if</span> social_user.exists():</span><br><span class="line">        user.last_name = social_user[<span class="number">0</span>].extra_data[<span class="string">'name'</span>]</span><br><span class="line">        user.save()</span><br><span class="line">    <span class="comment"># 시그널과 해당 함수를 connect</span></span><br><span class="line">    <span class="comment"># 시그널 연결 방법 2가지 : receiver 쓰는 방법, connect 쓰는 방법</span></span><br><span class="line">user_signed_up.connect(naver_signup)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="7-http-127-0-0-1-8000-accounts-login-접속하여-naver-누르고-로그인"><a href="#7-http-127-0-0-1-8000-accounts-login-접속하여-naver-누르고-로그인" class="headerlink" title="7. http://127.0.0.1:8000/accounts/login 접속하여 naver 누르고 로그인"></a>7. <a href="http://127.0.0.1:8000/accounts/login" target="_blank" rel="noopener">http://127.0.0.1:8000/accounts/login</a> 접속하여 naver 누르고 로그인</h2><ul>
+<li>admin으로 접속되어 있다면 로그아웃</li>
+<li>base.html에 로그인/로그아웃 URL 추가  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--// base.html //--&gt;</span><br><span class="line">&#123;% <span class="keyword">if</span> user.is_authenticated %&#125;</span><br><span class="line">&lt;!--// </span><br><span class="line">django-allauth 문서 홈페이지/Views 탭에서 로그인, 로그아웃 URL 이름 확인</span><br><span class="line">//--&gt;</span><br><span class="line">&lt;a href="&#123;% url 'account_logout' %&#125;"&gt;Logout&lt;/a&gt;</span><br><span class="line">&#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">&lt;a href="&#123;% url 'account_login' %&#125;"&gt;Login&lt;/a&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="8-뷰-페이지에서-소셜-회원가입-함수-작성"><a href="#8-뷰-페이지에서-소셜-회원가입-함수-작성" class="headerlink" title="8. 뷰 페이지에서 소셜 회원가입 함수 작성"></a>8. 뷰 페이지에서 소셜 회원가입 함수 작성</h2><ul>
+<li>경로 : bard &gt; views.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> allauth.account.signals <span class="keyword">import</span> user_signed_up</span><br><span class="line"><span class="keyword">from</span> allauth.socialaccount.models <span class="keyword">import</span> SocialAccount</span><br><span class="line"><span class="comment"># 시그널이 발생했을 때 실행될 함수</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">naver_signup</span><span class="params">(request, user, **kwargs)</span>:</span></span><br><span class="line">    social_user = SocialAccount.objects.filter(user=user)</span><br><span class="line">    <span class="keyword">if</span> social_user.exists():</span><br><span class="line">        user.last_name = social_user[<span class="number">0</span>].extra_data[<span class="string">'name'</span>]</span><br><span class="line">        user.save()</span><br><span class="line"><span class="comment"># 시그널과 해당 함수를 connect</span></span><br><span class="line"><span class="comment"># 시그널 연결 방법 2가지 : receiver 쓰는 방법, connect 쓰는 방법</span></span><br><span class="line">user_signed_up.connect(naver_signup)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 

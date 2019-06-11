@@ -8,8 +8,16 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/01/190601-django-allauth-facebook/</loc>
-        <lastmod>2019-06-11T04:29:22.518Z</lastmod>
+        <loc>https://chohyeonkeun.github.io/2019/05/15/190515-django-SNS-LOGIN/</loc>
+        <lastmod>2019-06-11T05:04:38.481Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/09/190609-django-tag-function/</loc>
+        <lastmod>2019-06-11T04:47:46.333Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -17,7 +25,31 @@
 
     <url>
         <loc>https://chohyeonkeun.github.io/2019/06/10/190610-django-comment-function/</loc>
-        <lastmod>2019-06-10T17:01:26.528Z</lastmod>
+        <lastmod>2019-06-11T04:47:37.504Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/05/190605-django-email-server/</loc>
+        <lastmod>2019-06-11T04:38:49.199Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/31/190531-django-openssl/</loc>
+        <lastmod>2019-06-11T04:38:22.622Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/01/190601-django-allauth-facebook/</loc>
+        <lastmod>2019-06-11T04:29:22.518Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -34,14 +66,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/05/13/190513-django-pythonanywhere/</loc>
         <lastmod>2019-06-10T02:13:27.888Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/09/190609-django-tag-function/</loc>
-        <lastmod>2019-06-09T17:36:09.125Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -96,14 +120,6 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/05/190605-django-email-server/</loc>
-        <lastmod>2019-06-06T15:03:16.352Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://chohyeonkeun.github.io/2019/05/27/190527-django-ckeditor/</loc>
         <lastmod>2019-06-04T01:55:57.629Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -130,14 +146,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/06/04/190604-django-ELB-SSL/</loc>
         <lastmod>2019-06-03T16:01:47.324Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/31/190531-django-openssl/</loc>
-        <lastmod>2019-06-03T11:19:29.018Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -266,14 +274,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/05/14/190514-django-pagenation/</loc>
         <lastmod>2019-05-20T16:23:56.618Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/15/190515-django-SNS-LOGIN/</loc>
-        <lastmod>2019-05-20T16:21:00.853Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
