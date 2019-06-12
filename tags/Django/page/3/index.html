@@ -76,6 +76,52 @@
     <header class="title">
       
         <h1>
+          <a href="/2019/05/25/190525-django-Email-login/">Email 로그인 기능 추가</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-25T14:01:33.000Z" itemprop="datePublished">
+    2019-05-25
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ul>
+<li>장고는 기본적으로 username으로 로그인하는 기능 제공</li>
+<li>username, email 둘 중 하나로 로그인 하도록 커스터마이징 필요</li>
+<li>커스텀 모델 백엔드를 추가하여 email, username 로그인 기능 추가 가능</li>
+<li>로그인 기능 제어하는 것은 AUTHENTICATION_BACKENDS에 설정된 모델 백엔드를 통해 이루어진다.</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/05/25/190525-django-Email-login/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
           <a href="/2019/05/24/190524-django-custom-user/">커스텀 유저 모델 만들기</a>
         </h1>
       
@@ -473,53 +519,6 @@
         
           <div class="more-link">
             <a href="/2019/05/16/190516-django-comment-function/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/15/190515-django-SNS-LOGIN/">SNS 네이버 로그인 기능 학습</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-15T13:41:30.000Z" itemprop="datePublished">
-    2019-05-15
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="django-allauth-기능-사용"><a href="#django-allauth-기능-사용" class="headerlink" title="django allauth 기능 사용"></a>django allauth 기능 사용</h2><h2 id="1-django-allauth-설치"><a href="#1-django-allauth-설치" class="headerlink" title="1. django-allauth 설치"></a>1. django-allauth 설치</h2><ul>
-<li><code>pip install django-allauth</code></li>
-</ul>
-<h2 id="2-settings-py-수정"><a href="#2-settings-py-수정" class="headerlink" title="2. settings.py 수정"></a>2. settings.py 수정</h2><ul>
-<li>아이디, 이메일, 소셜 로그인 가능하도록 설정  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">AUTHENTICATION_BACKENDS = (</span><br><span class="line">    <span class="string">'django.contrib.auth.backends.ModelBackend'</span>,</span><br><span class="line">    <span class="string">'allauth.account.auth_backends.AuthenticationBackend'</span>, </span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">INSTALLED_APP = [</span><br><span class="line">    <span class="string">'django.contrib.sites'</span>,</span><br><span class="line">    <span class="comment"># 소셜 로그인을 관리하기 위해 기본으로 생기는 앱들</span></span><br><span class="line">    <span class="string">'allauth'</span>,</span><br><span class="line">    <span class="string">'allauth.account'</span>,</span><br><span class="line">    <span class="string">'allauth.socialaccount'</span>,</span><br><span class="line">    <span class="string">'allauth.socialaccount.providers.naver'</span>,</span><br><span class="line"></span><br><span class="line">SITE_ID = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 로그인 후에 이동할 경로 추가</span></span><br><span class="line">LOGIN_REDIRECT_URL = <span class="string">'/'</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/05/15/190515-django-SNS-LOGIN/#more">Read On »</a>
           </div>
         
       

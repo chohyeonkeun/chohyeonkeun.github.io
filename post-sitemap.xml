@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/12/190612-django-ajax-checkbox/</loc>
+        <lastmod>2019-06-12T16:20:16.030Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/05/190605-django-email-server/</loc>
+        <lastmod>2019-06-12T06:07:15.092Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/06/11/190611-django-category-function/</loc>
         <lastmod>2019-06-12T03:30:04.997Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -34,14 +50,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/06/10/190610-django-comment-function/</loc>
         <lastmod>2019-06-11T04:47:37.504Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/05/190605-django-email-server/</loc>
-        <lastmod>2019-06-11T04:38:49.199Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
