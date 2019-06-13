@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>상위, 하위 카테고리 생성 및 기능 구현 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/06/13/190613-django-involved-category-function/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>상위, 하위 카테고리 생성 및 기능 구현</h1>
+    </header>
+
+    <section>
+      <ul>
+<li>이번 포스트에서는 상위, 하위 카테고리를 생성하여 카테고리 클릭 시, 해당 페이지로 이동하는 방법에 대해 학습한 내용을 다룰 것이다.</li>
+<li>이 기능에서 가장 중요한 것은, 상위 카테고리 클릭 시, 상위/하위 카테고리에 해당하는 모든 포스트들이 조회가 되어야 한다는 점이다.</li>
+</ul>
+<a id="more"></a>
+<hr>
+<h2 id="Category-기능-구현"><a href="#Category-기능-구현" class="headerlink" title="Category 기능 구현"></a>Category 기능 구현</h2><h3 id="1-Category-모델-작성"><a href="#1-Category-모델-작성" class="headerlink" title="1. Category 모델 작성"></a>1. Category 모델 작성</h3><blockquote>
+<p>ex) wps_onlineshop 프로젝트</p>
+</blockquote>
+<ul>
+<li>경로 : shop &gt; models.py   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> resolve_url</span><br><span class="line"><span class="keyword">from</span> ckeditor_uploader.fields <span class="keyword">import</span> RichTextUploadingField</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Category</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    parent_category = models.ForeignKey(<span class="string">'self'</span>, on_delete=models.SET_NULL, blank=<span class="literal">True</span>, null=<span class="literal">True</span>, related_name=<span class="string">'sub_categories'</span>)</span><br><span class="line">    name = models.CharField(max_length=<span class="number">200</span>)</span><br><span class="line">    slug = models.SlugField(max_length=<span class="number">200</span>, allow_unicode=<span class="literal">True</span>, unique=<span class="literal">True</span>)</span><br><span class="line">    image = models.ImageField(upload_to=<span class="string">'category_images/%Y/%m/%d'</span>, blank=<span class="literal">True</span>)</span><br><span class="line">    description = RichTextUploadingField(blank=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        ordering = [<span class="string">'name'</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_absolute_url</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> resolve_url(<span class="string">'product_in_category'</span>, self.slug)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=<span class="literal">True</span>, null=<span class="literal">True</span>, related_name=<span class="string">'products'</span>)</span><br><span class="line">    name = models.CharField(max_length=<span class="number">200</span>)</span><br><span class="line">    slug = models.SlugField(max_length=<span class="number">200</span>, allow_unicode=<span class="literal">True</span>, unique=<span class="literal">True</span>)</span><br><span class="line">    image = models.ImageField(upload_to=<span class="string">'product_images/%Y/%m/%d'</span>)</span><br><span class="line">    description = RichTextUploadingField(blank=<span class="literal">True</span>)</span><br><span class="line">    price = models.PositiveIntegerField()</span><br><span class="line">    stock = models.PositiveIntegerField()</span><br><span class="line">    available_display = models.BooleanField(default=<span class="literal">True</span>)</span><br><span class="line">    available_order = models.BooleanField(default=<span class="literal">True</span>)</span><br><span class="line">    created = models.DateTimeField(auto_now_add=<span class="literal">True</span>)</span><br><span class="line">    updated = models.DateField(auto_now=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"["</span>+self.category.name+<span class="string">"] "</span> + self.name</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-카테고리-페이지-경로-작성"><a href="#2-카테고리-페이지-경로-작성" class="headerlink" title="2. 카테고리 페이지 경로 작성"></a>2. 카테고리 페이지 경로 작성</h3><ul>
+<li>경로 : shop &gt; urls.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> .views <span class="keyword">import</span> *</span><br><span class="line">urlpatterns = [</span><br><span class="line">    <span class="comment"># url에 특정 카테고리 이름(=slug) 입력 시, 해당 카테고리 포스트로 이동되도록 경로 설정</span></span><br><span class="line">    path(<span class="string">'&lt;slug&gt;/'</span>, ProductList.as_view(), name=<span class="string">'product_in_category'</span>),</span><br><span class="line">    path(<span class="string">''</span>, ProductList.as_view(), name=<span class="string">'index'</span>),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-카테고리-클릭시-해당-카테고리별-포스트가-조회되도록-코드-작성"><a href="#3-카테고리-클릭시-해당-카테고리별-포스트가-조회되도록-코드-작성" class="headerlink" title="3. 카테고리 클릭시 해당 카테고리별 포스트가 조회되도록 코드 작성"></a>3. 카테고리 클릭시 해당 카테고리별 포스트가 조회되도록 코드 작성</h3><ul>
+<li>경로 : shop &gt; views.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductList</span><span class="params">(ListView)</span>:</span></span><br><span class="line">model = Product</span><br><span class="line">template_name = <span class="string">'shop/product_list.html'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_queryset</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="comment"># 상위 카테고리를 고르면 하위 카테고리 제품들이 한꺼번에 출력되도록 변경</span></span><br><span class="line">    queryset = super().get_queryset()</span><br><span class="line">    <span class="comment"># url로 '/&lt;slug&gt;/'을 입력했다면 아래 코드 실행</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">'slug'</span> <span class="keyword">in</span> self.kwargs:</span><br><span class="line">        category = Category.objects.filter(slug=self.kwargs[<span class="string">'slug'</span>])</span><br><span class="line">        <span class="keyword">if</span> category.exists():</span><br><span class="line">            category |= self.get_category_list(category[<span class="number">0</span>])</span><br><span class="line">            queryset = queryset.filter(category__in=category)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            queryset = queryset.none()</span><br><span class="line">    <span class="keyword">return</span> queryset</span><br><span class="line"></span><br><span class="line"><span class="comment"># 하위 카테고리가 있으면, 재귀함수로 더이상 하위 카테고리가 없을 때까지 반복하여 categories에 저장</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_category_list</span><span class="params">(self,category)</span>:</span></span><br><span class="line">    categories = category.sub_categories.all()</span><br><span class="line">    <span class="keyword">for</span> category <span class="keyword">in</span> categories:</span><br><span class="line">        categories |= self.get_category_list(category)</span><br><span class="line">    <span class="keyword">return</span> categories</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="4-최상위-카테고리를-기준으로-그-하위-카테고리들을-context-processors로-전달하기-위한-코드-작성"><a href="#4-최상위-카테고리를-기준으로-그-하위-카테고리들을-context-processors로-전달하기-위한-코드-작성" class="headerlink" title="4. 최상위 카테고리를 기준으로 그 하위 카테고리들을 context_processors로 전달하기 위한 코드 작성"></a>4. 최상위 카테고리를 기준으로 그 하위 카테고리들을 context_processors로 전달하기 위한 코드 작성</h3><ul>
+<li><p>경로 : shop &gt; context_processors.py</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> shop.models <span class="keyword">import</span> Category</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">category</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="comment"># id 1번을 'Home' 이라는 최상위 카테고리로 모델 저장하여 그 하위 카테고리들을 categories라는 변수로 반환  </span></span><br><span class="line">    categories = Category.objects.filter(parent_category=Category.objects.get(pk=<span class="number">1</span>)).order_by(<span class="string">'name'</span>)</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">'categories'</span>:categories&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>경로 : config(프로젝트) &gt; settings.py</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">TEMPLATES = [</span><br><span class="line">    &#123;</span><br><span class="line">	<span class="string">'BACKEND'</span>: <span class="string">'django.template.backends.django.DjangoTemplates'</span>,</span><br><span class="line">	<span class="comment"># 모든 페이지에 적용될 html이 있다면, 그 위치 설정</span></span><br><span class="line">	<span class="string">'DIRS'</span>: [os.path.join(BASE_DIR, <span class="string">'layout'</span>)],</span><br><span class="line">	<span class="string">'APP_DIRS'</span>: <span class="literal">True</span>,</span><br><span class="line">	<span class="string">'OPTIONS'</span>: &#123;</span><br><span class="line">	    <span class="string">'context_processors'</span>: [</span><br><span class="line">		...</span><br><span class="line">		<span class="comment"># context_processors.py 작성 시, 이 곳에 해당 위치 입력</span></span><br><span class="line">	        <span class="string">'shop.context_processors.category'</span>,</span><br><span class="line">	    ],</span><br><span class="line">	&#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="5-카테고리가-위치할-header-부분-코드-작성"><a href="#5-카테고리가-위치할-header-부분-코드-작성" class="headerlink" title="5. 카테고리가 위치할 header 부분 코드 작성"></a>5. 카테고리가 위치할 header 부분 코드 작성</h3><ul>
+<li><p>경로 : layout &gt; base.html</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">"navbar navbar-expand-lg navbar-light bg-light sticky-top"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"navbar-toggler"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">data-toggle</span>=<span class="string">"collapse"</span> <span class="attr">data-target</span>=<span class="string">"#navbarTogglerDemo01"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">aria-controls</span>=<span class="string">"navbarTogglerDemo01"</span> <span class="attr">aria-expanded</span>=<span class="string">"false"</span> <span class="attr">aria-label</span>=<span class="string">"Toggle navigation"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"navbar-toggler-icon"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"collapse navbar-collapse"</span> <span class="attr">id</span>=<span class="string">"navbarTogglerDemo01"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"navbar-nav mr-auto mt-2 mt-lg-0"</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 카테고리 리스트 들어갈 위치 --&gt;</span> </span><br><span class="line">                &#123;% include 'category_list.html' %&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-inline my-2 my-lg-0"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-control mr-sm-2"</span> <span class="attr">type</span>=<span class="string">"search"</span> <span class="attr">placeholder</span>=<span class="string">"Search"</span> <span class="attr">aria-label</span>=<span class="string">"Search"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-outline-success my-2 my-sm-0"</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>Search<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>경로 : layout &gt; category_list.html</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 최상위 카테고리의 모든 하위 카테고리들을 for문으로 실행하여 --&gt;</span></span><br><span class="line">&#123;% for category in categories %&#125;</span><br><span class="line">    <span class="comment">&lt;!-- 1차 하위 카테고리에 2차 하위 카테고리가 있을 경우 --&gt;</span></span><br><span class="line">    &#123;% if category.sub_categories.all|length %&#125;</span><br><span class="line">        <span class="comment">&lt;!-- bootstrap 프레임워크를 이용하여 dropdown 타입으로 카테고리 표현 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item dropdown"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 카테고리 클릭 시, Category모델에서 설정한 get_absolute_url 페이지로 이동  --&gt;</span> </span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"nav-link"</span> <span class="attr">href</span>=<span class="string">"&#123;&#123;category.get_absolute_url&#125;&#125;"</span> <span class="attr">id</span>=<span class="string">"menu_category_&#123;&#123;category.id&#125;&#125;"</span> <span class="attr">role</span>=<span class="string">"button"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">aria-haspopup</span>=<span class="string">"true"</span> <span class="attr">aria-expanded</span>=<span class="string">"false"</span>&gt;</span></span><br><span class="line">                &#123;&#123;category.name&#125;&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"dropdown-menu"</span> <span class="attr">aria-labelledby</span>=<span class="string">"menu_category_&#123;&#123;category.id&#125;&#125;"</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 1차 하위 카테고리의 2차 하위카테고리를 for문으로 순서대로 실행 --&gt;</span></span><br><span class="line">                &#123;% for sub_category in category.sub_categories.all %&#125;</span><br><span class="line">                <span class="comment">&lt;!-- 2차 하위카테고리를 dropdown 타입으로 표시하고, 클릭 시 해당 카테고리에 속하는 포스트가 조회되도록 코드 실행 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"dropdown-item"</span> <span class="attr">href</span>=<span class="string">"&#123;&#123;sub_category.get_absolute_url&#125;&#125;"</span>&gt;</span>&#123;&#123;sub_category.name&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                &#123;% endfor %&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 1차 하위 카테고리에 2차 하위 카테고리가 없는 경우 --&gt;</span>    </span><br><span class="line">    &#123;% else %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"nav-link"</span> <span class="attr">href</span>=<span class="string">"&#123;&#123;category.get_absolute_url&#125;&#125;"</span>&gt;</span>&#123;&#123;category.name&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br><span class="line"><span class="comment">&lt;!-- dropdown 타입 CSS 설정 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    .dropdown .dropdown-menu &#123;</span></span><br><span class="line"><span class="undefined">        display:none;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .dropdown:hover .dropdown-menu &#123;</span></span><br><span class="line"><span class="undefined">        display: block;</span></span><br><span class="line"><span class="undefined">        margin-top: 0;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-06-13T08:00:21.000Z" itemprop="datePublished">
+              2019-06-13
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Category/">Category</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

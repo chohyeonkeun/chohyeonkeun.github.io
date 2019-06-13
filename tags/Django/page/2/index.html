@@ -76,6 +76,58 @@
     <header class="title">
       
         <h1>
+          <a href="/2019/06/04/190604-django-ELB-setting/">ELB 셋팅</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-06-04T07:00:21.000Z" itemprop="datePublished">
+    2019-06-04
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="ELB-Elastic-Load-Balancing-란"><a href="#ELB-Elastic-Load-Balancing-란" class="headerlink" title="ELB(Elastic Load Balancing)란?"></a>ELB(Elastic Load Balancing)란?</h2><hr>
+<ul>
+<li>ELB는 AWS의 Load Balancer 서비스이다.</li>
+<li>크게 클래식, 네트워크, 애플리케이션 로드밸런서로 구성되어 있으며,</li>
+<li>보통의 경우 애플리케이션 로드밸런서를 사용하는 것이 편리하다.</li>
+<li>ELB는 복수의 서버에 적절한 트래픽을 분산시키기 위해 사용하며,</li>
+<li>보통의 경우 R.R 방식을 사용해 트래픽을 분산한다.</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/06/04/190604-django-ELB-setting/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
           <a href="/2019/06/03/190603-django-ACM-SSL/">ACM으로 SSL 인증서 발급</a>
         </h1>
       
@@ -471,58 +523,6 @@
         
           <div class="more-link">
             <a href="/2019/05/27/190527-django-wysiwig/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/26/190526-django-EC2-django-server/">EC2에 장고 서버 셋팅</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-26T12:31:40.000Z" itemprop="datePublished">
-    2019-05-26
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/AWS/">AWS</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <ol>
-<li><p>EC2에 SSH로 접속</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -i ~/.ssh/[키 페어 파일 이름; django-wps.pem] ubuntu@[도메인 주소]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>장고를 위한 계정 추가</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo useradd -g www-data -b /home -m -s /bin/bash django</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-        
-          <div class="more-link">
-            <a href="/2019/05/26/190526-django-EC2-django-server/#more">Read On »</a>
           </div>
         
       
