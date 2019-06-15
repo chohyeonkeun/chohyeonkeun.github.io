@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/tags/board/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <ul class="Index">
+  
+    <header class="PageTitle">
+        <h1>{ board }</h1>
+    </header>
+  
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/16/190516-django-board-comment-function/">게시판 댓글 기능 적용</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-16T14:18:55.000Z" itemprop="datePublished">
+    2019-05-16
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/comment/">comment</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/board/">board</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <p>ex) 게시판 프로젝트(board_project)</p>
+<h2 id="1-특정-페이지에서-댓글-템플릿-연동"><a href="#1-특정-페이지에서-댓글-템플릿-연동" class="headerlink" title="1. 특정 페이지에서 댓글 템플릿 연동"></a>1. 특정 페이지에서 댓글 템플릿 연동</h2><ul>
+<li>댓글 목록의 template 따로 생성 (댓글 부분 페이지네이션 필요하기 때문)</li>
+<li>경로 : templates &gt; board &gt; comment_list.html  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-striped"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span> <span class="attr">colspan</span>=<span class="string">"3"</span> <span class="attr">class</span>=<span class="string">"align-left"</span>&gt;</span>댓글 목록<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">    &#123;% for comment in comments %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;comment.text&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;comment.author.username&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;comment.created&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/05/16/190516-django-board-comment-function/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+</ul>
+
+
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

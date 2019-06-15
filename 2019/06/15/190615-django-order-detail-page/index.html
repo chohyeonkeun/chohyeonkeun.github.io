@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>관리자 사이트 - 결제 정보의 상세정보 조회 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/06/15/190615-django-order-detail-page/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>관리자 사이트 - 결제 정보의 상세정보 조회</h1>
+    </header>
+
+    <section>
+      <ul>
+<li>이번 포스트에서는 온라인 쇼핑몰 사이트를 예로 들어 고객이 결제한 상품의 상세정보를 관리자 사이트에서 확인하는 방법에 대해 알아볼 것이다.</li>
+</ul>
+<a id="more"></a>
+<hr>
+<h3 id="1-관리자-사이트에서-상세-정보로-이동할-링크-설정"><a href="#1-관리자-사이트에서-상세-정보로-이동할-링크-설정" class="headerlink" title="1. 관리자 사이트에서 상세 정보로 이동할 링크 설정"></a>1. 관리자 사이트에서 상세 정보로 이동할 링크 설정</h3><ul>
+<li>경로 : wps_onlineshop &gt; order &gt; admin.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.utils.safestring <span class="keyword">import</span> mark_safe</span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> resolve_url</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">order_detail</span><span class="params">(obj)</span>:</span></span><br><span class="line">    <span class="comment"># 주문 상세 정보 페이</span></span><br><span class="line">    <span class="comment"># 상세 페이지 링크</span></span><br><span class="line">    url = resolve_url(<span class="string">'admin_order_detail'</span>, obj.id)</span><br><span class="line">    <span class="keyword">return</span> mark_safe(<span class="string">f'&lt;a href="<span class="subst">&#123;url&#125;</span>"&gt;detail&lt;/a&gt;'</span>)</span><br><span class="line">order_detail.short_description = <span class="string">'Detail'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-결제한-상품의-상세-페이지의-경로-설정"><a href="#2-결제한-상품의-상세-페이지의-경로-설정" class="headerlink" title="2. 결제한 상품의 상세 페이지의 경로 설정"></a>2. 결제한 상품의 상세 페이지의 경로 설정</h3><ul>
+<li>경로 : order &gt; urls.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> .views <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'admin/order/&lt;int:order_id&gt;/'</span>, admin_order_detail, name=<span class="string">'admin_order_detail'</span>),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-관리자-사이트에서-detail-클릭-시-나타나는-페이지-작성"><a href="#3-관리자-사이트에서-detail-클릭-시-나타나는-페이지-작성" class="headerlink" title="3. 관리자 사이트에서 detail 클릭 시, 나타나는 페이지 작성"></a>3. 관리자 사이트에서 detail 클릭 시, 나타나는 페이지 작성</h3><ul>
+<li><p>경로 : order &gt; views.py</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> get_object_or_404</span><br><span class="line"><span class="keyword">from</span> django.contrib.admin.views.decorators <span class="keyword">import</span> staff_member_required</span><br><span class="line"></span><br><span class="line"><span class="meta">@staff_member_required</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">admin_order_detail</span><span class="params">(request, order_id)</span>:</span></span><br><span class="line">    order = get_object_or_404(Order, id=order_id)</span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'order/admin/order_detail.html'</span>, &#123;<span class="string">'order'</span>:order&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>경로 : order &gt; templates &gt; order &gt; admin &gt; order_detail.html</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends 'admin/base_site.html' %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block title %&#125;</span><br><span class="line">    Order &#123;&#123;order.id&#125;&#125; Detail</span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line"><span class="comment">&lt;!-- 상세 페이지 상단에 브레드크럼 네비게이션 표시(Home &gt; Orders &gt; Order 7 &gt; Detail)  --&gt;</span></span><br><span class="line">&#123;% block breadcrumbs %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"breadcrumbs"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;% url 'admin:index' %&#125;"</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">a</span>&gt;</span> &amp;rsaquo;</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;% url 'admin:order_order_changelist' %&#125;"</span>&gt;</span>Orders<span class="tag">&lt;/<span class="name">a</span>&gt;</span> &amp;rsaquo;</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;% url 'admin:order_order_change' order.id %&#125;"</span>&gt;</span>Order &#123;&#123;order.id&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span> &amp;rsaquo;</span><br><span class="line">        Detail</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Order &#123;&#123;order.id&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"object-tools"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 인쇄 버튼 추가 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">onclick</span>=<span class="string">"window.print();"</span>&gt;</span>Print order<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>Created<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;order.created&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>Customer<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;order.first_name&#125;&#125; &#123;&#123;order.last_name&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>E-mail<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;order.email&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>Address<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;order.address&#125;&#125; &#123;&#123;order.postal_code&#125;&#125; &#123;&#123;order.city&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>Total amount<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;order.get_total_price&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Product List<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-striped"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>#<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>Unit Price<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>Quantity<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>Price<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">    &#123;% for item in order.items.all %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;forloop.counter&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;item.product.name&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;item.price&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;item.quantity&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;item.get_item_total_price&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-06-15T08:00:21.000Z" itemprop="datePublished">
+              2019-06-15
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/order/">order</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

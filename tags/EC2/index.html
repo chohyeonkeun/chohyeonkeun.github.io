@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/tags/ec2/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <ul class="Index">
+  
+    <header class="PageTitle">
+        <h1>{ EC2 }</h1>
+    </header>
+  
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/06/06/190606-django-EC2-django-deploy/">EC2에 장고 배포하기</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-06-06T08:00:21.000Z" itemprop="datePublished">
+    2019-06-06
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/deploy/">deploy</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/EC2/">EC2</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ul>
+<li>EC2는 아마존 인프라에서 사용되는 범용 서버 컴퓨팅 서비스이다.</li>
+<li>EC2를 이용하면 다양한 서버를 운영할 수 있지만,</li>
+<li>장고 애플리케이션을 구동하기 위해서는 웹 서버가 필요하므로 EC2로 장고 웹 서버를 설정하고 배포하는 방법을 아래와 같은 순서로 진행하겠다.</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/06/06/190606-django-EC2-django-deploy/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/26/190526-django-EC2-django-server/">EC2에 장고 서버 셋팅</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-26T12:31:40.000Z" itemprop="datePublished">
+    2019-05-26
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/EC2/">EC2</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ol>
+<li><p>EC2에 SSH로 접속</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -i ~/.ssh/[키 페어 파일 이름; django-wps.pem] ubuntu@[도메인 주소]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>장고를 위한 계정 추가</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo useradd -g www-data -b /home -m -s /bin/bash django</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+        
+          <div class="more-link">
+            <a href="/2019/05/26/190526-django-EC2-django-server/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/23/190523-django-EC2-webserver/">EC2에 웹 서버 설정</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-23T13:51:40.000Z" itemprop="datePublished">
+    2019-05-23
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/EC2/">EC2</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/web-server/">web-server</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ul>
+<li>웹서버 프로그램은 대표적으로 Apache와 Nginx가 있다.</li>
+<li>장고 웹 서비스를 구축할 때는 Nginx를 더 많이 사용하는 추세이다.</li>
+</ul>
+<h2 id="EC2-웹-서버-설정-방법"><a href="#EC2-웹-서버-설정-방법" class="headerlink" title="EC2 웹 서버 설정 방법"></a>EC2 웹 서버 설정 방법</h2><ol>
+<li>EC2에 SSH로 접속 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -i ~/.ssh/[키 페어 파일 이름; django-wps.pem] ubuntu@[퍼블릭 DNS 또는 IP]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+        
+          <div class="more-link">
+            <a href="/2019/05/23/190523-django-EC2-webserver/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/22/190522-django-EC2/">EC2 인스턴스 만들기</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-22T14:07:11.000Z" itemprop="datePublished">
+    2019-05-22
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/EC2/">EC2</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="EC2-Elastic-Cloud-Computing의-약어로-아마존의-대표적인-서버-인스턴스-서버"><a href="#EC2-Elastic-Cloud-Computing의-약어로-아마존의-대표적인-서버-인스턴스-서버" class="headerlink" title="EC2 :  Elastic Cloud Computing의 약어로 아마존의 대표적인 서버 인스턴스 서버"></a>EC2 :  Elastic Cloud Computing의 약어로 아마존의 대표적인 서버 인스턴스 서버</h3><h4 id="1-서비스에서-컴퓨팅-gt-EC2-선택"><a href="#1-서비스에서-컴퓨팅-gt-EC2-선택" class="headerlink" title="1. 서비스에서 컴퓨팅 -&gt; EC2 선택"></a>1. 서비스에서 컴퓨팅 -&gt; EC2 선택</h4><h4 id="2-EC2-화면이-나타나면-화면-중앙에-있는-인스턴스-시작-버튼-클릭"><a href="#2-EC2-화면이-나타나면-화면-중앙에-있는-인스턴스-시작-버튼-클릭" class="headerlink" title="2. EC2 화면이 나타나면 화면 중앙에 있는 [인스턴스 시작] 버튼 클릭"></a>2. EC2 화면이 나타나면 화면 중앙에 있는 [인스턴스 시작] 버튼 클릭</h4><h4 id="3-EC2는-다양한-운영체제-사용-가능-가장-보편적인-웹-서버-운영체제인-리눅스-중에서-Ubuntu-Server-18-04-64Bit-선택-버튼-클릭"><a href="#3-EC2는-다양한-운영체제-사용-가능-가장-보편적인-웹-서버-운영체제인-리눅스-중에서-Ubuntu-Server-18-04-64Bit-선택-버튼-클릭" class="headerlink" title="3. EC2는 다양한 운영체제 사용 가능. 가장 보편적인 웹 서버 운영체제인 리눅스 중에서 Ubuntu Server 18.04 64Bit [선택] 버튼 클릭"></a>3. EC2는 다양한 운영체제 사용 가능. 가장 보편적인 웹 서버 운영체제인 리눅스 중에서 Ubuntu Server 18.04 64Bit [선택] 버튼 클릭</h4>
+        
+          <div class="more-link">
+            <a href="/2019/05/22/190522-django-EC2/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+</ul>
+
+
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

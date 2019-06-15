@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/tags/deploy/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <ul class="Index">
+  
+    <header class="PageTitle">
+        <h1>{ deploy }</h1>
+    </header>
+  
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/06/06/190606-django-EC2-django-deploy/">EC2에 장고 배포하기</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-06-06T08:00:21.000Z" itemprop="datePublished">
+    2019-06-06
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/deploy/">deploy</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/EC2/">EC2</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ul>
+<li>EC2는 아마존 인프라에서 사용되는 범용 서버 컴퓨팅 서비스이다.</li>
+<li>EC2를 이용하면 다양한 서버를 운영할 수 있지만,</li>
+<li>장고 애플리케이션을 구동하기 위해서는 웹 서버가 필요하므로 EC2로 장고 웹 서버를 설정하고 배포하는 방법을 아래와 같은 순서로 진행하겠다.</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/06/06/190606-django-EC2-django-deploy/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/13/190513-django-pythonanywhere/">Pythonanywhere 이용한 배포</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-13T14:39:11.000Z" itemprop="datePublished">
+    2019-05-13
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/deploy/">deploy</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Pythonanywhere/">Pythonanywhere</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="1-Github-업로드"><a href="#1-Github-업로드" class="headerlink" title="1. Github 업로드"></a>1. Github 업로드</h2><ul>
+<li>Github - new repository 생성</li>
+<li>해당 repo 주소 복사</li>
+<li>경로 : 프로젝트 디렉토리 위치<ul>
+<li>git init</li>
+<li>git add -A .   <em>(git add 하기 전에 .gitignore 폴더 생성하여 git에 올리지 않을 항목 입력)</em></li>
+<li>git commit -m ‘message’</li>
+<li>git remote add origin ‘repo 주소’ <em>(해당 repo주소를 ‘origin’으로 설정)</em></li>
+<li>git push -u origin master</li>
+</ul>
+</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/05/13/190513-django-pythonanywhere/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/07/190507-django-bookmark-project-3/">북마크 프로젝트_배포(heroku)</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-07T08:28:23.000Z" itemprop="datePublished">
+    2019-05-07
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/bookmark/">bookmark</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Heroku/">Heroku</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/deploy/">deploy</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="1-heroku-다운로드-및-설치"><a href="#1-heroku-다운로드-및-설치" class="headerlink" title="1. heroku 다운로드 및 설치"></a>1. heroku 다운로드 및 설치</h2><ul>
+<li>macOS : <code>brew tap heroku/brew &amp;&amp; brew install heroku</code></li>
+<li>Ubuntu 16+ : <code>sudo snap install -classic heroku</code></li>
+<li>Windows : <a href="https://devcenter.heroku.com/articles/heroku-cli#download-and-install" target="_blank" rel="noopener">https://devcenter.heroku.com/articles/heroku-cli#download-and-install</a> 에서 다운로드 및 설치</li>
+</ul>
+<h2 id="2-추가-모듈-설치"><a href="#2-추가-모듈-설치" class="headerlink" title="2. 추가 모듈 설치"></a>2. 추가 모듈 설치</h2><blockquote>
+<p>경로 : bookmark_project &gt; <code>pip3 install [모듈명]</code></p>
+</blockquote>
+<ul>
+<li>dj-database-url : 데이터베이스 관련 옵션을 변수로 쉽게 접근할 수 있게 해주는 유틸리티</li>
+<li>gunicorn : wsgi용 미들웨어 –&gt; 웹서버와 장고 사리의 다리 역할</li>
+<li>whitenoise : static 파일 서빙용 미들웨어</li>
+<li>psycopg2-binary : postgreSQL용 드라이버</li>
+</ul>
+<p><br><br>
+        
+          <div class="more-link">
+            <a href="/2019/05/07/190507-django-bookmark-project-3/#more">Read On »</a>
+          </div>
+        
+      
+    </p></div>
+</article>
+
+    </li>
+  
+</ul>
+
+
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
