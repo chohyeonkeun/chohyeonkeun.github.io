@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/15/190615-django-order-csv-file/</loc>
+        <lastmod>2019-06-15T06:37:42.903Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/05/03/190503-django-page-function/</loc>
         <lastmod>2019-06-15T05:12:46.242Z</lastmod>
         <changefreq>weekly</changefreq>
