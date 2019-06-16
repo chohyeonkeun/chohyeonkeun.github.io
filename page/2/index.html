@@ -72,6 +72,56 @@
     <header class="title">
       
         <h1>
+          <a href="/2019/06/07/190607-django-multi-database/">멀티 데이터베이스 사용</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-06-07T08:00:21.000Z" itemprop="datePublished">
+    2019-06-07
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Database/">Database</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="장고의-멀티데이터베이스-기능"><a href="#장고의-멀티데이터베이스-기능" class="headerlink" title="장고의 멀티데이터베이스 기능"></a>장고의 멀티데이터베이스 기능</h2><hr>
+<ul>
+<li>인프라를 스케일링할 때 데이터베이스도 역시 스케일링을 고려해야 한다.</li>
+<li>데이터베이스는 동기화 문제가 발생하므로 웹 서버 인스턴스처럼 아웃 스케일링 방식을 쉽게 사용할 수 없으나,</li>
+<li>대부분의 데이터베이스 시스템은 마스터와 읽기전용 슬레이브 데이터베이스 형태를 지원해준다.</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/06/07/190607-django-multi-database/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
           <a href="/2019/06/06/190606-django-EC2-django-deploy/">EC2에 장고 배포하기</a>
         </h1>
       
@@ -531,60 +581,6 @@
         
           <div class="more-link">
             <a href="/2019/05/30/190530-django-FTP/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/30/190530-django-nginx-resource-serving/">Nginx를 사용한 리소스 파일 서빙하기</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-29T17:03:11.000Z" itemprop="datePublished">
-    2019-05-30
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/AWS/">AWS</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/Nginx/">Nginx</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h3 id="1-각-사이트를-위한-nginx의-설정-파일-편집하여-아래-내용-추가"><a href="#1-각-사이트를-위한-nginx의-설정-파일-편집하여-아래-내용-추가" class="headerlink" title="1. 각 사이트를 위한 nginx의 설정 파일 편집하여 아래 내용 추가"></a>1. 각 사이트를 위한 nginx의 설정 파일 편집하여 아래 내용 추가</h3><ul>
-<li><p>경로</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -i ~/.ssh/[키 페어 파일 이름] ubuntu@[퍼블릭 DNS 혹은 IP 주소]</span><br></pre></td></tr></table></figure>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/nginx/sites-available/staticweb</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/05/30/190530-django-nginx-resource-serving/#more">Read On »</a>
           </div>
         
       
