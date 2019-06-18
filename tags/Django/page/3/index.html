@@ -76,6 +76,60 @@
     <header class="title">
       
         <h1>
+          <a href="/2019/05/30/190530-django-nginx-resource-serving/">Nginx를 사용한 리소스 파일 서빙하기</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-29T17:03:11.000Z" itemprop="datePublished">
+    2019-05-30
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Nginx/">Nginx</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="1-각-사이트를-위한-nginx의-설정-파일-편집하여-아래-내용-추가"><a href="#1-각-사이트를-위한-nginx의-설정-파일-편집하여-아래-내용-추가" class="headerlink" title="1. 각 사이트를 위한 nginx의 설정 파일 편집하여 아래 내용 추가"></a>1. 각 사이트를 위한 nginx의 설정 파일 편집하여 아래 내용 추가</h3><ul>
+<li><p>경로</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -i ~/.ssh/[키 페어 파일 이름] ubuntu@[퍼블릭 DNS 혹은 IP 주소]</span><br></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/nginx/sites-available/staticweb</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/05/30/190530-django-nginx-resource-serving/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
           <a href="/2019/05/29/190529-django-static-serving/">Static 파일 서빙하기</a>
         </h1>
       
@@ -526,51 +580,6 @@
         
       
     </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/21/190521-django-extensions/">django extensions 설치 방법</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-21T13:38:45.000Z" itemprop="datePublished">
-    2019-05-21
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/extensions/">extensions</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="1-명령어를-이용해-모듈-설치"><a href="#1-명령어를-이용해-모듈-설치" class="headerlink" title="1. 명령어를 이용해 모듈 설치"></a>1. 명령어를 이용해 모듈 설치</h2><p><code>$ pip install django-extensions</code><br>
-        
-          <div class="more-link">
-            <a href="/2019/05/21/190521-django-extensions/#more">Read On »</a>
-          </div>
-        
-      
-    </p></div>
 </article>
 
     </li>

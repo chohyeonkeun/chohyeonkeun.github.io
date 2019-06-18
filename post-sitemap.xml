@@ -8,8 +8,8 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/13/190613-django-involved-category-function/</loc>
-        <lastmod>2019-06-18T09:36:20.836Z</lastmod>
+        <loc>https://chohyeonkeun.github.io/2019/06/17/190617-django-payment-function/</loc>
+        <lastmod>2019-06-18T10:01:59.775Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -17,7 +17,23 @@
 
     <url>
         <loc>https://chohyeonkeun.github.io/2019/05/08/190508-django-AWS-1/</loc>
-        <lastmod>2019-06-18T05:58:26.054Z</lastmod>
+        <lastmod>2019-06-18T09:57:46.055Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/22/190522-django-EC2/</loc>
+        <lastmod>2019-06-18T09:49:48.775Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/13/190613-django-involved-category-function/</loc>
+        <lastmod>2019-06-18T09:36:20.836Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -202,14 +218,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/05/23/190523-django-EC2-webserver/</loc>
         <lastmod>2019-06-15T05:05:00.098Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/22/190522-django-EC2/</loc>
-        <lastmod>2019-06-15T05:04:42.918Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
