@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/06/190606-django-EC2-django-deploy/</loc>
+        <lastmod>2019-06-20T05:44:07.281Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/14/190514-django-pagination/</loc>
+        <lastmod>2019-06-19T04:14:23.611Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/06/01/190601-django-allauth-facebook/</loc>
         <lastmod>2019-06-18T15:40:27.490Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -136,14 +152,6 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/14/190514-django-pagenation/</loc>
-        <lastmod>2019-06-15T05:09:47.351Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://chohyeonkeun.github.io/2019/06/10/190610-django-blog-comment-function/</loc>
         <lastmod>2019-06-15T05:09:10.639Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -210,14 +218,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/05/21/190521-django-extensions/</loc>
         <lastmod>2019-06-15T05:05:56.861Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/06/190606-django-EC2-django-deploy/</loc>
-        <lastmod>2019-06-15T05:05:33.121Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
