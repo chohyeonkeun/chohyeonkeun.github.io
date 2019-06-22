@@ -8,11 +8,11 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sat, 22 Jun 2019 12:31:21 GMT</pubDate>
+    <pubDate>Sat, 22 Jun 2019 12:31:43 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>Docker, Elastic Beanstalk 이용하여 배포하기</title>
+      <title>Docker와 Elastic Beanstalk 이용하여 배포하기</title>
       <link>https://chohyeonkeun.github.io/2019/06/21/190621-django-docker-elastic-beanstalk/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/21/190621-django-docker-elastic-beanstalk/</guid>
       <pubDate>Fri, 21 Jun 2019 08:00:21 GMT</pubDate>
