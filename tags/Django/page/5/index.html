@@ -76,6 +76,171 @@
     <header class="title">
       
         <h1>
+          <a href="/2019/05/15/190515-django-SNS-LOGIN/">SNS 네이버 로그인 기능 학습</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-15T13:41:30.000Z" itemprop="datePublished">
+    2019-05-15
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/SNS/">SNS</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/naver/">naver</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/login/">login</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="django-allauth-기능-사용"><a href="#django-allauth-기능-사용" class="headerlink" title="django allauth 기능 사용"></a>django allauth 기능 사용</h2><h2 id="1-django-allauth-설치"><a href="#1-django-allauth-설치" class="headerlink" title="1. django-allauth 설치"></a>1. django-allauth 설치</h2><ul>
+<li><code>pip install django-allauth</code></li>
+</ul>
+<h2 id="2-settings-py-수정"><a href="#2-settings-py-수정" class="headerlink" title="2. settings.py 수정"></a>2. settings.py 수정</h2><ul>
+<li>아이디, 이메일, 소셜 로그인 가능하도록 설정  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">AUTHENTICATION_BACKENDS = (</span><br><span class="line">    <span class="string">'django.contrib.auth.backends.ModelBackend'</span>,</span><br><span class="line">    <span class="string">'allauth.account.auth_backends.AuthenticationBackend'</span>, </span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">INSTALLED_APP = [</span><br><span class="line">    <span class="string">'django.contrib.sites'</span>,</span><br><span class="line">    <span class="comment"># 소셜 로그인을 관리하기 위해 기본으로 생기는 앱들</span></span><br><span class="line">    <span class="string">'allauth'</span>,</span><br><span class="line">    <span class="string">'allauth.account'</span>,</span><br><span class="line">    <span class="string">'allauth.socialaccount'</span>,</span><br><span class="line">    <span class="string">'allauth.socialaccount.providers.naver'</span>,</span><br><span class="line"></span><br><span class="line">SITE_ID = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 로그인 후에 이동할 경로 추가</span></span><br><span class="line">LOGIN_REDIRECT_URL = <span class="string">'/'</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/05/15/190515-django-SNS-LOGIN/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/14/190514-django-pagination/">Pagination 구현 방법</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-14T14:31:48.000Z" itemprop="datePublished">
+    2019-05-14
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/pagination/">pagination</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="게시판-board-프로젝트를-예로-들어보자"><a href="#게시판-board-프로젝트를-예로-들어보자" class="headerlink" title="게시판(board) 프로젝트를 예로 들어보자."></a>게시판(board) 프로젝트를 예로 들어보자.</h2><h2 id="1-뷰에서-페이지-설정"><a href="#1-뷰에서-페이지-설정" class="headerlink" title="1. 뷰에서 페이지 설정"></a>1. 뷰에서 페이지 설정</h2><ul>
+<li>경로 : board_project &gt; board &gt; views.py<br><br>
+        
+          <div class="more-link">
+            <a href="/2019/05/14/190514-django-pagination/#more">Read On »</a>
+          </div>
+        
+      
+    </li></ul></div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/13/190513-django-pythonanywhere/">Pythonanywhere 이용한 배포</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-13T14:39:11.000Z" itemprop="datePublished">
+    2019-05-13
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/deploy/">deploy</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Pythonanywhere/">Pythonanywhere</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="1-Github-업로드"><a href="#1-Github-업로드" class="headerlink" title="1. Github 업로드"></a>1. Github 업로드</h2><ul>
+<li>Github - new repository 생성</li>
+<li>해당 repo 주소 복사</li>
+<li>경로 : 프로젝트 디렉토리 위치<ul>
+<li>git init</li>
+<li>git add -A .   <em>(git add 하기 전에 .gitignore 폴더 생성하여 git에 올리지 않을 항목 입력)</em></li>
+<li>git commit -m ‘message’</li>
+<li>git remote add origin ‘repo 주소’ <em>(해당 repo주소를 ‘origin’으로 설정)</em></li>
+<li>git push -u origin master</li>
+</ul>
+</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/05/13/190513-django-pythonanywhere/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
           <a href="/2019/05/12/190512-django-disqus/">disqus 연동한 댓글 기능 적용</a>
         </h1>
       
@@ -475,165 +640,11 @@
 
     </li>
   
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/05/190505-django-bookmark-project-1/">북마크 프로젝트_앱 생성</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-05T10:11:03.000Z" itemprop="datePublished">
-    2019-05-05
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/bookmark/">bookmark</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/basic/">basic</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="1-project-생성"><a href="#1-project-생성" class="headerlink" title="1. project 생성"></a>1. project 생성</h2><p>원래 프로젝트 이름만 작성하면, 프로젝트 폴더 안에 프로젝트 폴더가 생기게 되는데<br>[프로젝트 이름] 뒤에 ‘.’을 작성하면 현재 디렉토리에 ‘config’라는 폴더를 바로 생성해준다.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ django-admin startproject config .        <span class="comment"># bookmark_project 디렉토리 위치에서 실행</span></span><br></pre></td></tr></table></figure>
-<h2 id="2-app-생성"><a href="#2-app-생성" class="headerlink" title="2. app 생성"></a>2. app 생성</h2><p>‘bookmark’ 이름으로 앱을 생성해준다.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python3 manage.py bookmark                <span class="comment"># bookmark_project 디렉토리 위치에서 실행</span></span><br></pre></td></tr></table></figure>
-<p><br><br>
-        
-          <div class="more-link">
-            <a href="/2019/05/05/190505-django-bookmark-project-1/#more">Read On »</a>
-          </div>
-        
-      
-    </p></div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/04/190504-django-Base-Procedure/">Django 튜터리얼 학습</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-04T09:34:10.000Z" itemprop="datePublished">
-    2019-05-04
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/tutorial/">tutorial</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="1-장고-프로젝트-진행할-디렉토리-생성"><a href="#1-장고-프로젝트-진행할-디렉토리-생성" class="headerlink" title="1. 장고 프로젝트 진행할 디렉토리 생성"></a>1. 장고 프로젝트 진행할 디렉토리 생성</h2><ul>
-<li>장고 프로젝트를 진행할 디렉토리를 생성해준다. (원하는 경로에 디렉토리 생성)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir django_project                         <span class="comment"># django_project 디렉토리 생성</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="2-가상환경-설치-및-활성화"><a href="#2-가상환경-설치-및-활성화" class="headerlink" title="2. 가상환경 설치 및 활성화"></a>2. 가상환경 설치 및 활성화</h2><ul>
-<li>가상환경이 설치되어 있지 않다면 pip install을 사용하자. </li>
-<li>혹시 모르니, pip version 확인하여 최신버전으로 업그레이드를 해보자. (bookmark_project 디렉토리 위치에서 실행)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ pip --version                               <span class="comment"># pip version 확인</span></span><br><span class="line">$ pip install --upgrade pip                   <span class="comment"># pip 업그레이드</span></span><br><span class="line">$ pip install virtualenv                      <span class="comment"># virtualenv 설치</span></span><br><span class="line">$ virtualenv --python=python3.6 venv          <span class="comment"># virtualenv를 'venv'라는 이름으로 설치하고, python3.6으로 python 버젼 설정 </span></span><br><span class="line">$ <span class="built_in">source</span> venv/bin/activate                    <span class="comment"># virtualenv(venv) 활성화</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><br><br>
-        
-          <div class="more-link">
-            <a href="/2019/05/04/190504-django-Base-Procedure/#more">Read On »</a>
-          </div>
-        
-      
-    </p></div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/03/190503-django-page-function/">Page 기능 학습</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-03T08:00:21.000Z" itemprop="datePublished">
-    2019-05-03
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/page/">page</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <blockquote>
-<h2 id="함수형-뷰에서-paginator-없이-page-기능-구현"><a href="#함수형-뷰에서-paginator-없이-page-기능-구현" class="headerlink" title="함수형 뷰에서 paginator 없이 page 기능 구현"></a>함수형 뷰에서 paginator 없이 page 기능 구현</h2></blockquote>
-<h3 id="경로-board-project-gt-board-gt-views-py"><a href="#경로-board-project-gt-board-gt-views-py" class="headerlink" title="- 경로 : board_project &gt; board &gt; views.py"></a>- 경로 : board_project &gt; board &gt; views.py</h3>
-        
-          <div class="more-link">
-            <a href="/2019/05/03/190503-django-page-function/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
 </ul>
 
   <section id="nav-wrapper">
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/Django/page/4/">« prev</a><a class="page-number" href="/tags/Django/">1</a><span class="space">&hellip;</span><a class="page-number" href="/tags/Django/page/3/">3</a><a class="page-number" href="/tags/Django/page/4/">4</a><span class="page-number current">5</span>
+      <a class="extend prev" rel="prev" href="/tags/Django/page/4/">« prev</a><a class="page-number" href="/tags/Django/">1</a><span class="space">&hellip;</span><a class="page-number" href="/tags/Django/page/3/">3</a><a class="page-number" href="/tags/Django/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/tags/Django/page/6/">6</a><a class="extend next" rel="next" href="/tags/Django/page/6/">next »</a>
     </nav>
   </section>
 

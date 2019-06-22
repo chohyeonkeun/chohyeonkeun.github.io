@@ -72,6 +72,167 @@
     <header class="title">
       
         <h1>
+          <a href="/2019/06/03/190603-django-ACM-SSL/">ACM으로 SSL 인증서 발급</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-06-03T08:00:21.000Z" itemprop="datePublished">
+    2019-06-03
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/ACM/">ACM</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/ssl/">ssl</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="ACM에서-SSL-인증서를-발급하는-이유"><a href="#ACM에서-SSL-인증서를-발급하는-이유" class="headerlink" title="ACM에서 SSL 인증서를 발급하는 이유"></a>ACM에서 SSL 인증서를 발급하는 이유</h2><hr>
+<ul>
+<li>https 기능을 사이트에 적용하려면 웹 서버에 ssl 인증서를 등록해야 한다.</li>
+<li>로드밸런서를 사용하면 더 쉽게 인증서를 적용할 수 있다.</li>
+<li>일반적인 인증서를 일정 비용을 지불하여 공식 업체에서 발급 받지만, 아마존에서는 ACM 서비스를 통해 무료로 인증서를 발급한다.</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/06/03/190603-django-ACM-SSL/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/06/02/190602-python-regular-expression/">정규표현식 기초 학습</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-06-02T08:00:21.000Z" itemprop="datePublished">
+    2019-06-02
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Python/">Python</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/regular-expression/">regular-expression</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="정규표현식이란"><a href="#정규표현식이란" class="headerlink" title="정규표현식이란?"></a>정규표현식이란?</h2><hr>
+<ul>
+<li>특정한 규칙을 가진 문자열의 집합을 표현하는데 사용하는 형식 언어</li>
+<li>프로그래밍 언어 혹은 텍스트 에디터 등에서 문자열의 검색과 치환을 위한 용도로 사용</li>
+<li>정규표현식에서 사용하는 기호를 메타 문자라고 한다.</li>
+<li>메타 문자(meta characters) : 원래 그 문자가 가진 뜻이 아닌 표현식 내부에서 특정한 의미를 갖는 문자<ul>
+<li>ex) . 6 $ * + ? { } [ ] \ | ( )</li>
+</ul>
+</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/06/02/190602-python-regular-expression/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/06/01/190601-django-allauth-facebook/">django allauth 사용(facebook 연동)</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-06-01T13:55:01.000Z" itemprop="datePublished">
+    2019-06-01
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/allauth/">allauth</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/facebook/">facebook</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ul>
+<li>facebook은 https에 한해서 연동되므로, 앞서 포스팅했던 openssl로 인증서 생성 및 해당 프로젝트로 파일 이동시킨 후, 아래와 같은 절차를 따른다.</li>
+</ul>
+<h3 id="1-django-allauth-설치"><a href="#1-django-allauth-설치" class="headerlink" title="1. django-allauth 설치"></a>1. django-allauth 설치</h3><pre><code>pip install django-allauth
+</code></pre>
+        
+          <div class="more-link">
+            <a href="/2019/06/01/190601-django-allauth-facebook/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
           <a href="/2019/05/31/190531-django-openssl/">Openssl로 인증서 생성 및 ssl runserver 사용</a>
         </h1>
       
@@ -396,171 +557,6 @@
         
           <div class="more-link">
             <a href="/2019/05/27/190527-django-ckeditor/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/27/190527-django-wysiwig/">WYSIWIG 적용 방법</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-27T13:09:13.000Z" itemprop="datePublished">
-    2019-05-27
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/CKEditor/">CKEditor</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/WYSIWIG/">WYSIWIG</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="WYSIWIG란"><a href="#WYSIWIG란" class="headerlink" title="WYSIWIG란?"></a>WYSIWIG란?</h2><ul>
-<li>What You See Is What You Get의 약어</li>
-<li>웹 브라우저에서 사용할 수 있는 HTML 편집기</li>
-<li>일반적으로 웹에서 긴 내용의 텍스트를 입력받을 때는 textareat태그를 사용하나,</li>
-<li>블로그, 게시판 등에서는 주로 HTML을 사용한 편집기를 사용한다.</li>
-<li>ckeditor, tinymce 등 JS를 이용한 플러그인 사용</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/05/27/190527-django-wysiwig/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/26/190526-django-EC2-django-server/">EC2에 장고 서버 셋팅</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-26T12:31:40.000Z" itemprop="datePublished">
-    2019-05-26
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/AWS/">AWS</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/EC2/">EC2</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <ol>
-<li><p>EC2에 SSH로 접속</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -i ~/.ssh/[키 페어 파일 이름; django-wps.pem] ubuntu@[도메인 주소]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>장고를 위한 계정 추가</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo useradd -g www-data -b /home -m -s /bin/bash django</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-        
-          <div class="more-link">
-            <a href="/2019/05/26/190526-django-EC2-django-server/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/25/190525-django-Email-login/">Email 로그인 기능 추가</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-25T14:01:33.000Z" itemprop="datePublished">
-    2019-05-25
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/login/">login</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/e-mail/">e-mail</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <ul>
-<li>장고는 기본적으로 username으로 로그인하는 기능 제공</li>
-<li>username, email 둘 중 하나로 로그인 하도록 커스터마이징 필요</li>
-<li>커스텀 모델 백엔드를 추가하여 email, username 로그인 기능 추가 가능</li>
-<li>로그인 기능 제어하는 것은 AUTHENTICATION_BACKENDS에 설정된 모델 백엔드를 통해 이루어진다.</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/05/25/190525-django-Email-login/#more">Read On »</a>
           </div>
         
       

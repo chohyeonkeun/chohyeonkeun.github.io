@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>번역 기능 학습 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/06/20/190620-django-translation/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>번역 기능 학습</h1>
+    </header>
+
+    <section>
+      <ul>
+<li>장고에서 번역 기능을 사용하는 것을 I18N(Internationalization)을 사용한다고 한다. </li>
+<li>이번 포스트에서는 I18N 기능 사용법에 대해 알아볼 것이다.</li>
+</ul>
+<a id="more"></a>
+<hr>
+<h2 id="장고-프로젝트에-번역-기능-추가"><a href="#장고-프로젝트에-번역-기능-추가" class="headerlink" title="장고 프로젝트에 번역 기능 추가"></a>장고 프로젝트에 번역 기능 추가</h2><blockquote>
+<p>ex) python-api 프로젝트</p>
+</blockquote>
+<h3 id="1-기본-언어-설정"><a href="#1-기본-언어-설정" class="headerlink" title="1. 기본 언어 설정"></a>1. 기본 언어 설정</h3><ul>
+<li>경로 : config(프로젝트) &gt; settings.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LANGUAGE_CODE = <span class="string">'ko-KR'</span></span><br><span class="line">TIME_ZONE = <span class="string">'Asia/Seoul'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-다국어-지원을-하기-위해-LocaleMiddleware-추가"><a href="#2-다국어-지원을-하기-위해-LocaleMiddleware-추가" class="headerlink" title="2. 다국어 지원을 하기 위해 LocaleMiddleware 추가"></a>2. 다국어 지원을 하기 위해 LocaleMiddleware 추가</h3><ul>
+<li>LocalMiddleware는 세션 데이터를 사용하고, </li>
+<li>CommonMiddleware가 언어를 활성화하는 작업을 수행하므로,</li>
+<li>Session과 Commen 사이에 위치시켜야 한다.</li>
+<li>경로 : config(프로젝트) &gt; settings.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MIDDLEWARE = [</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">'django.contrib.sessions.middleware.SessionMiddleware'</span>,</span><br><span class="line">    <span class="string">'django.middleware.locale.LocaleMiddleware'</span>,</span><br><span class="line">    <span class="string">'django.middleware.common.CommonMiddleware'</span>,</span><br><span class="line">    ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-지원하고-싶은-언어-설정"><a href="#3-지원하고-싶은-언어-설정" class="headerlink" title="3. 지원하고 싶은 언어 설정"></a>3. 지원하고 싶은 언어 설정</h3><ul>
+<li>경로 : config &gt; settings.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.utils.translation <span class="keyword">import</span> ugettext_lazy as_</span><br><span class="line"></span><br><span class="line">LANGUAGES = [</span><br><span class="line">    (<span class="string">'ko'</span>, _(<span class="string">'Korean'</span>)),</span><br><span class="line">    (<span class="string">'en'</span>, _(<span class="string">'English'</span>)),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="4-번역-파일이-저장될-폴더-생성"><a href="#4-번역-파일이-저장될-폴더-생성" class="headerlink" title="4. 번역 파일이 저장될 폴더 생성"></a>4. 번역 파일이 저장될 폴더 생성</h3><ul>
+<li>경로 : config &gt; settings.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LOCALE_PATHS = (</span><br><span class="line">    os.path.join(BASE_DIR, <span class="string">'locale'</span>),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="5-번역할-텍스트를-입력할-샘플-뷰-작성"><a href="#5-번역할-텍스트를-입력할-샘플-뷰-작성" class="headerlink" title="5. 번역할 텍스트를 입력할 샘플 뷰 작성"></a>5. 번역할 텍스트를 입력할 샘플 뷰 작성</h3><ul>
+<li>경로 : sample &gt; views.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 한글 메시지를 영어로 번역되도록 설정</span></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.utils.translation <span class="keyword">import</span> ugettext_lazy <span class="keyword">as</span> _</span><br><span class="line"><span class="keyword">from</span> django.utils <span class="keyword">import</span> translation</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></span><br><span class="line">    msg = _(<span class="string">"안녕하세요 조누스"</span>)  <span class="comment"># _(message) --&gt; message를 번역하겠다.</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(msg)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="6-번역할-텍스트-목록-파일-생성"><a href="#6-번역할-텍스트-목록-파일-생성" class="headerlink" title="6. 번역할 텍스트 목록 파일 생성"></a>6. 번역할 텍스트 목록 파일 생성</h3><ul>
+<li>경로 : python_api &gt; 터미널  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py makemessages -a</span><br><span class="line"><span class="comment"># 최초 실행 시, 언어별 별도 실행</span></span><br><span class="line"><span class="comment"># -i venv : venv 파일 무시하고 실행</span></span><br><span class="line">$ python manage.py makemessages -l ko -i venv</span><br><span class="line">$ python manage.py makemessages -l en -i venv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 만약 gettext가 없다는 오류 발생 시,</span></span><br><span class="line">Mac)</span><br><span class="line">$ brew install gettext</span><br><span class="line">$ brew link gettext --force</span><br><span class="line"></span><br><span class="line">ubuntu)</span><br><span class="line">$ sudo apt-get install gettext</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="7-locale-디렉토리에-생성된-django-po-파일을-열어서-‘-fuzzy’-줄-제거"><a href="#7-locale-디렉토리에-생성된-django-po-파일을-열어서-‘-fuzzy’-줄-제거" class="headerlink" title="7. locale 디렉토리에 생성된 django.po 파일을 열어서, ‘#, fuzzy’ 줄 제거"></a>7. locale 디렉토리에 생성된 django.po 파일을 열어서, ‘#, fuzzy’ 줄 제거</h3><ul>
+<li>경로 : locale &gt; en 혹은 ko &gt; LC_MESSAGES &gt; django.po</li>
+</ul>
+<h3 id="8-django-po-파일에서-msgid를-참고하여-msgstr-설정"><a href="#8-django-po-파일에서-msgid를-참고하여-msgstr-설정" class="headerlink" title="8. django.po 파일에서 msgid를 참고하여 msgstr 설정"></a>8. django.po 파일에서 msgid를 참고하여 msgstr 설정</h3><ul>
+<li>id를 보고 str에 번역 내용 입력</li>
+<li>경로 : locale &gt; en &gt; LC_MESSAGES &gt; django.po  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#: sample/templates/sample/index.html:11</span><br><span class="line">msgid &quot;안녕하세요 조누스&quot;</span><br><span class="line">msgstr &quot;Hi Jonus&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="9-번역-내용을-장고에서-읽어-처리할-수-있도록-mo-파일-생성"><a href="#9-번역-내용을-장고에서-읽어-처리할-수-있도록-mo-파일-생성" class="headerlink" title="9. 번역 내용을 장고에서 읽어 처리할 수 있도록 mo 파일 생성"></a>9. 번역 내용을 장고에서 읽어 처리할 수 있도록 mo 파일 생성</h3><ul>
+<li>경로 : python_api &gt; 터미널  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py compilemessages</span><br><span class="line"><span class="comment"># 만약 언어 파일별로 컴파일 하고 싶다면,</span></span><br><span class="line">$ python manage.py compilemessage -l ko</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="10-번역-파일-정상-작동하는지-확인-위해-강제로-언어설정-변경"><a href="#10-번역-파일-정상-작동하는지-확인-위해-강제로-언어설정-변경" class="headerlink" title="10. 번역 파일 정상 작동하는지 확인 위해 강제로 언어설정 변경"></a>10. 번역 파일 정상 작동하는지 확인 위해 강제로 언어설정 변경</h3><ul>
+<li><p>경로 : sample &gt; views.py</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 기존 LANGUAGE_SESSION_KEY 삭제하고, 'en'으로 활성화</span></span><br><span class="line"><span class="keyword">if</span> translation.LANGUAGE_SESSION_KEY <span class="keyword">in</span> request.session:</span><br><span class="line">    <span class="keyword">del</span>(request.session[translation.LANGUAGE_SESSION_KEY])</span><br><span class="line">translation.activate(<span class="string">'en'</span>)</span><br><span class="line"></span><br><span class="line">request.session[translation.LANGUAGE_SESSION_KEY] = <span class="string">'en'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>브라우저로 해당 뷰 접속해 보면 ‘안녕하세요 조누스’ 대신 ‘Hi Jonus’ 표시</p>
+</li>
+</ul>
+<h3 id="11-언어-설정을-사용자가-선택해서-변경할-수-있도록-뷰-생성"><a href="#11-언어-설정을-사용자가-선택해서-변경할-수-있도록-뷰-생성" class="headerlink" title="11. 언어 설정을 사용자가 선택해서 변경할 수 있도록 뷰 생성"></a>11. 언어 설정을 사용자가 선택해서 변경할 수 있도록 뷰 생성</h3><ul>
+<li>경로 : sample &gt; views.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.utils <span class="keyword">import</span> translation</span><br><span class="line"><span class="keyword">from</span> django.conf <span class="keyword">import</span> settings</span><br><span class="line"><span class="comment"># 1) url named group 을 통해 language code 받기</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_language</span><span class="params">(request, code)</span>:</span></span><br><span class="line">    <span class="comment"># 지원하는 언어 코드 목록을 만듦</span></span><br><span class="line">    languages = [language[<span class="number">0</span>] <span class="keyword">for</span> language <span class="keyword">in</span> settings.LANGUAGES]</span><br><span class="line">    <span class="comment"># 기본 언어 설정 가져오기</span></span><br><span class="line">    default_language = settings.LANGUAGE_CODE[:<span class="number">2</span>] <span class="comment"># LANGUAGE_CODE = 'ko-KR'</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> translation.LANGUAGE_SESSION_KEY <span class="keyword">in</span> request.session:</span><br><span class="line">        <span class="keyword">del</span>(request.session[translation.LANGUAGE_SESSION_KEY])</span><br><span class="line">    <span class="comment"># code가 지원하는 언어코드이고 기본 언어 설정이 아닌 경우, 원하는 언어로 번역 실행</span></span><br><span class="line">    <span class="keyword">if</span> code <span class="keyword">in</span> languages <span class="keyword">and</span> code != default_language:</span><br><span class="line">        translation.activate(code)</span><br><span class="line">        request.session[translation.LANGUAGE_SESSION_KEY] = code</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        request.session[translation.LANGUAGE_SESSION_KEY] = default_language</span><br><span class="line">        code = default_language</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"Language Change to "</span>+code)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2) 쿼리 스트링으로 language code 받기</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_language2</span><span class="params">(request)</span>:</span></span><br><span class="line">    code = request.GET.get(<span class="string">'code'</span>)</span><br><span class="line">    <span class="keyword">if</span> translation.LANGUAGE_SESSION_KEY <span class="keyword">in</span> request.session:</span><br><span class="line">        <span class="keyword">del</span>(request.session[translation.LANGUAGE_SESSION_KEY])</span><br><span class="line">    translation.activate(code)</span><br><span class="line"></span><br><span class="line">    request.session[translation.LANGUAGE_SESSION_KEY] = code</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"Language Change to "</span>+code)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="12-템플릿-번역-기능-사용"><a href="#12-템플릿-번역-기능-사용" class="headerlink" title="12. 템플릿 번역 기능 사용"></a>12. 템플릿 번역 기능 사용</h3><ul>
+<li>템플릿에서 번역 기능 사용하려면, ‘load i18n’ 사용하고 trans 태그 사용해야 한다.</li>
+<li>경로 : sample &gt; templates &gt; sample &gt; index.html  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"&#123;&#123;LANGUAGE_CODE&#125;&#125;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    &#123;% load i18n %&#125;</span><br><span class="line">    &#123;% trans '안녕하세요' %&#125;</span><br><span class="line">    <span class="comment">&lt;!-- 여러 줄이 들어가있는 번역 블록 설정 --&gt;</span></span><br><span class="line">    &#123;% blocktrans %&#125;</span><br><span class="line">    블록 번역</span><br><span class="line">    테스트하는 중입니다.</span><br><span class="line">    &#123;% endblocktrans %&#125;</span><br><span class="line">    <span class="comment">&lt;!-- context가 있는 번역을 템플릿에서 사용--&gt;</span></span><br><span class="line">    &#123;% blocktrans context '구어' %&#125;안녕 조누스&#123;% endblocktrans %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="13-뷰에서-context를-가진-번역-진행"><a href="#13-뷰에서-context를-가진-번역-진행" class="headerlink" title="13. 뷰에서 context를 가진 번역 진행"></a>13. 뷰에서 context를 가진 번역 진행</h3><ul>
+<li>경로 : sample &gt; views.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.utils.translation <span class="keyword">import</span> pgettext_lazy <span class="keyword">as</span> __</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></span><br><span class="line">    msg = __(<span class="string">"구어"</span>, <span class="string">"안녕하세요"</span>)</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(msg)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="14-언어-선택창-생성하여-해당-언어로-번역-표시되도록-진행"><a href="#14-언어-선택창-생성하여-해당-언어로-번역-표시되도록-진행" class="headerlink" title="14. 언어 선택창 생성하여 해당 언어로 번역 표시되도록 진행"></a>14. 언어 선택창 생성하여 해당 언어로 번역 표시되도록 진행</h3><ul>
+<li><p>경로 : sample &gt; forms.py</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> forms</span><br><span class="line"><span class="keyword">from</span> django.conf <span class="keyword">import</span> settings</span><br><span class="line"><span class="comment"># 언어 선택 폼 생성</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LanguageForm</span><span class="params">(forms.Form)</span>:</span></span><br><span class="line">    code = forms.ChoiceField(choices=settings.LANGUAGES)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>경로 : sample &gt; context_processors.py</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> .forms <span class="keyword">import</span> LanguageForm</span><br><span class="line"><span class="keyword">from</span> django.utils <span class="keyword">import</span> translation</span><br><span class="line"><span class="comment"># code를 context_processors 로 설정</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">language</span><span class="params">(request)</span>:</span></span><br><span class="line">    language_form = LanguageForm()</span><br><span class="line">    <span class="keyword">if</span> translation.LANGUAGE_SESSION_KEY <span class="keyword">in</span> request.session:</span><br><span class="line">        current_language = request.session[translation.LANGUAGE_SESSION_KEY]</span><br><span class="line">        language_form = LanguageForm(initial=&#123;<span class="string">'code'</span>:current_language&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">'language_form'</span>:language_form&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>경로 : config &gt; settings.py</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 설정에서 sample 앱의 context_processors 추가</span></span><br><span class="line">TEMPLATES = [</span><br><span class="line">    &#123;</span><br><span class="line">        ...</span><br><span class="line">        <span class="string">'OPTIONS'</span>: &#123;</span><br><span class="line">            <span class="string">'context_processors'</span>: [</span><br><span class="line">                ...</span><br><span class="line">                <span class="string">'sample.context_processors.language'</span>,</span><br><span class="line">            ],</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>경로 : sample &gt; templates &gt; sample &gt; index.html</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"&#123;&#123;LANGUAGE_CODE&#125;&#125;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 언어 선택창 생성 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 폼 전송 시, 이동할 경로 설정 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"&#123;% url 'change_language' %&#125;"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">        &#123;% csrf_token %&#125;</span><br><span class="line">        &#123;&#123;language_form.as_p&#125;&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Change"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    &#123;% load i18n %&#125;</span><br><span class="line">    &#123;% trans '안녕하세요 조누스' %&#125;</span><br><span class="line">    &#123;% blocktrans context '구어' %&#125;안녕 조누스&#123;% endblocktrans %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>경로 : sample &gt; views.py</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> redirect</span><br><span class="line"><span class="keyword">from</span> .forms <span class="keyword">import</span> LanguageForm</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_language</span><span class="params">(request)</span>:</span></span><br><span class="line">    language_form = LanguageForm(request.POST)</span><br><span class="line">    <span class="keyword">if</span> language_form.is_valid():</span><br><span class="line">        language = language_form.cleaned_data[<span class="string">'code'</span>]</span><br><span class="line">        languages = [language[<span class="number">0</span>] <span class="keyword">for</span> language <span class="keyword">in</span> settings.LANGUAGES]</span><br><span class="line">        <span class="keyword">if</span> translation.LANGUAGE_SESSION_KEY <span class="keyword">in</span> request.session:</span><br><span class="line">            <span class="keyword">if</span> language <span class="keyword">in</span> languages:</span><br><span class="line">                <span class="keyword">del</span> (request.session[translation.LANGUAGE_SESSION_KEY])</span><br><span class="line">                translation.activate(language)</span><br><span class="line">                request.session[translation.LANGUAGE_SESSION_KEY] = language</span><br><span class="line">    url = request.META[<span class="string">'HTTP_REFERER'</span>]</span><br><span class="line">    <span class="keyword">return</span> redirect(url)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>경로 : sample &gt; urls.py</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 폼 전송 후, 이동할 경로 설정</span></span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> .views <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'changelanguage/'</span>, change_language, name=<span class="string">'change_language'</span>),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-06-20T08:00:21.000Z" itemprop="datePublished">
+              2019-06-20
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/translation/">translation</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
