@@ -8,11 +8,11 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Mon, 24 Jun 2019 18:19:34 GMT</pubDate>
+    <pubDate>Mon, 24 Jun 2019 18:20:59 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>location field 적용</title>
+      <title>Location Field 적용</title>
       <link>https://chohyeonkeun.github.io/2019/06/24/190624-django-location-field/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/24/190624-django-location-field/</guid>
       <pubDate>Mon, 24 Jun 2019 08:00:21 GMT</pubDate>
