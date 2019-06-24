@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/24/190624-django-location-field/</loc>
+        <lastmod>2019-06-24T18:19:34.966Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/05/27/190527-django-wysiwig/</loc>
         <lastmod>2019-06-24T07:35:07.470Z</lastmod>
         <changefreq>weekly</changefreq>
