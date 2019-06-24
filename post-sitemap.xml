@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/27/190527-django-wysiwig/</loc>
+        <lastmod>2019-06-24T07:35:07.470Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/25/190525-django-Email-login/</loc>
+        <lastmod>2019-06-24T07:28:10.991Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/06/23/190623-linux-crontab/</loc>
         <lastmod>2019-06-23T17:57:04.919Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -224,14 +240,6 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/25/190525-django-Email-login/</loc>
-        <lastmod>2019-06-15T05:07:08.232Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://chohyeonkeun.github.io/2019/05/19/190519-django-login-method/</loc>
         <lastmod>2019-06-15T05:06:55.521Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -274,14 +282,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/05/23/190523-django-EC2-webserver/</loc>
         <lastmod>2019-06-15T05:05:00.098Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/27/190527-django-wysiwig/</loc>
-        <lastmod>2019-06-15T05:04:30.498Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
