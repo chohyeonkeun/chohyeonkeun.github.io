@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>Datetime 학습 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/06/25/190625-django-datetime-timedelta/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>Datetime 학습</h1>
+    </header>
+
+    <section>
+      <ul>
+<li>이번 포스트에서는 특정 게시물이 업로드된 시점부터 현재까지 시간이 얼마나 흘렀는지 확인하는 방법에 대해 알아볼 것이다.</li>
+</ul>
+<a id="more"></a>
+<h3 id="1-앱의-하위-폴더로-templatetags-생성하여-원하는-기능을-구현할-함수-작성"><a href="#1-앱의-하위-폴더로-templatetags-생성하여-원하는-기능을-구현할-함수-작성" class="headerlink" title="1. 앱의 하위 폴더로 templatetags 생성하여 원하는 기능을 구현할 함수 작성"></a>1. 앱의 하위 폴더로 templatetags 생성하여 원하는 기능을 구현할 함수 작성</h3><blockquote>
+<p>ex) extore_project</p>
+</blockquote>
+<ul>
+<li><p>경로 : post[앱] &gt; templatetags &gt; calc.py</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> template</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime, date, timedelta</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">register = template.Library()</span><br><span class="line"></span><br><span class="line"><span class="meta">@register.filter</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">time_since</span><span class="params">(value)</span>:</span></span><br><span class="line">    time_since = datetime.now() - value</span><br><span class="line">    <span class="comment"># 현재시간과의 차이가 1개월 이상일 경우</span></span><br><span class="line">    <span class="keyword">if</span> time_since &gt; timedelta(days=<span class="number">30</span>):</span><br><span class="line">        <span class="keyword">return</span> value.strftime(<span class="string">"%Y.%m.%d"</span>)</span><br><span class="line">    <span class="comment"># 현재시간과의 차이가 24시간 이상일 경우</span></span><br><span class="line">    <span class="keyword">if</span> time_since &gt; timedelta(days=<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f'<span class="subst">&#123;time_since // timedelta(days=<span class="number">1</span>)&#125;</span>일 전'</span></span><br><span class="line">    <span class="comment"># 현재시간과의 차이가 24시간 이하 1시간 이상일 경우</span></span><br><span class="line">    <span class="keyword">elif</span> time_since &gt; timedelta(hours=<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f'<span class="subst">&#123;time_since // timedelta(hours=<span class="number">1</span>)&#125;</span>시간 전'</span></span><br><span class="line">    <span class="comment"># 현재시간과의 차이가 1시간 이하 1분 이상일 경우</span></span><br><span class="line">    <span class="keyword">elif</span> time_since &gt; timedelta(minutes=<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f'<span class="subst">&#123;time_since // timedelta(minutes=<span class="number">1</span>)&#125;</span>분 전'</span></span><br><span class="line">    <span class="comment"># 현재시간과의 차이가 1분 이하 1초 이상일 경우</span></span><br><span class="line">    <span class="keyword">elif</span> time_since &gt; timedelta(seconds=<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f'<span class="subst">&#123;time_since // timedelta(seconds=<span class="number">1</span>)&#125;</span>초 전'</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'지금'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="코드-설명"><a href="#코드-설명" class="headerlink" title="코드 설명"></a>코드 설명</h3><ul>
+<li>특정 html 파일에서 구현하고자 하는 기능(현재 시간 - 업로드한 게시물의 생성 시간)을 template tags를 이용하여 구현하였다.</li>
+<li>특정 게시물의 업로드한 시간을 value로 가정했을 때,</li>
+<li>현재시간 - 게시물 업로드한 시간은 time_since = datetime.now() - value 로 한다.</li>
+<li>time_since(현재시간 - 게시물 업로드한 시간)를 원하는 단위의 시간으로 나누어 표현하고 싶은 결과를 확인할 수 있다.</li>
+<li>원하는 단위의 시간을 표현하기 위한 방법으로 timedelta를 사용할 수 있다.</li>
+<li>time_since // timedelta(days=1)을 사용하여 며칠 전에 업로드한 게시물인지 확인할 수 있다.</li>
+<li>time_since가 30일 이상이라면, strftime()를 이용하여 보여주고 싶은 날짜 표시 <ul>
+<li>value.strftime(%Y.%m.%d) –&gt; ex) 2019.06.25</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-html-파일에서-작성한-함수-호출"><a href="#2-html-파일에서-작성한-함수-호출" class="headerlink" title="2. html 파일에서 작성한 함수 호출"></a>2. html 파일에서 작성한 함수 호출</h3><ul>
+<li><p>post(앱) &gt; views.py</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">post_list</span><span class="params">(request)</span>:</span></span><br><span class="line">    posts = Post.objects.all()</span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'post/post_list.html'</span>, &#123;<span class="string">'object_list'</span>:posts&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>post(앱) &gt; templates &gt; post &gt; post_list.html</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   ...</span><br><span class="line">   &#123;% for object in object_list %&#125;</span><br><span class="line">       ...</span><br><span class="line">       &#123;% load calc %&#125;</span><br><span class="line">       &#123;% object.created|time_since %&#125; </span><br><span class="line"><span class="comment">&lt;!-- ex) 1일 전/ 1시간 전/ 1분 전/ 1초 전/ 2019.06.25  --&gt;</span></span><br><span class="line">       ...</span><br><span class="line">   &#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="코드-설명-1"><a href="#코드-설명-1" class="headerlink" title="코드 설명"></a>코드 설명</h3><ul>
+<li>views.py에서 Post 객체들을 posts 변수로 설정한 뒤, post를 context data로 object_list로 설정</li>
+<li>render함수를 사용하여 templates 폴더의 post/post_list.html 페이지로 이동</li>
+<li>해당 html 페이지에서 커스텀 템플릿 태그인 time_since를 사용하기 위해 ‘load calc’ 를 추가하고, 원하는 값으로 표현하고 싶은 변수에서 ‘|time_since’ 추가</li>
+</ul>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-06-25T08:00:21.000Z" itemprop="datePublished">
+              2019-06-25
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/datetime/">datetime</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

@@ -76,6 +76,64 @@
     <header class="title">
       
         <h1>
+          <a href="/2019/06/04/190604-django-ELB-SSL/">로드밸런서에 SSL 인증서 적용</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-06-04T08:00:21.000Z" itemprop="datePublished">
+    2019-06-04
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/ssl/">ssl</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/ELB/">ELB</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="1-인증서-적용할-로드밸런서-선택-및-하단-리스너-탭의-리스너-추가-버튼-클릭"><a href="#1-인증서-적용할-로드밸런서-선택-및-하단-리스너-탭의-리스너-추가-버튼-클릭" class="headerlink" title="1. 인증서 적용할 로드밸런서 선택 및 하단 리스너 탭의 [리스너 추가] 버튼 클릭"></a>1. 인증서 적용할 로드밸런서 선택 및 하단 리스너 탭의 [리스너 추가] 버튼 클릭</h3><ul>
+<li>프로토콜과 포트 HTTPS:443 으로 설정</li>
+<li>기본작업은 [다음으로 전달] 선택하고 리스너 그룹 선택</li>
+<li>여기서는 보안 정책 [2016-08] 선택</li>
+<li>기본 SSL 인증서는 기존 ACM에서 발급받아둔 인증서 선택 및 [저장] 버튼 클릭</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/06/04/190604-django-ELB-SSL/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
           <a href="/2019/06/04/190604-django-ELB-setting/">ELB 셋팅</a>
         </h1>
       
@@ -514,61 +572,6 @@
         
           <div class="more-link">
             <a href="/2019/05/27/190527-django-ckeditor/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/27/190527-django-wysiwig/">WYSIWIG 적용 방법</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-27T13:09:13.000Z" itemprop="datePublished">
-    2019-05-27
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/CKEditor/">CKEditor</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/WYSIWIG/">WYSIWIG</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="WYSIWIG란"><a href="#WYSIWIG란" class="headerlink" title="WYSIWIG란?"></a>WYSIWIG란?</h2><ul>
-<li>What You See Is What You Get의 약어</li>
-<li>웹 브라우저에서 사용할 수 있는 HTML 편집기</li>
-<li>일반적으로 웹에서 긴 내용의 텍스트를 입력받을 때는 textareat태그를 사용하나,</li>
-<li>블로그, 게시판 등에서는 주로 HTML을 사용한 편집기를 사용한다.</li>
-<li>ckeditor, tinymce 등 JS를 이용한 플러그인 사용</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/05/27/190527-django-wysiwig/#more">Read On »</a>
           </div>
         
       
