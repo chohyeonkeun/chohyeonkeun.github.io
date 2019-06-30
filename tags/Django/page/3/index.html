@@ -76,6 +76,63 @@
     <header class="title">
       
         <h1>
+          <a href="/2019/06/06/190606-django-EC2-django-deploy/">EC2에 장고 배포하기</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-06-06T08:00:21.000Z" itemprop="datePublished">
+    2019-06-06
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/deploy/">deploy</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/EC2/">EC2</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ul>
+<li>EC2는 아마존 인프라에서 사용되는 범용 서버 컴퓨팅 서비스이다.</li>
+<li>EC2를 이용하면 다양한 서버를 운영할 수 있지만,</li>
+<li>장고 애플리케이션을 구동하기 위해서는 웹 서버가 필요하므로 EC2로 장고 웹 서버를 설정하고 배포하는 방법을 아래와 같은 순서로 진행하겠다.</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/06/06/190606-django-EC2-django-deploy/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
           <a href="/2019/06/05/190605-django-email-server/">이메일 서버 셋팅</a>
         </h1>
       
@@ -529,52 +586,6 @@
         
           <div class="more-link">
             <a href="/2019/05/29/190529-django-static-serving/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/29/190529-django-media-serving/">Media 파일 서빙하기</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-29T14:11:10.000Z" itemprop="datePublished">
-    2019-05-29
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/media/">media</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h3 id="1-미디어-파일-관련-설정"><a href="#1-미디어-파일-관련-설정" class="headerlink" title="1. 미디어 파일 관련 설정"></a>1. 미디어 파일 관련 설정</h3><pre><code>- 경로 : 프로젝트 &gt; settings.py
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MEDIA_URL = <span class="string">'/media/'</span></span><br><span class="line">MEDIA_ROOT = os.path.join(BASE_DIR, <span class="string">'media'</span>)</span><br></pre></td></tr></table></figure>
-        
-          <div class="more-link">
-            <a href="/2019/05/29/190529-django-media-serving/#more">Read On »</a>
           </div>
         
       
