@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>CSV 파일 만들기 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/06/28/190628-python-csv/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>CSV 파일 만들기</h1>
+    </header>
+
+    <section>
+      <h2 id="CSV란-Comma-separated-Values"><a href="#CSV란-Comma-separated-Values" class="headerlink" title="CSV란? (Comma-separated-Values)"></a>CSV란? (Comma-separated-Values)</h2><ul>
+<li>몇 가지 필드를 쉼표(,)로 구분한 텍스트 데이터 및 텍스트 파일이다.</li>
+<li>확장자는 .csv이며 MIME 형식은 text/csv이다.</li>
+<li>비슷한 포맷으로는 탭으로 구분하는 ‘tab-separated values’(TSV)나, 반각 스페이스로 구분하는 ‘space-separated values’(SSV) 등이 있으며, 이것들을 합쳐서 character-separated values(CSV), delimiter-separated values라고 부르는 경우가 많다.</li>
+</ul>
+<a id="more"></a>
+<h2 id="CSV-파일-사용하는-이유"><a href="#CSV-파일-사용하는-이유" class="headerlink" title="CSV 파일 사용하는 이유?"></a>CSV 파일 사용하는 이유?</h2><ul>
+<li>파일 크기가 작으므로, 표 형식의 데이터를 Plain Text로 쉽게 생성 가능</li>
+<li>대부분의 프로그래밍 언어나, ㅣ데이터분석 프로그램에서 CSV 파일 지원</li>
+<li>파이썬 내장 라이브러리만으로 읽기/쓰기 가능</li>
+</ul>
+<h2 id="CSV-파일-mode-작성-방법"><a href="#CSV-파일-mode-작성-방법" class="headerlink" title="CSV 파일 mode 작성 방법"></a>CSV 파일 mode 작성 방법</h2><ul>
+<li>mode 작성할 때, r(읽기), w(쓰기), a(추가하기) 세가지 중 하나와, t(텍스트), b(바이너리) 둘중 하나와 반드시 결합해야 하며, 나머지는 optional하게 사용 가능하다.</li>
+<li>mode : 파일이 열리는 모드<ul>
+<li>‘r’: 읽기 용으로 열림(기본값)</li>
+<li>‘w’: 쓰기 위해 열기, 파일을 먼저 자른다.</li>
+<li>‘x’: 베타적 생성을 위해 열리고, 이미 존재하는 경우 실패</li>
+<li>‘a’: 쓰기를 위해 열려 있고, 파일의 끝에 추가하는 경우 추가한다.</li>
+<li>‘b’: 2진 모드(바이너리 모드)</li>
+<li>‘t’: 텍스트 모드(기본값)</li>
+<li>‘+’: 업데이트(읽기 및 쓰기)를 위한 디스크 파일 열기</li>
+<li>‘U’: 유니버설 개행 모드(사용되지 않음)</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h2 id="CSV-파일-쓰기"><a href="#CSV-파일-쓰기" class="headerlink" title="CSV 파일 쓰기"></a>CSV 파일 쓰기</h2><ul>
+<li>CSV 파일 쓰기 위해서는 .csv 파일을 쓰기모드로 오픈하고 파일객체를 csv.writer(파일객체)에 넣으면 된다.</li>
+<li>CSV writer는 writerow()라는 메서드를 통해 list 데이터를 한 라인 추가하게 된다.</li>
+<li>윈도우에서는 csv 모듈에서 데이터 작성 시, 각 라인 뒤에 빈 라인이 추가되는 문제가 있는데, 이를 없애기 위해 (파이썬 3에서) 파일 open 시, newline=”” 설정한다.</li>
+</ul>
+<h3 id="방법-1"><a href="#방법-1" class="headerlink" title="방법 1"></a>방법 1</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line">f = open(<span class="string">'output.csv'</span>, <span class="string">'wt'</span>, encoding=<span class="string">'utf-8, newline="")</span></span><br><span class="line"><span class="string">writer = csv.writer(f)</span></span><br><span class="line"><span class="string">writer.writerow([1, "김철수", False])</span></span><br><span class="line"><span class="string">writer.writerow([2, "조현근", True])</span></span><br><span class="line"><span class="string">f.close()</span></span><br></pre></td></tr></table></figure>
+<h3 id="방법-2"><a href="#방법-2" class="headerlink" title="방법 2"></a>방법 2</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line">rows = [</span><br><span class="line">    [<span class="string">'프로그래밍'</span>, <span class="string">'데이터 사이언스'</span>, <span class="string">'블록체인'</span>],</span><br><span class="line">    [<span class="string">'프론트엔드'</span>, <span class="string">'인공지능'</span>, <span class="string">'비트코인'</span>],</span><br><span class="line">    [<span class="string">'백엔드'</span>, <span class="string">'빅데이터'</span>, <span class="string">'보안'</span>],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'technology.csv'</span>, <span class="string">'wt'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    writer = csv.writer(f)</span><br><span class="line">    writer.writerows(rows)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'technology.csv'</span>, <span class="string">'rt'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    print(f.read())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 구분자도 변경 가능하다.</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'technology.csv'</span>, <span class="string">'wt'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    writer = csv.writer(f, delimiter=<span class="string">'|'</span>)</span><br><span class="line">    writer.writerows(rows)</span><br></pre></td></tr></table></figure>
+<h3 id="방법-3"><a href="#방법-3" class="headerlink" title="방법 3"></a>방법 3</h3><p>각 Row 데이터가 list/tuple인 경우<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line">writer = csv.writer(파일객체)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1 Row 쓸 때</span></span><br><span class="line">writer.writerow([<span class="string">'컬럼1'</span>, <span class="string">'컬럼2'</span>, <span class="string">'컬럼3'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 다수 Row 쓸 때</span></span><br><span class="line">wirte.writerows([<span class="string">'1행1열'</span>, <span class="string">'1행2열'</span>, <span class="string">'1행3열'</span>]</span><br><span class="line">[<span class="string">'2행1열'</span>, <span class="string">'2행2열'</span>, <span class="string">'2행3열'</span>])</span><br></pre></td></tr></table></figure></p>
+<h3 id="방법-4"><a href="#방법-4" class="headerlink" title="방법 4"></a>방법 4</h3><p>각 Row 데이터가 dict인 경우<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line">fieldnames = [<span class="string">'first_name'</span>, <span class="string">'last_name'</span>]</span><br><span class="line">writer = csv.DictWriter(파일객체, fieldnames=fieldnames)</span><br><span class="line"></span><br><span class="line">writer.writeheader()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1 Row 쓸 때</span></span><br><span class="line">writer.writerow(&#123;<span class="string">'first_name'</span>: <span class="string">'Baked'</span>, <span class="string">'last_name'</span>: <span class="string">'Beans'</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 다수 Row 쓸 때</span></span><br><span class="line">writer.writerow([&#123;<span class="string">'first_name'</span>:<span class="string">'HyeonKen'</span>, <span class="string">'last_name'</span>:<span class="string">'Cho'</span>&#125;,</span><br><span class="line">&#123;<span class="string">'first_name'</span>:<span class="string">'Nus'</span>, <span class="string">'last_name'</span>:<span class="string">'Jo'</span>&#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h2 id="CSV-파일-읽기"><a href="#CSV-파일-읽기" class="headerlink" title="CSV 파일 읽기"></a>CSV 파일 읽기</h2><p>CSV 파일을 읽기 위해서는 먼저 파이썬에 내장되어 있는 csv 모듈을 import 한다.</p>
+<h3 id="방법-1-1"><a href="#방법-1-1" class="headerlink" title="방법 1"></a>방법 1</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line">f = open(<span class="string">'technology.csv'</span>, <span class="string">'rt'</span>, encoding=<span class="string">'utf-8'</span>)</span><br><span class="line">reader = csv.reader(f)</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> reader:</span><br><span class="line">    print(line)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<h3 id="방법-2-1"><a href="#방법-2-1" class="headerlink" title="방법 2"></a>방법 2</h3><p>list로 받는 경우<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'technology.csv'</span>, <span class="string">'rt'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    reader = csv.reader(f)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">        print(row) <span class="comment"># list type</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="방법-3-1"><a href="#방법-3-1" class="headerlink" title="방법 3"></a>방법 3</h3><p>dict로 받는 경우<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'technology.csv'</span>, <span class="string">'rt'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    fieldnames = <span class="literal">None</span> <span class="comment"># 디폴트, None이면 첫번째 Row가 fieldnames로 지정</span></span><br><span class="line">    reader = csv.DictReader(f, fieldnames=fieldnames)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">        print(row) <span class="comment"># dict type</span></span><br></pre></td></tr></table></figure></p>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-06-28T08:00:21.000Z" itemprop="datePublished">
+              2019-06-28
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Python/">Python</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/CSV/">CSV</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

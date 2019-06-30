@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/28/190628-python-csv/</loc>
+        <lastmod>2019-06-30T09:58:00.452Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/06/27/190627-django-classification-by-year/</loc>
         <lastmod>2019-06-30T09:10:07.864Z</lastmod>
         <changefreq>weekly</changefreq>
