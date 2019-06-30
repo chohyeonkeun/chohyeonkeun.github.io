@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/26/190626-django-fullcalendar/</loc>
+        <lastmod>2019-06-30T08:06:17.289Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/06/25/190625-django-datetime-timedelta/</loc>
         <lastmod>2019-06-27T06:52:59.244Z</lastmod>
         <changefreq>weekly</changefreq>
