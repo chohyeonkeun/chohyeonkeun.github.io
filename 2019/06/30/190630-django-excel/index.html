@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>Excel 파일 만들기 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/06/30/190630-django-excel/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>Excel 파일 만들기</h1>
+    </header>
+
+    <section>
+      <ul>
+<li>이번 포스트에서는 python에서 excel 파일에 대한 기본적인 사용 방법을 알아볼 것이다.</li>
+</ul>
+<a id="more"></a>
+<h2 id="엑셀-관련-모듈"><a href="#엑셀-관련-모듈" class="headerlink" title="엑셀 관련 모듈"></a>엑셀 관련 모듈</h2><ol>
+<li>xlwt</li>
+<li>openpyxl(추천)<ul>
+<li>문서화가 제일 잘 되어 있다.</li>
+<li>로컬에 엑셀 프로그램이 설치되어 있지 않아도 엑셀 파일 생성 및 읽기 가능</li>
+</ul>
+</li>
+<li>xlsxwriter</li>
+<li>pyexcelerate</li>
+</ol>
+<h2 id="openpyxl-설치"><a href="#openpyxl-설치" class="headerlink" title="openpyxl 설치"></a>openpyxl 설치</h2><ul>
+<li>pip install openpyxl</li>
+</ul>
+<h2 id="openpyxl-sheet-사용법"><a href="#openpyxl-sheet-사용법" class="headerlink" title="openpyxl sheet 사용법"></a>openpyxl sheet 사용법</h2><ul>
+<li>파일 열기<ul>
+<li>openpyxl.load_workbook(‘파일명’)</li>
+<li>ex. wb = openpyxl.load_workbook(‘test.xlsx’)</li>
+</ul>
+</li>
+<li>파일 닫기<ul>
+<li>ex. wb.close()</li>
+</ul>
+</li>
+<li>sheet 열기<ul>
+<li>ex. wb[‘sheet1’]</li>
+</ul>
+</li>
+<li>현재 열린 sheet 열기<ul>
+<li>ex. ws = wb.active</li>
+</ul>
+</li>
+<li>cell 접근 방법<ul>
+<li>cell의 index 이용한 방법<ul>
+<li>a1 = ws[‘A1’]</li>
+<li>al.value</li>
+</ul>
+</li>
+<li>cell() 함수 사용<ul>
+<li>파라미터로 row, column 사용</li>
+<li>마지막 값이 존재하는 셀(row) : sheet.max_row</li>
+<li>마지막 값이 존재하는 셀(column): sheet.max_column</li>
+<li>ex. a1 = sheet.cell(row=1, column=1)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="openpyxl-예제"><a href="#openpyxl-예제" class="headerlink" title="openpyxl 예제"></a>openpyxl 예제</h2><ul>
+<li><p>ex) score.xlsx</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A  B  C  D  E</span><br><span class="line">1 80 90 85 합계</span><br><span class="line">2 88 95 80 합계</span><br><span class="line">3 90 85 90 합계</span><br></pre></td></tr></table></figure>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 엑셀파일 열기</span></span><br><span class="line">wb = openpyxl.load_workbook(<span class="string">'score.xlsx'</span>)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 현재 Active Sheet 얻기</span></span><br><span class="line">ws = wb.active</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 국영수 점수 읽기</span></span><br><span class="line"><span class="keyword">for</span> r <span class="keyword">in</span> ws.rows:</span><br><span class="line">    row_index = r[<span class="number">0</span>].row   <span class="comment"># 행 인덱스</span></span><br><span class="line">    kor = r[<span class="number">1</span>].value</span><br><span class="line">    eng = r[<span class="number">2</span>].value</span><br><span class="line">    math = r[<span class="number">3</span>].value</span><br><span class="line">    sum = kor + eng + math</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># 합계 쓰기</span></span><br><span class="line">    ws.cell(row=row_index, column=<span class="number">5</span>).value = sum</span><br><span class="line"> </span><br><span class="line">    print(kor, eng, math, sum)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 엑셀 파일 저장</span></span><br><span class="line">wb.save(<span class="string">"score2.xlsx"</span>)</span><br><span class="line">wb.close()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>score2.xlsx</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A  B  C  D  E</span><br><span class="line">1 80 90 85 255</span><br><span class="line">2 88 95 80 263</span><br><span class="line">3 90 85 90 265</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="셀의-범위에-접근"><a href="#셀의-범위에-접근" class="headerlink" title="셀의 범위에 접근"></a>셀의 범위에 접근</h2><ul>
+<li><p>score.xlsx</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    A      B</span><br><span class="line">1 과목    점수</span><br><span class="line">2 국어    80</span><br><span class="line">3 영어    90</span><br><span class="line">4 수학    95</span><br></pre></td></tr></table></figure>
+<p>  단 하나의 셀이 아니라 여러 셀에 접근하는 방법</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">multiple_celss = sheet[<span class="string">'A1'</span>:<span class="string">'B3'</span>]</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> multiple_cells:</span><br><span class="line">    <span class="keyword">for</span> cell <span class="keyword">in</span> row:</span><br><span class="line">    <span class="keyword">print</span> cell.value</span><br></pre></td></tr></table></figure>
+<p>  출력되는 결과</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">과목</span><br><span class="line">점수</span><br><span class="line">국어</span><br><span class="line">80</span><br><span class="line">영어</span><br><span class="line">90</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="모든-행과-열에-접근"><a href="#모든-행과-열에-접근" class="headerlink" title="모든 행과 열에 접근"></a>모든 행과 열에 접근</h2><ul>
+<li><p>모든 행에 접근하기 위한 방법</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">all_rows = sheet.rows</span><br><span class="line"><span class="keyword">print</span> all_rows[:]</span><br></pre></td></tr></table></figure>
+<p>  출력되는 결과</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((&lt;Cell Sheet1.A1&gt;, &lt;Cell Sheet1.B1&gt;), (&lt;Cell Sheet1.A2&gt;, &lt;Cell Sheet1.B2&gt;), (&lt;Cell Sheet1.A3&gt;, &lt;Cell Sheet1.B3&gt;), (&lt;Cell Sheet1.A4&gt;, &lt;Cell Sheet1.B4&gt;))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>모든 열에 접근하기 위한 방법</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">all_columns = sheet.columns</span><br><span class="line"><span class="keyword">print</span> all_columns[:]</span><br></pre></td></tr></table></figure>
+<p>  출력되는 결과</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((&lt;Cell Sheet1.A1&gt;, &lt;Cell Sheet1.A2&gt;, &lt;Cell Sheet1.A3&gt;, &lt;Cell Sheet1.A4&gt;, (&lt;Cell Sheet1.B1&gt;, &lt;Cell Sheet1.B2&gt;, &lt;Cell Sheet1.B3&gt;, &lt;Cell Sheet1.B4&gt;))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-06-30T08:00:21.000Z" itemprop="datePublished">
+              2019-06-30
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Python/">Python</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Excel/">Excel</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
