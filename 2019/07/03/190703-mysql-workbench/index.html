@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>MySQL Workbench 사용법_1 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/07/03/190703-mysql-workbench/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>MySQL Workbench 사용법_1</h1>
+    </header>
+
+    <section>
+      <h2 id="MySQL-이란"><a href="#MySQL-이란" class="headerlink" title="MySQL 이란?"></a>MySQL 이란?</h2><ul>
+<li>MySQL은 전세계적으로 가장 널리 사용되고 있는 오픈 소스 데이터베이스이다.</li>
+<li>표준 데이터베이스 질의 언어 SQL(Structured Query Language)을 사용하는 개방 소스의 관계형 데이터베이스 <code>관리시스템(RDBMS)</code>이다.</li>
+<li>매우 빠르고, 유연하며, 사용하기 쉬운 특징이 있다.</li>
+<li>다중사용자, 다중 쓰레드를 지원하고, C, C++, Eiffel, 자바, 펄, PHP, Python 스크립트 등을 위한 응용프로그램 인터페이스(API)를 제공한다.</li>
+<li>유닉스나 리눅스, Windows 운영체제 등에서 사용할 수 있다.</li>
+<li>MySQL 데이터베이스는 일반 사용자가 무료로 다운로드하여 사용할 수 있는 장점이 있다.</li>
+</ul>
+<a id="more"></a>
+<h2 id="RDBMS-무결성"><a href="#RDBMS-무결성" class="headerlink" title="RDBMS 무결성"></a>RDBMS 무결성</h2><ol>
+<li>개체 무결성(Entity Integrity)</li>
+</ol>
+<ul>
+<li>주 식별자(primary key)는 고유한 값이어야 한다.</li>
+<li>주 식별자는 Null을 포함할 수 없다.</li>
+</ul>
+<ol start="2">
+<li>참조 무결성(Reference Integrity)</li>
+</ol>
+<ul>
+<li>모든 외부식별자(foreign key, 외래 키)값은 연관된 주식별자 값을 참조한다.</li>
+<li>외부 식별자는 Null 값이 허용될 수 있다.</li>
+</ul>
+<ol start="3">
+<li>범위 무결성(Domain Integrity)</li>
+</ol>
+<ul>
+<li>정의된 범위 안에서 모든 열의 값이 보장되어야 한다.<ul>
+<li>예) integer, varchar, not null 등</li>
+</ul>
+</li>
+</ul>
+<h2 id="MySQL-Workbench-장점-및-단점"><a href="#MySQL-Workbench-장점-및-단점" class="headerlink" title="MySQL Workbench 장점 및 단점"></a>MySQL Workbench 장점 및 단점</h2><h3 id="장점"><a href="#장점" class="headerlink" title="[장점]"></a>[장점]</h3><ul>
+<li>리버스 엔지니어링이 완벽히 지원된다.</li>
+<li>다이어그램이 깔끔하게 그려진다.</li>
+</ul>
+<h3 id="단점"><a href="#단점" class="headerlink" title="[단점]"></a>[단점]</h3><ul>
+<li>논리적 모델링을 지원하지 않는다.</li>
+<li>한글 지원이 완벽하지 않다.</li>
+<li>다소 불안정한 동작을 보인다. (잦은 다운 등)</li>
+</ul>
+<h2 id="MySQL-Workbench-사용법"><a href="#MySQL-Workbench-사용법" class="headerlink" title="MySQL Workbench 사용법"></a>MySQL Workbench 사용법</h2><h3 id="1-MySQL-Workbench-다운로드"><a href="#1-MySQL-Workbench-다운로드" class="headerlink" title="1. MySQL Workbench 다운로드"></a>1. MySQL Workbench 다운로드</h3><pre><code>- [MySQL Workbench 다운로드하기](https://dev.mysql.com/downloads/workbench/)
+    - OS 환경 선택
+</code></pre><h3 id="2-MySQL-Workbench-실행하여-모델명-설정"><a href="#2-MySQL-Workbench-실행하여-모델명-설정" class="headerlink" title="2. MySQL Workbench 실행하여 모델명 설정"></a>2. MySQL Workbench 실행하여 모델명 설정</h3><pre><code>- 좌측 &apos;File&apos; &gt; &apos;New Model&apos; 클릭
+- &apos;Physical Schemas&apos; &gt; &apos;mydb&apos; 더블클릭하여 원하는 이름으로 설정
+</code></pre><p><img src="https://user-images.githubusercontent.com/48202867/60613050-11abaf00-9e05-11e9-89fd-2f9ea3988a7d.png" alt="Screenshot from 2019-07-04 01-59-58"></p>
+<pre><code>- &apos;EER Diagrams&apos; &gt; &apos;Add Diagram&apos; 더블 클릭
+</code></pre><p><img src="https://user-images.githubusercontent.com/48202867/60613059-1708f980-9e05-11e9-8c3d-b5641c0939fa.png" alt="Screenshot from 2019-07-04 02-03-21"></p>
+<h3 id="3-ERD-구현"><a href="#3-ERD-구현" class="headerlink" title="3. ERD 구현"></a>3. ERD 구현</h3><pre><code>ex) 인스타그램과 비슷한 사이트를 만드는 경우
+- &apos;Place a New Table&apos; 클릭
+</code></pre><p><img src="https://user-images.githubusercontent.com/48202867/60613060-1708f980-9e05-11e9-9cd1-42138adb48d9.png" alt="Screenshot from 2019-07-04 02-05-24"></p>
+<pre><code>- &apos;table1&apos; 더블 클릭하여 이름 설정 및 모델 구현
+</code></pre><p><img src="https://user-images.githubusercontent.com/48202867/60613061-1708f980-9e05-11e9-8b5b-2a87ef3e31f3.png" alt="Screenshot from 2019-07-04 02-05-30"></p>
+<pre><code>- &apos;users&apos; 모델 구현
+    - Column에 유저아이디, 비밀번호, 휴대폰번호, 이메일주소 추가
+</code></pre><p><img src="https://user-images.githubusercontent.com/48202867/60613062-17a19000-9e05-11e9-9a6f-5aed6af2acdb.png" alt="Screenshot from 2019-07-04 02-11-26"></p>
+<pre><code>- &apos;posts&apos; 모델 구현
+    - Column에 게시물 내용, 이미지 경로, 태그명, 생성일, 수정일 추가
+</code></pre><p><img src="https://user-images.githubusercontent.com/48202867/60613064-17a19000-9e05-11e9-8421-ac2c5cfc6135.png" alt="Screenshot from 2019-07-04 02-16-05"></p>
+<pre><code>- &apos;users&apos;와 &apos;posts&apos; 1:n(일대다) 표시
+    - 유저 한명이 여러 게시물을 업로드할 수 있어야 하므로 1:n 관계
+    - 표시할 때, n에 해당하는 객체를 먼저 선택하고, 1에 해당하는 객체를 그 다음에 선택해야 한다.
+</code></pre><p><img src="https://user-images.githubusercontent.com/48202867/60613065-183a2680-9e05-11e9-83a2-e23da206d589.png" alt="Screenshot from 2019-07-04 02-16-28"><br><img src="https://user-images.githubusercontent.com/48202867/60613067-183a2680-9e05-11e9-8110-3543678faa56.png" alt="Screenshot from 2019-07-04 02-16-37"></p>
+<pre><code>- &apos;comments&apos; 모델 구현
+    - Column에 댓글 내용, 대댓글을 위한 parent_comment_id 추가
+        - 대댓글 기능을 적용하기 위해 대댓글 대상의 댓글 id를 parent_comment_id에 id를 넣으면 된다.
+</code></pre><p><img src="https://user-images.githubusercontent.com/48202867/60613069-183a2680-9e05-11e9-978c-a1b6e4bae344.png" alt="Screenshot from 2019-07-04 02-19-32"></p>
+<pre><code>- &apos;users&apos;와 &apos;comments&apos; 1:n 표시
+    - 유저 한명이 여러 댓글 작성 가능하므로 1:n 관계
+</code></pre><p><img src="https://user-images.githubusercontent.com/48202867/60613070-18d2bd00-9e05-11e9-93dd-e6230248ec0b.png" alt="Screenshot from 2019-07-04 02-20-20"></p>
+<pre><code>- &apos;posts&apos;와 &apos;comments&apos; 1:n 표시
+    - 1개 게시물에 여러 댓글이 작성될 수 있으므로, 1:n 관계
+</code></pre><p><img src="https://user-images.githubusercontent.com/48202867/60613071-18d2bd00-9e05-11e9-9c29-dc358ec0d2da.png" alt="Screenshot from 2019-07-04 02-20-40"></p>
+<ul>
+<li>여기까지 MySQL의 정의와 MySQL Workbench 다운로드 방법 및 ERD 구현하는 기초 방법에 대해서 알아보았다.</li>
+<li>다음 내용은 “MySQL Workbench 사용법_2”에서 다룰 예정이다. </li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-07-03T08:00:21.000Z" itemprop="datePublished">
+              2019-07-03
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/MySQL/">MySQL</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Workbench/">Workbench</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
