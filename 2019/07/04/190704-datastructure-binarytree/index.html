@@ -10,11 +10,11 @@
   <meta property="og:title" content="조누스의 걸음마 개발로그">
   <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
   <meta property="og:url" content="https://chohyeonkeun.github.io">
-  <title>조누스의 걸음마 개발 로그</title>
+  <title>자료구조 - 이진트리 학습 | 조누스의 걸음마 개발 로그</title>
   
   
   
-  <link rel="canonical" href="https://chohyeonkeun.github.io/">
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/07/04/190704-datastructure-binarytree/">
   <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -64,43 +64,14 @@
 
     <div class="container">
         <div data-pager-shell>
-            <ul class="Index">
-  
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/07/04/190704-datastructure-binarytree/">자료구조 - 이진트리 학습</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-07-04T08:00:21.000Z" itemprop="datePublished">
-    2019-07-04
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/DataStructure/">DataStructure</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/BinaryTree/">BinaryTree</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>자료구조 - 이진트리 학습</h1>
     </header>
-    <div>
-      
-        <h2 id="이진트리-Binary-Tree-란"><a href="#이진트리-Binary-Tree-란" class="headerlink" title="이진트리(Binary Tree)란?"></a>이진트리(Binary Tree)란?</h2><ul>
+
+    <section>
+      <h2 id="이진트리-Binary-Tree-란"><a href="#이진트리-Binary-Tree-란" class="headerlink" title="이진트리(Binary Tree)란?"></a>이진트리(Binary Tree)란?</h2><ul>
 <li><p>어떤 노드의 자식 노드의 수가 최대 2개인 트리</p>
 </li>
 <li><p>공집합 혹은 루트(root)와 왼쪽 서브 트리, 오른쪽 서브 트리로 이루어진 유한 집합, 각각의 서브 트리는 모두 이진 트리이다.</p>
@@ -170,444 +141,39 @@
 </ul>
 <h2 id="파이썬으로-이진트리-구현"><a href="#파이썬으로-이진트리-구현" class="headerlink" title="파이썬으로 이진트리 구현"></a>파이썬으로 이진트리 구현</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 노드 생성</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, key)</span>:</span></span><br><span class="line">        self.__key = key</span><br><span class="line">        self.__left = <span class="literal">None</span></span><br><span class="line">        self.__right = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">f'key <span class="subst">&#123;self.__key&#125;</span> is deleted'</span>)</span><br><span class="line">    <span class="comment"># get 함수</span></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">key</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__key</span><br><span class="line">    <span class="comment"># set 함수</span></span><br><span class="line"><span class="meta">    @key.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">key</span><span class="params">(self, key)</span>:</span></span><br><span class="line">        self.__key = key</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">left</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__left</span><br><span class="line"></span><br><span class="line"><span class="meta">    @left.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">left</span><span class="params">(self, left)</span>:</span></span><br><span class="line">        self.__left = left</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">right</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__right</span><br><span class="line"></span><br><span class="line"><span class="meta">    @right.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">right</span><span class="params">(self, right)</span>:</span></span><br><span class="line">        self.__right = right</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BST</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.root = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_root</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.root</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">preorder_traverse</span><span class="params">(self, cur, func)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> cur:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        func(cur)</span><br><span class="line">        self.preorder_traverse(cur.left, func)</span><br><span class="line">        self.preorder_traverse(cur.right, func)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, key)</span>:</span></span><br><span class="line">        new_node = TreeNode(key)</span><br><span class="line"></span><br><span class="line">        cur = self.root</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> cur:</span><br><span class="line">            self.root = new_node</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            parent = cur</span><br><span class="line">            <span class="keyword">if</span> key &lt; cur.key:</span><br><span class="line">                cur = cur.left</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> cur:</span><br><span class="line">                    parent.left = new_node</span><br><span class="line">                    <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                cur = cur.right</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> cur:</span><br><span class="line">                    parent.right = new_node</span><br><span class="line">                    <span class="keyword">return</span> </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, target)</span>:</span></span><br><span class="line">        cur = self.root</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            <span class="keyword">if</span> cur.key == target:</span><br><span class="line">                <span class="keyword">return</span> cur</span><br><span class="line">            <span class="keyword">elif</span> cur.key &gt; target:</span><br><span class="line">                cur = cur.left</span><br><span class="line">            <span class="keyword">elif</span> cur.key &lt; target:</span><br><span class="line">                cur = cur.right</span><br><span class="line">        <span class="keyword">return</span> cur</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__remove_recursion</span><span class="params">(self, cur, target)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> cur:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span>, <span class="literal">None</span></span><br><span class="line">        <span class="keyword">elif</span> target &lt; cur.key:</span><br><span class="line">            cur.left, rem_node = self.__remove_recursion(cur.left, target)</span><br><span class="line">        <span class="keyword">elif</span> target &gt; cur.key:</span><br><span class="line">            cur.right, rem_node = self.__remove_recursion(cur.right, target)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> cur.left <span class="keyword">and</span> <span class="keyword">not</span> cur.right:</span><br><span class="line">                rem_node = cur</span><br><span class="line">                cur = <span class="literal">None</span></span><br><span class="line">            <span class="keyword">elif</span> <span class="keyword">not</span> cur.right:</span><br><span class="line">                rem_node = cur</span><br><span class="line">                cur = cur.left</span><br><span class="line">            <span class="keyword">elif</span> <span class="keyword">not</span> cur.left:</span><br><span class="line">                rem_node = cur</span><br><span class="line">                cur = cur.right</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                replace = cur.left</span><br><span class="line">                <span class="keyword">while</span> replace.right:</span><br><span class="line">                    replace = replace.right</span><br><span class="line">                cur.key, replace.key = replace.key, cur.key</span><br><span class="line">                cur.left, rem_node = self.__remove_recursion(cur.left, replace.key)</span><br><span class="line">        <span class="keyword">return</span> cur, rem_node</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove</span><span class="params">(self, target)</span>:</span></span><br><span class="line">        self.root, removed_node = self.__remove_recursion(self.root, target)</span><br><span class="line">        <span class="keyword">if</span> removed_node:</span><br><span class="line">            removed_node.left = removed_node.right = <span class="literal">None</span></span><br><span class="line">        <span class="keyword">return</span> removed_node</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</span><br><span class="line">    print(<span class="string">'*'</span>*<span class="number">100</span>)</span><br><span class="line">    bst = BST()</span><br><span class="line"></span><br><span class="line">    bst.insert(<span class="number">6</span>)</span><br><span class="line">    bst.insert(<span class="number">3</span>)</span><br><span class="line">    bst.insert(<span class="number">2</span>)</span><br><span class="line">    bst.insert(<span class="number">4</span>)</span><br><span class="line">    bst.insert(<span class="number">5</span>)</span><br><span class="line">    bst.insert(<span class="number">8</span>)</span><br><span class="line">    bst.insert(<span class="number">10</span>)</span><br><span class="line">    bst.insert(<span class="number">9</span>)</span><br><span class="line">    bst.insert(<span class="number">11</span>)</span><br><span class="line"></span><br><span class="line">    f = <span class="keyword">lambda</span> x: print(x.key, end=<span class="string">'  '</span>)</span><br><span class="line"></span><br><span class="line">    bst.preorder_traverse(bst.get_root(), f)</span><br><span class="line">    print()</span><br><span class="line"></span><br><span class="line">    print(<span class="string">f'searched key : <span class="subst">&#123;bst.search(<span class="number">8</span>).key&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#bst.remove(9)</span></span><br><span class="line">    <span class="comment">#bst.remove(8)</span></span><br><span class="line">    <span class="comment">#bst.remove(6)</span></span><br><span class="line"></span><br><span class="line">    print(bst.remove(<span class="number">15</span>))</span><br><span class="line"></span><br><span class="line">    bst.preorder_traverse(bst.get_root(), f)</span><br><span class="line">    print()</span><br><span class="line">    print(<span class="string">'*'</span>*<span class="number">100</span>)</span><br></pre></td></tr></table></figure>
 
+
       
-    </div>
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-07-04T08:00:21.000Z" itemprop="datePublished">
+              2019-07-04
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/DataStructure/">DataStructure</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/BinaryTree/">BinaryTree</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
 </article>
 
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/07/03/190703-mysql-workbench/">MySQL Workbench 사용법_1</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-07-03T08:00:21.000Z" itemprop="datePublished">
-    2019-07-03
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/MySQL/">MySQL</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/Workbench/">Workbench</a> }
-  </li>
-
-
-  </ul>
-  
   
 </div>
-
-    </header>
-    <div>
-      
-        <h2 id="MySQL-이란"><a href="#MySQL-이란" class="headerlink" title="MySQL 이란?"></a>MySQL 이란?</h2><ul>
-<li>MySQL은 전세계적으로 가장 널리 사용되고 있는 오픈 소스 데이터베이스이다.</li>
-<li>표준 데이터베이스 질의 언어 SQL(Structured Query Language)을 사용하는 개방 소스의 관계형 데이터베이스 <code>관리시스템(RDBMS)</code>이다.</li>
-<li>매우 빠르고, 유연하며, 사용하기 쉬운 특징이 있다.</li>
-<li>다중사용자, 다중 쓰레드를 지원하고, C, C++, Eiffel, 자바, 펄, PHP, Python 스크립트 등을 위한 응용프로그램 인터페이스(API)를 제공한다.</li>
-<li>유닉스나 리눅스, Windows 운영체제 등에서 사용할 수 있다.</li>
-<li>MySQL 데이터베이스는 일반 사용자가 무료로 다운로드하여 사용할 수 있는 장점이 있다.</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/07/03/190703-mysql-workbench/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/06/30/190630-django-excel/">Excel 파일 만들기</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-06-30T08:00:21.000Z" itemprop="datePublished">
-    2019-06-30
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Python/">Python</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/Excel/">Excel</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <ul>
-<li>이번 포스트에서는 python에서 excel 파일에 대한 기본적인 사용 방법을 알아볼 것이다.</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/06/30/190630-django-excel/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/06/29/190629-django-text/">Text 파일 만들기</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-06-29T08:00:21.000Z" itemprop="datePublished">
-    2019-06-29
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Python/">Python</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/Text/">Text</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <ul>
-<li>이번 포스트에서는 python에서 텍스트 파일에 대한 기본적인 사용 방법을 알아볼 것이다.</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/06/29/190629-django-text/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/06/28/190628-python-csv/">CSV 파일 만들기</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-06-28T08:00:21.000Z" itemprop="datePublished">
-    2019-06-28
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Python/">Python</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/CSV/">CSV</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="CSV란-Comma-separated-Values"><a href="#CSV란-Comma-separated-Values" class="headerlink" title="CSV란? (Comma-separated-Values)"></a>CSV란? (Comma-separated-Values)</h2><ul>
-<li>몇 가지 필드를 쉼표(,)로 구분한 텍스트 데이터 및 텍스트 파일이다.</li>
-<li>확장자는 .csv이며 MIME 형식은 text/csv이다.</li>
-<li>비슷한 포맷으로는 탭으로 구분하는 ‘tab-separated values’(TSV)나, 반각 스페이스로 구분하는 ‘space-separated values’(SSV) 등이 있으며, 이것들을 합쳐서 character-separated values(CSV), delimiter-separated values라고 부르는 경우가 많다.</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/06/28/190628-python-csv/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/06/27/190627-django-classification-by-year/">업로드된 게시물 연도별로 분류하기</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-06-27T08:00:21.000Z" itemprop="datePublished">
-    2019-06-27
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <ul>
-<li>이번 포스트에서는 팀 프로젝트에서 본인이 구현했던 기능 중, 업로드한 게시물을 연도별로 분류했던 방법에 대해 정리해보려고 한다.</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/06/27/190627-django-classification-by-year/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/06/26/190626-django-fullcalendar/">django-fullcalendar 라이브러리 적용</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-06-26T08:00:21.000Z" itemprop="datePublished">
-    2019-06-26
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/fullcalendar/">fullcalendar</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <ul>
-<li>이번 포스트에서는 django에서 fullcalendar 라이브러리를 적용하는 방법에 대해 알아볼 것이다.</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/06/26/190626-django-fullcalendar/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/06/25/190625-django-datetime-timedelta/">Datetime 학습</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-06-25T08:00:21.000Z" itemprop="datePublished">
-    2019-06-25
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/datetime/">datetime</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <ul>
-<li>이번 포스트에서는 특정 게시물이 업로드된 시점부터 현재까지 시간이 얼마나 흘렀는지 확인하는 방법에 대해 알아볼 것이다.</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/06/25/190625-django-datetime-timedelta/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/06/24/190624-django-location-field/">Location Field 적용</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-06-24T08:00:21.000Z" itemprop="datePublished">
-    2019-06-24
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <ul>
-<li>이번 포스트에서는 django에서 location field를 추가하는 방법에 대해 알아볼 것이다.</li>
-<li>여기에서는 google map api를 연동하여 location field를 구현할 것이다.</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/06/24/190624-django-location-field/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/06/23/190623-linux-crontab/">Linux Crontab 사용법</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-06-23T08:00:21.000Z" itemprop="datePublished">
-    2019-06-23
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Linux/">Linux</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/Crontab/">Crontab</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <ul>
-<li>이번 포스트에서는 리눅스 크론탭에 대해 알아볼 것이다.</li>
-<li>윈도우에서는 스케줄러와 비슷하다고 생각하면 된다.</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/06/23/190623-linux-crontab/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-</ul>
-
-  <section id="nav-wrapper">
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">next »</a>
-    </nav>
-  </section>
-
 
             <footer>
     <div>© 2019 - 조현근 </div>
