@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>장고 - Multi image upload 학습 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/07/06/190706-django-multi-image-upload/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>장고 - Multi image upload 학습</h1>
+    </header>
+
+    <section>
+      <ul>
+<li>이번 포스트에서는 한번에 여러 이미지들을 업로드하는 방법에 대해 학습해볼 것이다.</li>
+</ul>
+<a id="more"></a>
+<blockquote>
+<p>ex) yanolja_project</p>
+</blockquote>
+<h3 id="1-모델-작성"><a href="#1-모델-작성" class="headerlink" title="1. 모델 작성"></a>1. 모델 작성</h3><ul>
+<li>경로 : stay(앱) &gt; models.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> get_user_model</span><br><span class="line"><span class="keyword">from</span> django.template.defaultfilters <span class="keyword">import</span> slugify</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stay</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    name = models.CharField(max_length=<span class="number">50</span>)</span><br><span class="line">    username = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name=<span class="string">"stays"</span>)</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_image_filename</span><span class="params">(instance, filename)</span>:</span></span><br><span class="line">    name = instance.stay.name</span><br><span class="line">    slug = slugify(name)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"stay_images/%s-%s"</span> % (slug, filename)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Image</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    stay = models.ForeignKey(Stay, on_delete=models.CASCADE, related_name=<span class="string">"images_stay"</span>)</span><br><span class="line">    image = models.ImageField(upload_to=get_image_filename, verbose_name=<span class="string">"Image"</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.stay.name + <span class="string">"image"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-폼-작성"><a href="#2-폼-작성" class="headerlink" title="2. 폼 작성"></a>2. 폼 작성</h3><ul>
+<li>경로 : stay &gt; forms.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> forms</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StayForm</span><span class="params">(forms.ModelForm)</span>:</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        model = Stay</span><br><span class="line">        fields = (<span class="string">'name'</span>, <span class="string">'location'</span>, <span class="string">'introduce'</span>, ...)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, *args, **kwargs)</span>:</span></span><br><span class="line">        super().__init__(*args, **kwargs)</span><br><span class="line">        self.fields[<span class="string">'name'</span>].label = <span class="string">'상호명'</span></span><br><span class="line">        self.fields[<span class="string">'location'</span>].label = <span class="string">'위치'</span></span><br><span class="line">        self.fields[<span class="string">'introduce'</span>].label = <span class="string">'숙소 소개'</span></span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ImageForm</span><span class="params">(forms.ModelForm)</span>:</span></span><br><span class="line">    image = forms.ImageField(label=<span class="string">''</span>)</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        model = Image</span><br><span class="line">        fields = (<span class="string">'image'</span>,)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-뷰-작성-객체-생성-시-이미지-멀티-업로드"><a href="#3-뷰-작성-객체-생성-시-이미지-멀티-업로드" class="headerlink" title="3. 뷰 작성(객체 생성 시, 이미지 멀티 업로드)"></a>3. 뷰 작성(객체 생성 시, 이미지 멀티 업로드)</h3><ul>
+<li>경로 : stay &gt; views.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render, redirect</span><br><span class="line"><span class="keyword">from</span> django.forms <span class="keyword">import</span> modelformset_factory</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.decorators <span class="keyword">import</span> login_required</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> reverse</span><br><span class="line"><span class="keyword">from</span> .forms <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="meta">@login_required</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">stay_create</span><span class="params">(request)</span>:</span></span><br><span class="line"><span class="comment"># modelformset_factory 함수 사용(extra로 최대 업로드할 수 있는 이미지 개수 설정)</span></span><br><span class="line">ImageFormSet = modelformset_factory(Image, form=ImageForm, extra=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> request.method == <span class="string">"POST"</span>:</span><br><span class="line">    stay_form = StayForm(request.POST, request.FILES)</span><br><span class="line">    formset = ImageFormSet(request.POST, request.FILES, queryset=Image.objects.none())</span><br><span class="line">    <span class="comment"># form validation</span></span><br><span class="line">    <span class="keyword">if</span> stay_form.is_valid() <span class="keyword">and</span> formset.is_valid():</span><br><span class="line">        stay_form = stay_form.save(commit=<span class="literal">False</span>)</span><br><span class="line">        stay_form.username = request.user</span><br><span class="line">        stay_form.save()</span><br><span class="line">        <span class="keyword">for</span> form <span class="keyword">in</span> formset.cleaned_data:</span><br><span class="line">            <span class="comment"># 유저가 모든 이미지들을 업로드하지 않았을 경우 crash 방지</span></span><br><span class="line">            <span class="keyword">if</span> form:</span><br><span class="line">                image = form[<span class="string">'image'</span>]</span><br><span class="line">                photo = Image(stay=stay_form, image=image)</span><br><span class="line">                photo.save()</span><br><span class="line">        <span class="comment"># urls.py에서 app_name이 stay이고, name이 stay_list인 url로 이동</span></span><br><span class="line">        <span class="keyword">return</span> redirect(reverse(<span class="string">"stay:stay_list"</span>))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(stay_form.errors, formset.errors)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># method가 POST가 아닌 경우, 즉 처음 stay_create url로 이동한 경우</span></span><br><span class="line">    stay_form = StayForm()</span><br><span class="line">    formset = ImageFormSet(queryset=Image.objects.none())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> render(request, <span class="string">'stay/stay_create.html'</span>, &#123;<span class="string">'stay_form'</span>:stay_form, <span class="string">'formset'</span>:formset&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="4-커스텀-템플릿-작성"><a href="#4-커스텀-템플릿-작성" class="headerlink" title="4. 커스텀 템플릿 작성"></a>4. 커스텀 템플릿 작성</h3><ul>
+<li>경로 : stay &gt; templates &gt; stay &gt; stay_create.html  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;% block content %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"stay_form"</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span>&gt;</span></span><br><span class="line">        &#123;% csrf_token %&#125;</span><br><span class="line">        &#123;&#123; stay_form.as_p &#125;&#125;</span><br><span class="line">        &#123;&#123; formset.management_form &#125;&#125;</span><br><span class="line">        &#123;% for form in formset %&#125;</span><br><span class="line">            &#123;&#123; form &#125;&#125;</span><br><span class="line">        &#123;% endfor %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"height:30px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">name</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"upload"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-07-06T08:00:21.000Z" itemprop="datePublished">
+              2019-07-06
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/image/">image</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/multi/">multi</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

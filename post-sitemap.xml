@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/06/190706-django-multi-image-upload/</loc>
+        <lastmod>2019-07-06T04:12:03.492Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/05/190705-django-multiselectfield/</loc>
+        <lastmod>2019-07-06T04:07:48.236Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/07/04/190704-datastructure-binarytree/</loc>
         <lastmod>2019-07-04T17:08:25.748Z</lastmod>
         <changefreq>weekly</changefreq>

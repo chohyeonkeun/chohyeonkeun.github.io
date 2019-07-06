@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>장고 - multiselectfield 학습 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/07/05/190705-django-multiselectfield/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>장고 - multiselectfield 학습</h1>
+    </header>
+
+    <section>
+      <ul>
+<li>이번 포스트에서는 앱 모델 작성 시, 한번에 여러 항목을 선택할 수 있는 multiselectfield 를 구현하는 방법에 대해 학습해볼 것이다.</li>
+</ul>
+<a id="more"></a>
+<blockquote>
+<p>ex) yanolja_project</p>
+</blockquote>
+<h3 id="1-multiselectfield-설치"><a href="#1-multiselectfield-설치" class="headerlink" title="1. multiselectfield 설치"></a>1. multiselectfield 설치</h3><ul>
+<li>경로 : yanolja_project$   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install django-multiselectfield</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-모델-작성"><a href="#2-모델-작성" class="headerlink" title="2. 모델 작성"></a>2. 모델 작성</h3><ul>
+<li>경로 : stay(앱) &gt; models.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth <span class="keyword">import</span> get_user_model</span><br><span class="line"><span class="keyword">from</span> multiselectfield <span class="keyword">import</span> MultiSelectField</span><br><span class="line"></span><br><span class="line">SERVICE_CHOICES = (</span><br><span class="line">    (<span class="number">1</span>, <span class="string">'주차가능'</span>),</span><br><span class="line">    (<span class="number">2</span>, <span class="string">'레스토랑'</span>),</span><br><span class="line">    (<span class="number">3</span>, <span class="string">'부페'</span>),</span><br><span class="line">    (<span class="number">4</span>, <span class="string">'커피숍'</span>),</span><br><span class="line">    (<span class="number">5</span>, <span class="string">'유료세탁'</span>),</span><br><span class="line">    (<span class="number">6</span>, <span class="string">'24시간데스크'</span>),</span><br><span class="line">    (<span class="number">7</span>, <span class="string">'객실금연'</span>),</span><br><span class="line">    ...</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stay</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    service_kinds = MultiSelectField(choices=SERVICE_CHOICES, null=<span class="literal">True</span>, blank=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-설정-추가"><a href="#3-설정-추가" class="headerlink" title="3. 설정 추가"></a>3. 설정 추가</h3><ul>
+<li>경로 : config(프로젝트) &gt; settings.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">'multiselectfield'</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="4-커스터마이징-템플릿"><a href="#4-커스터마이징-템플릿" class="headerlink" title="4. 커스터마이징 템플릿"></a>4. 커스터마이징 템플릿</h3><ul>
+<li>경로 : stay &gt; templates &gt; stay &gt; stay_list.html  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;% block content %&#125;</span><br><span class="line">&#123;% for object in object_list %&#125;</span><br><span class="line">    ...</span><br><span class="line">    &#123;&#123;object.service_kinds&#125;&#125;</span><br><span class="line">    ...</span><br><span class="line">&#123;% endfor %&#125;</span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="5-REST-Framework-API-작성-시"><a href="#5-REST-Framework-API-작성-시" class="headerlink" title="5. REST Framework API 작성 시"></a>5. REST Framework API 작성 시</h3><ul>
+<li>경로 : stay &gt; serializers.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> fields, serializers</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> SERVICE_CHOICES</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StaySerializer</span><span class="params">(serializers.ModelSerializer)</span>:</span></span><br><span class="line">    ...</span><br><span class="line">    service_kinds = fields.MultipleChoiceField(choices=SERVICE_CHOICES)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-07-05T08:00:21.000Z" itemprop="datePublished">
+              2019-07-05
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/multiselectfield/">multiselectfield</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
