@@ -84,7 +84,7 @@
     </item>
     
     <item>
-      <title>MySQL Workbench 사용법_1</title>
+      <title>ERD - MySQL Workbench 사용법_1</title>
       <link>https://chohyeonkeun.github.io/2019/07/03/190703-mysql-workbench/</link>
       <guid>https://chohyeonkeun.github.io/2019/07/03/190703-mysql-workbench/</guid>
       <pubDate>Wed, 03 Jul 2019 08:00:21 GMT</pubDate>
@@ -107,7 +107,7 @@
     </item>
     
     <item>
-      <title>Excel 파일 만들기</title>
+      <title>파이썬 - Excel 파일 만들기</title>
       <link>https://chohyeonkeun.github.io/2019/06/30/190630-python-excel/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/30/190630-python-excel/</guid>
       <pubDate>Sun, 30 Jun 2019 08:00:21 GMT</pubDate>
@@ -125,7 +125,7 @@
     </item>
     
     <item>
-      <title>Text 파일 만들기</title>
+      <title>파이썬 - Text 파일 만들기</title>
       <link>https://chohyeonkeun.github.io/2019/06/29/190629-python-text/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/29/190629-python-text/</guid>
       <pubDate>Sat, 29 Jun 2019 08:00:21 GMT</pubDate>
@@ -143,7 +143,7 @@
     </item>
     
     <item>
-      <title>CSV 파일 만들기</title>
+      <title>파이썬 - CSV 파일 만들기</title>
       <link>https://chohyeonkeun.github.io/2019/06/28/190628-python-csv/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/28/190628-python-csv/</guid>
       <pubDate>Fri, 28 Jun 2019 08:00:21 GMT</pubDate>
@@ -163,7 +163,7 @@
     </item>
     
     <item>
-      <title>업로드된 게시물 연도별로 분류하기</title>
+      <title>장고 - 업로드된 게시물 연도별로 분류하기</title>
       <link>https://chohyeonkeun.github.io/2019/06/27/190627-django-classification-by-year/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/27/190627-django-classification-by-year/</guid>
       <pubDate>Thu, 27 Jun 2019 08:00:21 GMT</pubDate>
@@ -175,13 +175,13 @@
       
       </description>
       
-      <content:encoded><![CDATA[<ul><li>이번 포스트에서는 팀 프로젝트에서 본인이 구현했던 기능 중, 업로드한 게시물을 연도별로 분류했던 방법에 대해 정리해보려고 한다.</li></ul><a id="more"></a><blockquote><p>ex) extore_project</p></blockquote><h3 id="1-뷰-작성"><a href="#1-뷰-작성" class="headerlink" title="1. 뷰 작성"></a>1. 뷰 작성</h3><ul><li><p>경로 : post &gt; views.py</p>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">last_memory</span><span class="params">(request)</span>:</span></span><br><span class="line">    posts = Post.objects.all()</span><br><span class="line"></span><br><span class="line">    posts_year_li = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> post <span class="keyword">in</span> posts:</span><br><span class="line">        posts_year_li.append(post.created.strftime(<span class="string">"%Y"</span>))</span><br><span class="line"></span><br><span class="line">    posts_year_dict = reduce(<span class="keyword">lambda</span> dict, ch: dict.update(&#123;ch:dict.get(ch,<span class="number">0</span>)+<span class="number">1</span>&#125;) <span class="keyword">or</span> dict, posts_year_li, &#123;&#125;)</span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'post/last_memory.html'</span>, &#123;<span class="string">'object_dict'</span>:posts_year_dict, <span class="string">'object_list'</span>:posts&#125;)</span><br></pre></td></tr></table></figure></li><li><p>코드 설명</p><ul><li>posts_year_li 라는 빈 리스트를 생성하여 업로드한 게시물 객체의 연도를 순차적으로 추가하였다.<ul><li>업로드한 게시물 객체의 연도만 표시 : post.created.strftime(“%Y”)</li></ul></li><li>게시물의 연도만 추가한 posts_year_li 리스트에서 reduce 함수를 이용해 연도별 개수를 dictionary 형태로 각각 key 와 value로 변환해주었다.<ul><li>딕셔너리 형태로 연도별 개수를 각각 key와 value로 설정 : posts_year_dict = reduce(lambda dict, ch: dict.update({ch:dict.get(ch,0)+1}) or dict, posts_year_li, {})</li></ul></li><li>posts와 posts_year_dict를 context_data로 render 진행</li></ul></li></ul><h3 id="2-연도별-게시물을-보여줄-html-작성"><a href="#2-연도별-게시물을-보여줄-html-작성" class="headerlink" title="2. 연도별 게시물을 보여줄 html 작성"></a>2. 연도별 게시물을 보여줄 html 작성</h3><ul><li>경로 : post &gt; templates &gt; post &gt; last_memory.html  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends 'post-base.html' %&#125;</span><br><span class="line">&#123;% block extra_script %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="xml">    <span class="comment">&lt;!-- 특정 연도별 게시물이 있는 위치로 이동하는 함수 작성 --&gt;</span>  </span></span><br><span class="line"><span class="undefined">    function year_move(year)&#123;</span></span><br><span class="line"><span class="undefined">    var offset = $(".year-" + year).offset();</span></span><br><span class="line"><span class="undefined">    $("html,body").animate(&#123;scrollTop : offset.top&#125;, 400);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"screen"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"display:inline-block; width:1200px;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"show-year"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"show-year-inner"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"margin-bottom:5px; position:relative; left:-13px; color:rgb(130,130,130);"</span>&gt;</span>year<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        &#123;% if object_dict %&#125;</span><br><span class="line">            <span class="comment">&lt;!-- 연도별 업로드한 게시물(posts) 개수 표시 --&gt;</span></span><br><span class="line">            &#123;% for keys, values in object_dict.items %&#125;</span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"show-year"</span> <span class="attr">style</span>=<span class="string">"height:60px; line-height:60px;"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"year-line"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"year-circle year-circle-&#123;&#123;keys&#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--업로드한 게시물 개수가 1개일 경우--&gt;</span></span><br><span class="line">                    &#123;% ifequal values 1 %&#125;</span><br><span class="line">                        <span class="comment">&lt;!-- 상기 작성한 year_move(year)함수를 이용하여 클릭한 연도의 게시물 위치로 이동하도록 코드 작성 --&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"year-move year-move-&#123;&#123;keys&#125;&#125;"</span> <span class="attr">onclick</span>=<span class="string">"year_move('&#123;&#123;keys&#125;&#125;');"</span>&gt;</span>&#123;&#123;keys&#125;&#125;&amp;ensp;<span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;values&#125;&#125; post<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--업로드한 게시물 개수가 2개 이상일 경우--&gt;</span></span><br><span class="line">                    &#123;% else %&#125;</span><br><span class="line">                        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"year-move year-move-&#123;&#123;keys&#125;&#125;"</span> <span class="attr">onclick</span>=<span class="string">"year_move('&#123;&#123;keys&#125;&#125;')"</span>&gt;</span>&#123;&#123;keys&#125;&#125;&amp;ensp;<span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;values&#125;&#125; posts<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                        &#123;% endifequal %&#125;</span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            &#123;% endfor %&#125;</span><br><span class="line">        &#123;% else %&#125;</span><br><span class="line">        <span class="comment">&lt;!--포스트 없는 경우의 div 추가--&gt;</span></span><br><span class="line">        &#123;% endif %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 전체 포스트 목록 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"show-posts"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 연도별 포스트 --&gt;</span></span><br><span class="line">    &#123;% for keys, values in object_dict.items %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"show-post"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"year-&#123;&#123;keys&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"font-size:30px; text-align:center;"</span>&gt;</span>&#123;&#123;keys&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"display:inline-block; text-algin:left;"</span>&gt;</span></span><br><span class="line">        &#123;% for object in object_list %&#125;</span><br><span class="line">            <span class="comment">&lt;!-- 커스텀 템플릿 태그를 이용(post &gt; templatetags &gt; calc.py) --&gt;</span></span><br><span class="line">            &#123;% load calc %&#125;</span><br><span class="line">            <span class="comment">&lt;!-- 연도별 업로드한 게시물을 분류하는 비교연산자 --&gt;</span></span><br><span class="line">            &#123;% ifequal object.created|return_year keys %&#125;</span><br><span class="line">                <span class="comment">&lt;!--연도별 post 목록--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"card"</span> <span class="attr">onclick</span>=<span class="string">"location.href='&#123;% url 'post:detail' object.id %&#125;';"</span> <span class="attr">style</span>=<span class="string">"margin: 10px; width: 13rem; float:left; text-align:left;"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"show-post-image"</span> <span class="attr">style</span>=<span class="string">"background-image:url(&#123;&#123;object.image.url&#125;&#125;);"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"padding:12px 20px;"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"card-text"</span>&gt;</span>&#123;&#123;object.text|truncatechars:9&#125;&#125; <span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"color:rgb(130,130,130); font-size:13px; float:right;"</span>&gt;</span>상세보기<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"list-group list-group-flush"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"list-group-item"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"margin:0; display:inline-block; font-size:15px;"</span>&gt;</span>&#123;&#123;object.author.last_name&#125;&#125;&#123;&#123;object.author.first_name&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"margin:0; float:right; font-size:15px;"</span>&gt;</span>&#123;&#123;object.created|date:"n/j D"&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            &#123;% endifequal %&#125;</span><br><span class="line">        &#123;% endfor %&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure></li></ul><h3 id="3-URL-설정"><a href="#3-URL-설정" class="headerlink" title="3. URL 설정"></a>3. URL 설정</h3><ul><li>경로 : post &gt; urls.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> .views.py <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">app_name = <span class="string">'post'</span></span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'last_memory/'</span>, last_memory, name=<span class="string">'last_memory'</span>),</span><br><span class="line">]</span><br></pre></td></tr></table></figure></li></ul>]]></content:encoded>
+      <content:encoded><![CDATA[<ul><li>이번 포스트에서는 팀 프로젝트에서 본인이 구현했던 기능 중, 업로드한 게시물을 연도별로 분류했던 방법에 대해 정리해보려고 한다.</li></ul><a id="more"></a><blockquote><p>ex) extore_project</p></blockquote><h3 id="1-뷰-작성"><a href="#1-뷰-작성" class="headerlink" title="1. 뷰 작성"></a>1. 뷰 작성</h3><ul><li><p>경로 : post &gt; views.py</p>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">last_memory</span><span class="params">(request)</span>:</span></span><br><span class="line">    posts = Post.objects.all()</span><br><span class="line"></span><br><span class="line">    posts_year_li = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> post <span class="keyword">in</span> posts:</span><br><span class="line">        posts_year_li.append(post.created.strftime(<span class="string">"%Y"</span>))</span><br><span class="line"></span><br><span class="line">    posts_year_dict = reduce(<span class="keyword">lambda</span> dict, ch: dict.update(&#123;ch:dict.get(ch,<span class="number">0</span>)+<span class="number">1</span>&#125;) <span class="keyword">or</span> dict, posts_year_li, &#123;&#125;)</span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'post/last_memory.html'</span>, &#123;<span class="string">'object_dict'</span>:posts_year_dict, <span class="string">'object_list'</span>:posts&#125;)</span><br></pre></td></tr></table></figure></li><li><p>코드 설명</p><ul><li>posts_year_li 라는 빈 리스트를 생성하여 업로드한 게시물 객체의 연도를 순차적으로 추가하였다.<ul><li>업로드한 게시물 객체의 연도만 표시 : post.created.strftime(“%Y”)</li></ul></li><li>게시물의 연도만 추가한 posts_year_li 리스트에서 reduce 함수를 이용해 연도별 개수를 dictionary 형태로 각각 key 와 value로 변환해주었다.<ul><li>딕셔너리 형태로 연도별 개수를 각각 key와 value로 설정 : posts_year_dict = reduce(lambda dict, ch: dict.update({ch:dict.get(ch,0)+1}) or dict, posts_year_li, {})</li></ul></li><li>posts와 posts_year_dict를 context_data로 render 진행</li></ul></li></ul><h3 id="2-연도별-게시물을-보여줄-html-작성"><a href="#2-연도별-게시물을-보여줄-html-작성" class="headerlink" title="2. 연도별 게시물을 보여줄 html 작성"></a>2. 연도별 게시물을 보여줄 html 작성</h3><ul><li>경로 : post &gt; templates &gt; post &gt; last_memory.html  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends 'post-base.html' %&#125;</span><br><span class="line">&#123;% block extra_script %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="xml">    <span class="comment">&lt;!-- 특정 연도별 게시물이 있는 위치로 이동하는 함수 작성 --&gt;</span>  </span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">year_move</span>(<span class="params">year</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> offset = $(<span class="string">".year-"</span> + year).offset();</span></span><br><span class="line"><span class="javascript">    $(<span class="string">"html,body"</span>).animate(&#123;<span class="attr">scrollTop</span> : offset.top&#125;, <span class="number">400</span>);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"screen"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"display:inline-block; width:1200px;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"show-year"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"show-year-inner"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"margin-bottom:5px; position:relative; left:-13px; color:rgb(130,130,130);"</span>&gt;</span>year<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        &#123;% if object_dict %&#125;</span><br><span class="line">            <span class="comment">&lt;!-- 연도별 업로드한 게시물(posts) 개수 표시 --&gt;</span></span><br><span class="line">            &#123;% for keys, values in object_dict.items %&#125;</span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"show-year"</span> <span class="attr">style</span>=<span class="string">"height:60px; line-height:60px;"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"year-line"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"year-circle year-circle-&#123;&#123;keys&#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--업로드한 게시물 개수가 1개일 경우--&gt;</span></span><br><span class="line">                    &#123;% ifequal values 1 %&#125;</span><br><span class="line">                        <span class="comment">&lt;!-- 상기 작성한 year_move(year)함수를 이용하여 클릭한 연도의 게시물 위치로 이동하도록 코드 작성 --&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"year-move year-move-&#123;&#123;keys&#125;&#125;"</span> <span class="attr">onclick</span>=<span class="string">"year_move('&#123;&#123;keys&#125;&#125;');"</span>&gt;</span>&#123;&#123;keys&#125;&#125;&amp;ensp;<span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;values&#125;&#125; post<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--업로드한 게시물 개수가 2개 이상일 경우--&gt;</span></span><br><span class="line">                    &#123;% else %&#125;</span><br><span class="line">                        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"year-move year-move-&#123;&#123;keys&#125;&#125;"</span> <span class="attr">onclick</span>=<span class="string">"year_move('&#123;&#123;keys&#125;&#125;')"</span>&gt;</span>&#123;&#123;keys&#125;&#125;&amp;ensp;<span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;values&#125;&#125; posts<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                        &#123;% endifequal %&#125;</span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            &#123;% endfor %&#125;</span><br><span class="line">        &#123;% else %&#125;</span><br><span class="line">        <span class="comment">&lt;!--포스트 없는 경우의 div 추가--&gt;</span></span><br><span class="line">        &#123;% endif %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 전체 포스트 목록 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"show-posts"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 연도별 포스트 --&gt;</span></span><br><span class="line">    &#123;% for keys, values in object_dict.items %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"show-post"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"year-&#123;&#123;keys&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"font-size:30px; text-align:center;"</span>&gt;</span>&#123;&#123;keys&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"display:inline-block; text-algin:left;"</span>&gt;</span></span><br><span class="line">        &#123;% for object in object_list %&#125;</span><br><span class="line">            <span class="comment">&lt;!-- 커스텀 템플릿 태그를 이용(post &gt; templatetags &gt; calc.py) --&gt;</span></span><br><span class="line">            &#123;% load calc %&#125;</span><br><span class="line">            <span class="comment">&lt;!-- 연도별 업로드한 게시물을 분류하는 비교연산자 --&gt;</span></span><br><span class="line">            &#123;% ifequal object.created|return_year keys %&#125;</span><br><span class="line">                <span class="comment">&lt;!--연도별 post 목록--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"card"</span> <span class="attr">onclick</span>=<span class="string">"location.href='&#123;% url 'post:detail' object.id %&#125;';"</span> <span class="attr">style</span>=<span class="string">"margin: 10px; width: 13rem; float:left; text-align:left;"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"show-post-image"</span> <span class="attr">style</span>=<span class="string">"background-image:url(&#123;&#123;object.image.url&#125;&#125;);"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"padding:12px 20px;"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"card-text"</span>&gt;</span>&#123;&#123;object.text|truncatechars:9&#125;&#125; <span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"color:rgb(130,130,130); font-size:13px; float:right;"</span>&gt;</span>상세보기<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"list-group list-group-flush"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"list-group-item"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"margin:0; display:inline-block; font-size:15px;"</span>&gt;</span>&#123;&#123;object.author.last_name&#125;&#125;&#123;&#123;object.author.first_name&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"margin:0; float:right; font-size:15px;"</span>&gt;</span>&#123;&#123;object.created|date:"n/j D"&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            &#123;% endifequal %&#125;</span><br><span class="line">        &#123;% endfor %&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure></li></ul><h3 id="3-URL-설정"><a href="#3-URL-설정" class="headerlink" title="3. URL 설정"></a>3. URL 설정</h3><ul><li>경로 : post &gt; urls.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> .views.py <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">app_name = <span class="string">'post'</span></span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'last_memory/'</span>, last_memory, name=<span class="string">'last_memory'</span>),</span><br><span class="line">]</span><br></pre></td></tr></table></figure></li></ul>]]></content:encoded>
       
       <comments>https://chohyeonkeun.github.io/2019/06/27/190627-django-classification-by-year/#disqus_thread</comments>
     </item>
     
     <item>
-      <title>django-fullcalendar 라이브러리 적용</title>
+      <title>장고 - django-fullcalendar 라이브러리 적용</title>
       <link>https://chohyeonkeun.github.io/2019/06/26/190626-django-fullcalendar/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/26/190626-django-fullcalendar/</guid>
       <pubDate>Wed, 26 Jun 2019 08:00:21 GMT</pubDate>
@@ -199,7 +199,7 @@
     </item>
     
     <item>
-      <title>Datetime 학습</title>
+      <title>장고 - Datetime 학습</title>
       <link>https://chohyeonkeun.github.io/2019/06/25/190625-django-datetime-timedelta/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/25/190625-django-datetime-timedelta/</guid>
       <pubDate>Tue, 25 Jun 2019 08:00:21 GMT</pubDate>
@@ -217,7 +217,7 @@
     </item>
     
     <item>
-      <title>Location Field 적용</title>
+      <title>장고 - Location Field 학습</title>
       <link>https://chohyeonkeun.github.io/2019/06/24/190624-django-location-field/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/24/190624-django-location-field/</guid>
       <pubDate>Mon, 24 Jun 2019 08:00:21 GMT</pubDate>
@@ -282,7 +282,7 @@
     </item>
     
     <item>
-      <title>Docker와 Elastic Beanstalk 이용하여 배포하기</title>
+      <title>장고 - Docker와 Elastic Beanstalk 이용하여 배포하기</title>
       <link>https://chohyeonkeun.github.io/2019/06/21/190621-django-docker-elastic-beanstalk/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/21/190621-django-docker-elastic-beanstalk/</guid>
       <pubDate>Fri, 21 Jun 2019 08:00:21 GMT</pubDate>
@@ -305,7 +305,7 @@
     </item>
     
     <item>
-      <title>번역 기능 학습</title>
+      <title>장고 - 번역 기능 학습</title>
       <link>https://chohyeonkeun.github.io/2019/06/20/190620-django-translation/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/20/190620-django-translation/</guid>
       <pubDate>Thu, 20 Jun 2019 08:00:21 GMT</pubDate>
@@ -324,7 +324,7 @@
     </item>
     
     <item>
-      <title>Elastic Beanstalk 이용한 배포</title>
+      <title>장고 - Elastic Beanstalk 이용한 배포</title>
       <link>https://chohyeonkeun.github.io/2019/06/19/190619-django-elastic-beanstalk/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/19/190619-django-elastic-beanstalk/</guid>
       <pubDate>Wed, 19 Jun 2019 08:00:21 GMT</pubDate>
@@ -342,7 +342,7 @@
     </item>
     
     <item>
-      <title>Django Rest Framework 사용</title>
+      <title>장고 - Rest Framework 사용</title>
       <link>https://chohyeonkeun.github.io/2019/06/18/190618-django-rest-framework/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/18/190618-django-rest-framework/</guid>
       <pubDate>Tue, 18 Jun 2019 08:00:21 GMT</pubDate>
@@ -360,7 +360,7 @@
     </item>
     
     <item>
-      <title>결제 시스템 연동</title>
+      <title>장고 - 결제 시스템 연동</title>
       <link>https://chohyeonkeun.github.io/2019/06/17/190617-django-payment-function/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/17/190617-django-payment-function/</guid>
       <pubDate>Mon, 17 Jun 2019 08:00:21 GMT</pubDate>
@@ -379,7 +379,7 @@
     </item>
     
     <item>
-      <title>장바구니 기능 학습</title>
+      <title>장고 - 쇼핑몰 장바구니 기능 학습</title>
       <link>https://chohyeonkeun.github.io/2019/06/16/190616-django-cart-function/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/16/190616-django-cart-function/</guid>
       <pubDate>Sun, 16 Jun 2019 08:00:21 GMT</pubDate>
@@ -397,7 +397,7 @@
     </item>
     
     <item>
-      <title>관리자 사이트 - 결제 정보의 상세정보 조회</title>
+      <title>장고 - 관리자 사이트에서 결제 상세정보 조회</title>
       <link>https://chohyeonkeun.github.io/2019/06/15/190615-django-order-detail-page/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/15/190615-django-order-detail-page/</guid>
       <pubDate>Sat, 15 Jun 2019 08:00:21 GMT</pubDate>
@@ -415,7 +415,7 @@
     </item>
     
     <item>
-      <title>관리자 사이트 - 결제정보 csv 파일로 저장</title>
+      <title>장고 - 관리자 사이트의 결제정보 csv 파일</title>
       <link>https://chohyeonkeun.github.io/2019/06/15/190615-django-order-csv-file/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/15/190615-django-order-csv-file/</guid>
       <pubDate>Sat, 15 Jun 2019 08:00:21 GMT</pubDate>
@@ -433,7 +433,7 @@
     </item>
     
     <item>
-      <title>관리자 사이트 - 결제 정보의 PDF 파일</title>
+      <title>장고 - 관리자 사이트의 결제 정보 PDF 파일</title>
       <link>https://chohyeonkeun.github.io/2019/06/14/190614-django-order-pdf-file/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/14/190614-django-order-pdf-file/</guid>
       <pubDate>Fri, 14 Jun 2019 08:00:21 GMT</pubDate>
@@ -452,7 +452,7 @@
     </item>
     
     <item>
-      <title>상위, 하위 카테고리 생성 및 기능 구현</title>
+      <title>장고 - 상위, 하위 카테고리 생성 및 기능 구현</title>
       <link>https://chohyeonkeun.github.io/2019/06/13/190613-django-involved-category-function/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/13/190613-django-involved-category-function/</guid>
       <pubDate>Thu, 13 Jun 2019 08:00:21 GMT</pubDate>
@@ -471,7 +471,7 @@
     </item>
     
     <item>
-      <title>Table에서 checkbox 데이터를 ajax로 전달하기</title>
+      <title>장고 - Table에서 checkbox 데이터를 ajax로 전달하기</title>
       <link>https://chohyeonkeun.github.io/2019/06/12/190612-django-ajax-checkbox/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/12/190612-django-ajax-checkbox/</guid>
       <pubDate>Wed, 12 Jun 2019 08:00:21 GMT</pubDate>
@@ -490,7 +490,7 @@
     </item>
     
     <item>
-      <title>Category 기능 학습</title>
+      <title>장고 - Category 기능 학습</title>
       <link>https://chohyeonkeun.github.io/2019/06/11/190611-django-category-function/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/11/190611-django-category-function/</guid>
       <pubDate>Tue, 11 Jun 2019 08:00:21 GMT</pubDate>
@@ -509,7 +509,7 @@
     </item>
     
     <item>
-      <title>Comment 기능 학습</title>
+      <title>장고 Comment 기능 학습</title>
       <link>https://chohyeonkeun.github.io/2019/06/10/190610-django-blog-comment-function/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/10/190610-django-blog-comment-function/</guid>
       <pubDate>Mon, 10 Jun 2019 08:00:21 GMT</pubDate>
@@ -529,7 +529,7 @@
     </item>
     
     <item>
-      <title>Tag 기능 학습</title>
+      <title>장고 - Tag 기능 학습</title>
       <link>https://chohyeonkeun.github.io/2019/06/09/190609-django-tag-function/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/09/190609-django-tag-function/</guid>
       <pubDate>Sun, 09 Jun 2019 08:00:21 GMT</pubDate>
@@ -545,7 +545,7 @@
     </item>
     
     <item>
-      <title>커스텀 템플릿 태그 생성</title>
+      <title>장고 - 커스텀 템플릿 태그 생성</title>
       <link>https://chohyeonkeun.github.io/2019/06/08/190608-django-custom-templatetags/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/08/190608-django-custom-templatetags/</guid>
       <pubDate>Sat, 08 Jun 2019 08:00:21 GMT</pubDate>
@@ -564,7 +564,7 @@
     </item>
     
     <item>
-      <title>멀티 데이터베이스 사용</title>
+      <title>장고 - 멀티 데이터베이스 사용</title>
       <link>https://chohyeonkeun.github.io/2019/06/07/190607-django-multi-database/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/07/190607-django-multi-database/</guid>
       <pubDate>Fri, 07 Jun 2019 08:00:21 GMT</pubDate>
@@ -585,7 +585,7 @@
     </item>
     
     <item>
-      <title>EC2에 장고 배포하기</title>
+      <title>장고 - EC2에 장고 배포하기</title>
       <link>https://chohyeonkeun.github.io/2019/06/06/190606-django-EC2-django-deploy/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/06/190606-django-EC2-django-deploy/</guid>
       <pubDate>Thu, 06 Jun 2019 08:00:21 GMT</pubDate>
@@ -605,7 +605,7 @@
     </item>
     
     <item>
-      <title>이메일 서버 셋팅</title>
+      <title>장고 - 이메일 서버 셋팅</title>
       <link>https://chohyeonkeun.github.io/2019/06/05/190605-django-email-server/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/05/190605-django-email-server/</guid>
       <pubDate>Wed, 05 Jun 2019 08:00:21 GMT</pubDate>
@@ -625,7 +625,7 @@
     </item>
     
     <item>
-      <title>로드밸런서에 SSL 인증서 적용</title>
+      <title>장고 - 로드밸런서에 SSL 인증서 적용</title>
       <link>https://chohyeonkeun.github.io/2019/06/04/190604-django-ELB-SSL/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/04/190604-django-ELB-SSL/</guid>
       <pubDate>Tue, 04 Jun 2019 08:00:21 GMT</pubDate>
@@ -646,7 +646,7 @@
     </item>
     
     <item>
-      <title>ELB 셋팅</title>
+      <title>장고 - ELB 셋팅</title>
       <link>https://chohyeonkeun.github.io/2019/06/04/190604-django-ELB-setting/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/04/190604-django-ELB-setting/</guid>
       <pubDate>Tue, 04 Jun 2019 07:00:21 GMT</pubDate>
@@ -669,7 +669,7 @@
     </item>
     
     <item>
-      <title>ACM으로 SSL 인증서 발급</title>
+      <title>장고 - ACM으로 SSL 인증서 발급</title>
       <link>https://chohyeonkeun.github.io/2019/06/03/190603-django-ACM-SSL/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/03/190603-django-ACM-SSL/</guid>
       <pubDate>Mon, 03 Jun 2019 08:00:21 GMT</pubDate>
@@ -690,7 +690,7 @@
     </item>
     
     <item>
-      <title>정규표현식 기초 학습</title>
+      <title>파이썬 - 정규표현식 기초 학습</title>
       <link>https://chohyeonkeun.github.io/2019/06/02/190602-python-regular-expression/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/02/190602-python-regular-expression/</guid>
       <pubDate>Sun, 02 Jun 2019 08:00:21 GMT</pubDate>
@@ -715,7 +715,7 @@
     </item>
     
     <item>
-      <title>django allauth 사용(facebook 연동)</title>
+      <title>장고 - django allauth 사용(facebook 연동)</title>
       <link>https://chohyeonkeun.github.io/2019/06/01/190601-django-allauth-facebook/</link>
       <guid>https://chohyeonkeun.github.io/2019/06/01/190601-django-allauth-facebook/</guid>
       <pubDate>Sat, 01 Jun 2019 13:55:01 GMT</pubDate>
@@ -735,7 +735,7 @@
     </item>
     
     <item>
-      <title>Openssl로 인증서 생성 및 ssl runserver 사용</title>
+      <title>장고 - Openssl로 인증서 생성 및 ssl runserver 사용</title>
       <link>https://chohyeonkeun.github.io/2019/05/31/190531-django-openssl/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/31/190531-django-openssl/</guid>
       <pubDate>Fri, 31 May 2019 12:25:10 GMT</pubDate>
@@ -754,7 +754,7 @@
     </item>
     
     <item>
-      <title>FTP를 이용한 파일 업로드</title>
+      <title>장고 - FTP를 이용한 파일 업로드</title>
       <link>https://chohyeonkeun.github.io/2019/05/30/190530-django-FTP/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/30/190530-django-FTP/</guid>
       <pubDate>Thu, 30 May 2019 11:21:55 GMT</pubDate>
@@ -774,7 +774,7 @@
     </item>
     
     <item>
-      <title>Nginx를 사용한 리소스 파일 서빙하기</title>
+      <title>장고 - Nginx를 사용한 리소스 파일 서빙하기</title>
       <link>https://chohyeonkeun.github.io/2019/05/30/190530-django-nginx-resource-serving/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/30/190530-django-nginx-resource-serving/</guid>
       <pubDate>Wed, 29 May 2019 17:03:11 GMT</pubDate>
@@ -795,7 +795,7 @@
     </item>
     
     <item>
-      <title>Static 파일 서빙하기</title>
+      <title>장고 - Static 파일 서빙하기</title>
       <link>https://chohyeonkeun.github.io/2019/05/29/190529-django-static-serving/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/29/190529-django-static-serving/</guid>
       <pubDate>Wed, 29 May 2019 14:59:48 GMT</pubDate>
@@ -815,7 +815,7 @@
     </item>
     
     <item>
-      <title>Media 파일 서빙하기</title>
+      <title>장고 - Media 파일 서빙하기</title>
       <link>https://chohyeonkeun.github.io/2019/05/29/190529-django-media-serving/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/29/190529-django-media-serving/</guid>
       <pubDate>Wed, 29 May 2019 14:11:10 GMT</pubDate>
@@ -832,7 +832,7 @@
     </item>
     
     <item>
-      <title>git을 이용한 협업</title>
+      <title>Git - git을 이용한 협업</title>
       <link>https://chohyeonkeun.github.io/2019/05/28/190528-github-cowork/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/28/190528-github-cowork/</guid>
       <pubDate>Tue, 28 May 2019 14:11:10 GMT</pubDate>
@@ -852,7 +852,7 @@
     </item>
     
     <item>
-      <title>CKEditor 이미지 파일 업로더 설정</title>
+      <title>장고 - CKEditor 이미지 파일 업로더 설정</title>
       <link>https://chohyeonkeun.github.io/2019/05/27/190527-django-ckeditor/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/27/190527-django-ckeditor/</guid>
       <pubDate>Mon, 27 May 2019 14:22:31 GMT</pubDate>
@@ -869,7 +869,7 @@
     </item>
     
     <item>
-      <title>WYSIWIG 적용 방법</title>
+      <title>장고 - WYSIWIG 적용 방법</title>
       <link>https://chohyeonkeun.github.io/2019/05/27/190527-django-wysiwig/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/27/190527-django-wysiwig/</guid>
       <pubDate>Mon, 27 May 2019 13:09:13 GMT</pubDate>
@@ -891,7 +891,7 @@
     </item>
     
     <item>
-      <title>EC2에 장고 서버 셋팅</title>
+      <title>장고 - EC2에 장고 서버 셋팅</title>
       <link>https://chohyeonkeun.github.io/2019/05/26/190526-django-EC2-django-server/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/26/190526-django-EC2-django-server/</guid>
       <pubDate>Sun, 26 May 2019 12:31:40 GMT</pubDate>
@@ -914,7 +914,7 @@
     </item>
     
     <item>
-      <title>Email 로그인 기능 추가</title>
+      <title>장고 - Email 로그인 기능 추가</title>
       <link>https://chohyeonkeun.github.io/2019/05/25/190525-django-Email-login/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/25/190525-django-Email-login/</guid>
       <pubDate>Sat, 25 May 2019 14:01:33 GMT</pubDate>
@@ -935,7 +935,7 @@
     </item>
     
     <item>
-      <title>커스텀 유저 모델 만들기</title>
+      <title>장고 - 커스텀 유저 모델 만들기</title>
       <link>https://chohyeonkeun.github.io/2019/05/24/190524-django-custom-user/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/24/190524-django-custom-user/</guid>
       <pubDate>Fri, 24 May 2019 13:13:26 GMT</pubDate>
@@ -954,7 +954,7 @@
     </item>
     
     <item>
-      <title>EC2에 웹 서버 설정</title>
+      <title>장고 - EC2에 웹 서버 설정</title>
       <link>https://chohyeonkeun.github.io/2019/05/23/190523-django-EC2-webserver/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/23/190523-django-EC2-webserver/</guid>
       <pubDate>Thu, 23 May 2019 13:51:40 GMT</pubDate>
@@ -977,7 +977,7 @@
     </item>
     
     <item>
-      <title>EC2 인스턴스 만들기</title>
+      <title>장고 - EC2 인스턴스 만들기</title>
       <link>https://chohyeonkeun.github.io/2019/05/22/190522-django-EC2/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/22/190522-django-EC2/</guid>
       <pubDate>Wed, 22 May 2019 14:07:11 GMT</pubDate>
@@ -993,7 +993,7 @@
     </item>
     
     <item>
-      <title>django extensions 설치 방법</title>
+      <title>장고 - django extensions 설치 방법</title>
       <link>https://chohyeonkeun.github.io/2019/05/21/190521-django-extensions/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/21/190521-django-extensions/</guid>
       <pubDate>Tue, 21 May 2019 13:38:45 GMT</pubDate>
@@ -1009,7 +1009,7 @@
     </item>
     
     <item>
-      <title>django debug tool bar 설치 방법</title>
+      <title>장고 - django debug tool bar 설치 방법</title>
       <link>https://chohyeonkeun.github.io/2019/05/20/190520-django-debug-tool-bar/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/20/190520-django-debug-tool-bar/</guid>
       <pubDate>Mon, 20 May 2019 14:11:24 GMT</pubDate>
@@ -1025,7 +1025,7 @@
     </item>
     
     <item>
-      <title>로그인 기능 적용</title>
+      <title>장고 - 로그인 기능 적용</title>
       <link>https://chohyeonkeun.github.io/2019/05/19/190519-django-login-method/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/19/190519-django-login-method/</guid>
       <pubDate>Sun, 19 May 2019 13:34:21 GMT</pubDate>
@@ -1047,7 +1047,7 @@
     </item>
     
     <item>
-      <title>Ajax 이용한 댓글 기능 구현</title>
+      <title>장고 - Ajax 이용한 댓글 기능 구현</title>
       <link>https://chohyeonkeun.github.io/2019/05/18/190518-django-comment-with-ajax/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/18/190518-django-comment-with-ajax/</guid>
       <pubDate>Sat, 18 May 2019 14:24:05 GMT</pubDate>
@@ -1067,7 +1067,7 @@
     </item>
     
     <item>
-      <title>개발환경에서 이미지 파일 업로드하는 방법</title>
+      <title>장고 - 개발환경에서 이미지 파일 업로드하는 방법</title>
       <link>https://chohyeonkeun.github.io/2019/05/17/190517-django-image-upload-localsite/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/17/190517-django-image-upload-localsite/</guid>
       <pubDate>Fri, 17 May 2019 14:47:55 GMT</pubDate>
@@ -1087,7 +1087,7 @@
     </item>
     
     <item>
-      <title>게시판 댓글 기능 적용</title>
+      <title>장고 - 게시판 댓글 기능 적용</title>
       <link>https://chohyeonkeun.github.io/2019/05/16/190516-django-board-comment-function/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/16/190516-django-board-comment-function/</guid>
       <pubDate>Thu, 16 May 2019 14:18:55 GMT</pubDate>
@@ -1108,7 +1108,7 @@
     </item>
     
     <item>
-      <title>SNS 네이버 로그인 기능 학습</title>
+      <title>장고 - SNS 네이버 로그인 기능 학습</title>
       <link>https://chohyeonkeun.github.io/2019/05/15/190515-django-SNS-LOGIN/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/15/190515-django-SNS-LOGIN/</guid>
       <pubDate>Wed, 15 May 2019 13:41:30 GMT</pubDate>
@@ -1130,7 +1130,7 @@
     </item>
     
     <item>
-      <title>Pagination 구현 방법</title>
+      <title>장고 - Pagination 구현 방법</title>
       <link>https://chohyeonkeun.github.io/2019/05/14/190514-django-pagination/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/14/190514-django-pagination/</guid>
       <pubDate>Tue, 14 May 2019 14:31:48 GMT</pubDate>
@@ -1147,7 +1147,7 @@
     </item>
     
     <item>
-      <title>Pythonanywhere 이용한 배포</title>
+      <title>장고 - Pythonanywhere 이용한 배포</title>
       <link>https://chohyeonkeun.github.io/2019/05/13/190513-django-pythonanywhere/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/13/190513-django-pythonanywhere/</guid>
       <pubDate>Mon, 13 May 2019 14:39:11 GMT</pubDate>
@@ -1174,7 +1174,7 @@
     </item>
     
     <item>
-      <title>disqus 연동한 댓글 기능 적용</title>
+      <title>장고 - disqus 연동한 댓글 기능 적용</title>
       <link>https://chohyeonkeun.github.io/2019/05/12/190512-django-disqus/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/12/190512-django-disqus/</guid>
       <pubDate>Sun, 12 May 2019 13:15:06 GMT</pubDate>
@@ -1198,7 +1198,7 @@
     </item>
     
     <item>
-      <title>Signal 학습</title>
+      <title>장고 - Signal 학습</title>
       <link>https://chohyeonkeun.github.io/2019/05/11/190511-django-Signal/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/11/190511-django-Signal/</guid>
       <pubDate>Sat, 11 May 2019 14:50:49 GMT</pubDate>
@@ -1226,7 +1226,7 @@
     </item>
     
     <item>
-      <title>Ajax 기초 학습</title>
+      <title>장고 - Ajax 기초 학습</title>
       <link>https://chohyeonkeun.github.io/2019/05/10/190510-django-Ajax/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/10/190510-django-Ajax/</guid>
       <pubDate>Fri, 10 May 2019 12:30:57 GMT</pubDate>
@@ -1248,7 +1248,7 @@
     </item>
     
     <item>
-      <title>AWS 도메인 연결 방법_2</title>
+      <title>장고 - AWS 도메인 연결 방법_2</title>
       <link>https://chohyeonkeun.github.io/2019/05/09/190509-django-AWS-2/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/09/190509-django-AWS-2/</guid>
       <pubDate>Thu, 09 May 2019 11:25:17 GMT</pubDate>
@@ -1275,7 +1275,7 @@
     </item>
     
     <item>
-      <title>AWS 도메인 연결 방법_1</title>
+      <title>장고 - AWS 도메인 연결 방법_1</title>
       <link>https://chohyeonkeun.github.io/2019/05/08/190508-django-AWS-1/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/08/190508-django-AWS-1/</guid>
       <pubDate>Wed, 08 May 2019 11:55:23 GMT</pubDate>
@@ -1302,7 +1302,7 @@
     </item>
     
     <item>
-      <title>북마크 프로젝트_배포(heroku)</title>
+      <title>장고 - 북마크 프로젝트_배포(heroku)</title>
       <link>https://chohyeonkeun.github.io/2019/05/07/190507-django-bookmark-project-3/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/07/190507-django-bookmark-project-3/</guid>
       <pubDate>Tue, 07 May 2019 08:28:23 GMT</pubDate>
@@ -1332,7 +1332,7 @@
     </item>
     
     <item>
-      <title>북마크 프로젝트_템플릿 생성</title>
+      <title>장고 - 북마크 프로젝트_템플릿 생성</title>
       <link>https://chohyeonkeun.github.io/2019/05/06/190506-django-bookmark-project-2/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/06/190506-django-bookmark-project-2/</guid>
       <pubDate>Mon, 06 May 2019 11:55:23 GMT</pubDate>
@@ -1359,7 +1359,7 @@
     </item>
     
     <item>
-      <title>북마크 프로젝트_앱 생성</title>
+      <title>장고 - 북마크 프로젝트_앱 생성</title>
       <link>https://chohyeonkeun.github.io/2019/05/05/190505-django-bookmark-project-1/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/05/190505-django-bookmark-project-1/</guid>
       <pubDate>Sun, 05 May 2019 10:11:03 GMT</pubDate>
@@ -1379,7 +1379,7 @@
     </item>
     
     <item>
-      <title>Django 튜터리얼 학습</title>
+      <title>장고 - 튜터리얼 학습</title>
       <link>https://chohyeonkeun.github.io/2019/05/04/190504-django-Base-Procedure/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/04/190504-django-Base-Procedure/</guid>
       <pubDate>Sat, 04 May 2019 09:34:10 GMT</pubDate>
@@ -1404,7 +1404,7 @@
     </item>
     
     <item>
-      <title>Page 기능 학습</title>
+      <title>장고 - Page 기능 학습</title>
       <link>https://chohyeonkeun.github.io/2019/05/03/190503-django-page-function/</link>
       <guid>https://chohyeonkeun.github.io/2019/05/03/190503-django-page-function/</guid>
       <pubDate>Fri, 03 May 2019 08:00:21 GMT</pubDate>

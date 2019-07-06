@@ -8,6 +8,510 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/03/190703-mysql-workbench/</loc>
+        <lastmod>2019-07-06T04:23:43.267Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/30/190630-python-excel/</loc>
+        <lastmod>2019-07-06T04:23:19.623Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/29/190629-python-text/</loc>
+        <lastmod>2019-07-06T04:23:10.803Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/28/190628-python-csv/</loc>
+        <lastmod>2019-07-06T04:23:04.047Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/27/190627-django-classification-by-year/</loc>
+        <lastmod>2019-07-06T04:22:55.819Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/26/190626-django-fullcalendar/</loc>
+        <lastmod>2019-07-06T04:22:47.127Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/25/190625-django-datetime-timedelta/</loc>
+        <lastmod>2019-07-06T04:22:39.307Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/24/190624-django-location-field/</loc>
+        <lastmod>2019-07-06T04:22:30.239Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/21/190621-django-docker-elastic-beanstalk/</loc>
+        <lastmod>2019-07-06T04:21:47.947Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/20/190620-django-translation/</loc>
+        <lastmod>2019-07-06T04:21:41.327Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/19/190619-django-elastic-beanstalk/</loc>
+        <lastmod>2019-07-06T04:21:32.607Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/18/190618-django-rest-framework/</loc>
+        <lastmod>2019-07-06T04:21:24.255Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/17/190617-django-payment-function/</loc>
+        <lastmod>2019-07-06T04:21:11.323Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/16/190616-django-cart-function/</loc>
+        <lastmod>2019-07-06T04:21:01.071Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/15/190615-django-order-detail-page/</loc>
+        <lastmod>2019-07-06T04:20:46.279Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/15/190615-django-order-csv-file/</loc>
+        <lastmod>2019-07-06T04:20:24.275Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/14/190614-django-order-pdf-file/</loc>
+        <lastmod>2019-07-06T04:20:02.592Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/13/190613-django-involved-category-function/</loc>
+        <lastmod>2019-07-06T04:19:34.940Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/12/190612-django-ajax-checkbox/</loc>
+        <lastmod>2019-07-06T04:19:27.504Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/11/190611-django-category-function/</loc>
+        <lastmod>2019-07-06T04:19:20.132Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/10/190610-django-blog-comment-function/</loc>
+        <lastmod>2019-07-06T04:19:08.520Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/09/190609-django-tag-function/</loc>
+        <lastmod>2019-07-06T04:19:01.924Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/08/190608-django-custom-templatetags/</loc>
+        <lastmod>2019-07-06T04:18:55.248Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/07/190607-django-multi-database/</loc>
+        <lastmod>2019-07-06T04:18:47.120Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/06/190606-django-EC2-django-deploy/</loc>
+        <lastmod>2019-07-06T04:18:38.788Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/05/190605-django-email-server/</loc>
+        <lastmod>2019-07-06T04:18:30.264Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/04/190604-django-ELB-SSL/</loc>
+        <lastmod>2019-07-06T04:18:23.128Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/04/190604-django-ELB-setting/</loc>
+        <lastmod>2019-07-06T04:18:15.752Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/03/190603-django-ACM-SSL/</loc>
+        <lastmod>2019-07-06T04:18:04.748Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/02/190602-python-regular-expression/</loc>
+        <lastmod>2019-07-06T04:17:49.456Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/01/190601-django-allauth-facebook/</loc>
+        <lastmod>2019-07-06T04:17:37.096Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/31/190531-django-openssl/</loc>
+        <lastmod>2019-07-06T04:17:27.156Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/30/190530-django-nginx-resource-serving/</loc>
+        <lastmod>2019-07-06T04:17:20.116Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/30/190530-django-FTP/</loc>
+        <lastmod>2019-07-06T04:17:11.912Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/29/190529-django-static-serving/</loc>
+        <lastmod>2019-07-06T04:17:04.088Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/29/190529-django-media-serving/</loc>
+        <lastmod>2019-07-06T04:16:56.212Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/28/190528-github-cowork/</loc>
+        <lastmod>2019-07-06T04:16:49.832Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/27/190527-django-wysiwig/</loc>
+        <lastmod>2019-07-06T04:16:35.524Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/27/190527-django-ckeditor/</loc>
+        <lastmod>2019-07-06T04:16:28.788Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/26/190526-django-EC2-django-server/</loc>
+        <lastmod>2019-07-06T04:16:22.304Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/25/190525-django-Email-login/</loc>
+        <lastmod>2019-07-06T04:16:15.508Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/24/190524-django-custom-user/</loc>
+        <lastmod>2019-07-06T04:16:09.100Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/23/190523-django-EC2-webserver/</loc>
+        <lastmod>2019-07-06T04:16:01.352Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/22/190522-django-EC2/</loc>
+        <lastmod>2019-07-06T04:15:52.896Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/21/190521-django-extensions/</loc>
+        <lastmod>2019-07-06T04:15:28.476Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/20/190520-django-debug-tool-bar/</loc>
+        <lastmod>2019-07-06T04:15:13.912Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/19/190519-django-login-method/</loc>
+        <lastmod>2019-07-06T04:15:07.040Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/18/190518-django-comment-with-ajax/</loc>
+        <lastmod>2019-07-06T04:15:01.064Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/17/190517-django-image-upload-localsite/</loc>
+        <lastmod>2019-07-06T04:14:54.136Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/16/190516-django-board-comment-function/</loc>
+        <lastmod>2019-07-06T04:14:38.008Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/15/190515-django-SNS-LOGIN/</loc>
+        <lastmod>2019-07-06T04:14:31.640Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/14/190514-django-pagination/</loc>
+        <lastmod>2019-07-06T04:14:25.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/13/190513-django-pythonanywhere/</loc>
+        <lastmod>2019-07-06T04:14:20.272Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/12/190512-django-disqus/</loc>
+        <lastmod>2019-07-06T04:14:12.796Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/11/190511-django-Signal/</loc>
+        <lastmod>2019-07-06T04:14:05.156Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/10/190510-django-Ajax/</loc>
+        <lastmod>2019-07-06T04:13:49.936Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/09/190509-django-AWS-2/</loc>
+        <lastmod>2019-07-06T04:13:43.272Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/08/190508-django-AWS-1/</loc>
+        <lastmod>2019-07-06T04:13:35.812Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/07/190507-django-bookmark-project-3/</loc>
+        <lastmod>2019-07-06T04:13:23.252Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/06/190506-django-bookmark-project-2/</loc>
+        <lastmod>2019-07-06T04:13:17.668Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/05/190505-django-bookmark-project-1/</loc>
+        <lastmod>2019-07-06T04:13:09.736Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/04/190504-django-Base-Procedure/</loc>
+        <lastmod>2019-07-06T04:13:01.396Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/03/190503-django-page-function/</loc>
+        <lastmod>2019-07-06T04:12:50.072Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/07/06/190706-django-multi-image-upload/</loc>
         <lastmod>2019-07-06T04:12:03.492Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -32,86 +536,6 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/03/190703-mysql-workbench/</loc>
-        <lastmod>2019-07-03T17:49:19.969Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/30/190630-python-excel/</loc>
-        <lastmod>2019-06-30T16:47:27.130Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/29/190629-python-text/</loc>
-        <lastmod>2019-06-30T16:17:56.150Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/28/190628-python-csv/</loc>
-        <lastmod>2019-06-30T09:58:00.452Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/27/190627-django-classification-by-year/</loc>
-        <lastmod>2019-06-30T09:10:07.864Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/26/190626-django-fullcalendar/</loc>
-        <lastmod>2019-06-30T08:06:17.289Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/25/190625-django-datetime-timedelta/</loc>
-        <lastmod>2019-06-27T06:52:59.244Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/24/190624-django-location-field/</loc>
-        <lastmod>2019-06-24T18:20:59.888Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/27/190527-django-wysiwig/</loc>
-        <lastmod>2019-06-24T07:35:07.470Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/25/190525-django-Email-login/</loc>
-        <lastmod>2019-06-24T07:28:10.991Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://chohyeonkeun.github.io/2019/06/23/190623-linux-crontab/</loc>
         <lastmod>2019-06-23T17:57:04.919Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -122,430 +546,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/06/22/190622-cooke-session/</loc>
         <lastmod>2019-06-22T16:13:23.150Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/21/190621-django-docker-elastic-beanstalk/</loc>
-        <lastmod>2019-06-22T12:31:43.796Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/20/190620-django-translation/</loc>
-        <lastmod>2019-06-22T12:14:07.374Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/19/190619-django-elastic-beanstalk/</loc>
-        <lastmod>2019-06-22T12:03:34.173Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/06/190606-django-EC2-django-deploy/</loc>
-        <lastmod>2019-06-22T07:14:21.986Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/14/190514-django-pagination/</loc>
-        <lastmod>2019-06-19T04:14:23.611Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/01/190601-django-allauth-facebook/</loc>
-        <lastmod>2019-06-18T15:40:27.490Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/18/190618-django-rest-framework/</loc>
-        <lastmod>2019-06-18T12:27:56.227Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/17/190617-django-payment-function/</loc>
-        <lastmod>2019-06-18T10:01:59.775Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/08/190508-django-AWS-1/</loc>
-        <lastmod>2019-06-18T09:57:46.055Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/22/190522-django-EC2/</loc>
-        <lastmod>2019-06-18T09:49:48.775Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/13/190613-django-involved-category-function/</loc>
-        <lastmod>2019-06-18T09:36:20.836Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/16/190616-django-cart-function/</loc>
-        <lastmod>2019-06-16T17:08:12.415Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/15/190615-django-order-csv-file/</loc>
-        <lastmod>2019-06-15T06:38:35.294Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/03/190503-django-page-function/</loc>
-        <lastmod>2019-06-15T05:12:46.242Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/04/190504-django-Base-Procedure/</loc>
-        <lastmod>2019-06-15T05:12:29.822Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/05/190505-django-bookmark-project-1/</loc>
-        <lastmod>2019-06-15T05:12:21.450Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/06/190506-django-bookmark-project-2/</loc>
-        <lastmod>2019-06-15T05:12:12.746Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/07/190507-django-bookmark-project-3/</loc>
-        <lastmod>2019-06-15T05:11:18.934Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/11/190511-django-Signal/</loc>
-        <lastmod>2019-06-15T05:10:35.235Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/12/190512-django-disqus/</loc>
-        <lastmod>2019-06-15T05:10:18.995Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/13/190513-django-pythonanywhere/</loc>
-        <lastmod>2019-06-15T05:10:04.859Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/10/190610-django-blog-comment-function/</loc>
-        <lastmod>2019-06-15T05:09:10.639Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/16/190516-django-board-comment-function/</loc>
-        <lastmod>2019-06-15T05:08:26.904Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/17/190517-django-image-upload-localsite/</loc>
-        <lastmod>2019-06-15T05:07:46.360Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/18/190518-django-comment-with-ajax/</loc>
-        <lastmod>2019-06-15T05:07:26.528Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/19/190519-django-login-method/</loc>
-        <lastmod>2019-06-15T05:06:55.521Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/15/190515-django-SNS-LOGIN/</loc>
-        <lastmod>2019-06-15T05:06:46.277Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/20/190520-django-debug-tool-bar/</loc>
-        <lastmod>2019-06-15T05:06:20.489Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/21/190521-django-extensions/</loc>
-        <lastmod>2019-06-15T05:05:56.861Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/26/190526-django-EC2-django-server/</loc>
-        <lastmod>2019-06-15T05:05:15.582Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/23/190523-django-EC2-webserver/</loc>
-        <lastmod>2019-06-15T05:05:00.098Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/27/190527-django-ckeditor/</loc>
-        <lastmod>2019-06-15T05:04:06.314Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/29/190529-django-media-serving/</loc>
-        <lastmod>2019-06-15T05:03:49.927Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/29/190529-django-static-serving/</loc>
-        <lastmod>2019-06-15T05:03:38.887Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/30/190530-django-FTP/</loc>
-        <lastmod>2019-06-15T05:03:20.659Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/02/190602-python-regular-expression/</loc>
-        <lastmod>2019-06-15T05:02:36.492Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/04/190604-django-ELB-SSL/</loc>
-        <lastmod>2019-06-15T05:02:14.880Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/03/190603-django-ACM-SSL/</loc>
-        <lastmod>2019-06-15T05:02:04.620Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/31/190531-django-openssl/</loc>
-        <lastmod>2019-06-15T05:01:49.848Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/05/190605-django-email-server/</loc>
-        <lastmod>2019-06-15T05:01:31.361Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/14/190614-django-order-pdf-file/</loc>
-        <lastmod>2019-06-15T05:00:48.377Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/15/190615-django-order-detail-page/</loc>
-        <lastmod>2019-06-15T04:59:03.163Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/12/190612-django-ajax-checkbox/</loc>
-        <lastmod>2019-06-12T16:20:16.030Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/11/190611-django-category-function/</loc>
-        <lastmod>2019-06-12T03:30:04.997Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/09/190609-django-tag-function/</loc>
-        <lastmod>2019-06-11T04:47:46.333Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/24/190524-django-custom-user/</loc>
-        <lastmod>2019-06-10T05:59:52.679Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/07/190607-django-multi-database/</loc>
-        <lastmod>2019-06-08T17:04:38.254Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/08/190608-django-custom-templatetags/</loc>
-        <lastmod>2019-06-08T17:02:27.501Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/04/190604-django-ELB-setting/</loc>
-        <lastmod>2019-06-03T16:02:19.722Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/30/190530-django-nginx-resource-serving/</loc>
-        <lastmod>2019-05-29T17:16:13.884Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/28/190528-github-cowork/</loc>
-        <lastmod>2019-05-29T05:24:58.999Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/10/190510-django-Ajax/</loc>
-        <lastmod>2019-05-13T17:11:58.727Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/09/190509-django-AWS-2/</loc>
-        <lastmod>2019-05-13T17:11:49.939Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
