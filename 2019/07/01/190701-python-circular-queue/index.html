@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>자료구조 - Circular Queue 학습 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/07/01/190701-python-circular-queue/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>자료구조 - Circular Queue 학습</h1>
+    </header>
+
+    <section>
+      <h2 id="Circular-Queue-란"><a href="#Circular-Queue-란" class="headerlink" title="Circular Queue 란?"></a>Circular Queue 란?</h2><ul>
+<li>원형 큐는 선형 큐의 문제점을 보완하기 위한 자료구조이다.</li>
+<li>rear를 가르키는 포인터가 배열의 마지막 인덱스를 가르키고 있을 때, 앞쪽에서 Dequeue로 발생한 배열의 빈 공간을 활용 할 수 없다.</li>
+<li>원형큐에서는 배열의 첫 인덱스부터 다시 데이터 삽입이 가능하다.</li>
+</ul>
+<a id="more"></a>
+<h2 id="Circular-Queue-구조"><a href="#Circular-Queue-구조" class="headerlink" title="Circular Queue 구조"></a>Circular Queue 구조</h2><ul>
+<li>크기가 정해져있는 배열을 사용한다.</li>
+<li>비어있을 경우에는 head == tail 인 상태이다.</li>
+<li>가득 차 있을 경우에는 head == tail + 1 인 상태이다.</li>
+<li>최초 head와 tail을 0번 인덱스로 설정한다.</li>
+<li>enqueue : 인덱스 tail+1에 data를 enqueue한다.</li>
+<li>dequeue : 인덱스가 front+1 인 값을 dequeue한다.</li>
+<li>첫번째 인덱스는 항상 비워놓는다.</li>
+<li>10의 크기를 가진 큐를 사용하기 위해서는 11만큼의 배열 사이즈를 할당해야 한다.</li>
+</ul>
+<h2 id="Circular-Queue-구현"><a href="#Circular-Queue-구현" class="headerlink" title="Circular Queue 구현"></a>Circular Queue 구현</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CQueue</span>:</span></span><br><span class="line">    MAXSIZE = <span class="number">10</span></span><br><span class="line">    <span class="comment"># 배열 사이즈보다 1 증대시켜 container 사이즈를 초기화한다.</span></span><br><span class="line">    <span class="comment"># head와 tail 모두 0 인덱스로 설정한다.</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.__container = [<span class="literal">None</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(CQueue.MAXSIZE+<span class="number">1</span>)]</span><br><span class="line">        self.__head = <span class="number">0</span></span><br><span class="line">        self.__tail = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># circular queue가 값이 비어있는지 확인</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.__head == self.__tail:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># circular queue가 값으로 가득 채워있는지 확인</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_full</span><span class="params">(self)</span>:</span></span><br><span class="line">        next = self.__step_forward(self.__tail)</span><br><span class="line">        <span class="keyword">if</span> next == self.__head:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># tail = tail + 1 설정한 뒤, tail 인덱스에 data를 enqueue한다.</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.is_full():</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">"The queue is full"</span>)</span><br><span class="line">        self.__tail = self.__step_forward(self.__tail)</span><br><span class="line">        self.__container[self.__tail] = data</span><br><span class="line"></span><br><span class="line">    <span class="comment"># head = head + 1 설정한 뒤, head 인덱스의 값을 dequeue한다.</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeue</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.is_empty():</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">"The queue is empty"</span>)</span><br><span class="line">        self.__head = self.__container[self.__head + <span class="number">1</span>]</span><br><span class="line">        self.__head = self.__step_forward(self.__head)</span><br><span class="line">        <span class="keyword">return</span> self__head</span><br><span class="line"></span><br><span class="line">    <span class="comment"># head + 1 인덱스의 값을 반환한다.</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peek</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.is_empty():</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">"The queue is empty"</span>)</span><br><span class="line">        <span class="keyword">return</span> self.__container[self.__head + <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 편의 함수 (1씩 값을 증대시켜주는 함수)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__step_forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        x += <span class="number">1</span></span><br><span class="line">        <span class="comment"># 인덱스 값이 배열 사이즈 + 1 보다 클 경우 0으로 설정</span></span><br><span class="line">        <span class="keyword">if</span> x &gt;= CQueue.MAXSIZE+<span class="number">1</span>:</span><br><span class="line">            x = <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> str(self.__container)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> __name__ ==<span class="string">"__main__"</span>:</span><br><span class="line">cq = CQueue()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">9</span>+<span class="number">1</span>):</span><br><span class="line">    cq.enqueue(i + <span class="number">1</span>)</span><br><span class="line">    print(<span class="string">f"enqueue: <span class="subst">&#123;i+<span class="number">1</span>&#125;</span>"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>+<span class="number">1</span>):</span><br><span class="line">    print(<span class="string">"dequeue: "</span>, cq.dequeue())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(<span class="string">"tail: "</span>, cq._CQueue__tail)</span><br><span class="line">print(<span class="string">"head: "</span>, cq._CQueue__head)</span><br><span class="line">print(<span class="string">"peek: "</span>, cq.peek())</span><br><span class="line">print(<span class="string">"container: "</span>, cq)</span><br><span class="line">print(<span class="string">"is full? "</span>, cq.is_full())</span><br><span class="line">print(<span class="string">"is empty? "</span>, cq.is_empty())</span><br></pre></td></tr></table></figure>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-07-01T08:00:21.000Z" itemprop="datePublished">
+              2019-07-01
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Python/">Python</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/DataStructure/">DataStructure</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Queue/">Queue</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

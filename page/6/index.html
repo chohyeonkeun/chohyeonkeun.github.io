@@ -72,6 +72,204 @@
     <header class="title">
       
         <h1>
+          <a href="/2019/05/24/190524-django-custom-user/">장고 - 커스텀 유저 모델 만들기</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-24T13:13:26.000Z" itemprop="datePublished">
+    2019-05-24
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="1-커스텀-유저-모델이란"><a href="#1-커스텀-유저-모델이란" class="headerlink" title="1. 커스텀 유저 모델이란?"></a>1. 커스텀 유저 모델이란?</h2><ul>
+<li>기존에 있던 User 모델을 확장해서 내가 원하는 추가 필드를 만드는 것</li>
+<li>User 모델 추가 하기 위해 코어를 수정하게 되면, 호환성 문제 발생 가능(취후의 수단으로 사용할 것)</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/05/24/190524-django-custom-user/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/23/190523-django-EC2-webserver/">장고 - EC2에 웹 서버 설정</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-23T13:51:40.000Z" itemprop="datePublished">
+    2019-05-23
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/EC2/">EC2</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/web-server/">web-server</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ul>
+<li>웹서버 프로그램은 대표적으로 Apache와 Nginx가 있다.</li>
+<li>장고 웹 서비스를 구축할 때는 Nginx를 더 많이 사용하는 추세이다.</li>
+</ul>
+<h2 id="EC2-웹-서버-설정-방법"><a href="#EC2-웹-서버-설정-방법" class="headerlink" title="EC2 웹 서버 설정 방법"></a>EC2 웹 서버 설정 방법</h2><ol>
+<li>EC2에 SSH로 접속 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -i ~/.ssh/[키 페어 파일 이름; django-wps.pem] ubuntu@[퍼블릭 DNS 또는 IP]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+        
+          <div class="more-link">
+            <a href="/2019/05/23/190523-django-EC2-webserver/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/22/190522-django-EC2/">장고 - EC2 인스턴스 만들기</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-22T14:07:11.000Z" itemprop="datePublished">
+    2019-05-22
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/EC2/">EC2</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="EC2-Elastic-Cloud-Computing의-약어로-아마존의-대표적인-서버-인스턴스-서버"><a href="#EC2-Elastic-Cloud-Computing의-약어로-아마존의-대표적인-서버-인스턴스-서버" class="headerlink" title="EC2 :  Elastic Cloud Computing의 약어로 아마존의 대표적인 서버 인스턴스 서버"></a>EC2 :  Elastic Cloud Computing의 약어로 아마존의 대표적인 서버 인스턴스 서버</h3><h4 id="1-서비스에서-컴퓨팅-gt-EC2-선택"><a href="#1-서비스에서-컴퓨팅-gt-EC2-선택" class="headerlink" title="1. 서비스에서 컴퓨팅 -&gt; EC2 선택"></a>1. 서비스에서 컴퓨팅 -&gt; EC2 선택</h4><h4 id="2-EC2-화면이-나타나면-화면-중앙에-있는-인스턴스-시작-버튼-클릭"><a href="#2-EC2-화면이-나타나면-화면-중앙에-있는-인스턴스-시작-버튼-클릭" class="headerlink" title="2. EC2 화면이 나타나면 화면 중앙에 있는 [인스턴스 시작] 버튼 클릭"></a>2. EC2 화면이 나타나면 화면 중앙에 있는 [인스턴스 시작] 버튼 클릭</h4><h4 id="3-EC2는-다양한-운영체제-사용-가능-가장-보편적인-웹-서버-운영체제인-리눅스-중에서-Ubuntu-Server-18-04-64Bit-선택-버튼-클릭"><a href="#3-EC2는-다양한-운영체제-사용-가능-가장-보편적인-웹-서버-운영체제인-리눅스-중에서-Ubuntu-Server-18-04-64Bit-선택-버튼-클릭" class="headerlink" title="3. EC2는 다양한 운영체제 사용 가능. 가장 보편적인 웹 서버 운영체제인 리눅스 중에서 Ubuntu Server 18.04 64Bit [선택] 버튼 클릭"></a>3. EC2는 다양한 운영체제 사용 가능. 가장 보편적인 웹 서버 운영체제인 리눅스 중에서 Ubuntu Server 18.04 64Bit [선택] 버튼 클릭</h4>
+        
+          <div class="more-link">
+            <a href="/2019/05/22/190522-django-EC2/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/05/21/190521-django-extensions/">장고 - django extensions 설치 방법</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-05-21T13:38:45.000Z" itemprop="datePublished">
+    2019-05-21
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/extensions/">extensions</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="1-명령어를-이용해-모듈-설치"><a href="#1-명령어를-이용해-모듈-설치" class="headerlink" title="1. 명령어를 이용해 모듈 설치"></a>1. 명령어를 이용해 모듈 설치</h2><p><code>$ pip install django-extensions</code><br>
+        
+          <div class="more-link">
+            <a href="/2019/05/21/190521-django-extensions/#more">Read On »</a>
+          </div>
+        
+      
+    </p></div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
           <a href="/2019/05/20/190520-django-debug-tool-bar/">장고 - django debug tool bar 설치 방법</a>
         </h1>
       
@@ -378,231 +576,11 @@
 
     </li>
   
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/14/190514-django-pagination/">장고 - Pagination 구현 방법</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-14T14:31:48.000Z" itemprop="datePublished">
-    2019-05-14
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/pagination/">pagination</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="게시판-board-프로젝트를-예로-들어보자"><a href="#게시판-board-프로젝트를-예로-들어보자" class="headerlink" title="게시판(board) 프로젝트를 예로 들어보자."></a>게시판(board) 프로젝트를 예로 들어보자.</h2><h2 id="1-뷰에서-페이지-설정"><a href="#1-뷰에서-페이지-설정" class="headerlink" title="1. 뷰에서 페이지 설정"></a>1. 뷰에서 페이지 설정</h2><ul>
-<li>경로 : board_project &gt; board &gt; views.py<br><br>
-        
-          <div class="more-link">
-            <a href="/2019/05/14/190514-django-pagination/#more">Read On »</a>
-          </div>
-        
-      
-    </li></ul></div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/13/190513-django-pythonanywhere/">장고 - Pythonanywhere 이용한 배포</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-13T14:39:11.000Z" itemprop="datePublished">
-    2019-05-13
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/deploy/">deploy</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/Pythonanywhere/">Pythonanywhere</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="1-Github-업로드"><a href="#1-Github-업로드" class="headerlink" title="1. Github 업로드"></a>1. Github 업로드</h2><ul>
-<li>Github - new repository 생성</li>
-<li>해당 repo 주소 복사</li>
-<li>경로 : 프로젝트 디렉토리 위치<ul>
-<li>git init</li>
-<li>git add -A .   <em>(git add 하기 전에 .gitignore 폴더 생성하여 git에 올리지 않을 항목 입력)</em></li>
-<li>git commit -m ‘message’</li>
-<li>git remote add origin ‘repo 주소’ <em>(해당 repo주소를 ‘origin’으로 설정)</em></li>
-<li>git push -u origin master</li>
-</ul>
-</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/05/13/190513-django-pythonanywhere/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/12/190512-django-disqus/">장고 - disqus 연동한 댓글 기능 적용</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-12T13:15:06.000Z" itemprop="datePublished">
-    2019-05-12
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/disqus/">disqus</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/comment/">comment</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="1-disqus-com-접속"><a href="#1-disqus-com-접속" class="headerlink" title="1. disqus.com 접속"></a>1. disqus.com 접속</h2><ul>
-<li>회원가입 및 로그인</li>
-<li>‘I want to install isqus in my site’ 클릭</li>
-<li>Basic &gt; ‘subscribe now’ 클릭</li>
-<li>플랫폼 선택(보이지 않는다면, ‘I don’t see~’ 클릭)</li>
-<li>최하단 ‘Configure’ 클릭</li>
-<li>변경할 것이 특별히 없다면 최하단 ‘Complete Setup’ 클릭</li>
-</ul>
-<p><br><br>
-        
-          <div class="more-link">
-            <a href="/2019/05/12/190512-django-disqus/#more">Read On »</a>
-          </div>
-        
-      
-    </p></div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/11/190511-django-Signal/">장고 - Signal 학습</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-11T14:50:49.000Z" itemprop="datePublished">
-    2019-05-11
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/signal/">signal</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="Signal이란"><a href="#Signal이란" class="headerlink" title="Signal이란?"></a>Signal이란?</h2><ul>
-<li>특정 액션이 발생하면 그 후에 발생하는 이벤트 (django를 포함한 여러 프레임워크에 존재)</li>
-<li>저장하기 전/후, 삭제하기 전/후 등 특정 signal이 웹 어플리케이션에 전달</li>
-<li>예로, 회원가입 후 ‘축하합니다’ 메일 보낼 때 signal이 사용된다. </li>
-<li>Signal 종류<ul>
-<li>pre_save : 저장 전, 실행</li>
-<li>post_save : 저장 후, 실행</li>
-<li>pre_delete : 삭제 전, 실행</li>
-<li>post_save : 삭제 후, 실행</li>
-</ul>
-</li>
-</ul>
-<p><br><br>
-        
-          <div class="more-link">
-            <a href="/2019/05/11/190511-django-Signal/#more">Read On »</a>
-          </div>
-        
-      
-    </p></div>
-</article>
-
-    </li>
-  
 </ul>
 
   <section id="nav-wrapper">
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">« prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">next »</a>
+      <a class="extend prev" rel="prev" href="/page/5/">« prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">next »</a>
     </nav>
   </section>
 

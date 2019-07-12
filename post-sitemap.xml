@@ -8,6 +8,46 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/07/190708-django-ajax-comment-function/</loc>
+        <lastmod>2019-07-12T17:31:45.964Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/07/190707-django-ajax-like-function/</loc>
+        <lastmod>2019-07-12T16:48:03.018Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/02/190702-python-algorythm/</loc>
+        <lastmod>2019-07-12T10:53:34.935Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/01/190701-python-circular-queue/</loc>
+        <lastmod>2019-07-12T10:23:40.407Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/04/190704-datastructure-binarytree/</loc>
+        <lastmod>2019-07-12T09:44:14.144Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/07/03/190703-mysql-workbench/</loc>
         <lastmod>2019-07-06T04:23:43.267Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -522,14 +562,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/07/05/190705-django-multiselectfield/</loc>
         <lastmod>2019-07-06T04:07:48.236Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/04/190704-datastructure-binarytree/</loc>
-        <lastmod>2019-07-04T17:08:25.748Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

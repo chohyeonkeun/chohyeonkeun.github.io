@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>Ajax - ajax 이용한 실시간 댓글 생성 및 좋아요 개수 표시 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/07/07/190708-django-ajax-comment-function/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>Ajax - ajax 이용한 실시간 댓글 생성 및 좋아요 개수 표시</h1>
+    </header>
+
+    <section>
+      <ul>
+<li>이번 포스트에서는 ajax를 이용하여 댓글 작성 및 특정 댓글의 좋아요 개수를 표시하는 방법에 대해 알아볼 것이다.</li>
+</ul>
+<a id="more"></a>
+<h2 id="ajax를-이용한-실시간-댓글-작성-및-좋아요-개수-표시"><a href="#ajax를-이용한-실시간-댓글-작성-및-좋아요-개수-표시" class="headerlink" title="ajax를 이용한 실시간 댓글 작성 및 좋아요 개수 표시"></a>ajax를 이용한 실시간 댓글 작성 및 좋아요 개수 표시</h2><h3 id="1-서버에-ajax-요청"><a href="#1-서버에-ajax-요청" class="headerlink" title="1. 서버에 ajax 요청"></a>1. 서버에 ajax 요청</h3><ul>
+<li><p>경로 : post &gt; templates &gt; post &gt; post_detail.html</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">&#123;% block content %&#125;</span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"&#123;% url 'post:comment_create' object.id %&#125;"</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">id</span>=<span class="string">"comment_form"</span>&gt;</span></span><br><span class="line">    &#123;% csrf_token %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"is_ajax"</span> <span class="attr">value</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span> <span class="attr">style</span>=<span class="string">"width:590px; padding-right:10px;"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"comment_write"</span> <span class="attr">class</span>=<span class="string">"col-8"</span> <span class="attr">style</span>=<span class="string">"padding:0 0 0 5px;"</span>&gt;</span>&#123;&#123;comment_form.text&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"댓글 입력"</span> <span class="attr">class</span>=<span class="string">"btn btn-outline-primary form-control"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 유저들 댓글 조회 부분 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"comment_list"</span>&gt;</span></span><br><span class="line">    &#123;% include 'post/comment_list.html' %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">...</span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block extra_script %&#125;</span><br><span class="line"><span class="comment">&lt;!-- 댓글 폼 작성 시 --&gt;</span></span><br><span class="line">$("#comment_form").submit(function(e)&#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line">    <span class="comment">&lt;!-- name이 is_ajax인 input type의 value를 1로 설정 --&gt;</span></span><br><span class="line">    $('input[name="is_ajax"]').val("1");</span><br><span class="line">    <span class="comment">&lt;!-- 해당 input의 action 태그에 있는 경로를 url로 저장 --&gt;</span></span><br><span class="line">    url = $(this).attr('action');</span><br><span class="line">    <span class="comment">&lt;!-- 해당 input에 저장된 데이터를 하나로 모아(serialize) params 변수에 저장 --&gt;</span></span><br><span class="line">    params = $(this).serialize(); </span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url: url,</span><br><span class="line">        method: "POST",</span><br><span class="line">        data: params,</span><br><span class="line">    &#125;).done(function(data)&#123;</span><br><span class="line">        <span class="comment">&lt;!-- 댓글 조회 부분에 data.html 추가 --&gt;</span></span><br><span class="line">        $('#comment_list').prepend(data.html);</span><br><span class="line">        <span class="comment">&lt;!-- input 태그의 name이 is_ajax인 value값 초기화 --&gt;</span></span><br><span class="line">        $('input[name="is_ajax"]').val("");</span><br><span class="line">        <span class="comment">&lt;!-- 댓글 입력부분의 문자열 초기화 --&gt;</span></span><br><span class="line">        $('#id_text').val("");</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">&lt;!-- 댓글 좋아요 버튼 클릭시 --&gt;</span></span><br><span class="line">$(".btn-comment-like").click(function(e)&#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line">    <span class="comment">&lt;!-- 댓글 좋아요 버튼 클릭한 객체를 selected_object 변수에 할당 --&gt;</span></span><br><span class="line">    selected_object = $(e.currentTarget);</span><br><span class="line">    <span class="comment">&lt;!-- selected_object의 href 태그에 있는 경로를 url 변수로 저장 --&gt;</span></span><br><span class="line">    url = selected_object.attr('href')</span><br><span class="line">    console.log(url);</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url:url,</span><br><span class="line">        method:"POST",</span><br><span class="line">        data:&#123;</span><br><span class="line">            'csrfmiddlewaretoken':'&#123;&#123;csrf_token&#125;&#125;',</span><br><span class="line">            'is_ajax':true,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;).done(function(data)&#123;</span><br><span class="line">        if(data.works)&#123;</span><br><span class="line">            <span class="comment">&lt;!-- 서버에서 수신한 data key값으로 works가 있는 경우 --&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- selected_object의 html부분의 whitespace 제거한 데이터를 str_comment_like 변수로 저장 --&gt;</span></span><br><span class="line">            str_comment_like = selected_object.html().trim();</span><br><span class="line">            <span class="comment">&lt;!-- str_comment_like에서 숫자를 match한 결과가 null값이면 selected_object에 html 형식으로 '좋아요 1개' 표시 --&gt;</span></span><br><span class="line">            if(str_comment_like.match(/[0-9]+/g)==null)&#123;</span><br><span class="line">                selected_object.html("&amp;emsp;좋아요 1개")</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">&lt;!-- str_comment_like에서 숫자를 match한 결과가 null이 아닌 경우 --&gt;</span></span><br><span class="line">            else&#123;</span><br><span class="line">                <span class="comment">&lt;!-- str_comment_like에서 숫자로만 되어 있는 문자열을 int_comment_like 변수에 저장 및 int type으로 변경 후, 개수 1 증대한 값을 comment_like 변수에 저장 --&gt;</span></span><br><span class="line">                int_comment_like = str_comment_like.match(/[0-9]+/g);</span><br><span class="line">                comment_like = parseInt(int_comment_like[0]) + 1;</span><br><span class="line">                <span class="comment">&lt;!-- selected_object.html에 좋아요 개수 표시 --&gt;</span></span><br><span class="line">                selected_object.html("&amp;emsp;좋아요 "+comment_like+"개")</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>경로 : post &gt; templates &gt; post &gt; comment_list.html</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% for comment in comments %&#125;</span><br><span class="line">    &#123;% include 'post/comment_single.html' %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>경로 : post &gt; templates &gt; post &gt; comment_single.html</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"margin-bottom: 20px;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"img-profile"</span> <span class="attr">style</span>=<span class="string">"background-image:url(&#123;&#123;comment.author.profile.url&#125;&#125;)"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"float:left; height:100%; width:550px; line-height:100%;"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"display:inline-block; vertical-align:middle; line-height:normal;"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"padding:10px; border-radius:25px; background-color:rgb(237,237,237); display:inline-block; margin:0"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span> <span class="attr">style</span>=<span class="string">"color:rgb(37,71,194); font-weight:bold;"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>&#123;&#123;comment.author.last_name&#125;&#125;&#123;&#123;comment.author.first_name&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span>&amp;emsp;&#123;&#123;comment.text&#125;&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"btn-comment-like"</span> <span class="attr">href</span>=<span class="string">"&#123;% url 'post:comment_like' comment.id %&#125;"</span>&gt;</span>&amp;emsp;좋아요 &#123;% if comment.like %&#125;&#123;&#123;comment.like&#125;&#125;개&#123;% endif %&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"btn-comment-update-delete"</span> <span class="attr">href</span>=<span class="string">"&#123;% url 'post:comment_update' comment.id %&#125;"</span>&gt;</span>&amp;emsp;수정<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"btn-comment-update-delete"</span> <span class="attr">href</span>=<span class="string">"&#123;% url 'post:comment_delete' comment.id %&#125;"</span>&gt;</span>삭제<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"clear:both;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-서버에서-ajax로-데이터-송신"><a href="#2-서버에서-ajax로-데이터-송신" class="headerlink" title="2. 서버에서 ajax로 데이터 송신"></a>2. 서버에서 ajax로 데이터 송신</h3><ul>
+<li>경로 : post &gt; views.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">comment_create</span><span class="params">(request, post_id)</span>:</span></span><br><span class="line">    <span class="comment"># ajax 요청에서 is_ajax 데이터 수신</span></span><br><span class="line">    is_ajax = request.POST.get(<span class="string">'is_ajax'</span>)</span><br><span class="line">    <span class="comment"># 특정 post_id를 pk 값으로 갖는 post 객체를 post 변수로 저장 </span></span><br><span class="line">    post = Post.objects.get(pk=post_id)</span><br><span class="line">    <span class="comment"># 댓글폼에 입력한 데이터를 POST 형식으로 요청한 댓글폼을 comment_form 변수로 저장</span></span><br><span class="line">    comment_form = CommentForm(request.POST)</span><br><span class="line">    <span class="comment"># 요청한 유저를 comment_form의 작성자로 저장 </span></span><br><span class="line">    comment_form.instance.author_id = request.user.id</span><br><span class="line">    comment_form.instance.post_id = post_id</span><br><span class="line">    <span class="comment"># comment_form이 검증 완료되었다면, comment_form 데이터 저장</span></span><br><span class="line">    <span class="keyword">if</span> comment_form.is_valid():</span><br><span class="line">        comment = comment_form.save()</span><br><span class="line">    <span class="comment"># ajax 요청 데이터에 is_ajax 가 있다면,</span></span><br><span class="line">    <span class="keyword">if</span> is_ajax:</span><br><span class="line">        <span class="comment"># comment_single.html에 있는 문자열을 렌더링 및 comment를 context data로 설정하여 html 변수에 저장</span></span><br><span class="line">        html = render_to_string(<span class="string">'post/comment_single.html'</span>,&#123;<span class="string">'comment'</span>:comment&#125;)</span><br><span class="line">        <span class="comment"># JsonResponse로 html를 ajax 요청한 페이지에 송신</span></span><br><span class="line">        <span class="keyword">return</span> JsonResponse(&#123;<span class="string">'html'</span>:html&#125;)</span><br><span class="line">    <span class="keyword">return</span> redirect(post)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">comment_like</span><span class="params">(request, comment_id)</span>:</span></span><br><span class="line"><span class="comment"># ajax 요청에서 is_ajax 데이터 수신</span></span><br><span class="line">is_ajax = request.POST.get(<span class="string">"is_ajax"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ajax 요청한 데이터에 is_ajax 있는 경우</span></span><br><span class="line"><span class="keyword">if</span> is_ajax:</span><br><span class="line">    <span class="comment"># 특정 comment_id를 pk값으로 갖고 있는 댓글을 comment로 설정</span></span><br><span class="line">    comment = Comment.objects.get(pk=comment_id)</span><br><span class="line">    <span class="comment"># comment.like에 +1한 값을 다시 comment.like로 저장</span></span><br><span class="line">    comment.like = comment.like + <span class="number">1</span></span><br><span class="line">    <span class="comment"># 해당 comment 객체 저장</span></span><br><span class="line">    comment.save()</span><br><span class="line">    <span class="comment"># JsonResponse로 'works'를 True로 설정하여 ajax 요청한 페이지에 송신</span></span><br><span class="line">    <span class="keyword">return</span> JsonResponse(&#123;<span class="string">'works'</span>:<span class="literal">True</span>&#125;)</span><br><span class="line"><span class="comment"># ajax 요청한 데이터에 is_ajax 없는 경우, 현재 url로 이동</span></span><br><span class="line"><span class="keyword">return</span> redirect(<span class="string">'/'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-07-07T08:00:21.000Z" itemprop="datePublished">
+              2019-07-07
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Ajax/">Ajax</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
