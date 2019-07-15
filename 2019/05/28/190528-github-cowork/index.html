@@ -94,8 +94,10 @@ ex) git remote add origin https://github.com/wps-shk/blogproject.git
     ex) git commit -m &apos;변경 내용 description&apos;
 </code></pre><h3 id="PM-11-git-push-원격저장소-명-develop"><a href="#PM-11-git-push-원격저장소-명-develop" class="headerlink" title="PM 11) git push [원격저장소 명] develop"></a>PM 11) git push [원격저장소 명] develop</h3><pre><code>- 원격저장소에 develop branch에 있는 내용 push
     ex) git push origin develop
-</code></pre><h3 id="팀원-1-git-clone-원격저장소-경로"><a href="#팀원-1-git-clone-원격저장소-경로" class="headerlink" title="팀원 1) git clone [원격저장소 경로]"></a>팀원 1) git clone [원격저장소 경로]</h3><pre><code>- 원격저장소에 있는 파일 복사
-    ex) git clone https://github.com/wps-shk/blogproject.git  
+</code></pre><h3 id="팀원-1-git-pull-원격저장소-경로-로컬-브런치-명"><a href="#팀원-1-git-pull-원격저장소-경로-로컬-브런치-명" class="headerlink" title="팀원 1) git pull [원격저장소 경로] [로컬 브런치 명]"></a>팀원 1) git pull [원격저장소 경로] [로컬 브런치 명]</h3><pre><code>- 원격저장소에 있는 파일을 내 로컬 브런치로 pull(fetch + merge)
+    ex) git pull https://github.com/wps-shk/blogproject.git  
+- &apos;fatal: refusing to merge unrelated histories&apos; 에러 발생 시, 아래와 같이 명령어 실행
+    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull origin[원격 저장소] develop --allow-unrelated-histories</span><br></pre></td></tr></table></figure>
 </code></pre><h3 id="PM-12-git-flow-feature-start-브런치-명"><a href="#PM-12-git-flow-feature-start-브런치-명" class="headerlink" title="PM 12) git flow feature start [브런치 명]"></a>PM 12) git flow feature start [브런치 명]</h3><pre><code>- git flow 명령어를 이용한 feature branch 생성
     ex) git flow feature start models
 </code></pre><h3 id="PM-13-git-add-변경된-파일"><a href="#PM-13-git-add-변경된-파일" class="headerlink" title="PM 13) git add [변경된 파일]"></a>PM 13) git add [변경된 파일]</h3><pre><code>- 변경본 반영 리스트 작성

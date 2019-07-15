@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/28/190528-github-cowork/</loc>
+        <lastmod>2019-07-15T18:23:26.077Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/09/190609-django-tag-function/</loc>
+        <lastmod>2019-07-14T14:21:25.631Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/07/08/190708-django-ajax-comment-function/</loc>
         <lastmod>2019-07-12T17:33:49.023Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -216,14 +232,6 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/09/190609-django-tag-function/</loc>
-        <lastmod>2019-07-06T04:19:01.924Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://chohyeonkeun.github.io/2019/06/08/190608-django-custom-templatetags/</loc>
         <lastmod>2019-07-06T04:18:55.248Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -330,14 +338,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/05/29/190529-django-media-serving/</loc>
         <lastmod>2019-07-06T04:16:56.212Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/28/190528-github-cowork/</loc>
-        <lastmod>2019-07-06T04:16:49.832Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
