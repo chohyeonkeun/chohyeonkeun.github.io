@@ -149,8 +149,8 @@
 <li><p>장고 소스코드가 있는 폴더의 소유자와 권한 변경</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown -R django:www-data /var/www/django</span><br><span class="line">$ sudo chmod -R g+w /var/www/django</span><br><span class="line"><span class="comment"># -R : Recursive 옵션; 하위폴더까지 계속 반복해서 적용</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>소스코드 파일 수정되었으므로, nginx 재실행</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl restart nginx</span><br></pre></td></tr></table></figure>
+<li><p>소스코드 파일 수정되었으므로, uwsgi 재실행</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl restart uwsgi</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>웹 브라우저 접속하여 사이트 구동여부 확인</p>
 </li>
