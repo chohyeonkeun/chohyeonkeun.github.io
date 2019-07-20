@@ -8,16 +8,40 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/17/190719-python-brute-force-search-picnic/</loc>
-        <lastmod>2019-07-20T11:46:19.032Z</lastmod>
+        <loc>https://chohyeonkeun.github.io/2019/07/17/190717-django-search-filter-using-RegularExpression/</loc>
+        <lastmod>2019-07-20T13:32:42.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/17/190720-python-brute-force-search-boardcover/</loc>
-        <lastmod>2019-07-20T11:46:10.828Z</lastmod>
+        <loc>https://chohyeonkeun.github.io/2019/07/12/190712-django-hashtag/</loc>
+        <lastmod>2019-07-20T13:07:43.616Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/20/190720-python-brute-force-search-boardcover/</loc>
+        <lastmod>2019-07-20T12:48:36.632Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/19/190719-python-brute-force-search-picnic/</loc>
+        <lastmod>2019-07-20T12:48:29.416Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/09/190709-python-BST/</loc>
+        <lastmod>2019-07-20T12:48:03.373Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

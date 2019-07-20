@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>장고 - 해시태그 검색 기능 학습 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/07/12/190712-django-hashtag/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>장고 - 해시태그 검색 기능 학습</h1>
+    </header>
+
+    <section>
+      <ul>
+<li>이번 포스트에서는 객체마다 해시태그 생성(키워드 ‘,’로 구분)하여 특정 태그를 검색하는 방법에 대해 알아볼 것이다.</li>
+</ul>
+<a id="more"></a>
+<h2 id="해시태그-생성-및-검색-방법"><a href="#해시태그-생성-및-검색-방법" class="headerlink" title="해시태그 생성 및 검색 방법"></a>해시태그 생성 및 검색 방법</h2><blockquote>
+<p>ex) yanolja_project</p>
+</blockquote>
+<h3 id="1-pip-install-django-taggit"><a href="#1-pip-install-django-taggit" class="headerlink" title="1. pip install django-taggit"></a>1. pip install django-taggit</h3><h3 id="2-settings-py에-‘taggit’-추가"><a href="#2-settings-py에-‘taggit’-추가" class="headerlink" title="2. settings.py에 ‘taggit’ 추가"></a>2. settings.py에 ‘taggit’ 추가</h3><ul>
+<li>경로 : yanolja_project &gt; config(프로젝트) &gt; settings.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    ...</span><br><span class="line">    taggit,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-migrate-진행"><a href="#3-migrate-진행" class="headerlink" title="3. migrate 진행"></a>3. migrate 진행</h3><ul>
+<li>경로 : yanolja_project<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py migrate</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="4-모델-작성"><a href="#4-모델-작성" class="headerlink" title="4. 모델 작성"></a>4. 모델 작성</h3><ul>
+<li>경로 : yanolja_project  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> taggit.managers <span class="keyword">import</span> TaggableManager</span><br><span class="line"></span><br><span class="line"><span class="comment"># 검색 관련 키워드 필드 정의</span></span><br><span class="line">keywords = TaggableManager()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="5-변경사항-저장-및-migrate-진행"><a href="#5-변경사항-저장-및-migrate-진행" class="headerlink" title="5. 변경사항 저장 및 migrate 진행"></a>5. 변경사항 저장 및 migrate 진행</h3><ul>
+<li><p>경로 : yanolja_project</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py makemigrations</span><br><span class="line">$ python manage.py migrate</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>해시태그 검색할 때 대소문자 구별하지 않을 것이라면 settings.py에 아래 내용 추가</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">TAGGIT_CASE_INSENSITIVE = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="6-관리자페이지에서-TAGGIT-추가된-것-확인"><a href="#6-관리자페이지에서-TAGGIT-추가된-것-확인" class="headerlink" title="6. 관리자페이지에서 TAGGIT 추가된 것 확인"></a>6. 관리자페이지에서 TAGGIT 추가된 것 확인</h3><ul>
+<li>경로 : yanolja_project  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py createsuperuser</span><br><span class="line">$ python manage.py runserver</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="7-페이지-경로-설정했다고-가정하고-뷰-페이지에-해시태그-검색기능-추가"><a href="#7-페이지-경로-설정했다고-가정하고-뷰-페이지에-해시태그-검색기능-추가" class="headerlink" title="7. 페이지 경로 설정했다고 가정하고, 뷰 페이지에 해시태그 검색기능 추가"></a>7. 페이지 경로 설정했다고 가정하고, 뷰 페이지에 해시태그 검색기능 추가</h3><ul>
+<li>경로 : yanolja_project &gt; stay(앱) &gt; views.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">stay_list</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">"POST"</span>:</span><br><span class="line">        <span class="comment"># 프론트단으로부터 post method로 메인페이지 검색 데이터를 'keywords' 이름의 문자열 형태로 수신</span></span><br><span class="line">        keywords = request.POST.get(<span class="string">'keywords'</span>, <span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">if</span> keywords <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="comment"># 클라이언트로부터 전송받은 keywords 가 ','로 구분되어 있는 경우</span></span><br><span class="line">            <span class="comment"># ','를 기준으로 키워드 분리하여 리스트 형태로 저장</span></span><br><span class="line">            keywords = keywords.split(<span class="string">','</span>)</span><br><span class="line">            <span class="comment"># 검색어 리스트에 있는 데이터가 Stay 객체의 keywords 필드 데이터에 존재하는 경우 해당 객체를 stays로 저장(동일 객체 중복 불가)  </span></span><br><span class="line">            stays = Stay.objects.filter(keywords__name__in=keywords).distinct()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># 클라이언트로부터 요청받은 데이터 key 값에 'keywords'가 존재하지 않는 경우</span></span><br><span class="line">    <span class="comment"># 모든 숙소 객체를 stays로 저장</span></span><br><span class="line">        stays = Stay.objects.all()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'stay/stay_list.html'</span>, &#123;<span class="string">'object_list'</span>:stays&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-07-12T08:00:21.000Z" itemprop="datePublished">
+              2019-07-12
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/hashtag/">hashtag</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

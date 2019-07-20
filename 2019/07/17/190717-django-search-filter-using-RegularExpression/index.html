@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>파이썬 - 정규식을 이용한 특정 문자열 선별 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/07/17/190717-django-search-filter-using-regularexpression/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>파이썬 - 정규식을 이용한 특정 문자열 선별</h1>
+    </header>
+
+    <section>
+      <ul>
+<li>이번에는 사용자가 숙소 업체 플랫폼 사이트에서 특정 검색키워드, 숙박할 인원 조건에 해당하는 숙소를 검색할 때 정규식을 사용하여 조건에 해당되는 숙소를 찾는 방법에 대해 알아볼 것이다.</li>
+</ul>
+<a id="more"></a>
+<h2 id="사용자가-조건-설정하여-원하는-숙소-조회-시-정규식을-사용하여-검색어에-해당되는-숙소-목록-제공하기"><a href="#사용자가-조건-설정하여-원하는-숙소-조회-시-정규식을-사용하여-검색어에-해당되는-숙소-목록-제공하기" class="headerlink" title="사용자가 조건 설정하여 원하는 숙소 조회 시, 정규식을 사용하여 검색어에 해당되는 숙소 목록 제공하기"></a>사용자가 조건 설정하여 원하는 숙소 조회 시, 정규식을 사용하여 검색어에 해당되는 숙소 목록 제공하기</h2><p>ex) yanolja_project</p>
+<h3 id="1-모델-작성"><a href="#1-모델-작성" class="headerlink" title="1. 모델 작성"></a>1. 모델 작성</h3><ul>
+<li>경로 : yanolja_project &gt; stay(앱) &gt; models.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"><span class="keyword">from</span> taggit.managers <span class="keyword">import</span> TaggableManager</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Category</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">staying = models.CharField(max_length=<span class="number">50</span>)  <span class="comment"># 모텔, 호텔/리조트, 펜션/풀빌라, 게스트하우스</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> self.staying</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stay</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    <span class="comment"># 모텔, 호텔,리조트, 펜션/풀빌라, 게스트하우스 선택</span></span><br><span class="line">    category = models.ForeignKey(Category, on_delete=models.SET, null=<span class="literal">True</span>, blank=<span class="literal">True</span>, related_name=<span class="string">"stays"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 숙소 이름(ex. 역삼 바레)</span></span><br><span class="line">    name = models.CharField(max_length=<span class="number">50</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 유저 아이디(ex. positipman)</span></span><br><span class="line">    username = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name=<span class="string">"stays"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 숙소 위치(ex. 서울특별시 강남구 봉은사로 428)</span></span><br><span class="line">    location = models.CharField(max_length=<span class="number">100</span>)    </span><br><span class="line"></span><br><span class="line">    <span class="comment"># 검색 관련 키워드</span></span><br><span class="line">    keywords = TaggableManager()</span><br><span class="line"></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-변경사항-저장-및-migrate-진행"><a href="#2-변경사항-저장-및-migrate-진행" class="headerlink" title="2. 변경사항 저장 및 migrate 진행"></a>2. 변경사항 저장 및 migrate 진행</h3><ul>
+<li>경로 : yanolja_project  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py makemigrations</span><br><span class="line">$ python manage.py migrate</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-뷰-페이지-작성-검색-키워드-필터링"><a href="#3-뷰-페이지-작성-검색-키워드-필터링" class="headerlink" title="3. 뷰 페이지 작성 (검색 키워드 필터링)"></a>3. 뷰 페이지 작성 (검색 키워드 필터링)</h3><ul>
+<li>경로 : yanolja_project &gt; stay &gt; views.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">stay_list</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">"POST"</span>:</span><br><span class="line">        <span class="comment"># 프론트단으로부터 (모텔, 호텔/리조트, 펜션/풀빌라, 게스트하우스 중 1 택) 정보를 category라는 문자열 형태의 변수로 받는다.</span></span><br><span class="line">        category_str = request.POST.get(<span class="string">'category'</span>, <span class="literal">None</span>)</span><br><span class="line">        category_obj = Category.objects.get(staying=category_str)</span><br><span class="line">        <span class="comment"># 특정 category에 해당하는 숙소 필터링</span></span><br><span class="line">        stays = Stay.objects.filter(category=category_obj)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># &lt;--메인페이지 검색페이지에서 사용자가 키워드 입력한 경우 해당 숙소 필터링하는 코드--&gt;</span></span><br><span class="line">        <span class="comment"># 프론트단으로부터 검색 키워드를 'searchKeyword'라는 문자열 형태의 변수로 받는다.</span></span><br><span class="line">        <span class="comment"># ex) "강남/역삼/선릉/삼성", "서울 송파구 올림픽대로", "역삼 마레", "역삼" ...</span></span><br><span class="line">        search_keyword = request.POST.get(<span class="string">'searchKeyword'</span>, <span class="literal">None</span>)</span><br><span class="line">        <span class="comment"># 사용자가 입력한 키워드에 해당하는 숙소 객체 선별</span></span><br><span class="line">        <span class="keyword">if</span> search_keyword <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="comment"># 검색 키워드에서 한글, 정수, 영문 키워드만 필터링하여 리스트로 변환</span></span><br><span class="line">            <span class="comment"># ex. "강남,역삼/삼성, 테헤란로2길 artist" --&gt; ['강남','역삼','삼성','테헤란로2길, 'artist']</span></span><br><span class="line">            not_hangul = re.compile(<span class="string">'[^가-힣\da-z]+'</span>)</span><br><span class="line">            result_str = not_hangul.sub(<span class="string">' '</span>, search_keyword)</span><br><span class="line">            result_list = result_str.split(<span class="string">' '</span>)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Stay 모델의 name에 검색 키워드가 있는 숙소 필터링</span></span><br><span class="line">            <span class="comment"># ex. result_list = ['강남, '역삼', '삼성', '테헤란로2길', 'artist']</span></span><br><span class="line">            que_name = Q(name__icontains=result_list[<span class="number">0</span>])</span><br><span class="line">            <span class="keyword">for</span> keyword <span class="keyword">in</span> result_list[<span class="number">1</span>:]:</span><br><span class="line">                que_name |= Q(name__icontains=keyword)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Stay 모델의 location에 검색 키워드가 있는 숙소 필터링</span></span><br><span class="line">            que_location = Q(location__icontains=result_list[<span class="number">0</span>])</span><br><span class="line">            <span class="keyword">for</span> keyword <span class="keyword">in</span> result_list[<span class="number">1</span>:]:</span><br><span class="line">                que_location |= Q(location__icontains=keyword)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Stay 모델의 name 또는 location 또는 keywords 필드에 검색 키워드가 있는 숙소 필터링(숙소 객체 중복 불가)</span></span><br><span class="line">            stays = stays.filter(Q(keywords__name__in=result_list)|que_name|que_location).distinct()</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 검색 키워드에 해당하는 숙소가 없을 경우</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> stays.exists():</span><br><span class="line">                <span class="keyword">return</span> JsonResponse(&#123;<span class="string">'searchResult'</span>:<span class="literal">False</span>&#125;)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># &lt;--메인페이지 검색페이지에서 사용자가 총 인원수(성인+아동) 설정한 경우 해당 숙소 필터링하는 코드--&gt;</span></span><br><span class="line">            <span class="comment"># 프론트단으로부터 총 인원 수를 'personnel'이라는 변수(int type)로 받는다.</span></span><br><span class="line">            personnel = request.POST.get(<span class="string">'personnel'</span>, <span class="literal">None</span>)</span><br><span class="line">            <span class="comment"># 사용자가 설정한 인원수를 수용할 수 있는 숙소 객체 선별</span></span><br><span class="line">            stays = stays.filter(rooms__maximumPersonnel__gte=personnel).distinct()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> render(request, <span class="string">'stay/stay_list.html'</span>, &#123;<span class="string">'objects'</span>: stays&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># request method가 POST 아닌 경우</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        stays = Stay.objects.all()</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">'stay/stay_list.html'</span>, &#123;<span class="string">'objects'</span>:stays&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-07-17T08:00:21.000Z" itemprop="datePublished">
+              2019-07-17
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Python/">Python</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/RegularExpression/">RegularExpression</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Filter/">Filter</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
