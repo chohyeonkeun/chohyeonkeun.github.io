@@ -8,6 +8,38 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/17/190719-python-brute-force-search-picnic/</loc>
+        <lastmod>2019-07-20T11:46:19.032Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/17/190720-python-brute-force-search-boardcover/</loc>
+        <lastmod>2019-07-20T11:46:10.828Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/21/190621-django-docker-elastic-beanstalk/</loc>
+        <lastmod>2019-07-19T09:12:36.994Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/19/190619-django-elastic-beanstalk/</loc>
+        <lastmod>2019-07-19T09:11:08.989Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/06/06/190606-django-EC2-django-deploy/</loc>
         <lastmod>2019-07-17T12:26:07.266Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -152,24 +184,8 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/21/190621-django-docker-elastic-beanstalk/</loc>
-        <lastmod>2019-07-06T04:21:47.947Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://chohyeonkeun.github.io/2019/06/20/190620-django-translation/</loc>
         <lastmod>2019-07-06T04:21:41.327Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/19/190619-django-elastic-beanstalk/</loc>
-        <lastmod>2019-07-06T04:21:32.607Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

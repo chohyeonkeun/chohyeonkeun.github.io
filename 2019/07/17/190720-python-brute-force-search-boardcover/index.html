@@ -10,11 +10,11 @@
   <meta property="og:title" content="조누스의 걸음마 개발로그">
   <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
   <meta property="og:url" content="https://chohyeonkeun.github.io">
-  <title>조누스의 걸음마 개발 로그</title>
+  <title>자료구조 - 완전탐색(Brute-Force-Search) 학습_2 | 조누스의 걸음마 개발 로그</title>
   
   
   
-  <link rel="canonical" href="https://chohyeonkeun.github.io/tags/datastructure/">
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/07/17/190720-python-brute-force-search-boardcover/">
   <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -64,104 +64,14 @@
 
     <div class="container">
         <div data-pager-shell>
-            <ul class="Index">
-  
+            <div>
+  <article class="ContentView">
     <header class="PageTitle">
-        <h1>{ DataStructure }</h1>
+        <h1>자료구조 - 완전탐색(Brute-Force-Search) 학습_2</h1>
     </header>
-  
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/07/17/190719-python-brute-force-search-picnic/">자료구조 - 완전탐색(Brute-Force-Search) 학습_1</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-07-17T08:00:21.000Z" itemprop="datePublished">
-    2019-07-17
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Python/">Python</a> }
-  </li>
 
-  <li class="meta-text">
-  { <a href="/tags/DataStructure/">DataStructure</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/Brute-Force-Search/">Brute-Force-Search</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="완전탐색-Brute-Force-Search-문제-1-picnic"><a href="#완전탐색-Brute-Force-Search-문제-1-picnic" class="headerlink" title="완전탐색 (Brute-Force-Search) 문제 1 - picnic"></a>완전탐색 (Brute-Force-Search) 문제 1 - picnic</h2><ul>
-<li>학교에서 소풍을 가려고 한다.</li>
-<li>학생들을 두명씩 짝지어 행동하게 하려고 한다.</li>
-<li>단, 서로 친구인 경우에만 짝을 지어야 한다.</li>
-<li>서로 친구인 경우의 쌍이 주어질 때, 학생들을 짝지을 수 있는 방법의 수를 구하는 프로그램을 구현하라.</li>
-<li>n(학생 수)은 항상 짝수이다.</li>
-<li>알고리즘 문제해결 전략 1권 p.157</li>
-</ul>
-<h2 id="코드-구현-및-해설"><a href="#코드-구현-및-해설" class="headerlink" title="코드 구현 및 해설"></a>코드 구현 및 해설</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 학생수: n</span></span><br><span class="line">n = <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 0번, 1번, 2번, 3번 학생이 있을 때, 서로 친구인 경우를 표시하기 위해 이중 리스트 사용</span></span><br><span class="line"><span class="comment"># 0번과 1번 친구인 경우 --&gt; friends[0][1] = True</span></span><br><span class="line">friends = [[<span class="literal">False</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)] <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)]</span><br><span class="line"><span class="comment"># friends = [[False, False, False, False], [F, F, F, F], [F, F, F, F], [F, F, F, F]]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 0번과 1번 친구 = 1번과 0번 친구 --&gt; friends[0][1] = friends[1][0] = True</span></span><br><span class="line">friends[<span class="number">0</span>][<span class="number">1</span>] = friends[<span class="number">1</span>][<span class="number">0</span>] = <span class="literal">True</span></span><br><span class="line">friends[<span class="number">1</span>][<span class="number">2</span>] = friends[<span class="number">2</span>][<span class="number">1</span>] = <span class="literal">True</span></span><br><span class="line">friends[<span class="number">2</span>][<span class="number">3</span>] = friends[<span class="number">3</span>][<span class="number">2</span>] = <span class="literal">True</span></span><br><span class="line">friends[<span class="number">3</span>][<span class="number">0</span>] = friends[<span class="number">0</span>][<span class="number">3</span>] = <span class="literal">True</span></span><br><span class="line">friends[<span class="number">0</span>][<span class="number">2</span>] = friends[<span class="number">2</span>][<span class="number">0</span>] = <span class="literal">True</span></span><br><span class="line">friends[<span class="number">1</span>][<span class="number">3</span>] = friends[<span class="number">3</span>][<span class="number">1</span>] = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터 개수가 n개인 has_pair 리스트에서 특정 인덱스의 학생이 짝이 있는 경우를 True, 짝이 없는 경우를 False 로 표시</span></span><br><span class="line"><span class="comment"># ex. 0번과 1번 학생이 짝으로 정해진 경우, has_pair = [True, True, False, False]</span></span><br><span class="line">has_pair = [<span class="literal">False</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 최초 has_pair = [False, False, False, False]</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solve</span><span class="params">(has_pair)</span>:</span></span><br><span class="line">  <span class="comment"># base case</span></span><br><span class="line">  first = <span class="literal">None</span></span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="comment"># has_pair에서 첫번째 False 값의 인덱스를 first 변수에 할당</span></span><br><span class="line">        <span class="comment"># ex. has_pair = [True, True, False, False] --&gt; first = 2</span></span><br><span class="line">        <span class="keyword">if</span> has_pair[i] == <span class="literal">False</span>:</span><br><span class="line">            first = i</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># has_pair에 False 값이 없는 경우(=[True, True, True, True]), return 1</span></span><br><span class="line">    <span class="keyword">if</span> first == <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># has_pair 에 False 가 존재하는 경우</span></span><br><span class="line">    ret = <span class="number">0</span></span><br><span class="line">    <span class="comment"># has_pair 에서 first 보다 큰 인덱스를 순차적으로 student 로 할당하여, </span></span><br><span class="line">    <span class="comment"># 해당 인덱스의 학생이 짝이 없고 first 인덱스의 학생과 student 인덱스의 학생이 서로 친구인 경우, 짝으로 지정한다.</span></span><br><span class="line">    <span class="comment"># --&gt; has_pair[student] = has_pair[first] = True 로 할당</span></span><br><span class="line">    <span class="keyword">for</span> student <span class="keyword">in</span> range(first+<span class="number">1</span>, n):</span><br><span class="line">        <span class="keyword">if</span> has_pair[student] == <span class="literal">False</span> <span class="keyword">and</span> friends[first][student] == <span class="literal">True</span>:</span><br><span class="line">            has_pair[student] = has_pair[first] = <span class="literal">True</span></span><br><span class="line">            <span class="comment"># has_pair 인덱스 값 모두 True(=[T, T, T, T])로 설정된 경우, ret += 1</span></span><br><span class="line">            <span class="comment"># --&gt; has_pair = [T, T, T, T]까지 진행된 경우를 모든 학생이 짝지어진 경우 1가지로 간주한다.</span></span><br><span class="line">            <span class="comment"># --&gt; solve(has_pair) 재귀함수 호출될 때, 모든 학생이 짝지어진 경우에 first는 None이 되어 return 값으로 1을 반환한다.</span></span><br><span class="line">            ret += solve(has_pair)</span><br><span class="line">            <span class="comment"># has_pair = [T, T, T, T]까지 진행되면 그 때의 first, student 인덱스 값에 False를 설정하여 재귀함수에 의해 has_pair에 True가 모두 채워지는 또다른 경우의 수를 찾는다.</span></span><br><span class="line">            has_pair[student] = has_pair[first] = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(solve(has_pair))</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/07/17/190720-python-brute-force-search-boardcover/">자료구조 - 완전탐색(Brute-Force-Search) 학습_2</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-07-17T08:00:21.000Z" itemprop="datePublished">
-    2019-07-17
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Python/">Python</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/DataStructure/">DataStructure</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/Brute-Force-Search/">Brute-Force-Search</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="완전탐색-Brute-Force-Search-문제-2-Boardcover"><a href="#완전탐색-Brute-Force-Search-문제-2-Boardcover" class="headerlink" title="완전탐색 (Brute-Force-Search) 문제 2 - Boardcover"></a>완전탐색 (Brute-Force-Search) 문제 2 - Boardcover</h2><ul>
+    <section>
+      <h2 id="완전탐색-Brute-Force-Search-문제-2-Boardcover"><a href="#완전탐색-Brute-Force-Search-문제-2-Boardcover" class="headerlink" title="완전탐색 (Brute-Force-Search) 문제 2 - Boardcover"></a>완전탐색 (Brute-Force-Search) 문제 2 - Boardcover</h2><ul>
 <li>height(H) * width(W)의 보드가 검은색과 흰색으로 채워져 있다.</li>
 <li>모든 흰칸을 ‘ㄱ’ 모양의 흰색 블록으로 덮고 싶다.</li>
 <li>블록은 회전 가능하지만 겹치거나 검은색 블록을 침범하거나 밖으로 이탈되어서는 안된다. </li>
@@ -170,28 +80,21 @@
 </ul>
 <h2 id="코드-구현-및-해설"><a href="#코드-구현-및-해설" class="headerlink" title="코드 구현 및 해설"></a>코드 구현 및 해설</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Height = 8</span></span><br><span class="line">H = <span class="number">8</span></span><br><span class="line"><span class="comment"># Width = 10</span></span><br><span class="line">W = <span class="number">10</span></span><br><span class="line">board = [</span><br><span class="line">    [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">    [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">    [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">    [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">    [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">    [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">    [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">    [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># cases = 4가지 블록 타입(-&gt; [y, x] 형태)</span></span><br><span class="line"><span class="comment">#   type1     type2     type3     type4</span></span><br><span class="line"><span class="comment">#  [*][ ]    [*][ ]    [*]          [*]    </span></span><br><span class="line"><span class="comment">#  [ ]          [ ]    [ ][ ]    [ ][ ] </span></span><br><span class="line">cases = [</span><br><span class="line">    [[<span class="number">1</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">0</span>]],  </span><br><span class="line">    [[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">1</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">0</span>]],</span><br><span class="line">    [[<span class="number">1</span>, <span class="number">0</span>], [<span class="number">1</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">0</span>]],</span><br><span class="line">    [[<span class="number">1</span>, <span class="number">0</span>], [<span class="number">1</span>, <span class="number">-1</span>], [<span class="number">0</span>, <span class="number">0</span>]]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># [y, x] 위치가 보드를 벗어났는지를 판단하는 함수</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">out_range</span><span class="params">(y, x)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> (y &lt; <span class="number">0</span>  <span class="keyword">or</span> x &lt; <span class="number">0</span> <span class="keyword">or</span> H &lt;= y <span class="keyword">or</span> W &lt;= x):</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 현재위치(=board[y][x])에 c 타입의 흰색 블록을 채워넣는 함수</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">put</span><span class="params">(y, x, c)</span>:</span></span><br><span class="line">    <span class="comment"># c(for c in cases에서의 c) : 흰색 블록 타입</span></span><br><span class="line">    ret = <span class="literal">True</span></span><br><span class="line">    <span class="comment"># 특정 흰색 블록 타입의 point(=[y, x]) --&gt; point[0] = y, point[1] = x </span></span><br><span class="line">    <span class="keyword">for</span> point <span class="keyword">in</span> c:</span><br><span class="line">        <span class="comment"># 현재 위치 y에서 채워넣을 특정 블록의 y 값 추가</span></span><br><span class="line">        _y = y + point[<span class="number">0</span>]</span><br><span class="line">        <span class="comment"># 현재 위치 x에서 채워넣을 특정 블록의 x 값 추가</span></span><br><span class="line">        _x = x + point[<span class="number">1</span>]</span><br><span class="line">        <span class="comment"># _y, _x가 검은색 블록 테두리 위치에서 벗어난 경우 ret = False</span></span><br><span class="line">        <span class="keyword">if</span> out_range(_y, _x):</span><br><span class="line">            ret = <span class="literal">False</span></span><br><span class="line">        <span class="comment"># _y, _x가 검은색 블록 테두리 안에 위치할 경우</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># board[_y][_x] 위치에 값 1 증대</span></span><br><span class="line">            board[_y][_x] += <span class="number">1</span></span><br><span class="line">            <span class="comment"># board[_y][_x] 위치의 값이 1 이상일 경우, ret = False</span></span><br><span class="line">            <span class="keyword">if</span> board[_y][_x] &gt; <span class="number">1</span>:</span><br><span class="line">                ret = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 채워 넣을 흰색 블록이 검은색 블록 테두리 안에 있고, 기존 흰색 블록과 겹치지 않는다면 True 반환</span></span><br><span class="line">    <span class="comment"># 채워 넣을 흰색 블록이 검은색 블록 테두리 위치를 벗어나 있거나, 기존 흰색 블록과 겹친다면 False 반환</span></span><br><span class="line">    <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line"><span class="comment"># 현재위치(=board[y][x])에서 c 타입의 흰색 블록을 제거하는 함수</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(y, x, c)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> point <span class="keyword">in</span> c:</span><br><span class="line">        _y = y + point[<span class="number">0</span>]</span><br><span class="line">        _x = x + point[<span class="number">1</span>]</span><br><span class="line">        <span class="comment"># _y, _x 위치가 검은색 블록 테두리를 벗어났다면 continue</span></span><br><span class="line">        <span class="keyword">if</span> out_range(_y, _x):</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="comment"># _y, _x 위치가 검은색 블록 테두리 안에 있다면, board[_y][_x] 값 1 차감</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            board[_y][_x] -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solve</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># base case</span></span><br><span class="line">    fx = fy = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(H):</span><br><span class="line">        <span class="comment"># for j in range(10):</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(W):</span><br><span class="line">            <span class="keyword">if</span> board[i][j] == <span class="number">0</span>:</span><br><span class="line">                fy = i</span><br><span class="line">                fx = j</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> fx != <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 흰색 블록이 빈 부분 없이 꽉 채워져 있는 경우, return 1</span></span><br><span class="line">    <span class="keyword">if</span> fx == <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 흰색 블록이 채워질 공간이 있는 경우</span></span><br><span class="line">    ret = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> cases:         </span><br><span class="line">        <span class="comment"># 특정 흰색 블록 타입이 들어갈 공간이 있으면, 블록 집어넣고 재귀함수 호출 (블록 채워지지 않은 위치에서 다시 solve() 실행)</span></span><br><span class="line">        <span class="keyword">if</span> put(fy, fx, c):</span><br><span class="line">            ret += solve()</span><br><span class="line">        <span class="comment"># 블록 들어갈 공간 없으면, board의 [fy, fx] 위치에서 c 타입 제거 후, 그 다음 c 타입이 들어갈 공간이 있는지 확인</span></span><br><span class="line">        get(fy, fx, c)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 모든 블록 타입이 들어갈 공간 없으면, return 0</span></span><br><span class="line">    <span class="comment"># 모든 블록이 흰색으로 채워질 경우, ret += 1</span></span><br><span class="line">    <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line">print(solve())</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-</article>
 
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
       
-        <h1>
-          <a href="/2019/07/04/190704-datastructure-binarytree/">자료구조 - 이진트리 학습</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-07-04T08:00:21.000Z" itemprop="datePublished">
-    2019-07-04
-  </time>
-  
-  | 
-  <ul>
+
+    </section>
     
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-07-17T08:00:21.000Z" itemprop="datePublished">
+              2019-07-17
+            </time>
+          </div>
+          
+            <div>
+              tags: 
   <li class="meta-text">
   { <a href="/tags/Python/">Python</a> }
   </li>
@@ -201,106 +104,19 @@
   </li>
 
   <li class="meta-text">
-  { <a href="/tags/BinaryTree/">BinaryTree</a> }
+  { <a href="/tags/Brute-Force-Search/">Brute-Force-Search</a> }
   </li>
 
 
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="이진트리-Binary-Tree-란"><a href="#이진트리-Binary-Tree-란" class="headerlink" title="이진트리(Binary Tree)란?"></a>이진트리(Binary Tree)란?</h2><ul>
-<li><p>어떤 노드의 자식 노드의 수가 최대 2개인 트리</p>
-</li>
-<li><p>공집합 혹은 루트(root)와 왼쪽 서브 트리, 오른쪽 서브 트리로 이루어진 유한 집합, 각각의 서브 트리는 모두 이진 트리이다.</p>
-</li>
-<li><p>트리는 connected acyclic graph</p>
-<ul>
-<li>루트 노드(root)를 반드시 가진다.</li>
-<li>트리를 구성하는 노드 간 단순 경로가 존재한다.</li>
-</ul>
-</li>
-<li><p>트리는 1개 이상의 노드로 이루어진 유한 집합</p>
-<ul>
-<li>루트 노드(root)를 반드시 가진다.</li>
-<li>나머지 노드들은 분리집합 T1, …, Tn으로 분할 가능<ul>
-<li>T1, T2 등은 각각의 하나의 트리(서브 트리)가 된다.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/07/04/190704-datastructure-binarytree/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/07/01/190701-python-circular-queue/">자료구조 - Circular Queue 학습</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-07-01T08:00:21.000Z" itemprop="datePublished">
-    2019-07-01
-  </time>
-  
-  | 
-  <ul>
+            </div>
+          
+      </section>
     
-  <li class="meta-text">
-  { <a href="/tags/Python/">Python</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/DataStructure/">DataStructure</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/Queue/">Queue</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="Circular-Queue-란"><a href="#Circular-Queue-란" class="headerlink" title="Circular Queue 란?"></a>Circular Queue 란?</h2><ul>
-<li>원형 큐는 선형 큐의 문제점을 보완하기 위한 자료구조이다.</li>
-<li>rear를 가르키는 포인터가 배열의 마지막 인덱스를 가르키고 있을 때, 앞쪽에서 Dequeue로 발생한 배열의 빈 공간을 활용 할 수 없다.</li>
-<li>원형큐에서는 배열의 첫 인덱스부터 다시 데이터 삽입이 가능하다.</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/07/01/190701-python-circular-queue/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
+    
 </article>
 
-    </li>
   
-</ul>
-
-
+</div>
 
             <footer>
     <div>© 2019 - 조현근 </div>

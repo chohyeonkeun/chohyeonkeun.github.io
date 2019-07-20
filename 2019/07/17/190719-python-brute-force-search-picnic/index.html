@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>자료구조 - 완전탐색(Brute-Force-Search) 학습_1 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/07/17/190719-python-brute-force-search-picnic/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>자료구조 - 완전탐색(Brute-Force-Search) 학습_1</h1>
+    </header>
+
+    <section>
+      <h2 id="완전탐색-Brute-Force-Search-문제-1-picnic"><a href="#완전탐색-Brute-Force-Search-문제-1-picnic" class="headerlink" title="완전탐색 (Brute-Force-Search) 문제 1 - picnic"></a>완전탐색 (Brute-Force-Search) 문제 1 - picnic</h2><ul>
+<li>학교에서 소풍을 가려고 한다.</li>
+<li>학생들을 두명씩 짝지어 행동하게 하려고 한다.</li>
+<li>단, 서로 친구인 경우에만 짝을 지어야 한다.</li>
+<li>서로 친구인 경우의 쌍이 주어질 때, 학생들을 짝지을 수 있는 방법의 수를 구하는 프로그램을 구현하라.</li>
+<li>n(학생 수)은 항상 짝수이다.</li>
+<li>알고리즘 문제해결 전략 1권 p.157</li>
+</ul>
+<h2 id="코드-구현-및-해설"><a href="#코드-구현-및-해설" class="headerlink" title="코드 구현 및 해설"></a>코드 구현 및 해설</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 학생수: n</span></span><br><span class="line">n = <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 0번, 1번, 2번, 3번 학생이 있을 때, 서로 친구인 경우를 표시하기 위해 이중 리스트 사용</span></span><br><span class="line"><span class="comment"># 0번과 1번 친구인 경우 --&gt; friends[0][1] = True</span></span><br><span class="line">friends = [[<span class="literal">False</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)] <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)]</span><br><span class="line"><span class="comment"># friends = [[False, False, False, False], [F, F, F, F], [F, F, F, F], [F, F, F, F]]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 0번과 1번 친구 = 1번과 0번 친구 --&gt; friends[0][1] = friends[1][0] = True</span></span><br><span class="line">friends[<span class="number">0</span>][<span class="number">1</span>] = friends[<span class="number">1</span>][<span class="number">0</span>] = <span class="literal">True</span></span><br><span class="line">friends[<span class="number">1</span>][<span class="number">2</span>] = friends[<span class="number">2</span>][<span class="number">1</span>] = <span class="literal">True</span></span><br><span class="line">friends[<span class="number">2</span>][<span class="number">3</span>] = friends[<span class="number">3</span>][<span class="number">2</span>] = <span class="literal">True</span></span><br><span class="line">friends[<span class="number">3</span>][<span class="number">0</span>] = friends[<span class="number">0</span>][<span class="number">3</span>] = <span class="literal">True</span></span><br><span class="line">friends[<span class="number">0</span>][<span class="number">2</span>] = friends[<span class="number">2</span>][<span class="number">0</span>] = <span class="literal">True</span></span><br><span class="line">friends[<span class="number">1</span>][<span class="number">3</span>] = friends[<span class="number">3</span>][<span class="number">1</span>] = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터 개수가 n개인 has_pair 리스트에서 특정 인덱스의 학생이 짝이 있는 경우를 True, 짝이 없는 경우를 False 로 표시</span></span><br><span class="line"><span class="comment"># ex. 0번과 1번 학생이 짝으로 정해진 경우, has_pair = [True, True, False, False]</span></span><br><span class="line">has_pair = [<span class="literal">False</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 최초 has_pair = [False, False, False, False]</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solve</span><span class="params">(has_pair)</span>:</span></span><br><span class="line">  <span class="comment"># base case</span></span><br><span class="line">  first = <span class="literal">None</span></span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="comment"># has_pair에서 첫번째 False 값의 인덱스를 first 변수에 할당</span></span><br><span class="line">        <span class="comment"># ex. has_pair = [True, True, False, False] --&gt; first = 2</span></span><br><span class="line">        <span class="keyword">if</span> has_pair[i] == <span class="literal">False</span>:</span><br><span class="line">            first = i</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># has_pair에 False 값이 없는 경우(=[True, True, True, True]), return 1</span></span><br><span class="line">    <span class="keyword">if</span> first == <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># has_pair 에 False 가 존재하는 경우</span></span><br><span class="line">    ret = <span class="number">0</span></span><br><span class="line">    <span class="comment"># has_pair 에서 first 보다 큰 인덱스를 순차적으로 student 로 할당하여, </span></span><br><span class="line">    <span class="comment"># 해당 인덱스의 학생이 짝이 없고 first 인덱스의 학생과 student 인덱스의 학생이 서로 친구인 경우, 짝으로 지정한다.</span></span><br><span class="line">    <span class="comment"># --&gt; has_pair[student] = has_pair[first] = True 로 할당</span></span><br><span class="line">    <span class="keyword">for</span> student <span class="keyword">in</span> range(first+<span class="number">1</span>, n):</span><br><span class="line">        <span class="keyword">if</span> has_pair[student] == <span class="literal">False</span> <span class="keyword">and</span> friends[first][student] == <span class="literal">True</span>:</span><br><span class="line">            has_pair[student] = has_pair[first] = <span class="literal">True</span></span><br><span class="line">            <span class="comment"># has_pair 인덱스 값 모두 True(=[T, T, T, T])로 설정된 경우, ret += 1</span></span><br><span class="line">            <span class="comment"># --&gt; has_pair = [T, T, T, T]까지 진행된 경우를 모든 학생이 짝지어진 경우 1가지로 간주한다.</span></span><br><span class="line">            <span class="comment"># --&gt; solve(has_pair) 재귀함수 호출될 때, 모든 학생이 짝지어진 경우에 first는 None이 되어 return 값으로 1을 반환한다.</span></span><br><span class="line">            ret += solve(has_pair)</span><br><span class="line">            <span class="comment"># has_pair = [T, T, T, T]까지 진행되면 그 때의 first, student 인덱스 값에 False를 설정하여 재귀함수에 의해 has_pair에 True가 모두 채워지는 또다른 경우의 수를 찾는다.</span></span><br><span class="line">            has_pair[student] = has_pair[first] = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(solve(has_pair))</span><br></pre></td></tr></table></figure>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-07-17T08:00:21.000Z" itemprop="datePublished">
+              2019-07-17
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Python/">Python</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/DataStructure/">DataStructure</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Brute-Force-Search/">Brute-Force-Search</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
