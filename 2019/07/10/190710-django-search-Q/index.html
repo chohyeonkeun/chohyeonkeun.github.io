@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>장고 - Q 객체를 이용한 키워드 검색 기능 학습 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/07/10/190710-django-search-q/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>장고 - Q 객체를 이용한 키워드 검색 기능 학습</h1>
+    </header>
+
+    <section>
+      <ul>
+<li>이번에는 게시판 기능 중, 사용자가 글제목/작성자/글내용에 포함되어 있는 특정 키워드를 검색 시 해당 키워드를 가진 객체를 필터링해주는 방법에 대해 알아볼 것이다.</li>
+</ul>
+<a id="more"></a>
+<h2 id="유저가-게시판에서-특정-키워드로-검색-시-해당-키워드를-가진-글-목록-제공하기"><a href="#유저가-게시판에서-특정-키워드로-검색-시-해당-키워드를-가진-글-목록-제공하기" class="headerlink" title="유저가 게시판에서 특정 키워드로 검색 시, 해당 키워드를 가진 글 목록 제공하기"></a>유저가 게시판에서 특정 키워드로 검색 시, 해당 키워드를 가진 글 목록 제공하기</h2><h3 id="1-모델-작성"><a href="#1-모델-작성" class="headerlink" title="1. 모델 작성"></a>1. 모델 작성</h3><ul>
+<li>경로 : board_project &gt; board(앱) &gt; models.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Document</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">category = models.ForeignKey(Category, on_delete=models.SET_NULL,</span><br><span class="line">                                null=<span class="literal">True</span>, blank=<span class="literal">True</span>, related_name=<span class="string">'documents'</span>)</span><br><span class="line">author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,</span><br><span class="line">                            related_name=<span class="string">'documents'</span>)</span><br><span class="line"><span class="comment"># on_delete=models.SET_NULL : 참조하고 있는 Category 객체가 지워져도 삭제되지 않음</span></span><br><span class="line">title = models.CharField(max_length=<span class="number">100</span>)</span><br><span class="line"><span class="comment"># db_index=True : DB에 인덱싱 가능</span></span><br><span class="line">slug = models.SlugField(max_length=<span class="number">120</span>, db_index=<span class="literal">True</span>, unique= <span class="literal">True</span>,</span><br><span class="line">                        allow_unicode=<span class="literal">True</span>, blank=<span class="literal">True</span>)</span><br><span class="line">text = models.TextField()</span><br><span class="line">image = models.ImageField(upload_to=<span class="string">'board_images/%Y/%m/%d'</span>)</span><br><span class="line">created = models.DateTimeField(auto_now_add=<span class="literal">True</span>)</span><br><span class="line">updated = models.DateTimeField(auto_now=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> self.title</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save</span><span class="params">(self, *args, **kwargs)</span>:</span></span><br><span class="line">    self.slug = slugify(self.title, allow_unicode=<span class="literal">True</span>)</span><br><span class="line">    super(Document, self).save(*args, **kwargs)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_absolute_url</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> reverse(<span class="string">'board:detail'</span>, args=[self.id])</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-경로-설정"><a href="#2-경로-설정" class="headerlink" title="2. 경로 설정"></a>2. 경로 설정</h3><ul>
+<li>경로 : board_project &gt; board &gt; urls.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> .views <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">app_name = <span class="string">'board'</span></span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">''</span>, document_list, name=<span class="string">'list'</span>),</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-뷰-작성"><a href="#3-뷰-작성" class="headerlink" title="3. 뷰 작성"></a>3. 뷰 작성</h3><ul>
+<li><p>경로 : board_project &gt; board &gt; templates &gt; board &gt; document_list.html</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">method</span>=<span class="string">"get"</span> <span class="attr">id</span>=<span class="string">"search_form"</span> <span class="attr">class</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    &#123;%csrf_token%&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-row align-items-center justify-content-center"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-check form-check-inline"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-check-input"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"inlineCheckbox1"</span> <span class="attr">value</span>=<span class="string">"username"</span> <span class="attr">name</span>=<span class="string">"search_type"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"form-check-label"</span> <span class="attr">for</span>=<span class="string">"inlineCheckbox1"</span>&gt;</span>작성자<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-check form-check-inline"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-check-input"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"inlineCheckbox2"</span> <span class="attr">value</span>=<span class="string">"title"</span> <span class="attr">name</span>=<span class="string">"search_type"</span> <span class="attr">checked</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"form-check-label"</span> <span class="attr">for</span>=<span class="string">"inlineCheckbox2"</span>&gt;</span>제목<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-check form-check-inline"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-check-input"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"inlineCheckbox3"</span> <span class="attr">value</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"search_type"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"form-check-label"</span> <span class="attr">for</span>=<span class="string">"inlineCheckbox3"</span>&gt;</span>본문<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-row align-items-center justify-content-center"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-3 my-1"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"Search Keyword"</span> <span class="attr">name</span>=<span class="string">"search_key"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-auto my-1"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span>&gt;</span>Search<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>경로 : board_project &gt; board &gt; views.py</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="keyword">from</span> django.db.models <span class="keyword">import</span> Q</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Document</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">document_list</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="comment"># search_type = ['username', 'title', 'text']</span></span><br><span class="line">    search_type = reqeust.GET.getlist(<span class="string">'search_type'</span>, <span class="literal">None</span>)</span><br><span class="line">    search_q = <span class="literal">None</span></span><br><span class="line">    <span class="comment"># search_key = 유저가 입력한 키워드(문자열 형태로 수신)</span></span><br><span class="line">    search_key = request.GET.get(<span class="string">'search_key'</span>, <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 유저가 검색한 키워드가 있는 경우</span></span><br><span class="line">    <span class="keyword">if</span> searach_key:</span><br><span class="line">        <span class="comment"># 유저가 '제목' checkbox 선택한 경우</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">'title'</span> <span class="keyword">in</span> search_type:</span><br><span class="line">            <span class="comment"># Document 객체 title 필드에 search_key를 포함하는 키워드가 있는 경우 그 객체들을 temp_q 변수가 참조한다.</span></span><br><span class="line">            temp_q = Q(title__icontaions=search_key)</span><br><span class="line">            <span class="comment"># search_q가 있다면, (search_q 또는 temp_q)를 search_q 변수가 참조하게 하고, </span></span><br><span class="line">            <span class="comment"># search_q가 없다면, temp_q가 참조하고 있는 객체를 search_q 변수가 참조하게 한다.</span></span><br><span class="line">            search_q = search_q | temp_q <span class="keyword">if</span> search_q <span class="keyword">else</span> temp_q</span><br><span class="line">        <span class="comment"># 유저가 '본문' checkbox 선택한 경우</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">'text'</span> <span class="keyword">in</span> search_type:</span><br><span class="line">            <span class="comment"># Document 객체의 text 필드에 search_key 포함하는 키워드가 있는 경우, 그 객체들을 temp_q 변수가 참조한다.</span></span><br><span class="line">            temp_q = Q(text__icontains=search_key)</span><br><span class="line">            search_q = search_q | temp_q <span class="keyword">if</span> search_q <span class="keyword">else</span> temp_q</span><br><span class="line">        <span class="comment"># 유저가 '작성자' checkbox 선택한 경우</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">'username'</span> <span class="keyword">in</span> search_type:</span><br><span class="line">            <span class="comment"># Document 객체의 author__username 데이터에 search_key 포함하는 키워드가 있는 경우, 그 객체들을 temp_q 변수가 참조한다.</span></span><br><span class="line">            temp_q = Q(author__username__icontaions=search_key)</span><br><span class="line">            search_q = search_q | temp_q <span class="keyword">if</span> search_q <span class="keyword">else</span> temp_q</span><br><span class="line">        <span class="comment"># Document 에서 search_q 가 참조하고 있는 객체들을 documents 변수가 참조하게 한다.</span></span><br><span class="line">        documents = get_list_or_404(Document, search_q)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 유저가 검색한 키워드가 없는 경우</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 모든 Document 객체들을 documents 변수가 참조하게 한다.</span></span><br><span class="line">        documents = Document.objects.all()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># context data로 documents 변수를 'object_list' 변수가 참조하게 하여 board/document_list.html 페이지에 보낸다.</span></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'board/document_list.html'</span>, &#123;<span class="string">'object_list'</span>:documents&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-07-10T08:00:21.000Z" itemprop="datePublished">
+              2019-07-10
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Search/">Search</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

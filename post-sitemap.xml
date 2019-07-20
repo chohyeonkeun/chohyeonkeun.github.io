@@ -8,6 +8,30 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/28/190528-github-cowork/</loc>
+        <lastmod>2019-07-20T17:35:17.862Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/14/190714-django-git-fork/</loc>
+        <lastmod>2019-07-20T17:34:41.025Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/10/190710-django-search-Q/</loc>
+        <lastmod>2019-07-20T16:14:17.317Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/07/17/190717-django-search-filter-using-RegularExpression/</loc>
         <lastmod>2019-07-20T13:32:42.310Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -82,14 +106,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/05/08/190508-django-AWS-1/</loc>
         <lastmod>2019-07-16T18:14:19.438Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/28/190528-github-cowork/</loc>
-        <lastmod>2019-07-15T18:23:26.077Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
