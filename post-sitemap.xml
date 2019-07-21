@@ -8,6 +8,30 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/22/190722-postman-api/</loc>
+        <lastmod>2019-07-21T18:23:30.652Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/21/190721-django-restframework-supplement/</loc>
+        <lastmod>2019-07-21T18:22:47.244Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/10/190710-django-search-Q/</loc>
+        <lastmod>2019-07-21T05:50:57.196Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/05/28/190528-github-cowork/</loc>
         <lastmod>2019-07-20T17:35:17.862Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -18,14 +42,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/07/14/190714-django-git-fork/</loc>
         <lastmod>2019-07-20T17:34:41.025Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/10/190710-django-search-Q/</loc>
-        <lastmod>2019-07-20T16:14:17.317Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

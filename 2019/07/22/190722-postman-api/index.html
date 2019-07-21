@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>API - postman을 이용한 API 요청 방법 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/07/22/190722-postman-api/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>API - postman을 이용한 API 요청 방법</h1>
+    </header>
+
+    <section>
+      <ul>
+<li>이번에는 postman을 사용하여 클라이언트와 서버간 API 요청 방법에 대해 알아볼 것이다.</li>
+</ul>
+<a id="more"></a>
+<h2 id="postman-사용하여-API-요청하기"><a href="#postman-사용하여-API-요청하기" class="headerlink" title="postman 사용하여 API 요청하기"></a>postman 사용하여 API 요청하기</h2><h3 id="1-좌측-Collection에-프로젝트-drf-yasg-이름으로-폴더-생성"><a href="#1-좌측-Collection에-프로젝트-drf-yasg-이름으로-폴더-생성" class="headerlink" title="1. 좌측 Collection에 프로젝트(drf-yasg) 이름으로 폴더 생성"></a>1. 좌측 Collection에 프로젝트(drf-yasg) 이름으로 폴더 생성</h3><p><img src="https://user-images.githubusercontent.com/48202867/61594848-55871c80-ac2b-11e9-8d92-4fe7fe3ed55b.png" alt="Screenshot from 2019-07-22 02-41-07"></p>
+<h3 id="2-해당-프로젝트-폴더-안에-앱-blog-이름으로-폴더-생성"><a href="#2-해당-프로젝트-폴더-안에-앱-blog-이름으로-폴더-생성" class="headerlink" title="2. 해당 프로젝트 폴더 안에 앱(blog) 이름으로 폴더 생성"></a>2. 해당 프로젝트 폴더 안에 앱(blog) 이름으로 폴더 생성</h3><p><img src="https://user-images.githubusercontent.com/48202867/61594849-55871c80-ac2b-11e9-8936-e1854b21c6bf.png" alt="Screenshot from 2019-07-22 02-41-18"></p>
+<h3 id="3-GET-방식으로-‘도메인-주소’-api-blog-posts-설정-이후-우측-Save-as-클릭하여-‘Post-List’로-명명"><a href="#3-GET-방식으로-‘도메인-주소’-api-blog-posts-설정-이후-우측-Save-as-클릭하여-‘Post-List’로-명명" class="headerlink" title="3. GET 방식으로 ‘도메인 주소’/api/blog/posts/ 설정 이후, 우측 Save as 클릭하여 ‘Post List’로 명명"></a>3. GET 방식으로 ‘도메인 주소’/api/blog/posts/ 설정 이후, 우측 Save as 클릭하여 ‘Post List’로 명명</h3><p><img src="https://user-images.githubusercontent.com/48202867/61594851-561fb300-ac2b-11e9-8c70-e3134509427f.png" alt="Screenshot from 2019-07-22 02-41-51"></p>
+<h3 id="4-Authorization에는-Basic-Auth-선택하여-username-및-password-입력"><a href="#4-Authorization에는-Basic-Auth-선택하여-username-및-password-입력" class="headerlink" title="4. Authorization에는 Basic Auth 선택하여 username 및 password 입력"></a>4. Authorization에는 Basic Auth 선택하여 username 및 password 입력</h3><p><img src="https://user-images.githubusercontent.com/48202867/61594853-56b84980-ac2b-11e9-91ea-9f1fa6becaa9.png" alt="Screenshot from 2019-07-22 02-42-36"></p>
+<ul>
+<li>DB에 저장되어 DB 삭제되면 다시 token을 발급해야 하는 Token Auth와는 달리 Basic Auth는 한번 설정해놓으면 다시 설정할 필요가 없다.</li>
+</ul>
+<h3 id="5-Post-List-에서-api-요청시-아래-데이터-확인"><a href="#5-Post-List-에서-api-요청시-아래-데이터-확인" class="headerlink" title="5. Post List 에서 api 요청시 아래 데이터 확인"></a>5. Post List 에서 api 요청시 아래 데이터 확인</h3><p><img src="https://user-images.githubusercontent.com/48202867/61594856-5750e000-ac2b-11e9-96ee-83528fd2edc4.png" alt="Screenshot from 2019-07-22 02-44-00"></p>
+<h3 id="6-POST-방식으로-‘도메인-주소’-api-blog-posts-설정한-페이지를-‘Post-Create’로-명명-gt-Basic-Auth-설정-및-Body에-생성할-객체의-key-value-값-입력"><a href="#6-POST-방식으로-‘도메인-주소’-api-blog-posts-설정한-페이지를-‘Post-Create’로-명명-gt-Basic-Auth-설정-및-Body에-생성할-객체의-key-value-값-입력" class="headerlink" title="6. POST 방식으로 ‘도메인 주소’/api/blog/posts/ 설정한 페이지를 ‘Post Create’로 명명 -&gt; Basic Auth 설정 및 Body에 생성할 객체의 key, value 값 입력"></a>6. POST 방식으로 ‘도메인 주소’/api/blog/posts/ 설정한 페이지를 ‘Post Create’로 명명 -&gt; Basic Auth 설정 및 Body에 생성할 객체의 key, value 값 입력</h3><p><img src="https://user-images.githubusercontent.com/48202867/61594855-56b84980-ac2b-11e9-8ab4-10327e913b2d.png" alt="Screenshot from 2019-07-22 02-43-50"></p>
+<hr>
+<h3 id="추가-프로젝트-API-문서-작성"><a href="#추가-프로젝트-API-문서-작성" class="headerlink" title="추가) 프로젝트 API 문서 작성"></a>추가) 프로젝트 API 문서 작성</h3><ol>
+<li><p>Github &gt; 해당 프로젝트의 repository &gt; Wiki 이동<br><img src="https://user-images.githubusercontent.com/48202867/61594384-39cd4780-ac26-11e9-990b-290e3cb91512.png" alt="Screenshot from 2019-07-22 01-21-24"></p>
+</li>
+<li><p>클라이언트에게 제공할 api 문서 작성</p>
+<p> BaseURL: <code>http://&lt;domain&gt;/api/</code></p>
+<h1 id="Post"><a href="#Post" class="headerlink" title="Post"></a>Post</h1><p> 블로그 글</p>
+<h2 id="Post-List"><a href="#Post-List" class="headerlink" title="Post List"></a>Post List</h2><p> 블로그 글 목록을 리턴 </p>
+<ul>
+<li>URL: <code>/posts/</code></li>
+<li><p>Method: <code>GET</code></p>
+<h3 id="Response"><a href="#Response" class="headerlink" title="Response"></a>Response</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;Post Object&#125;,</span><br><span class="line">    &#123;Post Object&#125;,</span><br><span class="line">    &#123;Post Object&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">"title"</span>: <span class="string">"Post1"</span>,</span><br><span class="line">        <span class="attr">"content"</span>: <span class="string">""</span>,</span><br><span class="line">        <span class="attr">"is_published"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"pk"</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="attr">"author"</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="attr">"created"</span>: <span class="string">"2019-07-21T15:41:40.741196Z"</span>,</span><br><span class="line">        <span class="attr">"modified"</span>: <span class="string">"2019-07-21T15:41:40.741234Z"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">"title"</span>: <span class="string">"Post2"</span>,</span><br><span class="line">        <span class="attr">"content"</span>: <span class="string">"content2"</span>,</span><br><span class="line">        <span class="attr">"is_published"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"pk"</span>: <span class="number">2</span>,</span><br><span class="line">        <span class="attr">"author"</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="attr">"created"</span>: <span class="string">"2019-07-21T15:41:56.378422Z"</span>,</span><br><span class="line">        <span class="attr">"modified"</span>: <span class="string">"2019-07-21T15:41:56.378453Z"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">"title"</span>: <span class="string">"post3"</span>,</span><br><span class="line">        <span class="attr">"content"</span>: <span class="string">"content3"</span>,</span><br><span class="line">        <span class="attr">"is_published"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"pk"</span>: <span class="number">3</span>,</span><br><span class="line">        <span class="attr">"author"</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="attr">"created"</span>: <span class="string">"2019-07-21T15:42:07.168257Z"</span>,</span><br><span class="line">        <span class="attr">"modified"</span>: <span class="string">"2019-07-21T15:42:07.168305Z"</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="Post-Create"><a href="#Post-Create" class="headerlink" title="Post Create"></a>Post Create</h2><p>블로그 글을 작성</p>
+</li>
+<li><p>URL: <code>/posts/</code></p>
+</li>
+<li>Method: <code>POST</code></li>
+<li><p>Authorization: required</p>
+<h3 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h3></li>
+<li>title (String)</li>
+<li><p>content (String)</p>
+<h3 id="Response-1"><a href="#Response-1" class="headerlink" title="Response"></a>Response</h3><p>Structure</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;Post Object&#125;,</span><br><span class="line">    &#123;Post Object&#125;,</span><br><span class="line">    &#123;Post Object&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>Example<br><code>`</code>json<br>{<br>  “title”: “PostTitle”,<br>  “content”: “PostContent”,<br>  “is_published”: false,<br>  “pk”: 4,<br>  “author”: 1,<br>  “created”: “2019-07-21T16:30:09.836537Z”,<br>  “modified”: “2019-07-21T16:30:09.836582Z”<br>}</p>
+</li>
+</ul>
+</li>
+</ol>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-07-22T08:00:21.000Z" itemprop="datePublished">
+              2019-07-22
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/API/">API</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/postman/">postman</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
