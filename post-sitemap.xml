@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/25/190525-django-Email-login/</loc>
+        <lastmod>2019-07-24T06:22:28.098Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/14/190714-django-git-fork/</loc>
+        <lastmod>2019-07-22T13:19:06.832Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/07/22/190722-postman-api/</loc>
         <lastmod>2019-07-21T18:23:30.652Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -34,14 +50,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/05/28/190528-github-cowork/</loc>
         <lastmod>2019-07-20T17:35:17.862Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/14/190714-django-git-fork/</loc>
-        <lastmod>2019-07-20T17:34:41.025Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -442,14 +450,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/05/27/190527-django-ckeditor/</loc>
         <lastmod>2019-07-06T04:16:28.788Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/25/190525-django-Email-login/</loc>
-        <lastmod>2019-07-06T04:16:15.508Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
