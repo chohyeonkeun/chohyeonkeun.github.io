@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>자료구조 - MST 학습 - Kruskal algorithm | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/08/04/190804-datastructure-mst-kruskal/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>자료구조 - MST 학습 - Kruskal algorithm</h1>
+    </header>
+
+    <section>
+      <h2 id="Kruskal-algorithm"><a href="#Kruskal-algorithm" class="headerlink" title="Kruskal algorithm"></a>Kruskal algorithm</h2><ol>
+<li>Edge를 가중치가 작은 것에서 큰 것 순으로 정렬</li>
+<li>트리에 Edge를 하나씩 추가</li>
+<li>사이클이 생기면 추가하지 않는다.</li>
+<li>최소 비용 신장 트리가 완성되면 |E| = |v|-1</li>
+</ol>
+<a id="more"></a>
+<p><img src="https://user-images.githubusercontent.com/48202867/62414186-ec53d000-b652-11e9-8fc4-ad93f76fd85a.png" alt="Screenshot from 2019-08-04 00-39-21"><br><img src="https://user-images.githubusercontent.com/48202867/62414187-ecec6680-b652-11e9-8738-b88932a9b323.png" alt="Screenshot from 2019-08-04 00-39-23"><br><img src="https://user-images.githubusercontent.com/48202867/62414188-ecec6680-b652-11e9-92c5-bbb6e5462396.png" alt="Screenshot from 2019-08-04 00-39-26"><br><img src="https://user-images.githubusercontent.com/48202867/62414189-ecec6680-b652-11e9-8c5b-63372cb1c278.png" alt="Screenshot from 2019-08-04 00-39-29"><br><img src="https://user-images.githubusercontent.com/48202867/62414190-ed84fd00-b652-11e9-88b3-3ca5ea763ebb.png" alt="Screenshot from 2019-08-04 00-39-32"><br><img src="https://user-images.githubusercontent.com/48202867/62414191-ed84fd00-b652-11e9-8195-d9b3d0433940.png" alt="Screenshot from 2019-08-04 00-40-38"><br><img src="https://user-images.githubusercontent.com/48202867/62414192-ee1d9380-b652-11e9-8509-de2867eb70ac.png" alt="Screenshot from 2019-08-04 00-40-44"><br><img src="https://user-images.githubusercontent.com/48202867/62414193-ee1d9380-b652-11e9-895b-7a76408aba83.png" alt="Screenshot from 2019-08-04 00-40-58"><br><img src="https://user-images.githubusercontent.com/48202867/62414194-eeb62a00-b652-11e9-89af-1c470db3b822.png" alt="Screenshot from 2019-08-04 00-41-04"><br><img src="https://user-images.githubusercontent.com/48202867/62414195-eeb62a00-b652-11e9-8ebc-9555954edb86.png" alt="Screenshot from 2019-08-04 00-41-08"><br><img src="https://user-images.githubusercontent.com/48202867/62414196-ef4ec080-b652-11e9-8165-4dac85630a96.png" alt="Screenshot from 2019-08-04 00-41-14"><br><img src="https://user-images.githubusercontent.com/48202867/62414197-ef4ec080-b652-11e9-9109-9c85a150ad2d.png" alt="Screenshot from 2019-08-04 00-41-22"><br><img src="https://user-images.githubusercontent.com/48202867/62414198-ef4ec080-b652-11e9-87a7-873fc0fcaf4a.png" alt="Screenshot from 2019-08-04 00-41-24"><br><img src="https://user-images.githubusercontent.com/48202867/62414199-efe75700-b652-11e9-9f2b-23650516d64d.png" alt="Screenshot from 2019-08-04 00-41-30"><br><img src="https://user-images.githubusercontent.com/48202867/62414200-efe75700-b652-11e9-8ff3-f4e837a8f250.png" alt="Screenshot from 2019-08-04 00-41-32"><br><img src="https://user-images.githubusercontent.com/48202867/62414201-f07fed80-b652-11e9-845f-2c66b69bb5be.png" alt="Screenshot from 2019-08-04 00-41-35"><br><img src="https://user-images.githubusercontent.com/48202867/62414202-f07fed80-b652-11e9-915a-937122fe6e73.png" alt="Screenshot from 2019-08-04 00-41-37"><br><img src="https://user-images.githubusercontent.com/48202867/62414203-f1188400-b652-11e9-80e2-f6d146e8387a.png" alt="Screenshot from 2019-08-04 00-41-50"><br><img src="https://user-images.githubusercontent.com/48202867/62414204-f1188400-b652-11e9-82d6-32a06ae188f6.png" alt="Screenshot from 2019-08-04 00-41-58"><br><img src="https://user-images.githubusercontent.com/48202867/62414205-f1188400-b652-11e9-8f19-aceb50087c16.png" alt="Screenshot from 2019-08-04 00-42-06"><br><img src="https://user-images.githubusercontent.com/48202867/62414206-f1b11a80-b652-11e9-9c93-d0c1ce051625.png" alt="Screenshot from 2019-08-04 00-42-18"><br><img src="https://user-images.githubusercontent.com/48202867/62414207-f1b11a80-b652-11e9-9164-dbb65788f064.png" alt="Screenshot from 2019-08-04 00-42-25"><br><img src="https://user-images.githubusercontent.com/48202867/62414208-f249b100-b652-11e9-8624-e9b5fc870180.png" alt="Screenshot from 2019-08-04 00-44-28"><br><img src="https://user-images.githubusercontent.com/48202867/62414209-f249b100-b652-11e9-8a4a-c4a5d83b3481.png" alt="Screenshot from 2019-08-04 00-44-55"></p>
+<p><br></p>
+<h2 id="Kruskal-구현"><a href="#Kruskal-구현" class="headerlink" title="Kruskal 구현"></a>Kruskal 구현</h2><ul>
+<li><p>경로 : mst &gt; disjoint_set</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Union Find Algorithm</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DisjointSet</span>:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, vnum)</span>:</span></span><br><span class="line">    self.parent = [<span class="number">-1</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(vnum)]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">simple_find</span><span class="params">(self, i)</span>:</span></span><br><span class="line">    <span class="comment"># i가 속한 트리의 루트를 반환</span></span><br><span class="line">    <span class="keyword">while</span> self.parent[i] &gt;= <span class="number">0</span>:</span><br><span class="line">        i = self.parent[i]</span><br><span class="line">    <span class="keyword">return</span> i</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">simple_union</span><span class="params">(self, i, j)</span>:</span></span><br><span class="line">    <span class="comment"># i, j must be ROOTS</span></span><br><span class="line">    self.parent[i] = j</span><br><span class="line"></span><br><span class="line"><span class="comment"># 성능 향상</span></span><br><span class="line"><span class="comment"># 노드의 개수대로 root의 음수 값을 변경한다,(노드가 3개라면 -3)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">collapsing_find</span><span class="params">(self, i)</span>:</span></span><br><span class="line">    root = i</span><br><span class="line">    <span class="keyword">while</span> self.parent[root] &gt;= <span class="number">0</span>:</span><br><span class="line">        root = self.parent[root]</span><br><span class="line"></span><br><span class="line">    trail = i</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> trail != root:</span><br><span class="line">        lead = self.parent[trail]</span><br><span class="line">        self.parent[trail] = root</span><br><span class="line">        trail = lead</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">weighted_union</span><span class="params">(self, i, j)</span>:</span></span><br><span class="line">    <span class="comment"># i, j must be ROOTS</span></span><br><span class="line">    temp = self.parent[i] + self.parent[j]</span><br><span class="line">    <span class="keyword">if</span> self.parent[i] &gt; self.parent[j]:</span><br><span class="line">        self.parent[i] = j</span><br><span class="line">        self.parent[j] = temp</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        self.parent[j] = i</span><br><span class="line">        self.parent[i] = temp</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    ds = DisjointSet(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">    ds.parent[<span class="number">2</span>] = <span class="number">-5</span></span><br><span class="line">    ds.parent[<span class="number">4</span>] = <span class="number">2</span></span><br><span class="line">    ds.parent[<span class="number">0</span>] = <span class="number">4</span></span><br><span class="line">    ds.parent[<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">    ds.parent[<span class="number">3</span>] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    print(ds.parent)</span><br><span class="line">    print(<span class="string">"the root is &#123;&#125;"</span>.format(ds.collapsing_find(<span class="number">3</span>)))</span><br><span class="line">    print(ds.parent)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>경로 : mst &gt; kruskal.py</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> disjoint_set <span class="keyword">import</span> DisjointSet</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="comment"># Graph representation : adjacency list</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, vertex, weight)</span>:</span></span><br><span class="line">        self.vertex = vertex</span><br><span class="line">        self.weight = weight</span><br><span class="line">        self.link = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Edge</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, u, v, w)</span>:</span></span><br><span class="line">        self.u = u</span><br><span class="line">        self.v = v</span><br><span class="line">        self.w = w</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Graph</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, vnum)</span>:</span></span><br><span class="line">        self.adjacency_list = [<span class="literal">None</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(vnum)]</span><br><span class="line">        self.edge_list = []</span><br><span class="line">        self.vertex_num = vnum</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__add__node</span><span class="params">(self, v, unode)</span>:</span></span><br><span class="line">        cur = self.adjacency_list[v]</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> cur:</span><br><span class="line">            self.adjacency_list[v] = unode</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">while</span> cur.link:</span><br><span class="line">            cur = cur.link</span><br><span class="line">        cur.link = unode</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert_edge</span><span class="params">(self, u, v, w)</span>:</span></span><br><span class="line">        unode = GNode(u, w)</span><br><span class="line">        vnode = GNode(v, w)</span><br><span class="line"></span><br><span class="line">        self.__add__node(u, vnode)</span><br><span class="line">        self.__add__node(v, unode)</span><br><span class="line">        self.edge_list.append(Edge(u, v, w))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">MST_kruskal</span><span class="params">(self)</span>:</span></span><br><span class="line">        mst = Graph(self.vertex_num)</span><br><span class="line">        ds = DisjointSet(self.vertex_num)</span><br><span class="line">        self.edge_list.sort(key=<span class="keyword">lambda</span> e: e.w)</span><br><span class="line"></span><br><span class="line">        mst_edge_num = <span class="number">0</span></span><br><span class="line">        edge_idx = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> mst_edge_num &lt; self.vertex_num<span class="number">-1</span>:</span><br><span class="line">            edge = self.edge_list[edge_idx]</span><br><span class="line">            <span class="keyword">if</span> ds.collapsing_find(edge.u) != ds.collapsing_find(edge.v):</span><br><span class="line">                mst.insert_edge(edge.u, edge.v, edge.w)</span><br><span class="line">                ds.weighted_union(ds.collapsing_find(edge.u),</span><br><span class="line">                                ds.collapsing_find(edge.v))</span><br><span class="line">                mst_edge_num += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            edge_idx += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> mst</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_min_v</span><span class="params">(self, w)</span>:</span></span><br><span class="line">        _min = math.inf</span><br><span class="line">        <span class="comment"># 가장 작은 vertex</span></span><br><span class="line">        min_v = <span class="literal">None</span></span><br><span class="line">        <span class="keyword">for</span> weight <span class="keyword">in</span> w:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(w)):</span><br><span class="line">                <span class="keyword">if</span> _min  &gt; w[i]:</span><br><span class="line">                    _min = w[i]</span><br><span class="line">                    min_v = i</span><br><span class="line">            <span class="keyword">return</span> min_v</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">print_edges</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> edge <span class="keyword">in</span> self.edge_list:</span><br><span class="line">            print(<span class="string">f'(<span class="subst">&#123;edge.u&#125;</span>, <span class="subst">&#123;edge.v&#125;</span>) : <span class="subst">&#123;edge.w&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</span><br><span class="line">    g = Graph(<span class="number">6</span>)</span><br><span class="line"></span><br><span class="line">    g.insert_edge(<span class="number">0</span>, <span class="number">1</span>, <span class="number">10</span>)</span><br><span class="line">    g.insert_edge(<span class="number">0</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">    g.insert_edge(<span class="number">0</span>, <span class="number">3</span>, <span class="number">8</span>)</span><br><span class="line">    g.insert_edge(<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>)</span><br><span class="line">    g.insert_edge(<span class="number">1</span>, <span class="number">4</span>, <span class="number">12</span>)</span><br><span class="line">    g.insert_edge(<span class="number">2</span>, <span class="number">3</span>, <span class="number">7</span>)</span><br><span class="line">    g.insert_edge(<span class="number">2</span>, <span class="number">4</span>, <span class="number">17</span>)</span><br><span class="line">    g.insert_edge(<span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">    g.insert_edge(<span class="number">3</span>, <span class="number">5</span>, <span class="number">14</span>)</span><br><span class="line"></span><br><span class="line">    mst = g.MST_kruskal()</span><br><span class="line"></span><br><span class="line">    mst.print_edges()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-08-04T08:00:21.000Z" itemprop="datePublished">
+              2019-08-04
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/DataStructure/">DataStructure</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/MST/">MST</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Kruskal/">Kruskal</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

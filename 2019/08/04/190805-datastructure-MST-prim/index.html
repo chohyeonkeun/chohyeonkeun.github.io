@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>자료구조 - MST 학습 - Prim algorithm | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/08/04/190805-datastructure-mst-prim/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>자료구조 - MST 학습 - Prim algorithm</h1>
+    </header>
+
+    <section>
+      <h2 id="Prim-algorithm"><a href="#Prim-algorithm" class="headerlink" title="Prim algorithm"></a>Prim algorithm</h2><ol>
+<li>정점 하나를 가진 트리에서 시작<ul>
+<li>TV = {v1}<ul>
+<li>TV : 트리의 정점</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>트리 내의 정점 u와 트리 밖의 정점 v를 잇는 Edge 중 최소 비용을 가진 (u,v)를 트리 Edge로 만든다.<ul>
+<li>TE = TV U {u,v}</li>
+</ul>
+</li>
+<li>트리 밖의 정점 v도 트리의 정점으로 만든다. <ul>
+<li>TV = TV U {v}</li>
+</ul>
+</li>
+<li>TV = V(G)와 같아지면 종료</li>
+</ol>
+<a id="more"></a>
+<p><img src="https://user-images.githubusercontent.com/48202867/62414210-f2e24780-b652-11e9-9d02-8ffd70b9623d.png" alt="Screenshot from 2019-08-04 00-48-00"><br><img src="https://user-images.githubusercontent.com/48202867/62414211-f2e24780-b652-11e9-9ff0-8e75fe0d22b0.png" alt="Screenshot from 2019-08-04 00-48-03"></p>
+<p><br></p>
+<h2 id="Prim-algorithm-구현"><a href="#Prim-algorithm-구현" class="headerlink" title="Prim algorithm 구현"></a>Prim algorithm 구현</h2><ul>
+<li>경로 : mst &gt; prim.py  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="comment"># Graph representation : adjacency list</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, vertex, weight)</span>:</span></span><br><span class="line">        self.vertex = vertex</span><br><span class="line">        self.weight = weight</span><br><span class="line">        self.link = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Edge</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, u, v, w)</span>:</span></span><br><span class="line">        self.u = u</span><br><span class="line">        self.v = v</span><br><span class="line">        self.w = w</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Graph</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, vnum)</span>:</span></span><br><span class="line">        self.adjacency_list = [<span class="literal">None</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(vnum)]</span><br><span class="line">        self.edge_list = []</span><br><span class="line">        self.vertex_num = vnum</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__add__node</span><span class="params">(self, v, unode)</span>:</span></span><br><span class="line">        cur = self.adjacency_list[v]</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> cur:</span><br><span class="line">            self.adjacency_list[v] = unode</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">while</span> cur.link:</span><br><span class="line">            cur = cur.link</span><br><span class="line">        cur.link = unode</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert_edge</span><span class="params">(self, u, v, w)</span>:</span></span><br><span class="line">        unode = GNode(u, w)</span><br><span class="line">        vnode = GNode(v, w)</span><br><span class="line"></span><br><span class="line">        self.__add__node(u, vnode)</span><br><span class="line">        self.__add__node(v, unode)</span><br><span class="line">        self.edge_list.append(Edge(u, v, w))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_min_v</span><span class="params">(self, w)</span>:</span></span><br><span class="line">        _min = math.inf</span><br><span class="line">        <span class="comment"># 가장 작은 vertex</span></span><br><span class="line">        min_v = <span class="literal">None</span></span><br><span class="line">        <span class="keyword">for</span> weight <span class="keyword">in</span> w:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(w)):</span><br><span class="line">                <span class="keyword">if</span> _min  &gt; w[i]:</span><br><span class="line">                    _min = w[i]</span><br><span class="line">                    min_v = i</span><br><span class="line">            <span class="keyword">return</span> min_v</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">MST_prim</span><span class="params">(self)</span>:</span></span><br><span class="line">        mst = Graph(self.vertex_num)</span><br><span class="line">        TV = set()</span><br><span class="line">        w = [math.inf <span class="keyword">for</span> _ <span class="keyword">in</span> range(self.vertex_num)]</span><br><span class="line">        _from = [<span class="literal">None</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(self.vertex_num)]</span><br><span class="line">        w[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> len(TV) &lt; self.vertex_num:</span><br><span class="line">            v = self.get_min_v(w)</span><br><span class="line">            TV.add(v)</span><br><span class="line">            <span class="keyword">if</span> _from[v] != <span class="literal">None</span>:</span><br><span class="line">                mst.insert_edge(v, _from[v], w[v])</span><br><span class="line"></span><br><span class="line">            w[v] = math.inf</span><br><span class="line">            u = self.adjacency_list[v]</span><br><span class="line">            <span class="keyword">while</span> u:</span><br><span class="line">                <span class="keyword">if</span> u.vertex <span class="keyword">not</span> <span class="keyword">in</span> TV <span class="keyword">and</span> u.weight &lt; w[u.vertex]:</span><br><span class="line">                    w[u.vertex] = u.weight</span><br><span class="line">                    _from[u.vertex] = v</span><br><span class="line">                u = u.link</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> mst</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">print_edges</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> edge <span class="keyword">in</span> self.edge_list:</span><br><span class="line">            print(<span class="string">f'(<span class="subst">&#123;edge.u&#125;</span>, <span class="subst">&#123;edge.v&#125;</span>) : <span class="subst">&#123;edge.w&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</span><br><span class="line">    g = Graph(<span class="number">6</span>)</span><br><span class="line"></span><br><span class="line">    g.insert_edge(<span class="number">0</span>, <span class="number">1</span>, <span class="number">10</span>)</span><br><span class="line">    g.insert_edge(<span class="number">0</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">    g.insert_edge(<span class="number">0</span>, <span class="number">3</span>, <span class="number">8</span>)</span><br><span class="line">    g.insert_edge(<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>)</span><br><span class="line">    g.insert_edge(<span class="number">1</span>, <span class="number">4</span>, <span class="number">12</span>)</span><br><span class="line">    g.insert_edge(<span class="number">2</span>, <span class="number">3</span>, <span class="number">7</span>)</span><br><span class="line">    g.insert_edge(<span class="number">2</span>, <span class="number">4</span>, <span class="number">17</span>)</span><br><span class="line">    g.insert_edge(<span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">    g.insert_edge(<span class="number">3</span>, <span class="number">5</span>, <span class="number">14</span>)</span><br><span class="line"></span><br><span class="line">    mst = g.MST_prim()</span><br><span class="line"></span><br><span class="line">    mst.print_edges()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-08-04T08:00:21.000Z" itemprop="datePublished">
+              2019-08-04
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/DataStructure/">DataStructure</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/MST/">MST</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Prim/">Prim</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

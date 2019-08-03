@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/tags/mst/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <ul class="Index">
+  
+    <header class="PageTitle">
+        <h1>{ MST }</h1>
+    </header>
+  
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/08/04/190804-datastructure-MST-kruskal/">자료구조 - MST 학습 - Kruskal algorithm</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-08-04T08:00:21.000Z" itemprop="datePublished">
+    2019-08-04
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/DataStructure/">DataStructure</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/MST/">MST</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Kruskal/">Kruskal</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="Kruskal-algorithm"><a href="#Kruskal-algorithm" class="headerlink" title="Kruskal algorithm"></a>Kruskal algorithm</h2><ol>
+<li>Edge를 가중치가 작은 것에서 큰 것 순으로 정렬</li>
+<li>트리에 Edge를 하나씩 추가</li>
+<li>사이클이 생기면 추가하지 않는다.</li>
+<li>최소 비용 신장 트리가 완성되면 |E| = |v|-1</li>
+</ol>
+        
+          <div class="more-link">
+            <a href="/2019/08/04/190804-datastructure-MST-kruskal/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/08/04/190805-datastructure-MST-prim/">자료구조 - MST 학습 - Prim algorithm</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-08-04T08:00:21.000Z" itemprop="datePublished">
+    2019-08-04
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/DataStructure/">DataStructure</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/MST/">MST</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Prim/">Prim</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="Prim-algorithm"><a href="#Prim-algorithm" class="headerlink" title="Prim algorithm"></a>Prim algorithm</h2><ol>
+<li>정점 하나를 가진 트리에서 시작<ul>
+<li>TV = {v1}<ul>
+<li>TV : 트리의 정점</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>트리 내의 정점 u와 트리 밖의 정점 v를 잇는 Edge 중 최소 비용을 가진 (u,v)를 트리 Edge로 만든다.<ul>
+<li>TE = TV U {u,v}</li>
+</ul>
+</li>
+<li>트리 밖의 정점 v도 트리의 정점으로 만든다. <ul>
+<li>TV = TV U {v}</li>
+</ul>
+</li>
+<li>TV = V(G)와 같아지면 종료</li>
+</ol>
+        
+          <div class="more-link">
+            <a href="/2019/08/04/190805-datastructure-MST-prim/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/08/03/190803-datastructure-MST/">자료구조 - MST 학습</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-08-03T08:00:21.000Z" itemprop="datePublished">
+    2019-08-03
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/DataStructure/">DataStructure</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/MST/">MST</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="MST-Minimum-cost-Spanning-Tree"><a href="#MST-Minimum-cost-Spanning-Tree" class="headerlink" title="MST(Minimum cost Spanning Tree)"></a>MST(Minimum cost Spanning Tree)</h2><h3 id="신장-트리-Spanning-Tree"><a href="#신장-트리-Spanning-Tree" class="headerlink" title="신장 트리(Spanning Tree)"></a>신장 트리(Spanning Tree)</h3><ol>
+<li>connected(연결되어 있다.)</li>
+<li>최소 엣지 수 |E| = |V| - 1 (트리 조건)</li>
+<li>E(G’)는 E(G)에 포함되어 있다.</li>
+<li>V(G’) = V(G) </li>
+</ol>
+<h3 id="최소-비용-신장-트리"><a href="#최소-비용-신장-트리" class="headerlink" title="최소 비용 신장 트리"></a>최소 비용 신장 트리</h3><ol>
+<li>무방향 그래프</li>
+<li>가중치 그래프</li>
+<li>비용(cost) 최소화</li>
+</ol>
+        
+          <div class="more-link">
+            <a href="/2019/08/03/190803-datastructure-MST/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+</ul>
+
+
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

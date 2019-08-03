@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>자료구조 - B-tree 학습 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/08/02/190802-datastructure-b-tree/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>자료구조 - B-tree 학습</h1>
+    </header>
+
+    <section>
+      <h2 id="B-tree를-사용하는-이유"><a href="#B-tree를-사용하는-이유" class="headerlink" title="B-tree를 사용하는 이유"></a>B-tree를 사용하는 이유</h2><ul>
+<li>탐색에서 최악의 경우에도 O(log2n)이 걸리는 균형 이진트리도 굉장히 큰 성과이지만,</li>
+<li>데이터가 메인 메모리에 저장되어 있거나, </li>
+<li>데이터베이스의 경우 하드디스크에 저장되어 있으면,</li>
+<li>데이터의 연산보다는 메모리 접근에 엄청난 시간이 소요된다.</li>
+<li>이 문제를 해결하기 위해 B-tree 자료구조가 필요하다.</li>
+</ul>
+<a id="more"></a>
+<h3 id="메모리-계층-구조"><a href="#메모리-계층-구조" class="headerlink" title="메모리 계층 구조"></a>메모리 계층 구조</h3><p><img src="https://user-images.githubusercontent.com/48202867/62413310-dc36f300-b648-11e9-8185-10e7821ea1d7.png" alt="Screenshot from 2019-08-03 23-04-56"></p>
+<ul>
+<li>메인 메모리에서 캐시로 데이터를 가져올 때, 64bytes ~ 128bytes 캐시 라인(cache line)</li>
+<li>하드디스크에서 메인메모리로 데이터를 가져올 때, 4096bytes 페이지 프레임(page frame)</li>
+</ul>
+<h3 id="메모리-접근-횟수"><a href="#메모리-접근-횟수" class="headerlink" title="메모리 접근 횟수"></a>메모리 접근 횟수</h3><ul>
+<li>균형 블랙 트리의 높이 : log2(n+1)<ul>
+<li>데이터의 개수가 1,000,000개면 최대 높이가 20이므로 최악의 경우 20번의 메모리 접근 필요</li>
+</ul>
+</li>
+<li>균형 이진트리의 이점을 가지면서 메모리 접근 횟수를 줄이기 위해서는 트리의 높이를 축소시켜야 한다.<br><img src="https://user-images.githubusercontent.com/48202867/62413461-3be1ce00-b64a-11e9-9719-14c829e59155.jpg" alt="Image from iOS"></li>
+</ul>
+<h3 id="M-원-탐색-트리-m-way-search-tree"><a href="#M-원-탐색-트리-m-way-search-tree" class="headerlink" title="M-원 탐색 트리(m-way search tree)"></a>M-원 탐색 트리(m-way search tree)</h3><ol>
+<li>최대 m개의 서브 트리를 가진다.</li>
+<li>한 노드에서 key는 정렬되어 있다.</li>
+<li>한 원소의 왼쪽 서브 트리의 모든 key는 원소의 key보다 작다.</li>
+<li>한 원소의 오른쪽 서브 트리의 모든 key는 원소의 key보다 크다.</li>
+<li>서브 트리도 m-원 탐색 트리이다.</li>
+</ol>
+<h2 id="B-tree-정의"><a href="#B-tree-정의" class="headerlink" title="B-tree 정의"></a>B-tree 정의</h2><p>차수가 m인 B-tree의 경우</p>
+<ol>
+<li>2 &lt;= 루트 노드의 서브 트리 &lt;= m</li>
+<li>[m/2] &lt;= 루트, 외부 노드를 제외한 모든 노브의 서브 트리 &lt;= m</li>
+<li>모든 외부 노드는 같은 레빌이다.</li>
+</ol>
+<h3 id="2-3-트리-2-3-tree"><a href="#2-3-트리-2-3-tree" class="headerlink" title="2-3 트리(2-3 tree)"></a>2-3 트리(2-3 tree)</h3><p><img src="https://user-images.githubusercontent.com/48202867/62413312-dccf8980-b648-11e9-9cea-ae9398bbe841.png" alt="Screenshot from 2019-08-03 23-20-02"></p>
+<ul>
+<li>m=3 일 때, 2-3 tree라고도 한다.</li>
+<li>[3/2] &lt;= 서브 트리 수 &lt;= 3</li>
+<li>1 &lt;= 노드 원소 수 &lt;= 2</li>
+</ul>
+<h2 id="B-tree-예제"><a href="#B-tree-예제" class="headerlink" title="B-tree 예제"></a>B-tree 예제</h2><h3 id="Insert-예제"><a href="#Insert-예제" class="headerlink" title="Insert 예제"></a>Insert 예제</h3><p><img src="https://user-images.githubusercontent.com/48202867/62413311-dc36f300-b648-11e9-95f5-c54d295134c4.png" alt="Screenshot from 2019-08-03 23-19-58"><br><img src="https://user-images.githubusercontent.com/48202867/62413313-dccf8980-b648-11e9-93ba-f0ea49c9f5d1.png" alt="Screenshot from 2019-08-03 23-20-07"><br><img src="https://user-images.githubusercontent.com/48202867/62413314-dd682000-b648-11e9-8b1e-baf6ddc2be9d.png" alt="Screenshot from 2019-08-03 23-27-07"></p>
+<h3 id="Delete-예제"><a href="#Delete-예제" class="headerlink" title="Delete 예제"></a>Delete 예제</h3><p><img src="https://user-images.githubusercontent.com/48202867/62413315-dd682000-b648-11e9-81cd-50a7cc2d4788.png" alt="Screenshot from 2019-08-03 23-29-41"><br><img src="https://user-images.githubusercontent.com/48202867/62413316-dd682000-b648-11e9-8b76-94683c036e62.png" alt="Screenshot from 2019-08-03 23-29-45"><br><img src="https://user-images.githubusercontent.com/48202867/62413318-de00b680-b648-11e9-8ed3-94b16e385463.png" alt="Screenshot from 2019-08-03 23-30-09"><br><img src="https://user-images.githubusercontent.com/48202867/62413319-de994d00-b648-11e9-8ba6-8d2b5397e3d2.png" alt="Screenshot from 2019-08-03 23-30-30"><br><img src="https://user-images.githubusercontent.com/48202867/62413321-de994d00-b648-11e9-99a7-73f5208a23e0.png" alt="Screenshot from 2019-08-03 23-30-47"><br><img src="https://user-images.githubusercontent.com/48202867/62413323-de994d00-b648-11e9-864c-fb6b6252d42a.png" alt="Screenshot from 2019-08-03 23-31-07"><br><img src="https://user-images.githubusercontent.com/48202867/62413324-df31e380-b648-11e9-9a56-59827e1b23ed.png" alt="Screenshot from 2019-08-03 23-31-14"><br><img src="https://user-images.githubusercontent.com/48202867/62413325-df31e380-b648-11e9-8ac5-813aa4e0b6a0.png" alt="Screenshot from 2019-08-03 23-31-17"><br><img src="https://user-images.githubusercontent.com/48202867/62413326-dfca7a00-b648-11e9-8226-0d70b2a6ced9.png" alt="Screenshot from 2019-08-03 23-31-42"><br><img src="https://user-images.githubusercontent.com/48202867/62413327-e0631080-b648-11e9-8540-7b99caa77c86.png" alt="Screenshot from 2019-08-03 23-31-49"><br><img src="https://user-images.githubusercontent.com/48202867/62413328-e0631080-b648-11e9-81b2-4d1fbc780563.png" alt="Screenshot from 2019-08-03 23-31-51"></p>
+<h1 id="B-tree를-응용한-데이터-베이스"><a href="#B-tree를-응용한-데이터-베이스" class="headerlink" title="B-tree를 응용한 데이터 베이스"></a>B-tree를 응용한 데이터 베이스</h1><ul>
+<li><p>인덱스 생성 SQL을 실행하면 해당 컬럼을 key로 B-tree를 생성한다.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX idx_name ON Employees(name);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>인덱스 생성 후 아래와 같은 SQL을 실행하면 탐색을 B-tree에서 수행하기 때문에 매우 빠르다. <br><br>–&gt; 이진 탐색을 수행하므로 인덱스를 만들어 두지 않았다면 선형 탐색을 수행한다.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM Employees WHERE name = &apos;abc&apos;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/48202867/62413463-3edcbe80-b64a-11e9-8725-8e2bd90bffb8.jpg" alt="Image from iOS (1)"><br><img src="https://user-images.githubusercontent.com/48202867/62413464-400deb80-b64a-11e9-9d86-47b2aaece725.jpg" alt="Image from iOS (4)"></p>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-08-02T08:00:21.000Z" itemprop="datePublished">
+              2019-08-02
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Python/">Python</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/DataStructure/">DataStructure</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/B-tree/">B-tree</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

@@ -8,6 +8,62 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/29/190729-datastructure-graph/</loc>
+        <lastmod>2019-08-03T16:50:05.054Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/08/02/190802-datastructure-b-tree/</loc>
+        <lastmod>2019-08-03T16:48:26.086Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/27/190727-django-stay-order/</loc>
+        <lastmod>2019-08-03T16:48:10.350Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/08/03/190803-datastructure-MST/</loc>
+        <lastmod>2019-08-03T16:27:22.046Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/08/04/190805-datastructure-MST-prim/</loc>
+        <lastmod>2019-08-03T16:21:24.590Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/08/04/190804-datastructure-MST-kruskal/</loc>
+        <lastmod>2019-08-03T16:21:11.122Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/07/25/190725-django-stay-checkInOut/</loc>
+        <lastmod>2019-08-03T12:32:23.803Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/05/25/190525-django-Email-login/</loc>
         <lastmod>2019-07-24T06:22:28.098Z</lastmod>
         <changefreq>weekly</changefreq>

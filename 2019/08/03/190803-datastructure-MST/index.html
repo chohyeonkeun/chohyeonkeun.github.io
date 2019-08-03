@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>자료구조 - MST 학습 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/08/03/190803-datastructure-mst/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>자료구조 - MST 학습</h1>
+    </header>
+
+    <section>
+      <h2 id="MST-Minimum-cost-Spanning-Tree"><a href="#MST-Minimum-cost-Spanning-Tree" class="headerlink" title="MST(Minimum cost Spanning Tree)"></a>MST(Minimum cost Spanning Tree)</h2><h3 id="신장-트리-Spanning-Tree"><a href="#신장-트리-Spanning-Tree" class="headerlink" title="신장 트리(Spanning Tree)"></a>신장 트리(Spanning Tree)</h3><ol>
+<li>connected(연결되어 있다.)</li>
+<li>최소 엣지 수 |E| = |V| - 1 (트리 조건)</li>
+<li>E(G’)는 E(G)에 포함되어 있다.</li>
+<li>V(G’) = V(G) </li>
+</ol>
+<h3 id="최소-비용-신장-트리"><a href="#최소-비용-신장-트리" class="headerlink" title="최소 비용 신장 트리"></a>최소 비용 신장 트리</h3><ol>
+<li>무방향 그래프</li>
+<li>가중치 그래프</li>
+<li>비용(cost) 최소화</li>
+</ol>
+<a id="more"></a>
+<h2 id="MST-알고리즘"><a href="#MST-알고리즘" class="headerlink" title="MST 알고리즘"></a>MST 알고리즘</h2><h3 id="탐욕-알고리즘-Greedy-algorithm"><a href="#탐욕-알고리즘-Greedy-algorithm" class="headerlink" title="탐욕 알고리즘(Greedy algorithm)"></a>탐욕 알고리즘(Greedy algorithm)</h3><ol>
+<li>Kruskal algorithm</li>
+<li>Prim algorithm</li>
+<li>Sollin algorithm</li>
+</ol>
+<ul>
+<li>전역적 최적해(global optimum)를 찾기 위해 각 스테이지마다 지역적 최적해(local optimum)를 선택(지역적 최적 선택의 모음이므로 전역적으로 최적해라는 보장이 없다.)</li>
+</ul>
+<h3 id="탐욕-알고리즘이-실패하는-예시"><a href="#탐욕-알고리즘이-실패하는-예시" class="headerlink" title="탐욕 알고리즘이 실패하는 예시"></a>탐욕 알고리즘이 실패하는 예시</h3><p><img src="https://user-images.githubusercontent.com/48202867/62414174-e958df80-b652-11e9-8587-02fe6badf656.png" alt="Screenshot from 2019-08-04 00-32-49"><br><img src="https://user-images.githubusercontent.com/48202867/62414175-e958df80-b652-11e9-846e-2500727e388b.png" alt="Screenshot from 2019-08-04 00-32-54"></p>
+<h3 id="탐욕-알고리즘이-성공하기-위한-조건"><a href="#탐욕-알고리즘이-성공하기-위한-조건" class="headerlink" title="탐욕 알고리즘이 성공하기 위한 조건"></a>탐욕 알고리즘이 성공하기 위한 조건</h3><ol>
+<li>Greedy choice property : 지역 최적해를 선택해 나가면 전역 최적해에 도달할 수 있다.</li>
+<li>Optimal substructure : 문제에 대한 최적해가 부분 문제에 대한 최적해를 포함할 때</li>
+</ol>
+<p><br></p>
+<h2 id="Greedy-MST-algorithm"><a href="#Greedy-MST-algorithm" class="headerlink" title="Greedy MST algorithm"></a>Greedy MST algorithm</h2><p>단순화 가정</p>
+<ul>
+<li>Edge 가중치는 서로 다르다(distinct)</li>
+<li>그래프는 연결되어 있다.(connected)<br>결과</li>
+<li>최소 비용 신장 트리가 존재하며 유일하다.(unique)</li>
+</ul>
+<h3 id="컷-Cut"><a href="#컷-Cut" class="headerlink" title="컷(Cut)"></a>컷(Cut)</h3><p><img src="https://user-images.githubusercontent.com/48202867/62414176-e9f17600-b652-11e9-945c-c5595c5f7116.png" alt="Screenshot from 2019-08-04 00-35-38"><br><img src="https://user-images.githubusercontent.com/48202867/62414177-e9f17600-b652-11e9-8f33-f03f09f1c591.png" alt="Screenshot from 2019-08-04 00-35-41"><br><img src="https://user-images.githubusercontent.com/48202867/62414178-ea8a0c80-b652-11e9-852e-46220820ec64.png" alt="Screenshot from 2019-08-04 00-35-53"><br><img src="https://user-images.githubusercontent.com/48202867/62414180-ea8a0c80-b652-11e9-9e1f-90cbf536cb5b.png" alt="Screenshot from 2019-08-04 00-36-31"><br><img src="https://user-images.githubusercontent.com/48202867/62414182-eb22a300-b652-11e9-9a5a-ab68a574af51.png" alt="Screenshot from 2019-08-04 00-37-07"><br><img src="https://user-images.githubusercontent.com/48202867/62414183-ebbb3980-b652-11e9-9891-6e10cf6e6dcb.png" alt="Screenshot from 2019-08-04 00-37-14"><br><img src="https://user-images.githubusercontent.com/48202867/62414184-ebbb3980-b652-11e9-9f51-d47b5432bce4.png" alt="Screenshot from 2019-08-04 00-37-24"><br><img src="https://user-images.githubusercontent.com/48202867/62414185-ebbb3980-b652-11e9-8504-390689aac417.png" alt="Screenshot from 2019-08-04 00-37-26"></p>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-08-03T08:00:21.000Z" itemprop="datePublished">
+              2019-08-03
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/DataStructure/">DataStructure</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/MST/">MST</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

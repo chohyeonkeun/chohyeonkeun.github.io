@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>자료구조 - Graph 학습 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/07/29/190729-datastructure-graph/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>자료구조 - Graph 학습</h1>
+    </header>
+
+    <section>
+      <h2 id="Graph-정의"><a href="#Graph-정의" class="headerlink" title="Graph 정의"></a>Graph 정의</h2><p>그래프 G는 두 집합 V, E로 나타낸다.</p>
+<ol>
+<li>V(G) : 노드(node) 혹은 정점(vertex)의 집합</li>
+<li>E(G) : 정점을 잇는 엣지(edge)의 집합</li>
+</ol>
+<a id="more"></a>
+<p><img src="https://user-images.githubusercontent.com/48202867/62414634-1f995d80-b659-11e9-89ed-91f24b517911.png" alt="Screenshot from 2019-08-04 01-30-47"></p>
+<p><img src="https://user-images.githubusercontent.com/48202867/62414635-2031f400-b659-11e9-987f-3b94aa1adc79.png" alt="Screenshot from 2019-08-04 01-30-48"></p>
+<h2 id="Graph의-특징"><a href="#Graph의-특징" class="headerlink" title="Graph의 특징"></a>Graph의 특징</h2><ol>
+<li>자기 간선(self-edge)를 가질 수 없다.<br>–&gt; <code>(v, v)</code> or <code>&lt;v, v&gt;</code>를 가질 수 없다.</li>
+<li>두 정점 사이에 같은 Edge를 여러 개 가질 수 없다.</li>
+</ol>
+<p><img src="https://user-images.githubusercontent.com/48202867/62414636-2031f400-b659-11e9-9b0e-317eac8229d1.png" alt="Screenshot from 2019-08-04 01-32-36"></p>
+<p><img src="https://user-images.githubusercontent.com/48202867/62414637-2031f400-b659-11e9-8056-c62ba19c5c34.png" alt="Screenshot from 2019-08-04 01-33-12"></p>
+<p><img src="https://user-images.githubusercontent.com/48202867/62414638-20ca8a80-b659-11e9-9eec-cca2e3d851f9.png" alt="Screenshot from 2019-08-04 01-33-50"></p>
+<p><img src="https://user-images.githubusercontent.com/48202867/62414639-20ca8a80-b659-11e9-8e3e-f2247a3eef0a.png" alt="Screenshot from 2019-08-04 01-34-14"></p>
+<p><img src="https://user-images.githubusercontent.com/48202867/62414640-21632100-b659-11e9-86b9-943c6d59aea3.png" alt="Screenshot from 2019-08-04 01-34-36"></p>
+<p><img src="https://user-images.githubusercontent.com/48202867/62414641-21632100-b659-11e9-9319-31625efda2ba.png" alt="Screenshot from 2019-08-04 01-35-21"></p>
+<p><img src="https://user-images.githubusercontent.com/48202867/62414642-21fbb780-b659-11e9-9733-daf644ca7b51.png" alt="Screenshot from 2019-08-04 01-36-51"></p>
+<p><img src="https://user-images.githubusercontent.com/48202867/62414643-21fbb780-b659-11e9-863c-38d6c9e1e4ed.png" alt="Screenshot from 2019-08-04 01-37-04"></p>
+<p><br></p>
+<h2 id="Graph-traversal-그래프-순회"><a href="#Graph-traversal-그래프-순회" class="headerlink" title="Graph traversal(그래프 순회)"></a>Graph traversal(그래프 순회)</h2><p>그래프 G에서 한 정점 v가 주어졌을 때, 모든 정점을 중복되지 않게 방문하는 것</p>
+<h3 id="1-너비-우선-탐색-BFS-breadth-first-search"><a href="#1-너비-우선-탐색-BFS-breadth-first-search" class="headerlink" title="1. 너비 우선 탐색(BFS, breadth first search)"></a>1. 너비 우선 탐색(BFS, breadth first search)</h3><p><img src="https://user-images.githubusercontent.com/48202867/62414644-22944e00-b659-11e9-9a12-e94e78f6a00b.png" alt="Screenshot from 2019-08-04 01-38-13"></p>
+<h3 id="2-깊이-우선-탐색-DFS-depth-first-search"><a href="#2-깊이-우선-탐색-DFS-depth-first-search" class="headerlink" title="2. 깊이 우선 탐색(DFS, depth first search)"></a>2. 깊이 우선 탐색(DFS, depth first search)</h3><p><img src="https://user-images.githubusercontent.com/48202867/62414645-22944e00-b659-11e9-9fd1-0b80e7eb3924.png" alt="Screenshot from 2019-08-04 01-38-26"></p>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-07-29T08:00:21.000Z" itemprop="datePublished">
+              2019-07-29
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/DataStructure/">DataStructure</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Graph/">Graph</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
