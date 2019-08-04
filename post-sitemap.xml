@@ -304,6 +304,14 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/06/22/190622-cooke-session/</loc>
+        <lastmod>2019-07-06T04:22:08.315Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/06/20/190620-django-translation/</loc>
         <lastmod>2019-07-06T04:21:41.327Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -698,14 +706,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/06/23/190623-linux-crontab/</loc>
         <lastmod>2019-06-23T17:57:04.919Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/22/190622-cooke-session/</loc>
-        <lastmod>2019-06-22T16:13:23.150Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
