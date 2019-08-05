@@ -190,7 +190,8 @@
     - 소스코드 폴더에서 code 폴더 추가 생성 (이미지로 생성됨)
         - $ mkdir /var/ww/django/code
         - var/www/django에 소스코드 직접 업로드하게 되면, 기존 폴더가 삭제될 수 있다.
-        - 이를 방지하기 위해, code 폴더 생성하여 소스코드 옮겨놓고 연동시키는 방법이 있다. (django_test 폴더의 code 폴더 내 소스코드와 연동된다. --&gt; uwsgi.ini파일에 chdir %(base)/code 작성한 이유) 
+        - 이를 방지하기 위해, code 폴더 생성하여 소스코드 옮겨놓고 연동시키는 방법이 있다. 
+    (django_test 폴더의 code 폴더 내 소스코드와 연동된다. --&gt; uwsgi.ini파일에 chdir %(base)/code 작성한 이유) 
     - 가상환경에 패키지 설치하기 위해 소스코드 폴더로 이동
         - $ cd /var/www/django
     - 가상환경 활성화
