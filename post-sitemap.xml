@@ -8,8 +8,40 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/08/07/190807-datastructure-shortest-path/</loc>
+        <lastmod>2019-08-09T16:34:13.760Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/08/03/190803-datastructure-MST/</loc>
+        <lastmod>2019-08-09T14:45:52.628Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/08/04/190804-datastructure-MST-kruskal/</loc>
+        <lastmod>2019-08-09T14:45:39.085Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/08/05/190805-datastructure-MST-prim/</loc>
+        <lastmod>2019-08-09T14:45:26.013Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/06/21/190621-django-docker-elastic-beanstalk/</loc>
-        <lastmod>2019-08-05T15:40:21.800Z</lastmod>
+        <lastmod>2019-08-07T10:31:40.434Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -26,14 +58,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/05/08/190508-django-AWS-1/</loc>
         <lastmod>2019-08-04T16:25:15.545Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/08/05/190805-datastructure-MST-prim/</loc>
-        <lastmod>2019-08-04T08:16:42.204Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -66,22 +90,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/07/27/190727-django-stay-order/</loc>
         <lastmod>2019-08-03T16:48:10.350Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/08/03/190803-datastructure-MST/</loc>
-        <lastmod>2019-08-03T16:27:22.046Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/08/04/190804-datastructure-MST-kruskal/</loc>
-        <lastmod>2019-08-03T16:21:11.122Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

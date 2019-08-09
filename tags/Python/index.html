@@ -76,6 +76,242 @@
     <header class="title">
       
         <h1>
+          <a href="/2019/08/07/190807-datastructure-shortest-path/">자료구조 - Shortest Path 학습</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-08-07T08:00:21.000Z" itemprop="datePublished">
+    2019-08-07
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Python/">Python</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/DataStructure/">DataStructure</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Shortest-Path/">Shortest Path</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="Shortest-Path-최단-경로-특징"><a href="#Shortest-Path-최단-경로-특징" class="headerlink" title="Shortest Path(최단 경로) 특징"></a>Shortest Path(최단 경로) 특징</h2><h3 id="1-음수-사이클이-없다"><a href="#1-음수-사이클이-없다" class="headerlink" title="1. 음수 사이클이 없다."></a>1. 음수 사이클이 없다.</h3><h3 id="2-방향-그래프-directed-graph"><a href="#2-방향-그래프-directed-graph" class="headerlink" title="2. 방향 그래프(directed graph)"></a>2. 방향 그래프(directed graph)</h3><h3 id="3-가중치-그래프-weighted-graph"><a href="#3-가중치-그래프-weighted-graph" class="headerlink" title="3. 가중치 그래프(weighted graph)"></a>3. 가중치 그래프(weighted graph)</h3><h3 id="4-경로의-길이-edge-가중치의-합"><a href="#4-경로의-길이-edge-가중치의-합" class="headerlink" title="4. 경로의 길이 : edge 가중치의 합"></a>4. 경로의 길이 : edge 가중치의 합</h3>
+        
+          <div class="more-link">
+            <a href="/2019/08/07/190807-datastructure-shortest-path/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/08/05/190805-datastructure-MST-prim/">자료구조 - MST 학습 - Prim algorithm</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-08-05T08:00:21.000Z" itemprop="datePublished">
+    2019-08-05
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Python/">Python</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/DataStructure/">DataStructure</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/MST/">MST</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Prim/">Prim</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="Prim-algorithm"><a href="#Prim-algorithm" class="headerlink" title="Prim algorithm"></a>Prim algorithm</h2><ol>
+<li>정점 하나를 가진 트리에서 시작<ul>
+<li>TV = {v1}<ul>
+<li>TV : 트리의 정점</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>트리 내의 정점 u와 트리 밖의 정점 v를 잇는 Edge 중 최소 비용을 가진 (u,v)를 트리 Edge로 만든다.<ul>
+<li>TE = TV U {u,v}</li>
+</ul>
+</li>
+<li>트리 밖의 정점 v도 트리의 정점으로 만든다. <ul>
+<li>TV = TV U {v}</li>
+</ul>
+</li>
+<li>TV = V(G)와 같아지면 종료</li>
+</ol>
+        
+          <div class="more-link">
+            <a href="/2019/08/05/190805-datastructure-MST-prim/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/08/04/190804-datastructure-MST-kruskal/">자료구조 - MST 학습 - Kruskal algorithm</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-08-04T08:00:21.000Z" itemprop="datePublished">
+    2019-08-04
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Python/">Python</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/DataStructure/">DataStructure</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/MST/">MST</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Kruskal/">Kruskal</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="Kruskal-algorithm"><a href="#Kruskal-algorithm" class="headerlink" title="Kruskal algorithm"></a>Kruskal algorithm</h2><ol>
+<li>Edge를 가중치가 작은 것에서 큰 것 순으로 정렬</li>
+<li>트리에 Edge를 하나씩 추가</li>
+<li>사이클이 생기면 추가하지 않는다.</li>
+<li>최소 비용 신장 트리가 완성되면 |E| = |v|-1</li>
+</ol>
+        
+          <div class="more-link">
+            <a href="/2019/08/04/190804-datastructure-MST-kruskal/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/08/03/190803-datastructure-MST/">자료구조 - MST 학습</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-08-03T08:00:21.000Z" itemprop="datePublished">
+    2019-08-03
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Python/">Python</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/DataStructure/">DataStructure</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/MST/">MST</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="MST-Minimum-cost-Spanning-Tree"><a href="#MST-Minimum-cost-Spanning-Tree" class="headerlink" title="MST(Minimum cost Spanning Tree)"></a>MST(Minimum cost Spanning Tree)</h2><h3 id="신장-트리-Spanning-Tree"><a href="#신장-트리-Spanning-Tree" class="headerlink" title="신장 트리(Spanning Tree)"></a>신장 트리(Spanning Tree)</h3><ol>
+<li>connected(연결되어 있다.)</li>
+<li>최소 엣지 수 |E| = |V| - 1 (트리 조건)</li>
+<li>E(G’)는 E(G)에 포함되어 있다.</li>
+<li>V(G’) = V(G) </li>
+</ol>
+<h3 id="최소-비용-신장-트리"><a href="#최소-비용-신장-트리" class="headerlink" title="최소 비용 신장 트리"></a>최소 비용 신장 트리</h3><ol>
+<li>무방향 그래프</li>
+<li>가중치 그래프</li>
+<li>비용(cost) 최소화</li>
+</ol>
+        
+          <div class="more-link">
+            <a href="/2019/08/03/190803-datastructure-MST/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
           <a href="/2019/08/02/190802-datastructure-b-tree/">자료구조 - B-tree 학습</a>
         </h1>
       
@@ -401,202 +637,6 @@
         
           <div class="more-link">
             <a href="/2019/07/02/190702-python-algorythm/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/07/01/190701-python-circular-queue/">자료구조 - Circular Queue 학습</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-07-01T08:00:21.000Z" itemprop="datePublished">
-    2019-07-01
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Python/">Python</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/DataStructure/">DataStructure</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/Queue/">Queue</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="Circular-Queue-란"><a href="#Circular-Queue-란" class="headerlink" title="Circular Queue 란?"></a>Circular Queue 란?</h2><ul>
-<li>원형 큐는 선형 큐의 문제점을 보완하기 위한 자료구조이다.</li>
-<li>rear를 가르키는 포인터가 배열의 마지막 인덱스를 가르키고 있을 때, 앞쪽에서 Dequeue로 발생한 배열의 빈 공간을 활용 할 수 없다.</li>
-<li>원형큐에서는 배열의 첫 인덱스부터 다시 데이터 삽입이 가능하다.</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/07/01/190701-python-circular-queue/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/06/30/190630-python-excel/">파이썬 - Excel 파일 만들기</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-06-30T08:00:21.000Z" itemprop="datePublished">
-    2019-06-30
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Python/">Python</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/Excel/">Excel</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <ul>
-<li>이번 포스트에서는 python에서 excel 파일에 대한 기본적인 사용 방법을 알아볼 것이다.</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/06/30/190630-python-excel/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/06/29/190629-python-text/">파이썬 - Text 파일 만들기</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-06-29T08:00:21.000Z" itemprop="datePublished">
-    2019-06-29
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Python/">Python</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/Text/">Text</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <ul>
-<li>이번 포스트에서는 python에서 텍스트 파일에 대한 기본적인 사용 방법을 알아볼 것이다.</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/06/29/190629-python-text/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/06/28/190628-python-csv/">파이썬 - CSV 파일 만들기</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-06-28T08:00:21.000Z" itemprop="datePublished">
-    2019-06-28
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Python/">Python</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/CSV/">CSV</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="CSV란-Comma-separated-Values"><a href="#CSV란-Comma-separated-Values" class="headerlink" title="CSV란? (Comma-separated-Values)"></a>CSV란? (Comma-separated-Values)</h2><ul>
-<li>몇 가지 필드를 쉼표(,)로 구분한 텍스트 데이터 및 텍스트 파일이다.</li>
-<li>확장자는 .csv이며 MIME 형식은 text/csv이다.</li>
-<li>비슷한 포맷으로는 탭으로 구분하는 ‘tab-separated values’(TSV)나, 반각 스페이스로 구분하는 ‘space-separated values’(SSV) 등이 있으며, 이것들을 합쳐서 character-separated values(CSV), delimiter-separated values라고 부르는 경우가 많다.</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/06/28/190628-python-csv/#more">Read On »</a>
           </div>
         
       
