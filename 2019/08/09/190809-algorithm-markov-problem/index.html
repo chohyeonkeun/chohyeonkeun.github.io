@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>알고리즘 - markov 문제 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/08/09/190809-algorithm-markov-problem/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>알고리즘 - markov 문제</h1>
+    </header>
+
+    <section>
+      <h2 id="markov-문제"><a href="#markov-문제" class="headerlink" title="markov 문제"></a>markov 문제</h2><ul>
+<li>탈옥수가 검문을 피해 마을과 마을 사이를 돌아다니고 있다.</li>
+<li>탈옥수는 탈출 당일 인접한 마을에 숨었다.</li>
+<li>d일이 지났을 때 각 마을에 숨어있을 확률을 구하시오.</li>
+<li>알고리즘 문제해결전략 1권 p.269</li>
+</ul>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="number">5</span></span><br><span class="line">d = <span class="number">2</span></span><br><span class="line">start = <span class="number">0</span></span><br><span class="line">connected = [</span><br><span class="line">    [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">    [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">deg = [<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># v 마을에 있을 때, days일이 지난 후 t 마을에 탈옥수가 있을 확률</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solve</span><span class="params">(v, days)</span>:</span></span><br><span class="line">    <span class="comment"># base case</span></span><br><span class="line">    <span class="keyword">if</span> days == d:</span><br><span class="line">        <span class="comment"># 아래 재귀함수 코드에 따라 solve(v, days)는 solve(0,0)부터 시작해서 인접한 마을(i마을)로 이동 시, days + 1을 해주었기 때문에 실제 days일이 지난 후, v마을에 있는 확률이 된다. </span></span><br><span class="line">        <span class="comment"># 고로, d == days 일 때, v마을이 t마을에 있다면 1.0, 없다면 0.0이 된다.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1.0</span> <span class="keyword">if</span> v==t <span class="keyword">else</span> <span class="number">0.0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 이미 계산된 값이 cache에 있다면 그 값을 반환</span></span><br><span class="line">    <span class="keyword">if</span> cache[v][days] != <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> cache[v][days]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 반환값을 계산해서 반환</span></span><br><span class="line">    cache[v][days] = <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="comment"># v마을에서 i마을로 한번에 갈 수 있는 경우(connected[v][i] == 1)</span></span><br><span class="line">        <span class="keyword">if</span> connected[v][i]:</span><br><span class="line">            <span class="comment"># v마을에서 i마을로 한번에 갈 경우 1일이 소요되며, v마을에서 한번에 갈 수 있는 마을 중에 i마을을 가는 경우이므로, solve(i, days+1) / deg[v] 가 v마을에서 i마을로 갈 수 있는 확률이 된다.</span></span><br><span class="line">            <span class="comment"># v마을에서 한번에 갈 수 있는 모든 마을에서의 특정 일수가 지난 후, 탈옥수가 있을 확률을 더하여 반환한다.(base case에 의해, d 값에 따라 경우의 수는 달라지게 된다.)</span></span><br><span class="line">            cache[v][days] += solve(i, days+<span class="number">1</span>)/deg[v]</span><br><span class="line">    <span class="keyword">return</span> cache[v][days]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    prob = []</span><br><span class="line">    <span class="comment"># v마을에서 d일 지난 후, t마을에 있을 확률(t = 0, 1, 2, 3, 4)</span></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> range(n):</span><br><span class="line">        cache = [[<span class="literal">None</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">30</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">10</span>)]</span><br><span class="line">        prob.append(solve(<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">    <span class="comment"># prob = [2일 지난 후, 0번 마을에 있을 확률, 2일 지난 후, 1번 마을에 있을 확률, ..., 2일 지난 후, 4번 마을에 있을 확률]</span></span><br><span class="line">    print(prob)</span><br></pre></td></tr></table></figure>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-08-09T08:00:21.000Z" itemprop="datePublished">
+              2019-08-09
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Python/">Python</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/markov/">markov</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Algorithm/">Algorithm</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>알고리즘 - TSP 문제 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/08/10/190810-algorithm-tsp-problem/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>알고리즘 - TSP 문제</h1>
+    </header>
+
+    <section>
+      <h2 id="TSP-Traveling-Salesman-Problem"><a href="#TSP-Traveling-Salesman-Problem" class="headerlink" title="TSP (Traveling-Salesman-Problem)"></a>TSP (Traveling-Salesman-Problem)</h2><h3 id="1-무방향-가중치-그래프"><a href="#1-무방향-가중치-그래프" class="headerlink" title="1. 무방향, 가중치 그래프"></a>1. 무방향, 가중치 그래프</h3><h3 id="2-출발한-곳으로-돌아온다"><a href="#2-출발한-곳으로-돌아온다" class="headerlink" title="2. 출발한 곳으로 돌아온다."></a>2. 출발한 곳으로 돌아온다.</h3><h3 id="3-그래프의-모든-edge가-다-존재한다"><a href="#3-그래프의-모든-edge가-다-존재한다" class="headerlink" title="3. 그래프의 모든 edge가 다 존재한다."></a>3. 그래프의 모든 edge가 다 존재한다.</h3><h3 id="4-w-e-합이-최소이다"><a href="#4-w-e-합이-최소이다" class="headerlink" title="4. w(e) 합이 최소이다."></a>4. w(e) 합이 최소이다.</h3><a id="more"></a>
+<h2 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h2><ul>
+<li>n개의 큰 도시가 있다.</li>
+<li>어떤 세일즈맨이 모든 도시를 한번씩만 방문한 뒤 다시 돌아오려고 한다.</li>
+<li>모든 경로 중 가장 짧은 경로를 구하시오.</li>
+</ul>
+<!--more-->
+<h2 id="풀이1-완전탐색"><a href="#풀이1-완전탐색" class="headerlink" title="풀이1. 완전탐색"></a>풀이1. 완전탐색</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n = <span class="number">5</span></span><br><span class="line">dist = [</span><br><span class="line">    [<span class="number">0</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">7</span>],</span><br><span class="line">    [<span class="number">2</span>, <span class="number">0</span>, <span class="number">10</span>, <span class="number">6</span>, <span class="number">6</span>],</span><br><span class="line">    [<span class="number">5</span>, <span class="number">10</span>, <span class="number">0</span>, <span class="number">4</span>, <span class="number">8</span>],</span><br><span class="line">    [<span class="number">3</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">0</span>, <span class="number">12</span>],</span><br><span class="line">    [<span class="number">7</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">12</span>, <span class="number">0</span>]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">### Brtue Force Search (완전탐색)</span></span><br><span class="line">path = []</span><br><span class="line">visited = [<span class="literal">False</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># shortest_path1(path, visited, d) -&gt; length</span></span><br><span class="line"><span class="comment"># 이미 거쳐 온 경로 path, 방문한 도시를 나타내는 visited, 지금까지의 길이 d가 주어질 때 최단 경로의 길이</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shortest_path1</span><span class="params">(path, visited, d)</span>:</span></span><br><span class="line">    <span class="comment"># base case</span></span><br><span class="line">    <span class="comment"># all(visited) == True</span></span><br><span class="line">    <span class="comment"># sumation of edges</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 모든 도시를 방문했다면, 지금까지 왔던 거리에 마지막 방문한 도시에서 처음 출발한 도시로 가는 거리를 더하여 반환한다.</span></span><br><span class="line">    <span class="keyword">if</span> all(visited):</span><br><span class="line">        <span class="keyword">return</span> d+dist[path[<span class="number">-1</span>]][path[<span class="number">0</span>]]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 마지막 방문하여 현재 자신이 위치해있는 도시를 cur 변수가 참조하게 한다. </span></span><br><span class="line">    cur = path[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 충분히 큰 숫자를 ret 변수가 참조하게 한다.</span></span><br><span class="line">    <span class="comment"># 아래 for문 안에서 path.pop(), visited[_next]=False에 의해 도시 간 이동하는 모든 경우에서의 ret 값의 최소를 찾게 된다.</span></span><br><span class="line">    ret = math.inf</span><br><span class="line">    <span class="keyword">for</span> _next <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> visited[_next]:</span><br><span class="line">            path.append(_next)</span><br><span class="line">            visited[_next] = <span class="literal">True</span></span><br><span class="line">            ret = min(ret, shortest_path1(path, visited, d+dist[cur][_next]))</span><br><span class="line">            path.pop()</span><br><span class="line">            visited[_next] = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">path.append(<span class="number">0</span>)</span><br><span class="line">visited[<span class="number">0</span>] = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    print(shortest_path1(path, visited, <span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h2 id="풀이2-DP-Danamic-Programming"><a href="#풀이2-DP-Danamic-Programming" class="headerlink" title="풀이2. DP(Danamic Programming)"></a>풀이2. DP(Danamic Programming)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n = <span class="number">5</span></span><br><span class="line">dist = [</span><br><span class="line">    [<span class="number">0</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">7</span>],</span><br><span class="line">    [<span class="number">2</span>, <span class="number">0</span>, <span class="number">10</span>, <span class="number">6</span>, <span class="number">6</span>],</span><br><span class="line">    [<span class="number">5</span>, <span class="number">10</span>, <span class="number">0</span>, <span class="number">4</span>, <span class="number">8</span>],</span><br><span class="line">    [<span class="number">3</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">0</span>, <span class="number">12</span>],</span><br><span class="line">    [<span class="number">7</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">12</span>, <span class="number">0</span>]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">### Dynamic Programming</span></span><br><span class="line"><span class="comment"># DP에 cache를 사용하기 위해서는 `bit operation` 필요 </span></span><br><span class="line"><span class="comment"># path, visited가 배열 형태이므로 cache[path[-1]][visited]가 사용될 수 없다.</span></span><br><span class="line"><span class="comment"># ex. visited = [T, F, T, F] --&gt; 0101(2) --&gt; 5</span></span><br><span class="line"><span class="comment"># ex. 3번 도시를 방문한 경우, 0101(2) + (1&lt;&lt;3) --&gt; 1101(2) --&gt; [T, T, F, T]</span></span><br><span class="line"></span><br><span class="line">cache = [[<span class="literal">None</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">1</span>&lt;&lt;n)] <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)]</span><br><span class="line"><span class="comment"># 여기서 나올 수 없는 최대한의 큰 값으로 설정</span></span><br><span class="line">INF = <span class="number">99999</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 0부터 시작한다고 가정</span></span><br><span class="line"><span class="comment"># shortest_path2(cur, visited) -&gt; length</span></span><br><span class="line"><span class="comment"># 현재 위치 cur 방문한 도시들 visited일 때 남은 도시를 방문하는 최소 경로의 길이</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shortest_path2</span><span class="params">(cur, visited)</span>:</span></span><br><span class="line">    <span class="comment"># base case</span></span><br><span class="line">    <span class="comment"># 모두 방문했다면 처음과 끝의 경로의 길이</span></span><br><span class="line">    <span class="keyword">if</span> visited == (<span class="number">1</span>&lt;&lt;n)<span class="number">-1</span>:</span><br><span class="line">        <span class="keyword">return</span> dist[cur][<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> cache[cur][visited] != <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> cache[cur][visited]</span><br><span class="line"></span><br><span class="line">    cache[cur][visited] = INF</span><br><span class="line">    <span class="keyword">for</span> _next <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="comment"># 아직 _next를 방문하지 않았다면</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> (visited &amp; (<span class="number">1</span>&lt;&lt;_next)):</span><br><span class="line">            cache[cur][visited] = \</span><br><span class="line">            min(cache[cur][visited], dist[cur][_next]+shortest_path2(_next, visited+(<span class="number">1</span>&lt;&lt;_next)))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> cache[cur][visited]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    print(shortest_path2(<span class="number">0</span>, <span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-08-10T08:00:21.000Z" itemprop="datePublished">
+              2019-08-10
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Python/">Python</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Algorithm/">Algorithm</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/TSP/">TSP</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
