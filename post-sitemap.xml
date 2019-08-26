@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/08/13/190813-django-frontend-backend-deploy/</loc>
+        <lastmod>2019-08-26T08:05:46.958Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/08/10/190810-algorithm-tsp-problem/</loc>
         <lastmod>2019-08-10T06:44:39.365Z</lastmod>
         <changefreq>weekly</changefreq>
