@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>파이썬 학습 - 1 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/08/19/190819-python-study-1/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>파이썬 학습 - 1</h1>
+    </header>
+
+    <section>
+      <h2 id="파이썬-학습"><a href="#파이썬-학습" class="headerlink" title="파이썬 학습"></a>파이썬 학습</h2><ul>
+<li>파이썬의 함수는 무조건 식이다.</li>
+<li>식은 반환(return) 받는 것을 말한다. (a+b 도 식이다 -&gt; None을 반환한다.)</li>
+<li>lambda는 return 의미가 내재되어 있으므로, return을 사용하지 않는다.<ul>
+<li>ex) lambda a, b: return a + b (X) –&gt; lambda a, b: a + b (O)</li>
+</ul>
+</li>
+<li>update()는 None을 return 한다.</li>
+</ul>
+<a id="more"></a>
+<h3 id="stable-sorting"><a href="#stable-sorting" class="headerlink" title="stable sorting"></a>stable sorting</h3><ul>
+<li>특정 기준에 따라 sort되지만 동일한 위치에서의 순서는 기존 정렬된 순서대로 sort되는 것<ul>
+<li>ex) [2, 7, 5, 6, 3, 4] –&gt; 짝수가 먼저 오도록 sort –&gt; [2, 6, 4, 7, 5, 3]</li>
+</ul>
+</li>
+</ul>
+<h3 id="lazy-evaluation"><a href="#lazy-evaluation" class="headerlink" title="lazy evaluation"></a>lazy evaluation</h3><ul>
+<li>계산의 결과값이 필요할 때까지만 계산을 늦추는 기법(지연 계산법, 최소 계산법)</li>
+<li>map, filter, reduce 가 lazy evaluation에 속한다.</li>
+<li>map()안에 iterable 객체가 들어가야 한다.</li>
+<li>next(m)으로 계속 실행했을 때, 뒤에 인자가 더이상 없을 경우, StopIteration 오류 발생</li>
+<li>map, filter –&gt; generator 객체<ul>
+<li>포함 관계 : generator &lt; iterator &lt; iterable</li>
+</ul>
+</li>
+<li>reduce : 자료구조를 연산을 통해 단 하나의 값으로 만드는 함수 (반환값은 list가 될 수도 있고, tuple이 될 수도 있다.)  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">li = [<span class="number">2</span>, <span class="number">3</span>, <span class="number">-5</span>, <span class="number">6</span>, <span class="number">-2</span>, <span class="number">1</span>, <span class="number">-10</span>]</span><br><span class="line"></span><br><span class="line">result = reduce(<span class="keyword">lambda</span> a, b: a+b, li) </span><br><span class="line"><span class="comment"># (...((2+3)+(-5))+ ... + (-10)...) </span></span><br><span class="line"><span class="comment"># return -5</span></span><br><span class="line">result = reduce(<span class="keyword">lambda</span> a,b:a+b, li, <span class="number">100</span>) </span><br><span class="line"><span class="comment"># (...((100+2)+3)+(-5))+...+(-10)...) </span></span><br><span class="line"><span class="comment"># return 95</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>ex) 양수를 골라내어 제곱한 값을 리스트로 만들기  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">li = [<span class="number">2</span>, <span class="number">3</span>, <span class="number">-5</span>, <span class="number">6</span>, <span class="number">-2</span>, <span class="number">1</span>, <span class="number">-10</span>]</span><br><span class="line">result = list(map(<span class="keyword">lambda</span> b : b ** <span class="number">2</span>, filter(<span class="keyword">lambda</span> a : a &gt; <span class="number">0</span>, li)))</span><br><span class="line"><span class="comment"># result = [4, 9, 36, 1]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="문자-수-계산"><a href="#문자-수-계산" class="headerlink" title="문자 수 계산"></a>문자 수 계산</h3><ul>
+<li>ex) 동일한 문자를 가진 list –&gt; 문자를 key로, 동일한 문자 갯수를 value로 하는 dictionary  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line"></span><br><span class="line">li = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'b'</span>, <span class="string">'a'</span>, <span class="string">'c'</span>, <span class="string">'a'</span>]</span><br><span class="line"></span><br><span class="line">result = reduce(<span class="keyword">lambda</span> dic, ch: dic.update(&#123;ch: dic.get(ch, <span class="number">0</span>)+<span class="number">1</span>&#125;) <span class="keyword">or</span> dic, li, &#123;&#125;)</span><br><span class="line"><span class="comment"># result = &#123;'a':4, 'b':3, 'c':1&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="generator-함수"><a href="#generator-함수" class="headerlink" title="generator 함수"></a>generator 함수</h3><ul>
+<li>iterator를 생성해주는 function<ul>
+<li>iterator : next() 메소드를 이용하여 데이터에 순차적으로 접근 가능한 object</li>
+<li>generator는 iterator의 부분집합이다.</li>
+</ul>
+</li>
+<li>파이썬 coroutine function –&gt; generator<ul>
+<li>corouting function : 함수 실행 도중, 실행 주도권을 다른 함수에 넘길 수 있고, 내가 원하는 시점에 다시 실행 주도권을 가져올 수 있는 함수</li>
+</ul>
+</li>
+<li>파이썬 스택 프레임이 heap에 저장되어 있다.</li>
+<li><p>yield를 만나면 주도권을 next(g)에 양도(yield)한다.</p>
+<ul>
+<li>yield를 사용하여 순서대로 때에 맞게 호출해주는 함수</li>
+</ul>
+</li>
+<li><p>ex) generator를 사용하여 피보나치 수열 만들기</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fibo_gen</span><span class="params">(n)</span>:</span></span><br><span class="line">    a = <span class="number">0</span> </span><br><span class="line">    b = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(n):</span><br><span class="line">        temp = a  </span><br><span class="line">        a = b  </span><br><span class="line">        b = temp + a   </span><br><span class="line">        <span class="keyword">yield</span> temp</span><br><span class="line">        <span class="comment"># 방법2)</span></span><br><span class="line">        <span class="comment"># yield a</span></span><br><span class="line">        <span class="comment"># a, b = b, a+b</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'complete'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># generator 객체 생성</span></span><br><span class="line">fibo = fibo_gen(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 첫번째 next() 호출하면, yield 만날때까지만 함수가 실행된다.</span></span><br><span class="line"><span class="comment"># 뒤에 더이상 인자가 없는 경우, StopIteration 발생한다.</span></span><br><span class="line"><span class="keyword">try</span>: </span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">11</span>):</span><br><span class="line">        print(next(fibo), end = <span class="string">' '</span>)</span><br><span class="line"><span class="keyword">except</span> StopIteration <span class="keyword">as</span> stop:</span><br><span class="line">    print(stop.value)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 0 1 1 2 3 5 8 13 21 34 complete</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ex) send() 예시</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'gen start'</span>)</span><br><span class="line">    data1 = <span class="keyword">yield</span> <span class="number">1</span></span><br><span class="line">    print(<span class="string">f'gen[1] : <span class="subst">&#123;data1&#125;</span>'</span>)</span><br><span class="line">    data2 = <span class="keyword">yield</span> <span class="number">2</span></span><br><span class="line">    </span><br><span class="line">    print(<span class="string">f'gen[2] : <span class="subst">&#123;data2&#125;</span>'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'done'</span></span><br><span class="line"></span><br><span class="line">g = gen()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 함수 실행 시작!</span></span><br><span class="line"><span class="comment"># 실행 주도권을 gen()에 넘김</span></span><br><span class="line">first = g.send(<span class="literal">None</span>)</span><br><span class="line"><span class="comment"># gen start</span></span><br><span class="line"><span class="comment"># first = 1</span></span><br><span class="line"></span><br><span class="line">second = g.send(<span class="string">'word'</span>)</span><br><span class="line"><span class="comment"># gen[1] : world</span></span><br><span class="line"><span class="comment"># second = 2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    g.send(<span class="string">'hello'</span>)</span><br><span class="line"><span class="keyword">except</span> StopIteration <span class="keyword">as</span> exc:</span><br><span class="line">    print(exc.value)</span><br><span class="line"><span class="comment"># gen[2] : hello</span></span><br><span class="line"><span class="comment"># done</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ex) yield from</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'gen start'</span>)</span><br><span class="line">    data1 = <span class="keyword">yield</span> <span class="number">1</span></span><br><span class="line">    print(<span class="string">f'gen[1] : <span class="subst">&#123;data1&#125;</span>'</span>)</span><br><span class="line">    data2 = <span class="keyword">yield</span> <span class="number">2</span></span><br><span class="line">    print(<span class="string">f'gen[2] : <span class="subst">&#123;data2&#125;</span>'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'done'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># delegate : 위임</span></span><br><span class="line"><span class="comment"># generator</span></span><br><span class="line"><span class="comment"># yield from (gen 객체)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delegate</span><span class="params">()</span>:</span></span><br><span class="line">    g = gen()</span><br><span class="line">    print(<span class="string">'start'</span>)</span><br><span class="line">    <span class="comment"># yield 모두 실행 후 return 값 받아서 ret로 할당</span></span><br><span class="line">    ret = <span class="keyword">yield</span> <span class="keyword">from</span> g  </span><br><span class="line">    print(<span class="string">'end'</span>)</span><br><span class="line">    print(<span class="string">f'return value : <span class="subst">&#123;ret&#125;</span>'</span>)</span><br><span class="line">    <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line">g = delegate()</span><br><span class="line"></span><br><span class="line">first = g.send(<span class="literal">None</span>)</span><br><span class="line"><span class="comment"># start</span></span><br><span class="line"><span class="comment"># gen start</span></span><br><span class="line"> </span><br><span class="line">second = g.send(<span class="string">'world'</span>)</span><br><span class="line"><span class="comment"># gen[1] : world</span></span><br><span class="line"></span><br><span class="line">g.send(<span class="string">'hello'</span>)</span><br><span class="line"><span class="comment"># gen[2] : hello</span></span><br><span class="line"><span class="comment"># end</span></span><br><span class="line"><span class="comment"># return value : done</span></span><br><span class="line"><span class="comment"># -----------------------</span></span><br><span class="line"><span class="comment"># StopIteration: done 발생</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yield from 을 이용한 await 예시</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">await</span> asyncio.sleep()   </span><br><span class="line">    <span class="comment"># await == yield from</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-08-19T08:00:21.000Z" itemprop="datePublished">
+              2019-08-19
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Python/">Python</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Study/">Study</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

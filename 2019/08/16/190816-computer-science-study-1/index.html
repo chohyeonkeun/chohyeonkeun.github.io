@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>컴퓨터 공학 학습 - 1 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/08/16/190816-computer-science-study-1/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>컴퓨터 공학 학습 - 1</h1>
+    </header>
+
+    <section>
+      <h2 id="코드-실행-순서"><a href="#코드-실행-순서" class="headerlink" title="코드 실행 순서"></a>코드 실행 순서</h2><h3 id="1-코드-작성-및-실행"><a href="#1-코드-작성-및-실행" class="headerlink" title="1. 코드 작성 및 실행"></a>1. 코드 작성 및 실행</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int a = <span class="number">10</span>;</span><br><span class="line">int b = <span class="number">20</span>;</span><br><span class="line">int c = a + b;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="2-RAM에서-a-b-저장"><a href="#2-RAM에서-a-b-저장" class="headerlink" title="2. RAM에서 a, b 저장"></a>2. RAM에서 a, b 저장</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">10</span></span><br><span class="line">b = <span class="number">20</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-Register에-EAX-ECX-저장"><a href="#3-Register에-EAX-ECX-저장" class="headerlink" title="3. Register에 EAX, ECX 저장"></a>3. Register에 EAX, ECX 저장</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">EAX = <span class="number">10</span></span><br><span class="line">ECX = <span class="number">20</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-ALU에서-계산"><a href="#4-ALU에서-계산" class="headerlink" title="4. ALU에서 계산"></a>4. ALU에서 계산</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span>(EAX) + <span class="number">20</span>(ECX) = <span class="number">30</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-Register에서-EAX-저장"><a href="#5-Register에서-EAX-저장" class="headerlink" title="5. Register에서 EAX 저장"></a>5. Register에서 EAX 저장</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EAX = <span class="number">30</span></span><br></pre></td></tr></table></figure>
+<h3 id="6-RAM에-c-저장"><a href="#6-RAM에-c-저장" class="headerlink" title="6. RAM에 c 저장"></a>6. RAM에 c 저장</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c = <span class="number">30</span></span><br></pre></td></tr></table></figure>
+<h3 id="참고-CPU-구성"><a href="#참고-CPU-구성" class="headerlink" title="참고 : CPU 구성"></a>참고 : CPU 구성</h3><ul>
+<li>ALU(Arithmetic Logic Unit)</li>
+<li>CU(Control Unit, 제어유닛)</li>
+<li>Register(저장)</li>
+</ul>
+<p><br></p>
+<h2 id="부동소수점-floating-point"><a href="#부동소수점-floating-point" class="headerlink" title="부동소수점 (floating-point)"></a>부동소수점 (floating-point)</h2><ul>
+<li>10.23 × 10^2<ul>
+<li>10.23 : 가수부(mantissa)</li>
+<li>10^2 : 지수부(exponent)</li>
+</ul>
+</li>
+<li><p>1.0101 × 2^4</p>
+<ul>
+<li>단정도(single precision)<ul>
+<li>32bit : 부호(1bit) + 지수(8bit) + 가수(23bit)<br>-</li>
+</ul>
+</li>
+<li><p>배정도(double precision)</p>
+<ul>
+<li>64bit : 부호(1bit) + 지수(11bit) + 가수(52bit)</li>
+</ul>
+</li>
+<li><p>지수부를 높인다는 것 = 표현범위를 넓힌 것</p>
+</li>
+<li>가수부를 높인다는 것 = 정밀도를 높인 것</li>
+<li>파이썬 내부는 double precision으로 만들어져 있다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="정규화-normalization"><a href="#정규화-normalization" class="headerlink" title="정규화 (normalization)"></a>정규화 (normalization)</h2><ul>
+<li>0이 아닌 자연수 1자리로 만들어라.<ul>
+<li>ex) 5234(10) –&gt; 정규화 –&gt; 5.234 × 10^3</li>
+<li>ex) 1011(2) –&gt; 정규화 –&gt; 1.011 × 2^3<ul>
+<li>2진수에서 맨 앞자리는 항상 1이므로, 실제 mantissa에서는 앞의 1을 저장하지 않는다. (±1.man × 2^(exp-bias))</li>
+<li>bias = 2^(n-1)-1 (n: 지수부가 저장되는 bit 크기)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>1.0101 × 2^5 (Single precision)<ul>
+<li>exp(실제 저장되는 메모리) - bias(상수) = 5 </li>
+<li>exp = 5 + 2^(8-1)-1 = 132</li>
+<li>132(10) –&gt; 10000100(2) –&gt; exp에 저장</li>
+</ul>
+</li>
+</ul>
+<h2 id="앱실론-epsilon"><a href="#앱실론-epsilon" class="headerlink" title="앱실론 (epsilon)"></a>앱실론 (epsilon)</h2><ul>
+<li>1.0과 그 다음에 표현할 수 있는 수 사이의 차이</li>
+<li><p>어떤 수 다음에 표현할 수 있는 수 사이의 거리(diff)</p>
+<ul>
+<li>2^E × epsilon ≒ |num| × epsilon<ul>
+<li>ex) 10.5(10) = 1.0101(2) × 2^3<ul>
+<li>diff = 2^3 × epsilon(2^-23) = 2^-20 ≒ 10.5 × 2^-23</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>실수 비교는 if(a == b) 처럼 직접 비교하면 안된다.</p>
+<ul>
+<li>a, b 비교 함수를 작성해 비교해야 한다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Big-O-of-n"><a href="#Big-O-of-n" class="headerlink" title="Big O of n"></a>Big O of n</h2><ul>
+<li>연산횟수를 나타내는 정도 : O(n)</li>
+<li>O(1) : 상수시간(constant)<ul>
+<li>array : indexing, arr[3]</li>
+<li>linked list : insert(), delete()</li>
+</ul>
+</li>
+<li>O(logn)<ul>
+<li>binary search(이진 탐색)</li>
+<li>BST(이진 탐색 트리)</li>
+<li>insert</li>
+<li>search</li>
+<li>delete</li>
+</ul>
+</li>
+<li>O(n)<ul>
+<li>array : insert, delete</li>
+<li>linked list : search</li>
+</ul>
+</li>
+<li>O(n·logn)<ul>
+<li>quick sort(현업에서 많이 쓰이는 sort)</li>
+<li>merge sort</li>
+<li>heap sort</li>
+</ul>
+</li>
+<li>O(n^2)<ul>
+<li>bubble sort</li>
+<li>selection sort</li>
+</ul>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-08-16T08:00:21.000Z" itemprop="datePublished">
+              2019-08-16
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Computer-Science/">Computer Science</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Study/">Study</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
