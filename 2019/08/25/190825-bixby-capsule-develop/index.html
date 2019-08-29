@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>빅스비 - Bixby 학습 및 개발 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/08/25/190825-bixby-capsule-develop/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>빅스비 - Bixby 학습 및 개발</h1>
+    </header>
+
+    <section>
+      <ul>
+<li>지난 8/19일부터 8/23일까지 삼성전자가 주관하여 진행했던 bixby startup 101에서 학습했던 캡슐 개발 관련 기초 내용 및 구현 방법에 대해 공유하려고 합니다.</li>
+</ul>
+<a id="more"></a>
+<p><br></p>
+<p><a href="https://github.com/chohyeonkeun/bixby_capsule" target="_blank" rel="noopener">bixby_capsule 프로젝트</a></p>
+<h1 id="Bixby란"><a href="#Bixby란" class="headerlink" title="Bixby란?"></a>Bixby란?</h1><ul>
+<li>음성을 통한 Intelligent Assistant Service &amp; Platform</li>
+<li>글로벌 브랜드의 음성 인공지능 서비스 : AWS 알렉스, Google 어시스턴트 외</li>
+<li>빅스비는 삼성인공지능 음성인식 서비스로써, 기본적으로 사용자의 ‘발화’를 인식하여 그 발화 안에서 각기 다른 유형의 변수들을 인지함으로써 내부 비즈니스 로직에 의해 결과값을 산출하는 서비스이다.<ul>
+<li>절차: Client –&gt; ASR(Automatic Speech Recognition) –&gt; NLU(Natural Language Understanding) –&gt; Capsule <--> External Server</--></li>
+<li>ex) ‘오늘 날씨 알려줘’ 발화 전달<br>–&gt; ASR을 통해 빅스비 플랫폼 서버에서 발화 언어를 텍스트로 변환<br>–&gt; NLU에서 기본 분석 완료<br>–&gt; Capsule(빅스비 서버 어플리케이션 -&gt; 서버를 따로 다운받지 않아도 됨) <--> External Server</--></li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h1 id="Bixby-시스템-구조"><a href="#Bixby-시스템-구조" class="headerlink" title="Bixby 시스템 구조"></a>Bixby 시스템 구조</h1><h3 id="Capsule-design-flow"><a href="#Capsule-design-flow" class="headerlink" title="Capsule design flow"></a>Capsule design flow</h3><ul>
+<li>발화 인식 –&gt; 모델링 처리 + 비즈니스 로직 처리 + UI/UX 구현 작업 </li>
+<li>ex) ‘주변 맛집 찾아줘’<br>–&gt; 사용자의 발화에서 중요한 의도와 명령을 찾아내는 작업 실시<br>–&gt; (모델링) ‘주변’이라는 위치 정보와 ‘맛집’이라는 키워드 정보를 입력받아 특정 객체에 데이터 저장하기 위한 설계 (모델링: 중요한 명령과 의도를 파악하는 작업)<br>–&gt; (비즈니스 로직) 위치정보(주변) 및 기본정보(맛집)를 전달받아 찾은 결과(‘샐러드바 식당’)를 모델링에 전달 </li>
+</ul>
+<h3 id="모델링"><a href="#모델링" class="headerlink" title="모델링"></a>모델링</h3><ul>
+<li><strong>actions(*.model.bxb)</strong><ul>
+<li>캡슐이 사용자가 원하는 작업을 이해하도록 수행할 동작 정의</li>
+<li>가장 잘 판단할 것 같은 빅스비 캡슐에게 발화 전달 (이 때의 발화함수가 actions이다. 함수이므로 input, output 존재)</li>
+</ul>
+</li>
+<li><strong>concepts(*.model.bxb)</strong><ul>
+<li>발화 인식 및 발화 결과를 리턴할 때 필요한 값</li>
+<li>ex) ‘햄버거 두개 주문해줘’<br>–&gt; 햄버거 : FoodName<br>–&gt; 2 : NumberOfFood</li>
+</ul>
+</li>
+</ul>
+<h3 id="비즈니스-로직"><a href="#비즈니스-로직" class="headerlink" title="비즈니스 로직"></a>비즈니스 로직</h3><ul>
+<li><strong>javascript code(*.js)</strong><ul>
+<li>모델링 단계에서 정의한 actions, concepts를 바탕으로 실제 서비스 코드 구현</li>
+<li>이 단계에서 서비스 API 연동 가능</li>
+<li>개발자는 메뉴와 주문 정보를 저장하는 서버 구축하여 API를 통해 캡슐과 연동</li>
+</ul>
+</li>
+</ul>
+<h3 id="UX-UI"><a href="#UX-UI" class="headerlink" title="UX/UI"></a>UX/UI</h3><ul>
+<li><strong>layout(*.layout.bxb)</strong><ul>
+<li>layout-macro-def 함수를 작성하여, view 에서 필요한 부분에 원하는 layout-macro 호출 가능</li>
+</ul>
+</li>
+<li><strong>view(*.view.bxb)</strong><ul>
+<li>최종 결과를 사용자에게 보여주는 UX/UI 레이아웃 작업 진행</li>
+</ul>
+</li>
+</ul>
+<h3 id="모델링-작성시-권장사항"><a href="#모델링-작성시-권장사항" class="headerlink" title="모델링 작성시 권장사항"></a>모델링 작성시 권장사항</h3><p>유사한 Goal은 통합해서 최소화할 것</p>
+<ul>
+<li><p>기존) </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">TurnUpVolume 소리 높여줘</span><br><span class="line">TurnDownVolume 소리 낮춰줘</span><br><span class="line">IncreaseBrightness 밝기 높여줘</span><br><span class="line">DecreaseBrightness 밝기 낮춰줘</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>개선)</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">IncreaseSettingsValue 높여줘</span><br><span class="line">DecreaseSettingsValue 낮춰줘</span><br><span class="line">  </span><br><span class="line">vocab (SttingsValue) &#123;</span><br><span class="line">    SoundVolume</span><br><span class="line">    SoundBrightness</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="vocab-작성시-권장사항"><a href="#vocab-작성시-권장사항" class="headerlink" title="vocab 작성시 권장사항"></a>vocab 작성시 권장사항</h3><ol>
+<li>다른 vocab 들과 중복 지양</li>
+<li><p>한 entry에 다른 표현 방법이 있다면, 이들 역시 포함할 것</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vocab(PlaceName) &#123;</span><br><span class="line">    인천공항,</span><br><span class="line">    인천 공항,</span><br><span class="line">    인천국제공항,</span><br><span class="line">    인천 국제 공항,</span><br><span class="line">    인천 국제공항,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>enum vocab에 ‘key’값이 단어 set에서도 필요하다면, 단어 set 에도 한번 더 명시할 것</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vocab (CuisineStyle) &#123;</span><br><span class="line">    &quot;한식&quot; &#123;</span><br><span class="line">        &quot;한식&quot;,</span><br><span class="line">        &quot;한식당&quot;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>태깅 시 조사는 제외</p>
+<ul>
+<li>명사 tagging 시, 조사 제외하고 tagging 진행(“행”, “발” 등 제외)</li>
+</ul>
+</li>
+<li>명사/동사 vocab <ul>
+<li>기본적으로 명사를 tagging 하는 것이 권장되나, 명사 외 tagging이 필요하다면, flag나 role로 문장 전체에 tagging 가능</li>
+<li>필요하다면 동사 tagging 가능하나, 주의할 점은 vocab 생성 시 다양한 표현을 입력할 것</li>
+</ul>
+</li>
+</ol>
+<p><br></p>
+<h1 id="Bixby-Studio"><a href="#Bixby-Studio" class="headerlink" title="Bixby Studio"></a>Bixby Studio</h1><h3 id="New-Capsule-생성"><a href="#New-Capsule-생성" class="headerlink" title="New Capsule 생성"></a>New Capsule 생성</h3><ul>
+<li>capsule.bxb 파일 생성 : 해당 capsule의 id(‘.’ 기준으로 앞이 팀명, 뒤가 캡슐명) 및 기타 정보 입력<ul>
+<li>playground.***(상용화 불가능 캡슐)<br>–&gt; 상용화하기 위해서는 캡슐 id 등록 필요<br>–&gt; <a href="bixbydevelopers.com">bixby developers site</a> 접속<br>–&gt; 좌측 ‘Teams &amp; Capsules’ 클릭<br>–&gt; ‘+ Create Team’ 클릭 및 팀명 입력<br>–&gt; ‘+ Register Capsule’ 캡슐명 입력<br>–&gt; ‘000(팀명).000(캡슐명)’ 캡슐 생성 완료</li>
+<li>targets : 어떤 device에서 사용할 것인지 결정(ex. bixby-mobile-ko-KR -&gt; language code 참고)<br>–&gt; resources의 training 옵션에 영향을 미침</li>
+</ul>
+</li>
+<li>code(비즈니스 로직) 폴더, models(모델링) 폴더, resources(UX/UI) 폴더 생성</li>
+</ul>
+<h3 id="모델링-폴더-세분화"><a href="#모델링-폴더-세분화" class="headerlink" title="모델링 폴더 세분화"></a>모델링 폴더 세분화</h3><ul>
+<li>models 폴더 하위로 actions, concepts 폴더 생성<ul>
+<li>actions : input과 output으로 이루어진 함수 (특정 js 파일이 실행될 때 input으로 받아야 할 변수명, type, min, max 값 정의 및 output으로 전달해야 할 객체 정의)</li>
+<li>concepts : primitives + structures로 이루어진 각 변수들의 형 type 정의 (primitives, structures 폴더 생성)<ul>
+<li>primitives : name, integer, enum, text, boolean과 같은 형 type 정의<ul>
+<li>Enum : 가능한 모든 value 나열 가능 (ex. 한국 프로야구 구단)<br>–&gt; vocab에 관련 단어들 정의 필수</li>
+<li>Name : 가능한 모든 value 나열 불가능하나, 이름으로 알 수 있는 형태(ex. 서울대 근처 식당 음식 이름)<br>–&gt; 가능하면 vocab 만들어서 늘어나는 training 개수 조절하는 것도 필요</li>
+<li>Text : 가능한 모든 value 나열 불가능하며, 이름으로도 알 수 없음(ex. 핸드폰 알람 설정 내용)</li>
+</ul>
+</li>
+<li>structures : 여러 변수들을 갖고 있는 객체에 대한 property 정의</li>
+<li>roll-of 와 extends의 차이<ul>
+<li>roll-of : 그 모델의 특성을 그대로 사용</li>
+<li>extends : 그 모델의 특성에 무언가 추가하여 사용</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>캡슐 폴더 하위로 assets 폴더 &gt; images 폴더 &gt;  로고 이미지 파일 추가</li>
+<li>모델링 파일은 맨 앞글자를 대문자로 사용(그 이후는 camelcase 형태)<ul>
+<li>비즈니스 로직 관련된 것은 맨 앞글자를 소문자로 사용</li>
+</ul>
+</li>
+<li>모델링 파일의 description –&gt; 해당 모델링에 대한 설명</li>
+</ul>
+<h3 id="비즈니스-로직-파일-생성"><a href="#비즈니스-로직-파일-생성" class="headerlink" title="비즈니스 로직 파일 생성"></a>비즈니스 로직 파일 생성</h3><ul>
+<li>code &gt; *.js 파일 생성<ul>
+<li>어떤 input 데이터를 받아와서 어떤 output의 데이터를 전달할지 비즈니스 로직 작성</li>
+</ul>
+</li>
+</ul>
+<h3 id="UX-UI-폴더-세분화"><a href="#UX-UI-폴더-세분화" class="headerlink" title="UX/UI 폴더 세분화"></a>UX/UI 폴더 세분화</h3><ul>
+<li>resources 폴더 &gt; base 폴더 &gt; endpoints.bxb 파일 생성<ul>
+<li>actions <--> code 연결시켜주는 역할</--></li>
+<li>모델링해서 바로 외부서버와 연동해도 되는 경우, remote-endpoint에 바로 설정</li>
+</ul>
+</li>
+<li>resources 폴더 &gt; ko-KR 폴더 &gt; training 파일 생성 (훈련 및 학습 역할)<ul>
+<li>training은 Goal당 30개 이상 권장</li>
+<li>training 발화는 모두 ‘Learned’ 상태여야 함(‘Not Learned’는 대부분 vocab 오류)</li>
+</ul>
+</li>
+<li>resources 폴더 &gt; ko-KR 폴더 &gt; dialog 폴더 생성 (상황별 화면에 조회될 메시지 전달 목적)</li>
+<li>resources 폴더 &gt; ko-KR 폴더 &gt; layout 폴더 생성 (사용자에게 제공할 UX/UI 레이아웃)</li>
+<li>resources 폴더 &gt; ko-KR 폴더 &gt; views 폴더 생성(사용자에게 제공할 UX/UI 뷰)</li>
+<li>resources 폴더 &gt; ko-KR 폴더 &gt; vocab 폴더 생성 (models &gt; concepts &gt; primitives에서 정의한 enum 변수에 대해 연관있는 모든 단어들을 정의)</li>
+<li>resources 폴더 &gt; ko-KR 폴더 &gt; capsule-info.bxb 파일 생성(캡슐에 대한 기본 정보 입력)</li>
+<li>resources 폴더 &gt; ko-KR 폴더 &gt; 000.hints.bxb 파일 생성(빅스비 캡슐의 원활한 학습을 위해 사용자로부터 예상되는 발화에 대한 문구 입력)<ul>
+<li>hints는 10개 이상 작성 권장</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h1 id="Bixby-테스트"><a href="#Bixby-테스트" class="headerlink" title="Bixby 테스트"></a>Bixby 테스트</h1><h3 id="빅스비-캡슐의-학습-및-훈련-실시"><a href="#빅스비-캡슐의-학습-및-훈련-실시" class="headerlink" title="빅스비 캡슐의 학습 및 훈련 실시"></a>빅스비 캡슐의 학습 및 훈련 실시</h3><ul>
+<li>resources &gt; ko-KR &gt; training 클릭</li>
+<li>‘Adding New Training’ 부분에 ‘햄버거 1개랑 콜라1개 주문해’ 발화 입력</li>
+<li>‘Goal’부분에 발화가 실행되길 원하는 actions 이름 입력</li>
+<li>‘NL’에서 input으로 받아올 데이터와 일치하는 부분의 발화 드래그 &gt; concepts에서 해당 데이터 이름 입력<ul>
+<li>ex) ‘햄버거 1개 주문해줘’<br>–&gt; 햄버거 : FoodName<br>–&gt; 1개 : NumberOfFood</li>
+</ul>
+</li>
+<li>우측 상단의 ‘Compile NL Model’ 버튼 클릭</li>
+<li>등록한 발화들의 상태가 Not Learned -&gt; Learned 로 변환</li>
+<li>특정 발화의 ‘Open In Simulator’ 클릭하여 예상 시뮬레이션 진행</li>
+</ul>
+<h3 id="Training-시-권장사항"><a href="#Training-시-권장사항" class="headerlink" title="Training 시 권장사항"></a>Training 시 권장사항</h3><ol>
+<li>표현이나 띄어쓰기는 최소한 ASR 기준으로 지원<ul>
+<li>예를 들어, ‘삼성 뮤직’은 ASR에서 ‘Samsung Music’으로 변환되듯이 형태 달라질 수 있음</li>
+</ul>
+</li>
+<li>Goal 당 10개 미만의 학습은 지양</li>
+<li>다양한 형태의 parameter 학습<ul>
+<li>단어수와 형태가 다양한 entry(숫자, 한글, 영어)들이 존재한다면 이들에 대한 학습 필수</li>
+</ul>
+</li>
+</ol>
+<h3 id="모바일-빅스비에서-실제-발화-테스트"><a href="#모바일-빅스비에서-실제-발화-테스트" class="headerlink" title="모바일 빅스비에서 실제 발화 테스트"></a>모바일 빅스비에서 실제 발화 테스트</h3><ul>
+<li>모바일 빅스비 &gt; 설정 &gt; 빅스비 보이스 정보 &gt; 버전 부분을 톡톡 터치 &gt; 개발자 옵션 on</li>
+<li>모바일 빅스비 &gt; 설정 &gt; 개발자 옵션 &gt; 디바이스로 테스트하기 &gt; 사용중 &gt; Revision ID &gt; bixby studio에서 submission history의 ID 입력</li>
+</ul>
+<p><br></p>
+<h1 id="OAuth-연동-방법"><a href="#OAuth-연동-방법" class="headerlink" title="OAuth 연동 방법"></a>OAuth 연동 방법</h1><p>현재 빅스비는 구글 OAuth만 연동 가능</p>
+<ol>
+<li><p>구글 사용자 인증정보 만들기 &gt; OAuth 클라이언트 ID 클릭 &gt; 웹 애플리케이션 선택 &gt; 이름 입력 &gt; aibixby.com 입력 &gt; 승인된 리디렉션 URI &gt; <a href="https://jonus-jonus.oauth.aibixby.com/auth/external/cb" target="_blank" rel="noopener">https://jonus-jonus.oauth.aibixby.com/auth/external/cb</a> 입력 &gt; 클라이언트 Id, 보안비밀 확인</p>
+</li>
+<li><p>capsule id를 capsule.bxb에 입력</p>
+</li>
+<li>캡슐 폴더 하위로 authorization.bxb 생성 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">authorization &#123;</span><br><span class="line">    <span class="comment">// Google book api에 대한 OAuth 권한을 얻은 후, OAuth_URI, client_id, client_secret, Token_URI를 알맞은 정보로 변경</span></span><br><span class="line">    user &#123;</span><br><span class="line">        oauth2-authorization-code (google)&#123;</span><br><span class="line">        authorize-endpoint (https:<span class="comment">//accounts.google.com/o/oauth2/v2/auth)</span></span><br><span class="line">        client-id (<span class="number">570500524886</span>-a2hdpg3qvgt29avko6lvo4q3is28520i.apps.googleusercontent.com)</span><br><span class="line">        client-secret-key (jonus) </span><br><span class="line">        <span class="comment">//client-secret은 team -&gt; capsule에서 설정 (https://bixbydevelopers.com/dev/docs/reference/ref-topics/capsule-config#config-secrets)</span></span><br><span class="line">        scope (email profile openid https:<span class="regexp">/ /</span>www.googleapis.com/auth/books)</span><br><span class="line">        token-endpoint (https:<span class="regexp">/ /</span>www.googleapis.com/oauth2/v4/token)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-08-25T08:00:21.000Z" itemprop="datePublished">
+              2019-08-25
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Javascript/">Javascript</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Bixby/">Bixby</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
