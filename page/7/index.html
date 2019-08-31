@@ -72,6 +72,116 @@
     <header class="title">
       
         <h1>
+          <a href="/2019/06/04/190604-django-ELB-SSL/">장고 - 로드밸런서에 SSL 인증서 적용</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-06-04T08:00:21.000Z" itemprop="datePublished">
+    2019-06-04
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/ssl/">ssl</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/ELB/">ELB</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="1-인증서-적용할-로드밸런서-선택-및-하단-리스너-탭의-리스너-추가-버튼-클릭"><a href="#1-인증서-적용할-로드밸런서-선택-및-하단-리스너-탭의-리스너-추가-버튼-클릭" class="headerlink" title="1. 인증서 적용할 로드밸런서 선택 및 하단 리스너 탭의 [리스너 추가] 버튼 클릭"></a>1. 인증서 적용할 로드밸런서 선택 및 하단 리스너 탭의 [리스너 추가] 버튼 클릭</h3><ul>
+<li>프로토콜과 포트 HTTPS:443 으로 설정</li>
+<li>기본작업은 [다음으로 전달] 선택하고 리스너 그룹 선택</li>
+<li>여기서는 보안 정책 [2016-08] 선택</li>
+<li>기본 SSL 인증서는 기존 ACM에서 발급받아둔 인증서 선택 및 [저장] 버튼 클릭</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/06/04/190604-django-ELB-SSL/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/06/04/190604-django-ELB-setting/">장고 - ELB 셋팅</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2019-06-04T07:00:21.000Z" itemprop="datePublished">
+    2019-06-04
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Django/">Django</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="ELB-Elastic-Load-Balancing-란"><a href="#ELB-Elastic-Load-Balancing-란" class="headerlink" title="ELB(Elastic Load Balancing)란?"></a>ELB(Elastic Load Balancing)란?</h2><hr>
+<ul>
+<li>ELB는 AWS의 Load Balancer 서비스이다.</li>
+<li>크게 클래식, 네트워크, 애플리케이션 로드밸런서로 구성되어 있으며,</li>
+<li>보통의 경우 애플리케이션 로드밸런서를 사용하는 것이 편리하다.</li>
+<li>ELB는 복수의 서버에 적절한 트래픽을 분산시키기 위해 사용하며,</li>
+<li>보통의 경우 R.R 방식을 사용해 트래픽을 분산한다.</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2019/06/04/190604-django-ELB-setting/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
           <a href="/2019/06/03/190603-django-ACM-SSL/">장고 - ACM으로 SSL 인증서 발급</a>
         </h1>
       
@@ -466,97 +576,6 @@
         
           <div class="more-link">
             <a href="/2019/05/29/190529-django-media-serving/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/28/190528-github-cowork/">Git - git을 이용한 협업</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-28T14:11:10.000Z" itemprop="datePublished">
-    2019-05-28
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Git/">Git</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <ul>
-<li>PM과 팀원들이 깃허브를 통해 개발 협업을 진행 할 때, </li>
-<li>로컬저장소 develop 브런치와 원격저장소 develop 브런치 사이에서 push와 pull을 사용하여 협업을 진행하게 된다.</li>
-<li>아래와 같이 PM과 팀원 간 협업 절차를 간략하게 나타내보았다.</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2019/05/28/190528-github-cowork/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class="ListView">
-    <header class="title">
-      
-        <h1>
-          <a href="/2019/05/27/190527-django-ckeditor/">장고 - CKEditor 이미지 파일 업로더 설정</a>
-        </h1>
-      
-      <div class="ListMeta">
-  <time datetime="2019-05-27T14:22:31.000Z" itemprop="datePublished">
-    2019-05-27
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Django/">Django</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/CKEditor/">CKEditor</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h3 id="1-django-ckeditor-설치"><a href="#1-django-ckeditor-설치" class="headerlink" title="1. django-ckeditor 설치"></a>1. django-ckeditor 설치</h3><pre><code>$ pip install django-ckeditor
-</code></pre>
-        
-          <div class="more-link">
-            <a href="/2019/05/27/190527-django-ckeditor/#more">Read On »</a>
           </div>
         
       

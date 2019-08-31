@@ -8,6 +8,30 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/08/22/190822-python-study-call-by/</loc>
+        <lastmod>2019-08-31T17:48:31.598Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/08/28/190828-computer-science-study-ascii-unicode/</loc>
+        <lastmod>2019-08-31T17:42:37.718Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/19/190519-django-login-method/</loc>
+        <lastmod>2019-08-31T07:42:18.197Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/08/25/190825-bixby-capsule-develop/</loc>
         <lastmod>2019-08-29T17:29:03.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -610,14 +634,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/05/20/190520-django-debug-tool-bar/</loc>
         <lastmod>2019-07-06T04:15:13.912Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/19/190519-django-login-method/</loc>
-        <lastmod>2019-07-06T04:15:07.040Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
