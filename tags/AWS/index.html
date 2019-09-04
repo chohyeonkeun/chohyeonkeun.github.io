@@ -462,7 +462,7 @@
     <header class="title">
       
         <h1>
-          <a href="/2019/05/09/190509-django-AWS-2/">장고 - AWS 도메인 연결 방법_2</a>
+          <a href="/2019/05/09/190509-django-AWS-2/">장고 - AWS Route 53 연결 및 RDS 연동 방법</a>
         </h1>
       
       <div class="ListMeta">
@@ -481,6 +481,14 @@
   { <a href="/tags/AWS/">AWS</a> }
   </li>
 
+  <li class="meta-text">
+  { <a href="/tags/RDS/">RDS</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Route-53/">Route 53</a> }
+  </li>
+
 
   </ul>
   
@@ -490,14 +498,14 @@
     </header>
     <div>
       
-        <h2 id="9-AWS-gt-네트워킹-및-콘텐츠-전송-gt-Route-53"><a href="#9-AWS-gt-네트워킹-및-콘텐츠-전송-gt-Route-53" class="headerlink" title="9. AWS &gt; 네트워킹 및 콘텐츠 전송 &gt; Route 53"></a>9. AWS &gt; 네트워킹 및 콘텐츠 전송 &gt; Route 53</h2><p>보유한 도메인의 네임서버를 설정해주는 작업을 수행할 것이다.</p>
+        <h2 id="1-AWS-gt-네트워킹-및-콘텐츠-전송-gt-Route-53"><a href="#1-AWS-gt-네트워킹-및-콘텐츠-전송-gt-Route-53" class="headerlink" title="1. AWS &gt; 네트워킹 및 콘텐츠 전송 &gt; Route 53"></a>1. AWS &gt; 네트워킹 및 콘텐츠 전송 &gt; Route 53</h2><p>보유한 도메인의 네임서버를 설정해주는 작업을 수행할 것이다.</p>
 <ul>
 <li>DNS 관리 시작</li>
 <li>호스팅 영역 생성 &gt; 도메인 이름 입력 &gt; 생성</li>
 <li>해당 도메인 선택 &gt; TTL 설정(ex. 1분)</li>
 <li>NS 유형의 value 복사하여 도메인 웹호스팅 사이트(가비아)에 네임서버로 설정</li>
 </ul>
-<h2 id="10-HTTP로-연결-https는-개인키-공용키-구입-필요"><a href="#10-HTTP로-연결-https는-개인키-공용키-구입-필요" class="headerlink" title="10. HTTP로 연결 (https는 개인키, 공용키 구입 필요)"></a>10. HTTP로 연결 (https는 개인키, 공용키 구입 필요)</h2><blockquote>
+<h2 id="2-HTTP로-연결-https는-개인키-공용키-구입-필요"><a href="#2-HTTP로-연결-https는-개인키-공용키-구입-필요" class="headerlink" title="2. HTTP로 연결 (https는 개인키, 공용키 구입 필요)"></a>2. HTTP로 연결 (https는 개인키, 공용키 구입 필요)</h2><blockquote>
 <p>경로 : dstagram_project &gt; config &gt; settings.py</p>
 </blockquote>
 <p><code>AWS_S3_SECURE_URLS = False</code></p>
@@ -518,7 +526,7 @@
     <header class="title">
       
         <h1>
-          <a href="/2019/05/08/190508-django-AWS-1/">장고 - AWS 도메인 연결 방법_1</a>
+          <a href="/2019/05/08/190508-django-AWS-S3/">장고 - AWS S3 연동 방법</a>
         </h1>
       
       <div class="ListMeta">
@@ -535,6 +543,10 @@
 
   <li class="meta-text">
   { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/S3/">S3</a> }
   </li>
 
 
@@ -560,7 +572,7 @@
 <p><br><br>
         
           <div class="more-link">
-            <a href="/2019/05/08/190508-django-AWS-1/#more">Read On »</a>
+            <a href="/2019/05/08/190508-django-AWS-S3/#more">Read On »</a>
           </div>
         
       

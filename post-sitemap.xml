@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/09/190509-django-AWS-2/</loc>
+        <lastmod>2019-09-04T07:28:44.224Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/05/08/190508-django-AWS-S3/</loc>
+        <lastmod>2019-09-04T07:27:28.539Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/08/22/190822-python-study-call-by/</loc>
         <lastmod>2019-08-31T17:52:47.989Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -122,14 +138,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/06/19/190619-django-elastic-beanstalk/</loc>
         <lastmod>2019-08-05T14:18:46.086Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/08/190508-django-AWS-1/</loc>
-        <lastmod>2019-08-04T16:25:15.545Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -706,14 +714,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/05/10/190510-django-Ajax/</loc>
         <lastmod>2019-07-06T04:13:49.936Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/09/190509-django-AWS-2/</loc>
-        <lastmod>2019-07-06T04:13:43.272Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
