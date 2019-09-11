@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>컴퓨터 공학 - 기수법 및 비트, 보수 학습 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/09/05/190905-computer-science-numeral-system-bit-complement/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>컴퓨터 공학 - 기수법 및 비트, 보수 학습</h1>
+    </header>
+
+    <section>
+      <h2 id="기수법"><a href="#기수법" class="headerlink" title="기수법"></a>기수법</h2><ul>
+<li>10진수(DEC, decimal) : 0, 1, 2, 3, 4, 5, 6, 7, 8, 9</li>
+<li>2진수(BIN, binary) : 0, 1</li>
+<li>8진수 (OCT, octal) : 0, 1, 2, 3, 4, 5, 6, 7</li>
+<li>16진수 (HEX, hexadecimal) : 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, d, e, f</li>
+</ul>
+<a id="more"></a>
+<h3 id="16진수-↔-2진수-변환-방법"><a href="#16진수-↔-2진수-변환-방법" class="headerlink" title="16진수 ↔ 2진수 변환 방법"></a>16진수 ↔ 2진수 변환 방법</h3><p>16진수에 2진수 4자리 설정할 것<br><strong>예시</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fa(16) --&gt; 11111010(2)</span><br><span class="line">74(16) --&gt; 01110100(2)</span><br></pre></td></tr></table></figure></p>
+<p><strong>참고</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = 0b1010 (0b : binary라는 의미)</span><br><span class="line">hex(a) --&gt; 0xa (0x : hex라는 의미)</span><br></pre></td></tr></table></figure></p>
+<p><br><br><br></p>
+<h2 id="32bit와-64bit-나누는-기준"><a href="#32bit와-64bit-나누는-기준" class="headerlink" title="32bit와 64bit 나누는 기준"></a>32bit와 64bit 나누는 기준</h2><ul>
+<li>한번에 보낼 수 있는 데이터의 양</li>
+<li>32bit : CPU에서 RAM으로 연결된 와이어가 32개 (와이어 1개당 1bit 전송)</li>
+<li>64bit : CPU에서 RAM으로 연결된 와이어가 64개</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CPU에서 RAM으로 데이터 전송 시, 32bit의 경우 2진수로 32자리를 주소로 할당하게 되는데, 길이가 너무 길어서 16진수로 주소를 할당한다.</span><br><span class="line">ex) 1010 1111 1111 1111 ... 1111(2) --&gt; afffffff(16)</span><br></pre></td></tr></table></figure>
+<p><strong>32bit</strong><br>2^32개의 2진수로 표현 가능 (약 4G개의 byte로 구성 –&gt; 램 4GB까지만 돌아갈 수 있다.)</p>
+<p><strong>64bit</strong><br>2^64개의 2진수로 표현 가능(약 18exa개의 byte로 구성)</p>
+<p><br><br><br></p>
+<h2 id="high-level-language-amp-low-level-language"><a href="#high-level-language-amp-low-level-language" class="headerlink" title="high-level language &amp; low-level-language"></a>high-level language &amp; low-level-language</h2><h3 id="high-leve-language"><a href="#high-leve-language" class="headerlink" title="high-leve language"></a>high-leve language</h3><ul>
+<li>대표언어: C, C++ &lt;&lt; Python, Javascript</li>
+<li>CPU가 달라져도, compile만 다시 돌리면 된다. <ul>
+<li>코딩 완료 이후, compile만 돌린다. (대신 메모리 바이트에 따라 int, short, char를 선택해야 한다.)</li>
+</ul>
+</li>
+</ul>
+<h3 id="low-level-language"><a href="#low-level-language" class="headerlink" title="low-level language"></a>low-level language</h3><ul>
+<li>대표언어 : assembly language</li>
+<li>하드웨어에 binding되어 있다. –&gt; 코딩 모두 완료해도, CPU 달라지면 다시 짜야 한다.</li>
+</ul>
+<blockquote>
+<p>하드웨어 추상화</p>
+<ul>
+<li>CPU 레지스트리, 메모리 상관없이 독립적인 코딩 작성을 허용한다.</li>
+<li>하드웨어의 차이를 숨겨서 응용 프로그램이 작동할 수 있는 일관된 플랫폼을 제공한다.)</li>
+</ul>
+</blockquote>
+<p><br><br><br></p>
+<h2 id="음의-정수-표현"><a href="#음의-정수-표현" class="headerlink" title="음의 정수 표현"></a>음의 정수 표현</h2><ol>
+<li>부호 비트는 1</li>
+<li>정수를 2의 보수(two’s complement)로 저장<ul>
+<li>ex) -43 -&gt; 43 -&gt; 0010 1011(2) -&gt; 1101 0100(2) (1의 보수) -&gt; 1101 0101(2) (2의 보수)</li>
+</ul>
+</li>
+</ol>
+<p><strong>9의 보수</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3의 9의 보수는 6이다. </span><br><span class="line">--&gt; 한자리 수에서 가장 큰 수가 되기 위해 더하는 값</span><br><span class="line">23의 9의 보수는 76이다. </span><br><span class="line">--&gt; 두자리 수에서 가장 큰 수가 되기 위해 더하는 값</span><br></pre></td></tr></table></figure></p>
+<p><strong>1의 보수</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10110101(2)의 1의 보수는 01001010(2)</span><br><span class="line">--&gt; 11111111(2)가 되기 위해 더하는 값</span><br></pre></td></tr></table></figure></p>
+<p><strong>2의 보수</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10110101(2)의 2의 보수는 01001011(2)</span><br><span class="line">--&gt; 1의 보수에서 마지막 자리에 +1한 값</span><br></pre></td></tr></table></figure></p>
+<h3 id="보수를-만든-이유"><a href="#보수를-만든-이유" class="headerlink" title="보수를 만든 이유"></a>보수를 만든 이유</h3><ul>
+<li>CPU에서는 빼기(-) 기능이 없다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">9 - 4 </span><br><span class="line">= 9 + (-4)</span><br><span class="line">= 1001(2) + 1100(2)</span><br><span class="line">= 0101(2)</span><br><span class="line">= 5</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-09-05T08:00:21.000Z" itemprop="datePublished">
+              2019-09-05
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Computer-Science/">Computer Science</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Study/">Study</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

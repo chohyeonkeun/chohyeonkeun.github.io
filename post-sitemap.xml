@@ -8,6 +8,30 @@
     </url>
 
     <url>
+        <loc>https://chohyeonkeun.github.io/2019/08/16/190816-computer-science-study-1/</loc>
+        <lastmod>2019-09-11T16:16:40.854Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/09/08/190908-algorithm-postfix-calculate/</loc>
+        <lastmod>2019-09-11T16:15:06.656Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://chohyeonkeun.github.io/2019/09/05/190905-computer-science-numeral-system-bit-complement/</loc>
+        <lastmod>2019-09-10T17:08:09.386Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://chohyeonkeun.github.io/2019/09/02/190902-django-ajax-user-search-invite/</loc>
         <lastmod>2019-09-08T16:02:09.794Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -82,14 +106,6 @@
     <url>
         <loc>https://chohyeonkeun.github.io/2019/08/19/190819-python-study-1/</loc>
         <lastmod>2019-08-26T10:59:57.186Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://chohyeonkeun.github.io/2019/08/16/190816-computer-science-study-1/</loc>
-        <lastmod>2019-08-26T10:59:45.703Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

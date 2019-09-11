@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>알고리즘 - 후위 표기법 학습 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/09/08/190908-algorithm-postfix-calculate/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>알고리즘 - 후위 표기법 학습</h1>
+    </header>
+
+    <section>
+      <h2 id="후위-계산"><a href="#후위-계산" class="headerlink" title="후위 계산"></a><a href="https://github.com/chohyeonkeun/python_study/blob/master/Stack_and_Queue/190313_calculate_postfix.py" target="_blank" rel="noopener">후위 계산</a></h2><p>ex) 2 5 + 3 <em> 2 1 + </em> = 63</p>
+<ol>
+<li>25+에서 연산자 ‘+’를 만났을 때, 멈추고 2+5 실시</li>
+<li>73<em>에서 연산자 ‘</em>‘를 만났을 때, 멈추고 7×3 실시</li>
+<li>2121+에서 ‘+’ 앞에 두 숫자 2+1 실시</li>
+<li>213* 에서 21×3 실시</li>
+</ol>
+<a id="more"></a>
+<p><br></p>
+<h2 id="후위-표기법-계산-알고리즘"><a href="#후위-표기법-계산-알고리즘" class="headerlink" title="후위 표기법 계산 알고리즘"></a>후위 표기법 계산 알고리즘</h2><ol>
+<li>피연산자(숫자)는 바로 stack에 담는다.</li>
+<li>연산자가 나오면, stack 맨 위 숫자를 뒤에 두고, 그 아래 숫자를 앞에 두어 서로 연산한다.</li>
+</ol>
+<p><br></p>
+<h2 id="중위표기법-gt-후위표기법-변환-방법"><a href="#중위표기법-gt-후위표기법-변환-방법" class="headerlink" title="중위표기법 -&gt; 후위표기법 변환 방법"></a><a href="https://github.com/chohyeonkeun/python_study/blob/master/Stack_and_Queue/180313%20convert_to_postfix.py" target="_blank" rel="noopener">중위표기법 -&gt; 후위표기법 변환 방법</a></h2><p>ex) 중위 표기법 : (2 + 5) <em> 3 </em> (2 + 1) / 후위 표기법 : 2 5 + 3 <em> 2 1 + </em></p>
+<ol>
+<li>listExp = []</li>
+<li>stack에 ‘(‘를 쌓는다. -&gt; stack = [‘(‘,]</li>
+<li>피연산자는 바로 수식 리스트로 이동 -&gt; listExp = [2]</li>
+<li>‘(‘가 ‘+’보다 가중치가 낮으므로, ‘+’를 stack에 쌓는다. -&gt; stack = [‘(‘, ‘+’]</li>
+<li>피연산자 5를 수식 리스트로 이동 -&gt; listExp = [2, 5]</li>
+<li>‘)’를 만나는 순간 ‘(‘ 위에 있는 모든 연산자를 pop하여, 순서대로 수식 리스트로 이동시키고, ‘(‘는 버리고 ‘)’도 버린다. -&gt; listExp = [2, 5, ‘+’], stack = []</li>
+<li>stack에 ‘<em>‘를 쌓는다. -&gt; stack = [‘</em>‘]</li>
+<li>피연산자 3을 수식 리스트로 이동 -&gt; listExp = [2, 5, ‘+’, 3]</li>
+<li>stack에 있는 ‘<em>‘가 ‘</em>‘보다 가중치가 높거나 같으므로, stack의 ‘<em>‘를 수식리스트에 이동시킨다. -&gt; listExp =  [2, 5, ‘+’, 3, ‘</em>‘], stack = [‘*’]</li>
+<li>‘(‘는 가중치에 상관없이 무조건 stack에 쌓는다. -&gt; stack = [‘*’, ‘(‘]</li>
+<li>피연산자 2를 수식 리스트로 이동 -&gt; listExp = [2, 5, ‘+’, 3, ‘*’, 2]</li>
+<li>‘+’가 ‘(‘보다 가중치가 높으므로 stack에 쌓는다. -&gt; stack = [‘*’, ‘(‘, ‘+’]</li>
+<li>피연산자 1을 수식 리스트로 이동 -&gt; listExp = [2, 5, ‘+’, 3, ‘*’, 2, 1]</li>
+<li>‘)’ 만나는 순간 ‘(‘ 위에 모든 연산자를 수식리스트에 이동시키고, ‘(‘ 제거 -&gt; stack = [‘<em>‘], listExp = [2, 5, ‘+’, 3, ‘</em>‘, 2, 1, ‘+’]</li>
+<li>stack에 남아있는 모든 연산자를 수식리스트로 이동 -&gt; listExp = [2, 5, ‘+’, 3, ‘<em>‘, 2, 1, ‘+’, ‘</em>‘]</li>
+</ol>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-09-08T08:00:21.000Z" itemprop="datePublished">
+              2019-09-08
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Python/">Python</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Algorithm/">Algorithm</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
