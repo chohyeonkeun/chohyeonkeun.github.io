@@ -10,7 +10,7 @@
   <meta property="og:title" content="조누스의 걸음마 개발로그">
   <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
   <meta property="og:url" content="https://chohyeonkeun.github.io">
-  <title>SQL - 명령어 학습 | 조누스의 걸음마 개발 로그</title>
+  <title>SQL - 기본 문법 학습 | 조누스의 걸음마 개발 로그</title>
   
   
   
@@ -67,11 +67,11 @@
             <div>
   <article class="ContentView">
     <header class="PageTitle">
-        <h1>SQL - 명령어 학습</h1>
+        <h1>SQL - 기본 문법 학습</h1>
     </header>
 
     <section>
-      <h2 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h2><ul>
+      <h3 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h3><ul>
 <li>Data Definition Language<ul>
 <li>CREATE</li>
 <li>ALTER</li>
@@ -81,7 +81,7 @@
 </li>
 </ul>
 <a id="more"></a>
-<h2 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h2><ul>
+<h3 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h3><ul>
 <li>Data Manipulation Language<ul>
 <li>INSERT</li>
 <li>UPDATE</li>
@@ -90,7 +90,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h2><ul>
+<h3 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h3><ul>
 <li>Data Control Language<ul>
 <li>GRANT</li>
 <li>REVOKE</li>
@@ -116,7 +116,9 @@
 <h4 id="Customers-테이블에-Contact-Username-column-field-을-생성하고-그-값에-‘01082821004’-‘홍길동’을-저장하라"><a href="#Customers-테이블에-Contact-Username-column-field-을-생성하고-그-값에-‘01082821004’-‘홍길동’을-저장하라" class="headerlink" title="Customers 테이블에 Contact, Username column(field)을 생성하고, 그 값에 ‘01082821004’, ‘홍길동’을 저장하라."></a>Customers 테이블에 Contact, Username column(field)을 생성하고, 그 값에 ‘01082821004’, ‘홍길동’을 저장하라.</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Customers (</span><br><span class="line">    Contact,</span><br><span class="line">    Username</span><br><span class="line">) <span class="keyword">VALUES</span> (</span><br><span class="line">    <span class="string">'01082821004'</span>,</span><br><span class="line">    <span class="string">'홍길동'</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p><br></p>
 <h3 id="CREATE-TABLE"><a href="#CREATE-TABLE" class="headerlink" title="CREATE TABLE"></a>CREATE TABLE</h3><hr>
-<h4 id="Students-테이블에서-모든-객체를-복제하여-Student-cp-테이블을-생성하라"><a href="#Students-테이블에서-모든-객체를-복제하여-Student-cp-테이블을-생성하라" class="headerlink" title="Students 테이블에서 모든 객체를 복제하여 Student_cp 테이블을 생성하라."></a>Students 테이블에서 모든 객체를 복제하여 Student_cp 테이블을 생성하라.</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Student_cp (<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Students);</span><br></pre></td></tr></table></figure>
+<h4 id="classes-테이블을-생성하고-그-column에는-classID-num-students를-생성하라"><a href="#classes-테이블을-생성하고-그-column에는-classID-num-students를-생성하라" class="headerlink" title="classes 테이블을 생성하고, 그 column에는 classID, num_students를 생성하라."></a>classes 테이블을 생성하고, 그 column에는 classID, num_students를 생성하라.</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> classes (</span><br><span class="line">classID <span class="built_in">INT</span> AUTO_INCREMENT <span class="keyword">NOT</span> <span class="literal">NULL</span> PRIMARY <span class="keyword">KEY</span>, </span><br><span class="line">num_students <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h4 id="students-테이블을-생성하고-그-column에는-studentID-studentName-height-score-birthday-classID를-생성하라"><a href="#students-테이블을-생성하고-그-column에는-studentID-studentName-height-score-birthday-classID를-생성하라" class="headerlink" title="students 테이블을 생성하고, 그 column에는 studentID, studentName, height, score, birthday, classID를 생성하라."></a>students 테이블을 생성하고, 그 column에는 studentID, studentName, height, score, birthday, classID를 생성하라.</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> students (</span><br><span class="line">studentID <span class="built_in">INT</span> AUTO_INCREMENT <span class="keyword">NOT</span> <span class="literal">NULL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">studentName <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">height <span class="built_in">SMALLINT</span> <span class="keyword">DEFAULT</span> <span class="number">200</span>,</span><br><span class="line">score <span class="built_in">SMALLINT</span> <span class="literal">NULL</span>,</span><br><span class="line">birthday <span class="built_in">DATE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">classID <span class="built_in">INT</span> <span class="literal">NULL</span>,</span><br><span class="line"><span class="keyword">FOREIGN</span> <span class="keyword">KEY</span>(classID) <span class="keyword">REFERENCES</span> classes (classID)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h4 id="students-테이블에서-모든-객체를-복제하여-student-cp-테이블을-생성하라"><a href="#students-테이블에서-모든-객체를-복제하여-student-cp-테이블을-생성하라" class="headerlink" title="students 테이블에서 모든 객체를 복제하여 student_cp 테이블을 생성하라."></a>students 테이블에서 모든 객체를 복제하여 student_cp 테이블을 생성하라.</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> student_cp (<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students);</span><br></pre></td></tr></table></figure>
 <p><br></p>
 <h3 id="UPDATE-SET"><a href="#UPDATE-SET" class="headerlink" title="UPDATE SET"></a>UPDATE SET</h3><hr>
 <h4 id="Customers-테이블에서-Country가-‘Norway’인-객체에-City-값을-‘Oslo’로-업데이트하라"><a href="#Customers-테이블에서-Country가-‘Norway’인-객체에-City-값을-‘Oslo’로-업데이트하라" class="headerlink" title="Customers 테이블에서 Country가 ‘Norway’인 객체에 City 값을 ‘Oslo’로 업데이트하라."></a>Customers 테이블에서 Country가 ‘Norway’인 객체에 City 값을 ‘Oslo’로 업데이트하라.</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> Customers <span class="keyword">SET</span> City = <span class="string">'Oslo'</span> <span class="keyword">WHERE</span> Country = <span class="string">'Norway'</span>;</span><br></pre></td></tr></table></figure>
