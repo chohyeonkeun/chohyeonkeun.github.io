@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>컴퓨터 공학 - VAS, stack, heap 학습 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/09/17/190917-computer-science-vas-stack-heap/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>컴퓨터 공학 - VAS, stack, heap 학습</h1>
+    </header>
+
+    <section>
+      <h2 id="VAS-가상-주소-공간-Virtual-Address-Space"><a href="#VAS-가상-주소-공간-Virtual-Address-Space" class="headerlink" title="VAS (가상 주소 공간, Virtual Address Space)"></a>VAS (가상 주소 공간, Virtual Address Space)</h2><hr>
+<ul>
+<li>OS가 프로세스 시작할 때 할당해주는 가상 메모리 공간<ul>
+<li>OS가 제공하는 가짜 메모리(프로그래머는 실제 메모리라 간주하고 사용하면 된다.)</li>
+<li>프로세스 시작하면 운영체제(OS)가 4GB 할당(page table 4GB를 만들어준다고 생각하면 된다.)</li>
+<li>프로세스마다 페이지 테이블을 main memory(RAM)에 만들고, pagetable에 첫 주소를 가르켜준다.</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="프로그램-실행-순서"><a href="#프로그램-실행-순서" class="headerlink" title="프로그램 실행 순서"></a>프로그램 실행 순서</h3><ol>
+<li>프로그램 실행 시, 운영체제(OS)는 main Memory(RAM)에 page table 생성하고, 실행에 필요할 것 같은 페이지만 우선 프레임에 매핑(preparing = demand paging -&gt; 내가 필요할 때 요청해서 올린다는 개념)</li>
+<li>RAM에서의 주소값(physical address)과 일치하는 VAS에서의 주소값(logical address)을 pagetable에 저장</li>
+<li>MMU가 VAS 주소값을 RAM 주소값으로 변환하여 MAR로 전달<ul>
+<li>제일 처음엔 frame#이 없어 page fault 발생<ul>
+<li>page fault 발생 시, hard disk에서 코드를 받아와야 하므로 50만 ~ 500만 cycle 기다려야 한다.</li>
+</ul>
+</li>
+<li>MMU (Memory Management Unit) : 논리주소 -&gt; 물리주소 변환</li>
+<li>MAR (Memory Address Register) : 물리주소 저장<ul>
+<li>PC가 이 주소를 읽어와 인스트럭션 가져오고(fetch), 실행(execute)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>RAM이 꽉 차 있으면, 한 프로세스에서 새로운 page#을 받아올 때, valid bit가 0이 된다. -&gt; page fault 발생 -&gt; 잘 돌고 있는 RAM 데이터의 page frame(victim page)을 hard disk의 page file에 옮기고(page out), hard disk에서 새로운 코드를 RAM에 저장하여 frame#을 만든다.(page in)<ul>
+<li>page file : hard disk에서 속도 증대를 위해 RAM 처럼 사용하는 영역</li>
+<li>page out + page in –&gt; paging –&gt; RAM + page file</li>
+</ul>
+</li>
+</ol>
+<h3 id="가상-메모리"><a href="#가상-메모리" class="headerlink" title="가상 메모리"></a>가상 메모리</h3><ul>
+<li>한정된 물리 메모리의 한계를 극복하고자 디스크와 같은 느린 저장장치를 활용해, 애플리케이션들이 더 많은 메모리를 활용할 수 있게 해주는 것<ul>
+<li>메인메모리(RAM)를 확장하기 위해 페이지 파일(page file)로 불리는 하드디스크의 일정 부분을 메인 메모리처럼 사용하는 것</li>
+<li>메인메모리 + 하드디스크 페이지파일 = 물리 메모리</li>
+</ul>
+</li>
+<li>thrashing(스레싱) : 더욱 빨라진 CPU 속도로 인해 요청 수가 급격히 증가하게 되고, page fault 발생 수가 현저히 증가하여 paging이 빈번하게 되는 현상<ul>
+<li>fan이 미친듯이 윙~ 돌게 되는 현상</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h2 id="stack-VS-heap"><a href="#stack-VS-heap" class="headerlink" title="stack VS heap"></a>stack VS heap</h2><hr>
+<h3 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h3><ul>
+<li>장점<ul>
+<li>메모리 할당주소를 찾는 활동 불필요<ul>
+<li>stack pointer가 가르키고 있는 곳 위로 데이터를 쌓기 때문</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>단점<ul>
+<li>저장용량이 default 값으로 1Mbyte 이므로, 용량 초과 시 stack over flow 발생</li>
+</ul>
+</li>
+</ul>
+<h2 id="heap"><a href="#heap" class="headerlink" title="heap"></a>heap</h2><ul>
+<li><p>장점</p>
+<ul>
+<li>stack 과 heap 사이 공간이 꽉 채워지지 않을 때까지 계속해서 메모리 저장 가능<ul>
+<li>stack처럼 저장용량이 default값으로 저장되지 않음</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>단점</p>
+<ol>
+<li>메모리 누수<ul>
+<li>heap에 데이터 저장하고 그 메모리주소를 가르키는 변수가 사라질때 발생한다.</li>
+<li>이 상태에서 for 문으로 계속 돌리다보면, heap에 메모리 누수가 계속 발생하게 되어 결국 서버가 터지게 된다.</li>
+<li><strong>Garbage collection</strong><ul>
+<li>언어차원에서 메모리 관리 제공(heap 관리) -&gt; 메모리 누수 방지</li>
+<li>reference counter(참조한 횟수 카운트)하여 그 값이 0이 되면, Garbage collection이 heap에 저장된 데이터를 지워준다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>느린 속도<ul>
+<li>melloc 함수 자체가 느리다.</li>
+<li>데이터 저장 앞부분 header에게 데이터가 저장될 공간이 있는지 순차적으로 확인해야 한다.</li>
+</ul>
+</li>
+<li>메모리 단편화(memory fragmentation)<ul>
+<li>메모리 전체 공간은 충분하나, 메모리가 듬성듬성 쪼개져 있어서 사실상 할당이 불가능한 것</li>
+<li>python은 heap에서 메모리 저장 공간을 divide하여 stack처럼 쌓을 수 있도록 자동 변환(dynamic heap 기법)<ul>
+<li>메모리 단편화(memory fragmentation) 문제 해결</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-09-17T08:00:21.000Z" itemprop="datePublished">
+              2019-09-17
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Computer-Science/">Computer Science</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Study/">Study</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
