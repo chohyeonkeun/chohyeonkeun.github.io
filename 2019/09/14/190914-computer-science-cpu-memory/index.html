@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>컴퓨터 공학 - CPU, Memory 학습 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/09/14/190914-computer-science-cpu-memory/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>컴퓨터 공학 - CPU, Memory 학습</h1>
+    </header>
+
+    <section>
+      <h2 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h2><hr>
+<ul>
+<li>CPU 내부 : 1개 이상의 core가 있고, 각 core 안에는 CU, ALU, Register 존재</li>
+<li>Instruction : 컴퓨터에게 일을 시키는 실행코드(사람이 작성한 코드 -&gt; 기계어(동작 지시))</li>
+<li>PC (Program Counter) : 다음에 실행될 인스트럭션의 주소값(메모리)을 가르킴</li>
+<li>CU (Control Unit) : IR 값을 참조하여 인스트럭션 실행 (관리자 역할)</li>
+<li>IR (Instruction Register) : CU가 실행하는 인스트럭션이 저장되어 있는 곳(주소값이 아닌 기계어(1010…) 저장)</li>
+</ul>
+<a id="more"></a>
+<h3 id="데이터-처리-순서"><a href="#데이터-처리-순서" class="headerlink" title="데이터 처리 순서"></a>데이터 처리 순서</h3><p>ex.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">10</span></span><br><span class="line">b = <span class="number">20</span></span><br><span class="line">c = a + b</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>a = 10, b = 20이 RAM에 저장</li>
+<li>CPU 범용 레지스터(EAX, ECX)에서 EAX = 10, ECX = 20으로 일시적으로 저장</li>
+<li>ALU에서 10 + 20 연산한 c값(30)을 RAM에 전달</li>
+<li>RAM에서 c = 30으로 저장</li>
+</ul>
+<h3 id="CPU-클럭"><a href="#CPU-클럭" class="headerlink" title="CPU 클럭"></a>CPU 클럭</h3><ul>
+<li>1초동안 파장이 한번 움직이는 시간 = 1초에 떨리는 수정발진자의 횟수 –&gt; CPU 속도를 나타내는 단위(Ghz)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ex) 클럭 : 2.4Ghz</span><br><span class="line">    f(주파수) = 1/T(주기)</span><br><span class="line">    T(주기) = 1/f(주파수)</span><br><span class="line">    T(주기) = 1/(2.4 × 10^9) sec/1cycle (= 수정발진자가 한번 떨릴 때의 시간)</span><br></pre></td></tr></table></figure>
+<h3 id="RISC-Reduced-Instruction-Set-Computer"><a href="#RISC-Reduced-Instruction-Set-Computer" class="headerlink" title="RISC (Reduced Instruction Set Computer)"></a>RISC (Reduced Instruction Set Computer)</h3><ul>
+<li>기계어 = 어셈블리어 (1:1 매칭)</li>
+</ul>
+<h3 id="CISC-Complex-Instruction-Set-Computer"><a href="#CISC-Complex-Instruction-Set-Computer" class="headerlink" title="CISC (Complex Instruction Set Computer)"></a>CISC (Complex Instruction Set Computer)</h3><ul>
+<li>기계어 = 어셈블리어 (얼추 1:1 매칭 -&gt; 2줄짜리 어셈블리어를 1개의 어셈블리어로 통합 가능)</li>
+</ul>
+<h3 id="CPI-Clocks-Per-Instruction"><a href="#CPI-Clocks-Per-Instruction" class="headerlink" title="CPI (Clocks Per Instruction)"></a>CPI (Clocks Per Instruction)</h3><ul>
+<li>인스트럭션이 실행될때의 걸리는 클럭</li>
+</ul>
+<h3 id="Stack-pointer"><a href="#Stack-pointer" class="headerlink" title="Stack pointer"></a>Stack pointer</h3><ul>
+<li>스택 프레임을 생성하고 스택 영역의 맨 위를 가르킨다. <ul>
+<li>시스템 해킹이란, 스택 포인터를 악성코드 함수의 맨 위 스택을 가르키도록 하는 것을 말한다.</li>
+</ul>
+</li>
+<li>매개변수는 우측에서 좌측으로 쌓인다.<ul>
+<li>ex) def adder(int a, int b, int c) –&gt; 스택 쌓이는 순서 : c -&gt; b -&gt; a</li>
+</ul>
+</li>
+</ul>
+<h3 id="Frame-pointer-Base-pointer"><a href="#Frame-pointer-Base-pointer" class="headerlink" title="Frame pointer(Base pointer)"></a>Frame pointer(Base pointer)</h3><ul>
+<li>스택 프레임 내에서 변수(data 혹은 메모리)에 접근할 때 기준점이 된다.</li>
+</ul>
+<h3 id="코드-실행-순서"><a href="#코드-실행-순서" class="headerlink" title="코드 실행 순서"></a>코드 실행 순서</h3><ul>
+<li>IR에서 다른 함수를 실행하는 코드 저장하고, PC가 그 함수의 다음 인스트럭션을 가르킴<ul>
+<li>함수 실행코드 다음 인스트럭션을 return address로 저장</li>
+<li>IR이 함수 실행코드 모두 입력받은 후, PC가 return address를 가르킴</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h2 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h2><hr>
+<h3 id="Memory-segment"><a href="#Memory-segment" class="headerlink" title="Memory segment"></a>Memory segment</h3><ul>
+<li>CODE (인스트럭션 쌓임)</li>
+<li>DATA (전역변수 쌓임, BSS 포함) <ul>
+<li>프로세스 실행될 때 생성되고, 종료될 때 소멸 (전역변수는 최대한 쓰지 말 것)</li>
+</ul>
+</li>
+<li>HEAP<ul>
+<li>프로그래머가 melloc함수 호출할 때 생성되고, free함수 호출할 때 소멸</li>
+</ul>
+</li>
+<li>STACK (지역변수 쌓임)<ul>
+<li>함수 호출할 때 생성되고, 함수 종료될 때 소멸</li>
+<li>최대크기는 default 값으로 1MB 할당됨(설정 가능)</li>
+</ul>
+</li>
+<li>메모리 : user 영역(2G) + kernel 영역(2G)<ul>
+<li>user 영역 : 사용자가 작성한 코드 및 함수 저장</li>
+<li>kernel 영역 : OS 코드 및 함수 저장</li>
+</ul>
+</li>
+</ul>
+<h3 id="Cache"><a href="#Cache" class="headerlink" title="Cache"></a>Cache</h3><ul>
+<li>Cache –&gt; Cache line, Cache miss, Cache hit, <ul>
+<li>Cache line : CPU가 데이터 오ㅛ청 시, 64byte ~ 128byte 일정 라인을 한번에 가져온다.</li>
+<li>Cache miss : CPU가 요청한 데이터가 Cache에 없을 때</li>
+<li>Cache hit : CPU가 요청한 데이터가 Cache에 있을 때 –&gt; 연구 결과, 95%의 확률로 Cache hit 발생</li>
+</ul>
+</li>
+</ul>
+<h3 id="Register에서-CPU로-데이터-전송-시-1cylce-소요될-때"><a href="#Register에서-CPU로-데이터-전송-시-1cylce-소요될-때" class="headerlink" title="Register에서 CPU로 데이터 전송 시, 1cylce 소요될 때"></a>Register에서 CPU로 데이터 전송 시, 1cylce 소요될 때</h3><ul>
+<li>Cache –&gt; Register 데이터 전송 시 : 3cycles 소요</li>
+<li>memory(RAM) –&gt; Register 데이터 전송 시 : 20 ~ 100 cycles 소요</li>
+<li>hard disk –&gt; Regisetr 데이터 전송 시 : 50만 ~ 500만 cycles 소요<ul>
+<li>데이터베이스는 hard disk에 들어 있으므로, 최대한 접근하는 것을 피해야 함</li>
+</ul>
+</li>
+</ul>
+<h3 id="locality-지역성"><a href="#locality-지역성" class="headerlink" title="locality (지역성)"></a>locality (지역성)</h3><ul>
+<li><p>locality –&gt; temporal locality, spatial locality</p>
+<ul>
+<li>temporal locality(시간 지역성) : 한번 접근했던 메모리에 자주 접근한다.</li>
+<li><p>spatial locality(공간 지역성) : 접근한 메모리가 이전에 접근했던 메모리 근처일 확률이 높다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">li = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">res = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> e <span class="keyword">in</span> li:</span><br><span class="line">    res += e</span><br><span class="line">    <span class="comment"># res -&gt; temmporal locality</span></span><br><span class="line">    <span class="comment"># e -&gt; spatial locality</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-09-14T08:00:21.000Z" itemprop="datePublished">
+              2019-09-14
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Computer-Science/">Computer Science</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Study/">Study</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
