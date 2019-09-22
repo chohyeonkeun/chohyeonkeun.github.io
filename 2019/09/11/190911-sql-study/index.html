@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="naver-site-verification" content="c017b080593f962c8c0a7ca644404511803c6484">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="신입개발자 조누스로써의 역량을 키워가는 과정이 담겨있는 개발로그입니다.">
+  <meta property="og:title" content="조누스의 걸음마 개발로그">
+  <meta property="og:description" content="안녕하세요 열정괴물 신입개발자 조누스의 개발로그입니다.">
+  <meta property="og:url" content="https://chohyeonkeun.github.io">
+  <title>SQL - 기본 문법 학습 | 조누스의 걸음마 개발 로그</title>
+  
+  
+  
+  <link rel="canonical" href="https://chohyeonkeun.github.io/2019/09/11/190911-sql-study/">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url(/assets/me.jpg)">
+        </div>
+    </section>
+    <section class="menu">
+	<div>웹 프로그래머</div>
+        <div style="font-weight: bold">조누스의 걸음마 개발 로그</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/chohyeonkeun">
+                    <img src="/assets/github.svg">
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>SQL - 기본 문법 학습</h1>
+    </header>
+
+    <section>
+      <h4 id="Customers-테이블에서-City-필드의-값을-알파벳-순서대로-정렬하라"><a href="#Customers-테이블에서-City-필드의-값을-알파벳-순서대로-정렬하라" class="headerlink" title="Customers 테이블에서 City 필드의 값을 알파벳 순서대로 정렬하라."></a>Customers 테이블에서 City 필드의 값을 알파벳 순서대로 정렬하라.</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Customers <span class="keyword">ORDER</span> <span class="keyword">BY</span> City;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="Customers-테이블에서-City-필드의-값을-알파벳-순서의-반대로-정렬하라"><a href="#Customers-테이블에서-City-필드의-값을-알파벳-순서의-반대로-정렬하라" class="headerlink" title="Customers 테이블에서 City 필드의 값을 알파벳 순서의 반대로 정렬하라."></a>Customers 테이블에서 City 필드의 값을 알파벳 순서의 반대로 정렬하라.</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Customers <span class="keyword">ORDER</span> <span class="keyword">BY</span> City <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="Customers-테이블에서-Contry-필드의-값을-알파벳-순서로-정렬한-다음-City-필드의-값을-알파벳-순서로-정렬하라"><a href="#Customers-테이블에서-Contry-필드의-값을-알파벳-순서로-정렬한-다음-City-필드의-값을-알파벳-순서로-정렬하라" class="headerlink" title="Customers 테이블에서 Contry 필드의 값을 알파벳 순서로 정렬한 다음, City 필드의 값을 알파벳 순서로 정렬하라."></a>Customers 테이블에서 Contry 필드의 값을 알파벳 순서로 정렬한 다음, City 필드의 값을 알파벳 순서로 정렬하라.</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Customers <span class="keyword">ORDER</span> <span class="keyword">BY</span> Country, City</span><br></pre></td></tr></table></figure>
+<h4 id="PostalCode-column-field-이-비어있는-객체를-리턴하라"><a href="#PostalCode-column-field-이-비어있는-객체를-리턴하라" class="headerlink" title="PostalCode column(field)이 비어있는 객체를 리턴하라"></a>PostalCode column(field)이 비어있는 객체를 리턴하라</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Customers <span class="keyword">WHERE</span> PostalCode <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="Products-테이블에서-Price-필드값이-18인-객체의-수를-리턴하라"><a href="#Products-테이블에서-Price-필드값이-18인-객체의-수를-리턴하라" class="headerlink" title="Products 테이블에서 Price 필드값이 18인 객체의 수를 리턴하라."></a>Products 테이블에서 Price 필드값이 18인 객체의 수를 리턴하라.</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> Products <span class="keyword">WHERE</span> Price = <span class="number">18</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="Products-테이블에서-모든-객체의-Price-필드값들의-평균을-리턴하라"><a href="#Products-테이블에서-모든-객체의-Price-필드값들의-평균을-리턴하라" class="headerlink" title="Products 테이블에서 모든 객체의 Price 필드값들의 평균을 리턴하라."></a>Products 테이블에서 모든 객체의 Price 필드값들의 평균을 리턴하라.</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(Price) <span class="keyword">FROM</span> Products;</span><br></pre></td></tr></table></figure>
+<h4 id="Customers-테이블에서-City-필드값이-‘a’로-시작하는-객체를-리턴하라"><a href="#Customers-테이블에서-City-필드값이-‘a’로-시작하는-객체를-리턴하라" class="headerlink" title="Customers 테이블에서 City 필드값이 ‘a’로 시작하는 객체를 리턴하라."></a>Customers 테이블에서 City 필드값이 ‘a’로 시작하는 객체를 리턴하라.</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Customers <span class="keyword">WHERE</span> City <span class="keyword">LIKE</span> <span class="string">'a%'</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="Customers-테이블에서-City-필드값이-‘a’로-끝나는-객체를-리턴하라"><a href="#Customers-테이블에서-City-필드값이-‘a’로-끝나는-객체를-리턴하라" class="headerlink" title="Customers 테이블에서 City 필드값이 ‘a’로 끝나는 객체를 리턴하라."></a>Customers 테이블에서 City 필드값이 ‘a’로 끝나는 객체를 리턴하라.</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Customers <span class="keyword">WHERE</span> City <span class="keyword">LIKE</span> <span class="string">'%a'</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="Customers-테이블에-Contact-Username-column-field-을-생성하고-그-값에-‘01082821004’-‘홍길동’을-저장하라"><a href="#Customers-테이블에-Contact-Username-column-field-을-생성하고-그-값에-‘01082821004’-‘홍길동’을-저장하라" class="headerlink" title="Customers 테이블에 Contact, Username column(field)을 생성하고, 그 값에 ‘01082821004’, ‘홍길동’을 저장하라."></a>Customers 테이블에 Contact, Username column(field)을 생성하고, 그 값에 ‘01082821004’, ‘홍길동’을 저장하라.</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Customers (</span><br><span class="line">    Contact,</span><br><span class="line">    Username</span><br><span class="line">) <span class="keyword">VALUES</span> (</span><br><span class="line">    <span class="string">'01082821004'</span>,</span><br><span class="line">    <span class="string">'홍길동'</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="Customers-테이블에서-Country가-‘Norway’인-객체에-City-값을-‘Oslo’로-업데이트하라"><a href="#Customers-테이블에서-Country가-‘Norway’인-객체에-City-값을-‘Oslo’로-업데이트하라" class="headerlink" title="Customers 테이블에서 Country가 ‘Norway’인 객체에 City 값을 ‘Oslo’로 업데이트하라."></a>Customers 테이블에서 Country가 ‘Norway’인 객체에 City 값을 ‘Oslo’로 업데이트하라.</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> Customers <span class="keyword">SET</span> City = <span class="string">'Oslo'</span> <span class="keyword">WHERE</span> Country = <span class="string">'Norway'</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="Customers-테이블에서-Country-필드-값이-‘Norway’인-객체를-삭제하라"><a href="#Customers-테이블에서-Country-필드-값이-‘Norway’인-객체를-삭제하라" class="headerlink" title="Customers 테이블에서 Country 필드 값이 ‘Norway’인 객체를 삭제하라."></a>Customers 테이블에서 Country 필드 값이 ‘Norway’인 객체를 삭제하라.</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> Customers <span class="keyword">WHERE</span> Country = <span class="string">'Norway'</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="Customers-테이블을-삭제하라"><a href="#Customers-테이블을-삭제하라" class="headerlink" title="Customers 테이블을 삭제하라."></a>Customers 테이블을 삭제하라.</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">table</span> Customers</span><br></pre></td></tr></table></figure>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            Posted &nbsp;
+            <time datetime="2019-09-11T08:00:21.000Z" itemprop="datePublished">
+              2019-09-11
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Study/">Study</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/SQL/">SQL</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - 조현근 </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
