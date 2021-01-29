@@ -2,13 +2,13 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://chohyeonkeun.github.io</loc>
+        <loc>https://jonus.github.io</loc>
         <changefreq>daily</changefreq>
         <priority>1</priority>
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/09/11/190911-sql-study/</loc>
+        <loc>https://jonus.github.io/2019/09/11/190911-sql-study/</loc>
         <lastmod>2019-09-23T13:04:18.765Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -16,7 +16,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/09/17/190917-computer-science-vas-stack-heap/</loc>
+        <loc>https://jonus.github.io/2019/09/17/190917-computer-science-vas-stack-heap/</loc>
         <lastmod>2019-09-22T16:19:11.339Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -24,7 +24,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/09/14/190914-computer-science-cpu-memory/</loc>
+        <loc>https://jonus.github.io/2019/09/14/190914-computer-science-cpu-memory/</loc>
         <lastmod>2019-09-22T15:25:44.815Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -32,7 +32,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/08/16/190816-computer-science-study-1/</loc>
+        <loc>https://jonus.github.io/2019/08/16/190816-computer-science-study-1/</loc>
         <lastmod>2019-09-11T16:16:40.854Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -40,7 +40,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/09/08/190908-algorithm-postfix-calculate/</loc>
+        <loc>https://jonus.github.io/2019/09/08/190908-algorithm-postfix-calculate/</loc>
         <lastmod>2019-09-11T16:15:06.656Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -48,7 +48,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/09/05/190905-computer-science-numeral-system-bit-complement/</loc>
+        <loc>https://jonus.github.io/2019/09/05/190905-computer-science-numeral-system-bit-complement/</loc>
         <lastmod>2019-09-10T17:08:09.386Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -56,7 +56,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/09/02/190902-django-ajax-user-search-invite/</loc>
+        <loc>https://jonus.github.io/2019/09/02/190902-django-ajax-user-search-invite/</loc>
         <lastmod>2019-09-08T16:02:09.794Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -64,7 +64,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/08/31/190831-django-ajax-signup-login/</loc>
+        <loc>https://jonus.github.io/2019/08/31/190831-django-ajax-signup-login/</loc>
         <lastmod>2019-09-08T14:56:44.505Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -72,7 +72,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/06/190606-django-EC2-django-deploy/</loc>
+        <loc>https://jonus.github.io/2019/06/06/190606-django-EC2-django-deploy/</loc>
         <lastmod>2019-09-06T00:35:14.290Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -80,7 +80,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/08/190508-django-AWS-S3/</loc>
+        <loc>https://jonus.github.io/2019/05/08/190508-django-AWS-S3/</loc>
         <lastmod>2019-09-04T07:32:23.824Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -88,7 +88,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/09/190509-django-AWS-Route53-RDS/</loc>
+        <loc>https://jonus.github.io/2019/05/09/190509-django-AWS-Route53-RDS/</loc>
         <lastmod>2019-09-04T07:28:44.224Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -96,7 +96,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/08/22/190822-python-study-call-by/</loc>
+        <loc>https://jonus.github.io/2019/08/22/190822-python-study-call-by/</loc>
         <lastmod>2019-08-31T17:52:47.989Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -104,7 +104,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/08/28/190828-computer-science-study-ascii/</loc>
+        <loc>https://jonus.github.io/2019/08/28/190828-computer-science-study-ascii/</loc>
         <lastmod>2019-08-31T17:51:02.727Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -112,7 +112,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/19/190519-django-login-method/</loc>
+        <loc>https://jonus.github.io/2019/05/19/190519-django-login-method/</loc>
         <lastmod>2019-08-31T07:42:18.197Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -120,7 +120,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/08/25/190825-bixby-capsule-develop/</loc>
+        <loc>https://jonus.github.io/2019/08/25/190825-bixby-capsule-develop/</loc>
         <lastmod>2019-08-29T17:29:03.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -128,7 +128,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/08/19/190819-python-study-1/</loc>
+        <loc>https://jonus.github.io/2019/08/19/190819-python-study-1/</loc>
         <lastmod>2019-08-26T10:59:57.186Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -136,7 +136,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/08/13/190813-django-frontend-backend-deploy/</loc>
+        <loc>https://jonus.github.io/2019/08/13/190813-django-frontend-backend-deploy/</loc>
         <lastmod>2019-08-26T08:05:46.958Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -144,7 +144,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/08/10/190810-algorithm-tsp-problem/</loc>
+        <loc>https://jonus.github.io/2019/08/10/190810-algorithm-tsp-problem/</loc>
         <lastmod>2019-08-10T06:44:39.365Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -152,7 +152,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/08/09/190809-algorithm-markov-problem/</loc>
+        <loc>https://jonus.github.io/2019/08/09/190809-algorithm-markov-problem/</loc>
         <lastmod>2019-08-10T06:25:25.846Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -160,7 +160,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/08/07/190807-datastructure-shortest-path/</loc>
+        <loc>https://jonus.github.io/2019/08/07/190807-datastructure-shortest-path/</loc>
         <lastmod>2019-08-09T16:34:13.760Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -168,7 +168,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/08/03/190803-datastructure-MST/</loc>
+        <loc>https://jonus.github.io/2019/08/03/190803-datastructure-MST/</loc>
         <lastmod>2019-08-09T14:45:52.628Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -176,7 +176,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/08/04/190804-datastructure-MST-kruskal/</loc>
+        <loc>https://jonus.github.io/2019/08/04/190804-datastructure-MST-kruskal/</loc>
         <lastmod>2019-08-09T14:45:39.085Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -184,7 +184,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/08/05/190805-datastructure-MST-prim/</loc>
+        <loc>https://jonus.github.io/2019/08/05/190805-datastructure-MST-prim/</loc>
         <lastmod>2019-08-09T14:45:26.013Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -192,7 +192,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/21/190621-django-docker-elastic-beanstalk/</loc>
+        <loc>https://jonus.github.io/2019/06/21/190621-django-docker-elastic-beanstalk/</loc>
         <lastmod>2019-08-07T10:31:40.434Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -200,7 +200,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/19/190619-django-elastic-beanstalk/</loc>
+        <loc>https://jonus.github.io/2019/06/19/190619-django-elastic-beanstalk/</loc>
         <lastmod>2019-08-05T14:18:46.086Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -208,7 +208,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/25/190525-django-Email-login/</loc>
+        <loc>https://jonus.github.io/2019/05/25/190525-django-Email-login/</loc>
         <lastmod>2019-08-04T07:12:32.555Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -216,7 +216,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/29/190729-datastructure-graph/</loc>
+        <loc>https://jonus.github.io/2019/07/29/190729-datastructure-graph/</loc>
         <lastmod>2019-08-03T16:50:05.054Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -224,7 +224,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/08/02/190802-datastructure-b-tree/</loc>
+        <loc>https://jonus.github.io/2019/08/02/190802-datastructure-b-tree/</loc>
         <lastmod>2019-08-03T16:48:26.086Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -232,7 +232,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/27/190727-django-stay-order/</loc>
+        <loc>https://jonus.github.io/2019/07/27/190727-django-stay-order/</loc>
         <lastmod>2019-08-03T16:48:10.350Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -240,7 +240,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/25/190725-django-stay-checkInOut/</loc>
+        <loc>https://jonus.github.io/2019/07/25/190725-django-stay-checkInOut/</loc>
         <lastmod>2019-08-03T12:32:23.803Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -248,7 +248,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/14/190714-django-git-fork/</loc>
+        <loc>https://jonus.github.io/2019/07/14/190714-django-git-fork/</loc>
         <lastmod>2019-07-22T13:19:06.832Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -256,7 +256,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/22/190722-postman-api/</loc>
+        <loc>https://jonus.github.io/2019/07/22/190722-postman-api/</loc>
         <lastmod>2019-07-21T18:23:30.652Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -264,7 +264,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/21/190721-django-restframework-supplement/</loc>
+        <loc>https://jonus.github.io/2019/07/21/190721-django-restframework-supplement/</loc>
         <lastmod>2019-07-21T18:22:47.244Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -272,7 +272,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/10/190710-django-search-Q/</loc>
+        <loc>https://jonus.github.io/2019/07/10/190710-django-search-Q/</loc>
         <lastmod>2019-07-21T05:50:57.196Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -280,7 +280,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/28/190528-github-cowork/</loc>
+        <loc>https://jonus.github.io/2019/05/28/190528-github-cowork/</loc>
         <lastmod>2019-07-20T17:35:17.862Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -288,7 +288,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/17/190717-django-search-filter-using-RegularExpression/</loc>
+        <loc>https://jonus.github.io/2019/07/17/190717-django-search-filter-using-RegularExpression/</loc>
         <lastmod>2019-07-20T13:32:42.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -296,7 +296,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/12/190712-django-hashtag/</loc>
+        <loc>https://jonus.github.io/2019/07/12/190712-django-hashtag/</loc>
         <lastmod>2019-07-20T13:07:43.616Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -304,7 +304,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/20/190720-python-brute-force-search-boardcover/</loc>
+        <loc>https://jonus.github.io/2019/07/20/190720-python-brute-force-search-boardcover/</loc>
         <lastmod>2019-07-20T12:48:36.632Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -312,7 +312,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/19/190719-python-brute-force-search-picnic/</loc>
+        <loc>https://jonus.github.io/2019/07/19/190719-python-brute-force-search-picnic/</loc>
         <lastmod>2019-07-20T12:48:29.416Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -320,7 +320,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/09/190709-python-BST/</loc>
+        <loc>https://jonus.github.io/2019/07/09/190709-python-BST/</loc>
         <lastmod>2019-07-20T12:48:03.373Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -328,7 +328,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/26/190526-django-EC2-django-server/</loc>
+        <loc>https://jonus.github.io/2019/05/26/190526-django-EC2-django-server/</loc>
         <lastmod>2019-07-16T19:26:09.959Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -336,7 +336,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/09/190609-django-tag-function/</loc>
+        <loc>https://jonus.github.io/2019/06/09/190609-django-tag-function/</loc>
         <lastmod>2019-07-14T14:21:25.631Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -344,7 +344,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/08/190708-django-ajax-comment-function/</loc>
+        <loc>https://jonus.github.io/2019/07/08/190708-django-ajax-comment-function/</loc>
         <lastmod>2019-07-12T17:33:49.023Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -352,7 +352,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/07/190707-django-ajax-like-function/</loc>
+        <loc>https://jonus.github.io/2019/07/07/190707-django-ajax-like-function/</loc>
         <lastmod>2019-07-12T16:48:03.018Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -360,7 +360,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/02/190702-python-algorythm/</loc>
+        <loc>https://jonus.github.io/2019/07/02/190702-python-algorythm/</loc>
         <lastmod>2019-07-12T10:53:34.935Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -368,7 +368,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/01/190701-python-circular-queue/</loc>
+        <loc>https://jonus.github.io/2019/07/01/190701-python-circular-queue/</loc>
         <lastmod>2019-07-12T10:23:40.407Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -376,7 +376,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/04/190704-datastructure-binarytree/</loc>
+        <loc>https://jonus.github.io/2019/07/04/190704-datastructure-binarytree/</loc>
         <lastmod>2019-07-12T09:44:14.144Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -384,7 +384,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/03/190703-mysql-workbench/</loc>
+        <loc>https://jonus.github.io/2019/07/03/190703-mysql-workbench/</loc>
         <lastmod>2019-07-06T04:23:43.267Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -392,7 +392,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/30/190630-python-excel/</loc>
+        <loc>https://jonus.github.io/2019/06/30/190630-python-excel/</loc>
         <lastmod>2019-07-06T04:23:19.623Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -400,7 +400,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/29/190629-python-text/</loc>
+        <loc>https://jonus.github.io/2019/06/29/190629-python-text/</loc>
         <lastmod>2019-07-06T04:23:10.803Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -408,7 +408,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/28/190628-python-csv/</loc>
+        <loc>https://jonus.github.io/2019/06/28/190628-python-csv/</loc>
         <lastmod>2019-07-06T04:23:04.047Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -416,7 +416,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/27/190627-django-classification-by-year/</loc>
+        <loc>https://jonus.github.io/2019/06/27/190627-django-classification-by-year/</loc>
         <lastmod>2019-07-06T04:22:55.819Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -424,7 +424,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/26/190626-django-fullcalendar/</loc>
+        <loc>https://jonus.github.io/2019/06/26/190626-django-fullcalendar/</loc>
         <lastmod>2019-07-06T04:22:47.127Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -432,7 +432,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/25/190625-django-datetime-timedelta/</loc>
+        <loc>https://jonus.github.io/2019/06/25/190625-django-datetime-timedelta/</loc>
         <lastmod>2019-07-06T04:22:39.307Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -440,7 +440,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/24/190624-django-location-field/</loc>
+        <loc>https://jonus.github.io/2019/06/24/190624-django-location-field/</loc>
         <lastmod>2019-07-06T04:22:30.239Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -448,7 +448,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/22/190622-cooke-session/</loc>
+        <loc>https://jonus.github.io/2019/06/22/190622-cooke-session/</loc>
         <lastmod>2019-07-06T04:22:08.315Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -456,7 +456,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/20/190620-django-translation/</loc>
+        <loc>https://jonus.github.io/2019/06/20/190620-django-translation/</loc>
         <lastmod>2019-07-06T04:21:41.327Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -464,7 +464,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/18/190618-django-rest-framework/</loc>
+        <loc>https://jonus.github.io/2019/06/18/190618-django-rest-framework/</loc>
         <lastmod>2019-07-06T04:21:24.255Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -472,7 +472,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/17/190617-django-payment-function/</loc>
+        <loc>https://jonus.github.io/2019/06/17/190617-django-payment-function/</loc>
         <lastmod>2019-07-06T04:21:11.323Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -480,7 +480,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/16/190616-django-cart-function/</loc>
+        <loc>https://jonus.github.io/2019/06/16/190616-django-cart-function/</loc>
         <lastmod>2019-07-06T04:21:01.071Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -488,7 +488,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/15/190615-django-order-detail-page/</loc>
+        <loc>https://jonus.github.io/2019/06/15/190615-django-order-detail-page/</loc>
         <lastmod>2019-07-06T04:20:46.279Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -496,7 +496,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/15/190615-django-order-csv-file/</loc>
+        <loc>https://jonus.github.io/2019/06/15/190615-django-order-csv-file/</loc>
         <lastmod>2019-07-06T04:20:24.275Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -504,7 +504,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/14/190614-django-order-pdf-file/</loc>
+        <loc>https://jonus.github.io/2019/06/14/190614-django-order-pdf-file/</loc>
         <lastmod>2019-07-06T04:20:02.592Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -512,7 +512,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/13/190613-django-involved-category-function/</loc>
+        <loc>https://jonus.github.io/2019/06/13/190613-django-involved-category-function/</loc>
         <lastmod>2019-07-06T04:19:34.940Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -520,7 +520,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/12/190612-django-ajax-checkbox/</loc>
+        <loc>https://jonus.github.io/2019/06/12/190612-django-ajax-checkbox/</loc>
         <lastmod>2019-07-06T04:19:27.504Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -528,7 +528,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/11/190611-django-category-function/</loc>
+        <loc>https://jonus.github.io/2019/06/11/190611-django-category-function/</loc>
         <lastmod>2019-07-06T04:19:20.132Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -536,7 +536,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/10/190610-django-blog-comment-function/</loc>
+        <loc>https://jonus.github.io/2019/06/10/190610-django-blog-comment-function/</loc>
         <lastmod>2019-07-06T04:19:08.520Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -544,7 +544,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/08/190608-django-custom-templatetags/</loc>
+        <loc>https://jonus.github.io/2019/06/08/190608-django-custom-templatetags/</loc>
         <lastmod>2019-07-06T04:18:55.248Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -552,7 +552,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/07/190607-django-multi-database/</loc>
+        <loc>https://jonus.github.io/2019/06/07/190607-django-multi-database/</loc>
         <lastmod>2019-07-06T04:18:47.120Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -560,7 +560,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/05/190605-django-email-server/</loc>
+        <loc>https://jonus.github.io/2019/06/05/190605-django-email-server/</loc>
         <lastmod>2019-07-06T04:18:30.264Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -568,7 +568,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/04/190604-django-ELB-SSL/</loc>
+        <loc>https://jonus.github.io/2019/06/04/190604-django-ELB-SSL/</loc>
         <lastmod>2019-07-06T04:18:23.128Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -576,7 +576,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/04/190604-django-ELB-setting/</loc>
+        <loc>https://jonus.github.io/2019/06/04/190604-django-ELB-setting/</loc>
         <lastmod>2019-07-06T04:18:15.752Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -584,7 +584,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/03/190603-django-ACM-SSL/</loc>
+        <loc>https://jonus.github.io/2019/06/03/190603-django-ACM-SSL/</loc>
         <lastmod>2019-07-06T04:18:04.748Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -592,7 +592,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/02/190602-python-regular-expression/</loc>
+        <loc>https://jonus.github.io/2019/06/02/190602-python-regular-expression/</loc>
         <lastmod>2019-07-06T04:17:49.456Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -600,7 +600,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/01/190601-django-allauth-facebook/</loc>
+        <loc>https://jonus.github.io/2019/06/01/190601-django-allauth-facebook/</loc>
         <lastmod>2019-07-06T04:17:37.096Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -608,7 +608,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/31/190531-django-openssl/</loc>
+        <loc>https://jonus.github.io/2019/05/31/190531-django-openssl/</loc>
         <lastmod>2019-07-06T04:17:27.156Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -616,7 +616,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/30/190530-django-nginx-resource-serving/</loc>
+        <loc>https://jonus.github.io/2019/05/30/190530-django-nginx-resource-serving/</loc>
         <lastmod>2019-07-06T04:17:20.116Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -624,7 +624,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/30/190530-django-FTP/</loc>
+        <loc>https://jonus.github.io/2019/05/30/190530-django-FTP/</loc>
         <lastmod>2019-07-06T04:17:11.912Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -632,7 +632,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/29/190529-django-static-serving/</loc>
+        <loc>https://jonus.github.io/2019/05/29/190529-django-static-serving/</loc>
         <lastmod>2019-07-06T04:17:04.088Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -640,7 +640,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/29/190529-django-media-serving/</loc>
+        <loc>https://jonus.github.io/2019/05/29/190529-django-media-serving/</loc>
         <lastmod>2019-07-06T04:16:56.212Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -648,7 +648,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/27/190527-django-wysiwig/</loc>
+        <loc>https://jonus.github.io/2019/05/27/190527-django-wysiwig/</loc>
         <lastmod>2019-07-06T04:16:35.524Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -656,7 +656,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/27/190527-django-ckeditor/</loc>
+        <loc>https://jonus.github.io/2019/05/27/190527-django-ckeditor/</loc>
         <lastmod>2019-07-06T04:16:28.788Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -664,7 +664,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/24/190524-django-custom-user/</loc>
+        <loc>https://jonus.github.io/2019/05/24/190524-django-custom-user/</loc>
         <lastmod>2019-07-06T04:16:09.100Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -672,7 +672,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/23/190523-django-EC2-webserver/</loc>
+        <loc>https://jonus.github.io/2019/05/23/190523-django-EC2-webserver/</loc>
         <lastmod>2019-07-06T04:16:01.352Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -680,7 +680,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/22/190522-django-EC2/</loc>
+        <loc>https://jonus.github.io/2019/05/22/190522-django-EC2/</loc>
         <lastmod>2019-07-06T04:15:52.896Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -688,7 +688,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/21/190521-django-extensions/</loc>
+        <loc>https://jonus.github.io/2019/05/21/190521-django-extensions/</loc>
         <lastmod>2019-07-06T04:15:28.476Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -696,7 +696,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/20/190520-django-debug-tool-bar/</loc>
+        <loc>https://jonus.github.io/2019/05/20/190520-django-debug-tool-bar/</loc>
         <lastmod>2019-07-06T04:15:13.912Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -704,7 +704,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/18/190518-django-comment-with-ajax/</loc>
+        <loc>https://jonus.github.io/2019/05/18/190518-django-comment-with-ajax/</loc>
         <lastmod>2019-07-06T04:15:01.064Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -712,7 +712,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/17/190517-django-image-upload-localsite/</loc>
+        <loc>https://jonus.github.io/2019/05/17/190517-django-image-upload-localsite/</loc>
         <lastmod>2019-07-06T04:14:54.136Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -720,7 +720,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/16/190516-django-board-comment-function/</loc>
+        <loc>https://jonus.github.io/2019/05/16/190516-django-board-comment-function/</loc>
         <lastmod>2019-07-06T04:14:38.008Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -728,7 +728,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/15/190515-django-SNS-LOGIN/</loc>
+        <loc>https://jonus.github.io/2019/05/15/190515-django-SNS-LOGIN/</loc>
         <lastmod>2019-07-06T04:14:31.640Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -736,7 +736,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/14/190514-django-pagination/</loc>
+        <loc>https://jonus.github.io/2019/05/14/190514-django-pagination/</loc>
         <lastmod>2019-07-06T04:14:25.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -744,7 +744,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/13/190513-django-pythonanywhere/</loc>
+        <loc>https://jonus.github.io/2019/05/13/190513-django-pythonanywhere/</loc>
         <lastmod>2019-07-06T04:14:20.272Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -752,7 +752,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/12/190512-django-disqus/</loc>
+        <loc>https://jonus.github.io/2019/05/12/190512-django-disqus/</loc>
         <lastmod>2019-07-06T04:14:12.796Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -760,7 +760,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/11/190511-django-Signal/</loc>
+        <loc>https://jonus.github.io/2019/05/11/190511-django-Signal/</loc>
         <lastmod>2019-07-06T04:14:05.156Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -768,7 +768,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/10/190510-django-Ajax/</loc>
+        <loc>https://jonus.github.io/2019/05/10/190510-django-Ajax/</loc>
         <lastmod>2019-07-06T04:13:49.936Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -776,7 +776,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/07/190507-django-bookmark-project-3/</loc>
+        <loc>https://jonus.github.io/2019/05/07/190507-django-bookmark-project-3/</loc>
         <lastmod>2019-07-06T04:13:23.252Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -784,7 +784,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/06/190506-django-bookmark-project-2/</loc>
+        <loc>https://jonus.github.io/2019/05/06/190506-django-bookmark-project-2/</loc>
         <lastmod>2019-07-06T04:13:17.668Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -792,7 +792,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/05/190505-django-bookmark-project-1/</loc>
+        <loc>https://jonus.github.io/2019/05/05/190505-django-bookmark-project-1/</loc>
         <lastmod>2019-07-06T04:13:09.736Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -800,7 +800,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/04/190504-django-Base-Procedure/</loc>
+        <loc>https://jonus.github.io/2019/05/04/190504-django-Base-Procedure/</loc>
         <lastmod>2019-07-06T04:13:01.396Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -808,7 +808,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/05/03/190503-django-page-function/</loc>
+        <loc>https://jonus.github.io/2019/05/03/190503-django-page-function/</loc>
         <lastmod>2019-07-06T04:12:50.072Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -816,7 +816,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/06/190706-django-multi-image-upload/</loc>
+        <loc>https://jonus.github.io/2019/07/06/190706-django-multi-image-upload/</loc>
         <lastmod>2019-07-06T04:12:03.492Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -824,7 +824,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/07/05/190705-django-multiselectfield/</loc>
+        <loc>https://jonus.github.io/2019/07/05/190705-django-multiselectfield/</loc>
         <lastmod>2019-07-06T04:07:48.236Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -832,7 +832,7 @@
     </url>
 
     <url>
-        <loc>https://chohyeonkeun.github.io/2019/06/23/190623-linux-crontab/</loc>
+        <loc>https://jonus.github.io/2019/06/23/190623-linux-crontab/</loc>
         <lastmod>2019-06-23T17:57:04.919Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
